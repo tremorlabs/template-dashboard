@@ -130,7 +130,8 @@ const Calendar = ({
                 day_today: "font-semibold",
                 day_selected: cx(
                     "rounded",
-                    "aria-selected:bg-gray-900 aria-selected:text-gray-50",
+                    "aria-selected:bg-indigo-600 aria-selected:text-gray-50",
+                    // @CHris: add dark mode
                     "dark:aria-selected:bg-gray-50 dark:aria-selected:text-gray-900",
                 ),
                 day_disabled:

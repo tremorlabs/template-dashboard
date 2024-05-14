@@ -1,3 +1,5 @@
+import { Filterbar } from "@/components/ui/Filterbar"
+
 const categories = [
     {
         name: "Sales",
@@ -16,7 +18,10 @@ const categories = [
 export default function Example() {
     return (
         <>
-            <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
+            <div className="border-b pb-4">
+                <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
+                <Filterbar />
+            </div>
             <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {categories.map((item) => (
                     <div key={item.name} className="rounded-lg border border-gray-200 p-4 bg-white shadow-sm">

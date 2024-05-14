@@ -6,7 +6,6 @@ import {
     RiArrowDownSLine,
     RiArrowUpSLine,
     RiCheckLine,
-    RiExpandUpDownLine,
 } from "@remixicon/react"
 
 import { cx, focusInput, hasErrorInput } from "@/lib/utils"
@@ -23,9 +22,9 @@ SelectValue.displayName = "SelectValue"
 const selectTriggerStyles = [
     cx(
         // base
-        "group/trigger flex w-full select-none items-center justify-between truncate rounded-md border px-3 py-2 shadow-sm outline-none transition sm:text-sm",
+        "group/trigger flex w-full select-none items-center gap-x-2 justify-between truncate rounded-md border px-3 py-2 shadow-sm outline-none transition sm:text-sm",
         // border color
-        "border-gray-300 dark:border-gray-800",
+        "border-gray-200 dark:border-gray-800",
         // text color
         "text-gray-900 dark:text-gray-50",
         // placeholder
@@ -61,10 +60,10 @@ const SelectTrigger = React.forwardRef<
         >
             <span className="truncate">{children}</span>
             <SelectPrimitives.Icon asChild>
-                <RiExpandUpDownLine
+                <RiArrowDownSLine
                     className={cx(
                         // base
-                        "size-4 shrink-0",
+                        "size-5 shrink-0",
                         // text color
                         "text-gray-400 dark:text-gray-600",
                         // disabled
@@ -143,7 +142,7 @@ const SelectContent = React.forwardRef<
                     // text color
                     "text-gray-900 dark:text-gray-50",
                     // border color
-                    "border-gray-300 dark:border-gray-800",
+                    "border-gray-200 dark:border-gray-800",
                     // transition
                     "will-change-[transform,opacity]",
                     // "data-[state=open]:animate-slideDownAndFade",
