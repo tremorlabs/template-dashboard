@@ -63,7 +63,7 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
                 // base
                 "relative block w-full appearance-none rounded-md border px-2.5 py-1.5 text-left uppercase tabular-nums shadow-sm outline-none sm:text-sm",
                 // border color
-                "border-gray-300 dark:border-gray-800",
+                "border-gray-200 dark:border-gray-800",
                 // text color
                 "text-gray-900 dark:text-gray-50",
                 // background color
@@ -76,7 +76,7 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
                     "!w-fit border-none bg-transparent px-0 text-gray-400 shadow-none":
                         isDecorator,
                     hidden: isSpace,
-                    "border-gray-300 bg-gray-100 text-gray-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-500":
+                    "border-gray-200 bg-gray-100 text-gray-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-500":
                         state.isDisabled,
                     "!bg-transparent !text-gray-400": !segment.isEditable,
                 },
@@ -158,7 +158,7 @@ const triggerStyles = tv({
         // background color
         "bg-white dark:bg-gray-950 ",
         // border color
-        "border-gray-300 dark:border-gray-800",
+        "border-gray-200 dark:border-gray-800",
         // text color
         "text-gray-900 dark:text-gray-50",
         // placeholder color
@@ -239,7 +239,7 @@ const CalendarPopover = React.forwardRef<
                     // widths
                     "min-w-[calc(var(--radix-select-trigger-width)-2px)] max-w-[95vw]",
                     // border color
-                    "border-gray-300 dark:border-gray-800",
+                    "border-gray-200 dark:border-gray-800",
                     // background color
                     "bg-white dark:bg-gray-950",
                     // transition
@@ -373,7 +373,7 @@ const PresetContainer = <TPreset extends Preset, TValue>({
                                 // text color
                                 "text-gray-700 dark:text-gray-300",
                                 // border color
-                                "border-gray-300 dark:border-gray-800",
+                                "border-gray-200 dark:border-gray-800",
                                 // focus
                                 focusRing,
                                 // background color
@@ -621,7 +621,7 @@ const SingleDatePicker = ({
                             <div
                                 className={cx(
                                     "relative flex h-14 w-full items-center sm:h-full sm:w-40",
-                                    "border-b border-gray-300 sm:border-b-0 sm:border-r dark:border-gray-800",
+                                    "border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-800",
                                     "overflow-auto",
                                 )}
                             >
@@ -649,7 +649,7 @@ const SingleDatePicker = ({
                                 {...props}
                             />
                             {showTimePicker && (
-                                <div className="border-t border-gray-300 p-3 dark:border-gray-800">
+                                <div className="border-t border-gray-200 p-3 dark:border-gray-800">
                                     <TimeInput
                                         aria-label="Time"
                                         onChange={onTimeChange}
@@ -659,7 +659,7 @@ const SingleDatePicker = ({
                                     />
                                 </div>
                             )}
-                            <div className="flex items-center gap-x-2 border-t border-gray-300 p-3 dark:border-gray-800">
+                            <div className="flex items-center gap-x-2 border-t border-gray-200 p-3 dark:border-gray-800">
                                 <Button
                                     variant="secondary"
                                     className="h-8 w-full"
@@ -918,7 +918,7 @@ const RangeDatePicker = ({
                             <div
                                 className={cx(
                                     "relative flex h-16 w-full items-center sm:h-full sm:w-40",
-                                    "border-b border-gray-300 sm:border-b-0 sm:border-r dark:border-gray-800",
+                                    "border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-800",
                                     "overflow-auto",
                                 )}
                             >
@@ -947,12 +947,12 @@ const RangeDatePicker = ({
                                 className="overflow-x-scroll"
                                 classNames={{
                                     months:
-                                        "flex flex-row divide-x divide-gray-300 dark:divide-gray-800 overflow-x-scroll",
+                                        "flex flex-row divide-x divide-gray-200 dark:divide-gray-800 overflow-x-scroll",
                                 }}
                                 {...props}
                             />
                             {showTimePicker && (
-                                <div className="flex items-center justify-evenly gap-x-3 border-t border-gray-300 p-3 dark:border-gray-800">
+                                <div className="flex items-center justify-evenly gap-x-3 border-t border-gray-200 p-3 dark:border-gray-800">
                                     <div className="flex flex-1 items-center gap-x-2">
                                         <span className="dark:text-gray-30 text-gray-700">
                                             {translations?.start ?? "Start"}:
@@ -980,7 +980,7 @@ const RangeDatePicker = ({
                                     </div>
                                 </div>
                             )}
-                            <div className="border-t border-gray-300 p-3 sm:flex sm:items-center sm:justify-between dark:border-gray-800">
+                            <div className="border-t border-gray-200 p-3 sm:flex sm:items-center sm:justify-between dark:border-gray-800">
                                 <p className="tabular-nums text-gray-900 dark:text-gray-50">
                                     <span className="text-gray-700 dark:text-gray-300">
                                         {translations?.range ?? "Range"}:
