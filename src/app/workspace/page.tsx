@@ -109,7 +109,7 @@ const categories = [
 
 export default function Example() {
     return (
-        <main className="p-4 sm:p-6">
+        <>
             <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
             <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {categories.map((item) => (
@@ -119,6 +119,6 @@ export default function Example() {
                     </div>
                 ))}
             </div>
-        </main>
+        </>
     )
 }

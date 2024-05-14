@@ -1,3 +1,8 @@
+'use client';
+
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
+import { siteConfig } from "@/app/siteConfig"
 import { cx } from "@/lib/utils";
 import {
     RiArrowRightSLine,
@@ -11,9 +16,9 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../Dropdown";
 
 const navigation = [
-    { name: 'Dashboard', href: '#', icon: RiHome2Line, current: true },
-    { name: 'Team', href: '#', icon: RiGroupLine, current: false },
-    { name: 'Projects', href: '#', icon: RiStackLine, current: false },
+    { name: 'Overview', href: siteConfig.baseLinks.overview, icon: RiHome2Line, current: true },
+    { name: 'Details', href: siteConfig.baseLinks.details, icon: RiGroupLine, current: false },
+    { name: 'Settings', href: siteConfig.baseLinks.settings, icon: RiStackLine, current: false },
 ]
 
 const data = [
@@ -59,10 +64,11 @@ const data = [
 
 
 export function Sidebar() {
+    const pathname = usePathname();
     return (
         <>
             {/* sidebar (lg+) */}
-            <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+            <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
                 {/* Sidebar component, swap this element with another sidebar if you like */}
                 <div className="flex grow flex-col gap-y-7 overflow-y-auto bg-white border-r px-6 pb-4">
                     <div className="-mx-2 mt-6">
@@ -131,13 +137,13 @@ export function Sidebar() {
                                 <ul role="list" className="-mx-2 space-y-0.5">
                                     {navigation.map((item) => (
                                         <li key={item.name}>
-                                            <a
+                                            <Link
                                                 href={item.href}
                                                 className={cx(
-                                                    item.current
-                                                        ? 'bg-gray-100'
-                                                        : 'hover:bg-gray-100',
-                                                    'group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-gray-900 text-sm leading-6'
+                                                    pathname === item.href
+                                                        ? 'text-indigo-700 bg-indigo-50'
+                                                        : 'text-gray-900 hover:bg-indigo-50',
+                                                    'group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6'
                                                 )}
                                             >
                                                 {/* <item.icon
@@ -147,7 +153,7 @@ export function Sidebar() {
                                                 aria-hidden="true"
                                             /> */}
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -161,7 +167,7 @@ export function Sidebar() {
                                         className="size-5 shrink-0 text-gray-700"
                                         aria-hidden="true"
                                     />
-                                    Settings
+                                    Emma Pfeiffer
                                 </a>
                             </li>
                         </ul>
