@@ -74,6 +74,7 @@ export function DataTable<TData, TValue>({
                         </TableRow>
                     ))}
                 </TableHead>
+                {/* @CHRIS: add whitespace-nowrap to cells */}
                 <TableBody>
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
