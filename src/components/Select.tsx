@@ -22,9 +22,9 @@ SelectValue.displayName = "SelectValue"
 const selectTriggerStyles = [
     cx(
         // base
-        "group/trigger flex w-full select-none items-center gap-x-2 justify-between truncate rounded-md border px-3 py-2 shadow-sm outline-none transition sm:text-sm",
+        "group/trigger flex w-full select-none items-center gap-x-2 justify-between truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition sm:text-sm",
         // border color
-        "border-gray-200 dark:border-gray-800",
+        "border-gray-300 dark:border-gray-800",
         // text color
         "text-gray-900 dark:text-gray-50",
         // placeholder
@@ -63,7 +63,7 @@ const SelectTrigger = React.forwardRef<
                 <RiArrowDownSLine
                     className={cx(
                         // base
-                        "size-5 shrink-0",
+                        "-mr-1 size-5 shrink-0",
                         // text color
                         "text-gray-400 dark:text-gray-600",
                         // disabled

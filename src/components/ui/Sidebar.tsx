@@ -74,7 +74,7 @@ export function Sidebar() {
                     <div className="-mx-2 mt-6">
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-200 bg-white p-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none">
+                                <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 bg-white p-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none">
                                     <span
                                         className={cx(
                                             'flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white',
@@ -93,7 +93,7 @@ export function Sidebar() {
                                             </p>
                                         </div>
                                         <RiExpandUpDownLine
-                                            className="size-5 shrink-0 text-tremor-content dark:text-dark-tremor-content"
+                                            className="size-5 shrink-0 text-gray-500"
                                             aria-hidden={true}
                                         />
                                     </div>

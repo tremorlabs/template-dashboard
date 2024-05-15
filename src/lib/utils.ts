@@ -35,3 +35,18 @@ export const hasErrorInput = [
   // ring color
   "ring-red-200 dark:ring-red-700/30",
 ];
+
+// Number formatter function
+
+export const usNumberformatter = (number: number, decimals = 0) =>
+  Intl.NumberFormat("us", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  })
+    .format(Number(number))
+    .toString();
+
+export const formatters: { [key: string]: any } = {
+  currency: (number: number) => `$${usNumberformatter(number)}`,
+  unit: (number: number) => `${usNumberformatter(number)}`,
+};

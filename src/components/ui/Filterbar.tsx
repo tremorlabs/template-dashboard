@@ -53,9 +53,9 @@ const data = [
 
 export function Filterbar() {
     return (
-        <div className="mt-4">
+        <>
             <div className="inline-flex items-center rounded-md text-sm font-medium shadow-sm">
-                <Select defaultValue="custom">
+                <Select defaultValue="last-4-weeks">
                     <SelectTrigger className="shadow-none w-fit rounded-none rounded-l-md">
                         <SelectValue />
                     </SelectTrigger>
@@ -75,6 +75,6 @@ export function Filterbar() {
                     className="-ml-px w-fit shadow-none rounded-none rounded-r-md"
                 />
             </div>
-        </div>
+        </>
     )
 }
