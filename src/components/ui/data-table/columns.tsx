@@ -1,31 +1,30 @@
 "use client"
 
+import { RiDeleteBin7Line, RiPencilLine, RiPlayListAddLine } from "@remixicon/react"
 import { ColumnDef } from "@tanstack/react-table"
 import { Transaction } from "@/data/schema"
 import { Checkbox } from "@/components/Checkbox"
+import { DataTableRowActions } from "./data-table-row-actions"
 
 export const columns: ColumnDef<Transaction>[] = [
     {
         id: 'select',
         header: ({ table }) => (
+            // @Maxime: ideally add indeterminate logic for all selected: checked="indeterminate"
             <Checkbox
-                {...{
-                    checked: table.getIsAllRowsSelected(),
-                    indeterminate: table.getIsSomeRowsSelected(),
-                    onChange: table.getToggleAllRowsSelectedHandler(),
-                }}
-                className="-translate-y-[1px]"
+                checked={table.getIsAllRowsSelected()}
+                onCheckedChange={table.getToggleAllRowsSelectedHandler()}
+                className="translate-y-0.5"
+                aria-label="Select all"
             />
         ),
         cell: ({ row }) => (
             <Checkbox
-                {...{
-                    checked: row.getIsSelected(),
-                    disabled: !row.getCanSelect(),
-                    indeterminate: row.getIsSomeSelected(),
-                    onChange: row.getToggleSelectedHandler(),
-                }}
-                className="-translate-y-[1px]"
+                checked={row.getIsSelected()}
+                // disabled={!row.getCanSelect()}
+                onCheckedChange={row.getToggleSelectedHandler()}
+                className="translate-y-0.5"
+                aria-label="Select row"
             />
         ),
         enableSorting: false,
@@ -33,14 +32,15 @@ export const columns: ColumnDef<Transaction>[] = [
             align: 'text-left',
         },
     },
-    {
-        header: 'Workspace',
-        accessorKey: 'workspace',
-        enableSorting: true,
-        meta: {
-            align: 'text-left',
-        },
-    },
+    // @CHRIS: bring back later, just more whitespace
+    // {
+    //     header: 'Workspace',
+    //     accessorKey: 'workspace',
+    //     enableSorting: true,
+    //     meta: {
+    //         align: 'text-left',
+    //     },
+    // },
     {
         header: 'Owner',
         accessorKey: 'owner',
@@ -82,13 +82,22 @@ export const columns: ColumnDef<Transaction>[] = [
         },
     },
     {
-        header: 'Last edited',
+        header: 'Created at',
         accessorKey: 'lastEdited',
         enableSorting: false,
         meta: {
             align: 'text-right',
         },
     },
+    {
+        header: "Edit",
+        accessorKey: 'edit',
+        enableSorting: false,
+        meta: {
+            align: 'text-right',
+        },
+        cell: ({ row }) => <DataTableRowActions row={row} />,
+    }
 
 ]
 

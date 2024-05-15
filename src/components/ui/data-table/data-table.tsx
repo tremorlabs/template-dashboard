@@ -1,10 +1,8 @@
-// import {
-//     Table,
-
-//   } from "@/components/Table"
+"use client"
 
 import {
-    Table, TableBody,
+    Table,
+    TableBody,
     TableCell,
     TableFoot,
     TableHead,
@@ -12,9 +10,13 @@ import {
     TableRow,
 } from "@/components/Table"
 
+import { Checkbox } from "@/components/Checkbox"
+
 import * as React from "react"
+import { cx } from "@/lib/utils"
 
 import {
+    flexRender,
     ColumnDef,
     getCoreRowModel,
     getSortedRowModel,
@@ -50,12 +52,15 @@ export function DataTable<TData, TValue>({
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow
                             key={headerGroup.id}
-                            className="border-b border-tremor-border dark:border-dark-tremor-border"
+                            className="border-y border-gray-200"
                         >
                             {headerGroup.headers.map((header) => (
                                 <TableHeaderCell
                                     key={header.id}
-                                    className={classNames(header.column.columnDef.meta.align)}
+                                    className={cx(
+                                        header.column.columnDef.meta.align,
+                                        "py-2.5"
+                                    )}
                                 >
                                     {flexRender(
                                         header.column.columnDef.header,
@@ -71,21 +76,21 @@ export function DataTable<TData, TValue>({
                         <TableRow
                             key={row.id}
                             onClick={() => row.toggleSelected(!row.getIsSelected())}
-                            className="group select-none hover:bg-tremor-background-muted hover:dark:bg-dark-tremor-background-muted"
+                            className="group select-none hover:bg-gray-50"
                         >
                             {row.getVisibleCells().map((cell, index) => (
                                 <TableCell
                                     key={cell.id}
-                                    className={classNames(
+                                    className={cx(
                                         row.getIsSelected()
-                                            ? 'bg-tremor-background-muted dark:bg-dark-tremor-background-muted'
+                                            ? 'bg-gray-50'
                                             : '',
                                         cell.column.columnDef.meta.align,
-                                        'relative',
+                                        'relative py-3',
                                     )}
                                 >
                                     {index === 0 && row.getIsSelected() && (
-                                        <div className="absolute inset-y-0 left-0 w-0.5 bg-tremor-brand dark:bg-dark-tremor-brand" />
+                                        <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
                                     )}
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </TableCell>
@@ -93,26 +98,25 @@ export function DataTable<TData, TValue>({
                         </TableRow>
                     ))}
                 </TableBody>
-                <TableFoot>
+                {/* <TableFoot>
                     <TableRow>
                         <TableHeaderCell colSpan={1}>
-                            <IndeterminateCheckbox
+                            <Checkbox
                                 {...{
                                     checked: table.getIsAllPageRowsSelected(),
                                     indeterminate: table.getIsSomePageRowsSelected(),
                                     onChange: table.getToggleAllPageRowsSelectedHandler(),
                                 }}
-                                className="-translate-y-[1px]"
+                                className="translate-y-0.5"
                             />
                         </TableHeaderCell>
-                        <TableHeaderCell colSpan={7} className="font-normal tabular-nums">
+                        <TableHeaderCell colSpan={7} className="font-normal tabular-nums py-3">
                             {Object.keys(rowSelection).length} of{' '}
                             {table.getRowModel().rows.length} Page Row(s) selected
                         </TableHeaderCell>
                     </TableRow>
-                </TableFoot>
+                </TableFoot> */}
             </Table>
-
         </>
     )
 }
