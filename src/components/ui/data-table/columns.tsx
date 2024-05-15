@@ -12,7 +12,7 @@ export const columns: ColumnDef<Transaction>[] = [
         header: ({ table }) => (
             // @Maxime: ideally add indeterminate logic for all selected: checked="indeterminate"
             <Checkbox
-                checked={table.getIsAllRowsSelected()}
+                checked={table.getIsSomeRowsSelected() ? "indeterminate" : table.getIsAllRowsSelected()}
                 onCheckedChange={() => table.toggleAllRowsSelected()}
                 className="translate-y-0.5"
                 aria-label="Select all"

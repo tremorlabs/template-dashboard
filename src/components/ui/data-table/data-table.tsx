@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
                                 <TableHeaderCell
                                     key={header.id}
                                     className={cx(
-                                        header.column.columnDef.meta.align,
+                                        header.column.columnDef.meta?.align,
                                         "py-2.5"
                                     )}
                                 >
@@ -95,7 +95,7 @@ export function DataTable<TData, TValue>({
                                             row.getIsSelected()
                                                 ? 'bg-gray-50'
                                                 : '',
-                                            cell.column.columnDef.meta.align,
+                                            cell.column.columnDef.meta?.align,
                                             'relative py-3',
                                         )}
                                     >

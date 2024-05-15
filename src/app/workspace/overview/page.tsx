@@ -2,20 +2,21 @@ import { Filterbar } from "@/components/ui/Filterbar"
 import { Button } from "@/components/Button"
 import { RiAddLine } from "@remixicon/react"
 import { Card } from "@/components/ui/Cards"
+import { CardProps } from "@/components/ui/Cards"
 
-const categories = [
+const categories: CardProps[] = [
     {
-        name: "Sales",
+        title: "Sales",
         value: 1324,
         type: "currency",
     },
     {
-        name: "Profit",
+        title: "Profit",
         value: 93324,
         type: "currency",
     },
     {
-        name: "Users",
+        title: "Users",
         value: 123,
         type: "unit",
     },
@@ -41,7 +42,7 @@ export default function Example() {
             </div>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {categories.map((item) => (
-                    <Card key={item.name} title={item.name} value={item.value} type={item.type} />
+                    <Card key={item.title} title={item.title} value={item.value} type={item.type} />
                 ))}
             </div>
         </>
