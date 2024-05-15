@@ -40,6 +40,11 @@ export function DataTable<TData, TValue>({
             rowSelection,
             // columnVisibility,
         },
+        initialState: {
+            columnVisibility: {
+                "owner": false
+            }
+        },
         enableRowSelection: true,
         getFilteredRowModel: getFilteredRowModel(),
         onRowSelectionChange: setRowSelection,
