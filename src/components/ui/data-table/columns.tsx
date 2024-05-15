@@ -13,7 +13,7 @@ export const columns: ColumnDef<Transaction>[] = [
             // @Maxime: ideally add indeterminate logic for all selected: checked="indeterminate"
             <Checkbox
                 checked={table.getIsAllRowsSelected()}
-                onCheckedChange={table.getToggleAllRowsSelectedHandler()}
+                onCheckedChange={() => table.toggleAllRowsSelected()}
                 className="translate-y-0.5"
                 aria-label="Select all"
             />
@@ -22,7 +22,7 @@ export const columns: ColumnDef<Transaction>[] = [
             <Checkbox
                 checked={row.getIsSelected()}
                 // disabled={!row.getCanSelect()}
-                onCheckedChange={row.getToggleSelectedHandler()}
+                onCheckedChange={() => row.toggleSelected()}
                 className="translate-y-0.5"
                 aria-label="Select row"
             />
