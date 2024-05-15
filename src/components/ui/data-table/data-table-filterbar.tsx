@@ -1,10 +1,12 @@
 "use client"
 
-import { Cross2Icon } from "@radix-ui/react-icons"
+import { RiCloseLine, RiDownloadLine, RiSettings2Line } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
+
+import { DataTableViewOptions } from "./data-table-view-options"
 
 // import { DataTableViewOptions } from "@/app/(app)/examples/tasks/components/data-table-view-options"
 // import { priorities, statuses } from "../data/data"
@@ -14,48 +16,41 @@ interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
 
-export function DataTableToolbar<TData>({
+export function Filterbar<TData>({
     table,
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
 
     return (
         <div className="flex items-center justify-between">
-            <div className="flex flex-1 items-center space-x-2">
+            <div className="flex flex-1 items-center gap-x-2">
+                {/* @CHRIS/SEV: focusRing does not work */}
                 <Input
-                    placeholder="Filter tasks..."
-                    value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+                    placeholder="Filter transactions..."
+                    value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("title")?.setFilterValue(event.target.value)
+                        table.getColumn("owner")?.setFilterValue(event.target.value)
                     }
-                    className="h-8 w-[150px] lg:w-[250px]"
+                    className="w-[150px] lg:w-[250px]"
                 />
-                {/* {table.getColumn("status") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("status")}
-            title="Status"
-            options={statuses}
-          />
-        )}
-        {table.getColumn("priority") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("priority")}
-            title="Priority"
-            options={priorities}
-          />
-        )} */}
                 {isFiltered && (
                     <Button
-                        variant="ghost"
+                        variant="secondary"
                         onClick={() => table.resetColumnFilters()}
-                        className="h-8 px-2 lg:px-3"
+                        className="py-1.5 px-2 lg:px-3"
                     >
                         Reset
-                        <Cross2Icon className="ml-2 h-4 w-4" />
+                        <RiCloseLine className="ml-2 h-4 w-4" />
                     </Button>
                 )}
             </div>
-            {/* <DataTableViewOptions table={table} /> */}
+            <div className="flex items-center gap-2">
+                <Button variant="secondary" className="gap-x-2 font-semibold">
+                    <RiDownloadLine className="-ml-0.5 size-4 shrink-0" aria-hidden={true} />
+                    Export
+                </Button>
+                <DataTableViewOptions table={table} />
+            </div>
         </div>
     )
 }

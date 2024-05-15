@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+import { cx } from "@/lib/utils"
 import {
     Table,
     TableBody,
@@ -10,16 +12,14 @@ import {
     TableRow,
 } from "@/components/Table"
 
-import { Checkbox } from "@/components/Checkbox"
-
-import * as React from "react"
-import { cx } from "@/lib/utils"
+import { Filterbar } from "./data-table-filterbar"
 
 import {
     flexRender,
     ColumnDef,
     getCoreRowModel,
     getSortedRowModel,
+    getFilteredRowModel,
     useReactTable,
 } from "@tanstack/react-table"
 
@@ -38,8 +38,10 @@ export function DataTable<TData, TValue>({
         columns,
         state: {
             rowSelection,
+            // columnVisibility,
         },
         enableRowSelection: true,
+        getFilteredRowModel: getFilteredRowModel(),
         onRowSelectionChange: setRowSelection,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
@@ -47,7 +49,8 @@ export function DataTable<TData, TValue>({
 
     return (
         <>
-            <Table>
+            <Filterbar table={table} />
+            <Table className="mt-4">
                 <TableHead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow
@@ -72,31 +75,42 @@ export function DataTable<TData, TValue>({
                     ))}
                 </TableHead>
                 <TableBody>
-                    {table.getRowModel().rows.map((row) => (
-                        <TableRow
-                            key={row.id}
-                            onClick={() => row.toggleSelected(!row.getIsSelected())}
-                            className="group select-none hover:bg-gray-50"
-                        >
-                            {row.getVisibleCells().map((cell, index) => (
-                                <TableCell
-                                    key={cell.id}
-                                    className={cx(
-                                        row.getIsSelected()
-                                            ? 'bg-gray-50'
-                                            : '',
-                                        cell.column.columnDef.meta.align,
-                                        'relative py-3',
-                                    )}
-                                >
-                                    {index === 0 && row.getIsSelected() && (
-                                        <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
-                                    )}
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </TableCell>
-                            ))}
+                    {table.getRowModel().rows?.length ? (
+                        table.getRowModel().rows.map((row) => (
+                            <TableRow
+                                key={row.id}
+                                onClick={() => row.toggleSelected(!row.getIsSelected())}
+                                className="group select-none hover:bg-gray-50"
+                            >
+                                {row.getVisibleCells().map((cell, index) => (
+                                    <TableCell
+                                        key={cell.id}
+                                        className={cx(
+                                            row.getIsSelected()
+                                                ? 'bg-gray-50'
+                                                : '',
+                                            cell.column.columnDef.meta.align,
+                                            'relative py-3',
+                                        )}
+                                    >
+                                        {index === 0 && row.getIsSelected() && (
+                                            <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
+                                        )}
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))
+                    ) : (
+                        <TableRow>
+                            <TableCell
+                                colSpan={columns.length}
+                                className="h-24 text-center"
+                            >
+                                No results.
+                            </TableCell>
                         </TableRow>
-                    ))}
+                    )}
                 </TableBody>
                 {/* <TableFoot>
                     <TableRow>

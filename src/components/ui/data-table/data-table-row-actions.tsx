@@ -1,4 +1,6 @@
 
+"use client"
+
 import { Row } from "@tanstack/react-table"
 import { RiMoreFill, RiPencilLine, RiPlayListAddLine, RiDeleteBin7Line } from "@remixicon/react";
 import { cx } from "@/lib/utils";
@@ -39,7 +41,7 @@ export function DataTableRowActions<TData>({
             <div className="absolute -right-2.5 top-1/2 hidden h-full -translate-y-1/2 items-center group-hover:flex">
                 <div className="inline-flex items-center rounded-md shadow-sm">
                     {options.map((item, index) => (
-                        // @SEV/CHRIS how to add only a dropdown menu for last category?
+                        // @MAXIME how to add only a dropdown menu for last category?
                         <Tooltip
                             side="top"
                             showArrow={false}
