@@ -92,7 +92,7 @@ export function DataTablePagination<TData>({
                                 <Button
                                     key={idx}
                                     variant="secondary"
-                                    className="p-2"
+                                    className="p-1.5"
                                     onClick={button.onClick}
                                     disabled={button.disabled}
                                 >

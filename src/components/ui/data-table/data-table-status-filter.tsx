@@ -1,7 +1,7 @@
 "use client"
 
-import { RiEqualizer2Line } from "@remixicon/react"
-import { cx, focusInput } from "@/lib/utils"
+import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiSettings2Line } from "@remixicon/react"
+import { cx } from "@/lib/utils"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "@/components/Button"
@@ -13,26 +13,23 @@ import {
     DropdownMenuTrigger
 } from "@/components/Dropdown"
 
-interface DataTableViewOptionsProps<TData> {
+interface DataTableStatusFilterProps<TData> {
     table: Table<TData>
 }
 
-export function DataTableViewOptions<TData>({
+export function DataTableStatusFilter<TData>({
     table,
-}: DataTableViewOptionsProps<TData>) {
+}: DataTableStatusFilterProps<TData>) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button
-                    variant="secondary"
-                    className={cx(
-                        // focusInput,
-                        "ml-auto hidden py-1 px-2 lg:flex gap-x-2 font-semibold focus:outline-none"
-                    )}
+                <button
+                    type="button"
+                    className="flex items-center gap-x-1.5 rounded-full px-2 py-1 hover:bg-gray-50 border border-gray-300 border-dashed text-xs text-gray-600 font-semibold"
                 >
-                    <RiEqualizer2Line className="-ml-px size-4" aria-hidden={true} />
-                    View options
-                </Button>
+                    <RiAddCircleLine className="-ml-1 size-4 shrink-0" aria-hidden={true} />
+                    Amount
+                </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[150px]">
                 <DropdownMenuLabel>Display properties</DropdownMenuLabel>

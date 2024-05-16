@@ -34,7 +34,7 @@ export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
-    const pageSize = 12
+    const pageSize = 10
     const [rowSelection, setRowSelection] = React.useState({})
     const table = useReactTable({
         data,
@@ -62,7 +62,7 @@ export function DataTable<TData, TValue>({
 
     return (
         <>
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <Filterbar table={table} />
                 <Table>
                     <TableHead>

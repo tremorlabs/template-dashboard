@@ -1,12 +1,13 @@
 "use client"
 
-import { RiCloseLine, RiDownloadLine, RiSettings2Line } from "@remixicon/react"
+import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiSettings2Line } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 
 import { DataTableViewOptions } from "./data-table-view-options"
+import { DataTableStatusFilter } from "./data-table-status-filter"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -20,8 +21,10 @@ export function Filterbar<TData>({
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center gap-x-2">
+                <DataTableStatusFilter table={table} />
                 {/* @CHRIS/SEV: focusRing does not work */}
-                <Input
+                {/* --- old --- */}
+                {/* <Input
                     placeholder="Filter transactions..."
                     type="search"
                     value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
@@ -39,11 +42,11 @@ export function Filterbar<TData>({
                         Reset
                         <RiCloseLine className="ml-2 size-4" />
                     </Button>
-                )}
+                )} */}
             </div>
             <div className="flex items-center gap-2">
-                <Button variant="secondary" className="gap-x-2 font-semibold">
-                    <RiDownloadLine className="-ml-0.5 size-4 shrink-0" aria-hidden={true} />
+                <Button variant="secondary" className="gap-x-2 font-semibold py-1 px-2">
+                    <RiDownloadLine className="-ml-px size-4 shrink-0" aria-hidden={true} />
                     Export
                 </Button>
                 <DataTableViewOptions table={table} />
