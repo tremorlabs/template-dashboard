@@ -8,10 +8,6 @@ import { Input } from "@/components/Input"
 
 import { DataTableViewOptions } from "./data-table-view-options"
 
-// import { DataTableViewOptions } from "@/app/(app)/examples/tasks/components/data-table-view-options"
-// import { priorities, statuses } from "../data/data"
-// import { DataTableFacetedFilter } from "./data-table-faceted-filter"
-
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
@@ -27,6 +23,7 @@ export function Filterbar<TData>({
                 {/* @CHRIS/SEV: focusRing does not work */}
                 <Input
                     placeholder="Filter transactions..."
+                    type="search"
                     value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("owner")?.setFilterValue(event.target.value)
@@ -40,7 +37,7 @@ export function Filterbar<TData>({
                         className="py-1.5 px-2 lg:px-3"
                     >
                         Reset
-                        <RiCloseLine className="ml-2 h-4 w-4" />
+                        <RiCloseLine className="ml-2 size-4" />
                     </Button>
                 )}
             </div>

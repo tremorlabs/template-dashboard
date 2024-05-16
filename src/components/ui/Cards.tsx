@@ -3,6 +3,12 @@ import { formatters } from "@/lib/utils";
 //   @CHRIS: import mono font for number
 //   import { lusitana } from '@/app/ui/fonts';
 
+export type CardProps = {
+    title: string;
+    value: number | string;
+    type: 'currency' | 'unit';
+};
+
 const formattingMap = {
     currency: formatters.currency,
     unit: formatters.unit,

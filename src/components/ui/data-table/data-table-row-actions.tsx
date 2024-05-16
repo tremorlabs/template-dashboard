@@ -40,22 +40,23 @@ export function DataTableRowActions<TData>({
             {/* @CHRIS: -right-2.5 (magic value) */}
             <div className="absolute -right-2.5 top-1/2 hidden h-full -translate-y-1/2 items-center group-hover:flex">
                 <div className="inline-flex items-center rounded-md shadow-sm">
-                    {options.map((item, index) => (
+                    {options.map((item, idx) => (
                         // @MAXIME how to add only a dropdown menu for last category?
                         <Tooltip
                             side="top"
                             showArrow={false}
                             sideOffset={5}
                             content={item.label}
-                            key={index}
+                            key={idx}
                             triggerAsChild={true}
                         >
                             <button
                                 type="button"
                                 className={cx(
-                                    index === 0
+                                    // @CHRIS: harmonize idx = index across app
+                                    idx === 0
                                         ? 'rounded-l-md'
-                                        : index === options.length - 1
+                                        : idx === options.length - 1
                                             ? '-ml-px rounded-r-md'
                                             : '-ml-px',
                                     // @CHRIS: add focusInput 
