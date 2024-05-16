@@ -3,7 +3,6 @@
 import { RiAddCircleLine, RiArrowDownSLine } from "@remixicon/react"
 import { Column } from "@tanstack/react-table"
 
-import { cx } from "@/lib/utils"
 
 import { Label } from "@/components/Label"
 import { Button } from "@/components/Button"
@@ -14,8 +13,9 @@ import {
     PopoverTrigger,
     PopoverClose
 } from "@/components/Popover"
+import { Checkbox } from "@/components/Checkbox"
 
-interface DataTableStatusFilterProps<TData, TValue> {
+interface DataTableCountryFilterProps<TData, TValue> {
     column?: Column<TData, TValue>
     title?: string
     options: {
@@ -36,11 +36,11 @@ const dummy = [
     },
 ]
 
-export function DataTableStatusFilter<TData, TValue>({
+export function DataTableCountryFilter<TData, TValue>({
     column,
     title,
     options,
-}: DataTableStatusFilterProps<TData, TValue>) {
+}: DataTableCountryFilterProps<TData, TValue>) {
     const facets = column?.getFacetedUniqueValues()
     const selectedValues = new Set(column?.getFilterValue() as string[])
     return (
@@ -54,28 +54,29 @@ export function DataTableStatusFilter<TData, TValue>({
                     {title}
                     {dummy?.length > 0 && (
                         <>
-                            {/* @Maxime: shows labels explicitly until 3 are met, then first label name + number of other selected */}
                             <span className="h-4 w-px bg-gray-300" aria-hidden={true} />
-                            <span className="text-indigo-600 font-semibold">Live, </span>
-                            <span className="text-indigo-600 font-semibold">and 4 more</span>
+                            <span className="text-indigo-600 font-semibold">Germany, </span>
+                            <span className="text-indigo-600 font-semibold">Switzerland, </span>
+                            <span className="text-indigo-600 font-semibold">Italy</span>
                             < RiArrowDownSLine className="size-4 shrink-0 text-gray-500" aria-hidden={true} />
                         </>
                     )}
                 </button>
             </PopoverTrigger>
-            <PopoverContent align="start" sideOffset={7} className="w-fit space-y-2 max-w-52">
-                <Label className="font-medium">Filter by {title}</Label>
-                <SelectNative>
-                    {options.map((option) => {
-                        return (
-                            <option
-                                key={option.value}
-                            >
-                                {option.label}
-                            </option>
-                        )
-                    })}
-                </SelectNative>
+            <PopoverContent align="start" sideOffset={7} className="max-w-52">
+                <div>
+                    <Label className="font-medium">Filter by {title}</Label>
+                    <div className="space-y-3 mt-3 mb-2 max-h-36 overflow-y-auto">
+                        {options.map((option) => {
+                            return (
+                                <div key={option.label} className="flex items-center gap-2">
+                                    <Checkbox id={option.value} />
+                                    <Label htmlFor={option.value}>{option.label}</Label>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
                 <PopoverClose className="w-full">
                     <Button className="w-full py-1">Apply</Button>
                 </PopoverClose>

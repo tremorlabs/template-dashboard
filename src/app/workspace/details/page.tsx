@@ -1,6 +1,6 @@
 import { RiAddLine } from "@remixicon/react"
 import { columns } from "@/components/ui/data-table/columns"
-import { transactions } from "@/data/transactions"
+import { transactions } from "@/data/data"
 import { DataTable } from "@/components/ui/data-table/data-table"
 import { Button } from "@/components/Button"
 import { RiSettings2Line, RiDownloadLine } from "@remixicon/react"
