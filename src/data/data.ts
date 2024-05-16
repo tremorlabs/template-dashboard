@@ -54,6 +54,37 @@ export const countries = [
   },
 ];
 
+export const regions = [
+    {
+        value: "US-West 1",
+        label: "US-West 1",
+    },
+    {
+        value: "US-East 1",
+        label: "US-East 1",
+    },
+    {
+        value: "US-East 2",
+        label: "US-East 2",
+    },
+    {
+        value: "US-West 2",
+        label: "US-West 2",
+    },
+    {
+        value: "EU-West 1",
+        label: "EU-West 1",
+    },
+    {
+        value: "EU-North 1",
+        label: "EU-North 1",
+    },
+    {
+        value: "EU-Central 1",
+        label: "EU-Central 1",
+    },
+]
+
 export const transactions: Transaction[] = [
   {
     workspace: "sales_by_day_api",

@@ -64,6 +64,7 @@ export const columns: ColumnDef<Transaction>[] = [
         meta: {
             align: 'text-left',
         },
+        filterFn: "arrIncludesSome"
     },
     {
         header: 'Capacity',

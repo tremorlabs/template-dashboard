@@ -7,10 +7,9 @@ import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 
 import { DataTableViewOptions } from "./data-table-view-options"
-import { DataTableStatusFilter } from "./data-table-status-filter"
-import { DataTableCountryFilter } from "./data-table-country-filter"
+import { DataTableFilter } from "./data-table-filter"
 
-import { countries, status } from "@/data/data"
+import { regions, status } from "@/data/data"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -21,21 +20,24 @@ export function Filterbar<TData>({
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
 
+
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center gap-x-2">
-                {table.getColumn("status") && (
-                    <DataTableStatusFilter
+                {table.getColumn("status")?.getIsVisible() && (
+                    <DataTableFilter
                         column={table.getColumn("status")}
                         title="Status"
                         options={status}
+                        type="select"
                     />
                 )}
-                {table.getColumn("status") && (
-                    <DataTableCountryFilter
-                        column={table.getColumn("status")}
-                        title="Country"
-                        options={countries}
+                {table.getColumn("status")?.getIsVisible() && (
+                    <DataTableFilter
+                        column={table.getColumn("region")}
+                        title="Region"
+                        options={regions}
+                        type="checkbox"
                     />
                 )}
                 {/* @CHRIS/SEV: focusRing does not work */}
