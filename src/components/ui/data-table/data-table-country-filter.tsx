@@ -54,6 +54,7 @@ export function DataTableCountryFilter<TData, TValue>({
                     {title}
                     {dummy?.length > 0 && (
                         <>
+                            {/* @Maxime: shows labels explicitly until 3 are met */}
                             <span className="h-4 w-px bg-gray-300" aria-hidden={true} />
                             <span className="text-indigo-600 font-semibold">Germany, </span>
                             <span className="text-indigo-600 font-semibold">Switzerland, </span>
@@ -65,7 +66,7 @@ export function DataTableCountryFilter<TData, TValue>({
             </PopoverTrigger>
             <PopoverContent align="start" sideOffset={7} className="max-w-52">
                 <div>
-                    <Label className="font-medium">Filter by {title}</Label>
+                    <Label className="text-xs font-semibold">Filter by {title}</Label>
                     <div className="space-y-3 mt-3 mb-2 max-h-36 overflow-y-auto">
                         {options.map((option) => {
                             return (

@@ -64,7 +64,7 @@ export function DataTableStatusFilter<TData, TValue>({
                 </button>
             </PopoverTrigger>
             <PopoverContent align="start" sideOffset={7} className="w-fit space-y-2 max-w-52">
-                <Label className="font-medium">Filter by {title}</Label>
+                <Label className="text-xs font-semibold">Filter by {title}</Label>
                 <SelectNative>
                     {options.map((option) => {
                         return (
