@@ -40,16 +40,16 @@ const dummy = [
     },
 ]
 
-const ColumnFiltersLabel = ({ columnFilters }: { columnFilters: string[] | undefined }) => {
-    if (!columnFilters) return null
+const ColumnFiltersLabel = ({ selectedValues }: { selectedValues: string[] | undefined }) => {
+    if (!selectedValues) return null
 
-    if (columnFilters.length < 3) {
+    if (selectedValues.length < 3) {
         return (
             <>
-                {columnFilters.map((value, index) => (
+                {selectedValues.map((value, index) => (
                     <span key={value} className={"font-semibold"}>
                         {value}
-                        {index < columnFilters.length - 1 && ", "}
+                        {index < selectedValues.length - 1 && ", "}
                     </span>
                 ))}
             </>
@@ -58,8 +58,8 @@ const ColumnFiltersLabel = ({ columnFilters }: { columnFilters: string[] | undef
 
     return (
         <>
-            <span className="font-semibold">{columnFilters[0]}</span>
-            <span className="text-indigo-600 font-semibold">, and {columnFilters.length - 1} more</span>
+            <span className="font-semibold">{selectedValues[0]}</span>
+            <span className="text-indigo-600 font-semibold">, and {selectedValues.length - 1} more</span>
         </>
     )
 }
@@ -144,7 +144,7 @@ export function DataTableFilter<TData, TValue>({
                     {title}
                     {/* @Maxime: shows labels explicitly until 3 are met, then first label name + number of other selected */}
                     {columnFilters && <span className="h-4 w-px bg-gray-300" aria-hidden={true} />}
-                    <ColumnFiltersLabel columnFilters={!columnFilters ? undefined : Array.isArray(columnFilters) ? columnFilters : [columnFilters]} />
+                    <ColumnFiltersLabel selectedValues={!selectedValues ? undefined : Array.isArray(selectedValues) ? selectedValues : [selectedValues]} />
                     <RiArrowDownSLine className="size-4 shrink-0 text-gray-500" aria-hidden={true} />
                 </button>
             </PopoverTrigger>
