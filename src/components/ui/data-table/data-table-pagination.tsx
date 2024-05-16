@@ -86,7 +86,7 @@ export function DataTablePagination<TData>({
                                 sideOffset={5}
                                 content={button.srText}
                                 key={idx}
-                                triggerAsChild={true}
+                            // triggerAsChild={true}
                             >
                                 <Button
                                     key={idx}
