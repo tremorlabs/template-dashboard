@@ -61,12 +61,13 @@ export function DataTablePagination<TData>({
             <div className="flex items-center justify-between">
                 <div className="tabular-nums text-sm text-gray-500">
                     {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                    {table.getFilteredRowModel().rows.length} row(s) selected.
+                    {(table.getState().pagination.pageIndex + 1) * pageSize} row(s) selected.
                 </div>
                 <div className="flex items-center gap-x-6 lg:gap-x-8">
                     <p className="text-sm tabular-nums text-gray-500">
                         Showing{" "}
                         <span className="font-medium text-gray-900">
+                            {/* @Maxime/Sev: simplify? */}
                             {table.getState().pagination.pageIndex ===
                                 Math.floor(totalRows / pageSize)
                                 ? lastPageStartIndex + '-' + lastPageEndIndex
@@ -86,7 +87,7 @@ export function DataTablePagination<TData>({
                                 sideOffset={5}
                                 content={button.srText}
                                 key={idx}
-                            // triggerAsChild={true}
+                                triggerAsChild={true}
                             >
                                 <Button
                                     key={idx}

@@ -34,6 +34,7 @@ export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
+    const pageSize = 12
     const [rowSelection, setRowSelection] = React.useState({})
     const table = useReactTable({
         data,
@@ -46,10 +47,10 @@ export function DataTable<TData, TValue>({
             columnVisibility: {
                 "owner": false
             },
-            // pagination: {
-            //     pageIndex: 0,
-            //     pageSize: pageSize,
-            // },
+            pagination: {
+                pageIndex: 0,
+                pageSize: pageSize,
+            },
         },
         enableRowSelection: true,
         getFilteredRowModel: getFilteredRowModel(),
@@ -145,7 +146,7 @@ export function DataTable<TData, TValue>({
                     </TableRow>
                 </TableFoot> */}
                 </Table>
-                <DataTablePagination table={table} pageSize={20} />
+                <DataTablePagination table={table} pageSize={pageSize} />
             </div>
         </>
     )
