@@ -7,10 +7,8 @@ import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 
 import { DataTableViewOptions } from "./data-table-view-options"
-import { DataTableStatusFilter } from "./data-table-status-filter"
-import { DataTableCountryFilter } from "./data-table-country-filter"
 
-import { countries, status } from "@/data/data"
+import { status } from "@/data/data"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -24,20 +22,7 @@ export function Filterbar<TData>({
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center gap-x-2">
-                {table.getColumn("status") && (
-                    <DataTableStatusFilter
-                        column={table.getColumn("status")}
-                        title="Status"
-                        options={status}
-                    />
-                )}
-                {table.getColumn("status") && (
-                    <DataTableCountryFilter
-                        column={table.getColumn("status")}
-                        title="Country"
-                        options={countries}
-                    />
-                )}
+
                 {/* @CHRIS/SEV: focusRing does not work */}
                 {/* --- old --- */}
                 {/* <Input
