@@ -9,7 +9,7 @@ import { Input } from "@/components/Input"
 import { DataTableViewOptions } from "./data-table-view-options"
 import { DataTableFilter } from "./data-table-filter"
 
-import { regions, status } from "@/data/data"
+import { regions, status, conditions } from "@/data/data"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -45,6 +45,7 @@ export function Filterbar<TData>({
                         column={table.getColumn("costs")}
                         title="Costs"
                         type="number"
+                        options={conditions}
                     />
                 )}
                 {/* @CHRIS/SEV: focusRing does not work */}
