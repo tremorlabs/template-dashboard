@@ -6,6 +6,7 @@ import { Transaction } from "@/data/schema"
 import { Checkbox } from "@/components/Checkbox"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { ConditionFilter } from "./data-table-filter"
+import { formatters } from "@/lib/utils"
 
 export const columns: ColumnDef<Transaction>[] = [
     {
@@ -82,14 +83,7 @@ export const columns: ColumnDef<Transaction>[] = [
         meta: {
             align: 'text-right',
         },
-        cell: ({ getValue }) => {
-            const formattedValue = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            }).format(getValue() as number)
-
-            return formattedValue
-        },
+        cell: ({ getValue }) => formatters.currency(getValue()),
         filterFn: (row, columnId, filterValue: ConditionFilter) => {
             const value = row.getValue(columnId) as number
             const [min, max] = filterValue.value as [number, number]

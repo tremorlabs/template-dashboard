@@ -33,6 +33,7 @@ interface DataTableFilterProps<TData, TValue> {
         value: string
     }[]
     type?: FilterType
+    formatter?: (value: any) => string
 }
 
 
@@ -72,13 +73,14 @@ const ColumnFiltersLabel = ({ columnFilterLabels }: { columnFilterLabels: string
     )
 }
 
-type FilterValues = string | string[] | ConditionFilter
+type FilterValues = string | string[] | ConditionFilter | undefined
 
 export function DataTableFilter<TData, TValue>({
     column,
     title,
     options,
-    type = "select"
+    type = "select",
+    formatter = (value) => value.toString()
 }: DataTableFilterProps<TData, TValue>) {
     const columnFilters = column?.getFilterValue() as FilterValues
 
@@ -107,8 +109,8 @@ export function DataTableFilter<TData, TValue>({
         if (typeof selectedValues === "object" && "condition" in selectedValues) {
             const condition = options?.find((option) => option.value === selectedValues.condition)?.label
             if (!condition || !selectedValues.value?.[0]) return undefined
-            if (selectedValues.value?.[1] === "") return [`${condition} ${selectedValues.value?.[0]}`]
-            return [`${condition} ${selectedValues.value?.[0]} and ${selectedValues.value?.[1]}`]
+            if (selectedValues.value?.[1] === "") return [`${condition} ${formatter(selectedValues.value?.[0])}`]
+            return [`${condition} ${formatter(selectedValues.value?.[0])} and ${formatter(selectedValues.value?.[1])}`]
         }
 
         return undefined

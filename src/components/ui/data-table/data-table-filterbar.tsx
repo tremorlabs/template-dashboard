@@ -10,6 +10,7 @@ import { DataTableViewOptions } from "./data-table-view-options"
 import { DataTableFilter } from "./data-table-filter"
 
 import { regions, status, conditions } from "@/data/data"
+import { formatters } from "@/lib/utils"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -46,6 +47,7 @@ export function Filterbar<TData>({
                         title="Costs"
                         type="number"
                         options={conditions}
+                        formatter={formatters.currency}
                     />
                 )}
                 {/* @CHRIS/SEV: focusRing does not work */}
