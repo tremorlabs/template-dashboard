@@ -32,12 +32,19 @@ export function Filterbar<TData>({
                         type="select"
                     />
                 )}
-                {table.getColumn("status")?.getIsVisible() && (
+                {table.getColumn("region")?.getIsVisible() && (
                     <DataTableFilter
                         column={table.getColumn("region")}
                         title="Region"
                         options={regions}
                         type="checkbox"
+                    />
+                )}
+                {table.getColumn("costs")?.getIsVisible() && (
+                    <DataTableFilter
+                        column={table.getColumn("costs")}
+                        title="Costs"
+                        type="number"
                     />
                 )}
                 {/* @CHRIS/SEV: focusRing does not work */}

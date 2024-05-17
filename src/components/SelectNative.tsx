@@ -8,7 +8,7 @@ import { cx, focusInput, hasErrorInput } from "@/lib/utils"
 const selectNativeStyles = tv({
     base: [
         // base
-        "peer w-full cursor-pointer appearance-none truncate rounded-md border py-1 pl-3 pr-7 shadow-sm outline-none transition-all sm:text-sm",
+        "peer w-full cursor-pointer appearance-none truncate rounded-md border py-1.5 pl-3 pr-7 shadow-sm outline-none transition-all sm:text-sm",
         // background color
         "bg-white dark:bg-gray-950 ",
         // border color
