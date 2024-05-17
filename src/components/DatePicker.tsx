@@ -154,7 +154,7 @@ TimeInput.displayName = "TimeInput"
 const triggerStyles = tv({
     base: [
         // base
-        "peer flex w-full cursor-pointer appearance-none items-center gap-x-2 truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition-all sm:text-sm",
+        "peer flex w-full cursor-pointer appearance-none items-center gap-x-2 truncate rounded-md border py-1 px-2 shadow-sm outline-none transition-all sm:text-sm",
         // background color
         "bg-white dark:bg-gray-950 ",
         // border color
@@ -199,7 +199,7 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
                     className={cx(triggerStyles({ hasError }), className)}
                     {...props}
                 >
-                    <RiCalendar2Fill className="size-5 shrink-0 text-gray-400 dark:text-gray-600" />
+                    <RiCalendar2Fill className="size-4 shrink-0 text-gray-400 dark:text-gray-600" />
                     <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left text-gray-900 dark:text-gray-50">
                         {children ? (
                             children

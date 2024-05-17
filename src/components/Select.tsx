@@ -42,6 +42,7 @@ const selectTriggerStyles = [
     ),
 ]
 
+
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitives.Trigger>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitives.Trigger> & {
@@ -192,6 +193,9 @@ const SelectGroupLabel = React.forwardRef<
 
 SelectGroupLabel.displayName = "SelectGroupLabel"
 
+
+// @Sev: Check new prop "iconPostion"
+
 const SelectItem = React.forwardRef<
     React.ElementRef<typeof SelectPrimitives.Item>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitives.Item>
@@ -229,6 +233,52 @@ const SelectItem = React.forwardRef<
 
 SelectItem.displayName = "SelectItem"
 
+const SelectItemPeriod = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitives.Item>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitives.Item> & {
+        period?: string,
+    }
+>(({ className, children, period, ...props }, forwardedRef) => {
+    return (
+        <SelectPrimitives.Item
+            ref={forwardedRef}
+            className={cx(
+                // base
+                "relative flex items-center w-80 rounded pr-3 py-2 pl-8 cursor-pointer outline-none transition-colors data-[state=checked]:font-semibold sm:text-sm",
+                // text color
+                "text-gray-900 dark:text-gray-50",
+                // disabled
+                "data-[disabled]:pointer-events-none data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
+                // focus
+                "focus-visible:bg-gray-100 focus-visible:dark:bg-gray-900",
+                // hover
+                "hover:bg-gray-100 hover:dark:bg-gray-900",
+                className,
+            )}
+            {...props}
+        >
+            <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+                <SelectPrimitives.ItemIndicator>
+                    <RiCheckLine
+                        className="size-5 shrink-0 text-gray-800 dark:text-gray-200"
+                        aria-hidden="true"
+                    />
+                </SelectPrimitives.ItemIndicator>
+            </span>
+            <div className="flex items-center w-full">
+                <span className="w-32">
+                    <SelectPrimitives.ItemText>
+                        <span>{children}</span>
+                    </SelectPrimitives.ItemText>
+                </span>
+                <span className="text-gray-400 font-normal whitespace-nowrap">{period}</span>
+            </div>
+        </SelectPrimitives.Item>
+    )
+})
+
+SelectItemPeriod.displayName = "SelectItemPeriod"
+
 const SelectSeparator = React.forwardRef<
     React.ElementRef<typeof SelectPrimitives.Separator>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitives.Separator>
@@ -254,6 +304,7 @@ export {
     SelectGroup,
     SelectGroupLabel,
     SelectItem,
+    SelectItemPeriod,
     SelectSeparator,
     SelectTrigger,
     SelectValue,
