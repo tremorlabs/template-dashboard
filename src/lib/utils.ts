@@ -47,6 +47,10 @@ export const usNumberformatter = (number: number, decimals = 0) =>
     .toString();
 
 export const formatters: { [key: string]: any } = {
-  currency: (number: number) => `$${usNumberformatter(number)}`,
+  currency: (number: number, currency: string = "USD") =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: currency,
+    }).format(number),
   unit: (number: number) => `${usNumberformatter(number)}`,
 };
