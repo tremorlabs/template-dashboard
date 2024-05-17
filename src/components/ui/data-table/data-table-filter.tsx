@@ -99,11 +99,11 @@ export function DataTableFilter<TData, TValue>({
         if (!selectedValues) return undefined
 
         if (Array.isArray(selectedValues)) {
-            return selectedValues
+            return selectedValues.map((value) => formatter(value))
         }
 
         if (typeof selectedValues === "string") {
-            return [selectedValues]
+            return [formatter(selectedValues)]
         }
 
         if (typeof selectedValues === "object" && "condition" in selectedValues) {
