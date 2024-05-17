@@ -228,7 +228,7 @@ export function DataTableFilter<TData, TValue>({
                     <RiAddCircleLine className="-ml-1 size-4 shrink-0" aria-hidden={true} />
                     {title}
                     {/* @Maxime: shows labels explicitly until 3 are met, then first label name + number of other selected */}
-                    {columnFilterLabels && <span className="h-4 w-px bg-gray-300" aria-hidden={true} />}
+                    {(columnFilterLabels && columnFilterLabels.length > 0) && <span className="h-4 w-px bg-gray-300" aria-hidden={true} />}
                     <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} />
                     <RiArrowDownSLine className="size-4 shrink-0 text-gray-500" aria-hidden={true} />
                 </button>
