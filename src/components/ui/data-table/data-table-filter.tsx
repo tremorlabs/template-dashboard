@@ -203,7 +203,7 @@ export function DataTableFilter<TData, TValue>({
                                     setSelectedValues((prev) => {
                                         return {
                                             condition: (prev as ConditionFilter)?.condition,
-                                            value: [Number(e.target.value) || "", isBetween ? (prev as ConditionFilter)?.value?.[1] : ""]
+                                            value: [e.target.value, isBetween ? (prev as ConditionFilter)?.value?.[1] : ""]
                                         }
                                     })
                                 }}
@@ -220,7 +220,7 @@ export function DataTableFilter<TData, TValue>({
                                             setSelectedValues((prev) => {
                                                 return {
                                                     condition: (prev as ConditionFilter)?.condition,
-                                                    value: [(prev as ConditionFilter)?.value?.[0], Number(e.target.value) || ""]
+                                                    value: [(prev as ConditionFilter)?.value?.[0], e.target.value]
                                                 }
                                             })
                                         }}
