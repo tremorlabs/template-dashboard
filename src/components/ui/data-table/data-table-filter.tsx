@@ -15,6 +15,7 @@ import React from "react"
 import { Checkbox } from "@/components/Checkbox"
 import { SelectNative } from "@/components/SelectNative"
 import { Input } from "@/components/Input"
+import { formatters } from "@/lib/utils"
 
 export type ConditionFilter = {
     condition: string
@@ -42,7 +43,12 @@ const ColumnFiltersLabel = ({ columnFilterLabels }: { columnFilterLabels: string
         return (
             <>
                 {columnFilterLabels.map((value, index) => (
-                    <span key={value} className={"font-semibold"}>
+                    <span key={value} className={"text-indigo-600 font-semibold"}>
+                        {/* {type === "number" ? (
+                            formatters.currency(value)
+                        ) : (
+                            { value }
+                        )} */}
                         {value}
                         {index < columnFilterLabels.length - 1 && ", "}
                     </span>
@@ -53,7 +59,14 @@ const ColumnFiltersLabel = ({ columnFilterLabels }: { columnFilterLabels: string
 
     return (
         <>
-            <span className="font-semibold text-indigo-600">{columnFilterLabels[0]}</span>
+            <span className="text-indigo-600 font-semibold">
+                {/* {type === "number" ? (
+                    formatters.currency(columnFilterLabels[0])
+                ) : (
+                    columnFilterLabels[0]
+                )} */}
+                {columnFilterLabels[0]}
+            </span>
             <span className="text-indigo-600 font-semibold"> and {columnFilterLabels.length - 1} more</span>
         </>
     )
@@ -93,13 +106,13 @@ export function DataTableFilter<TData, TValue>({
 
         if (typeof selectedValues === "object" && "condition" in selectedValues) {
             const condition = options?.find((option) => option.value === selectedValues.condition)?.label
-            if(!condition || !selectedValues.value?.[0]) return undefined
-            if(selectedValues.value?.[1] === "") return [`${condition} ${selectedValues.value?.[0]}`]
+            if (!condition || !selectedValues.value?.[0]) return undefined
+            if (selectedValues.value?.[1] === "") return [`${condition} ${selectedValues.value?.[0]}`]
             return [`${condition} ${selectedValues.value?.[0]} and ${selectedValues.value?.[1]}`]
         }
 
         return undefined
-    }, [selectedValues, options])    
+    }, [selectedValues, options])
 
 
     const getFisplayedFilter = () => {
@@ -179,11 +192,11 @@ export function DataTableFilter<TData, TValue>({
                         </SelectNative>
                         <div className="flex items-center gap-2">
                             <RiCornerDownRightLine className="size-4 text-gray-500 shrink-0" aria-hidden={true} />
-                            <Input 
-                                type="number" 
-                                placeholder="$0" 
-                                className="py-1" 
-                                value={(selectedValues as ConditionFilter)?.value?.[0]} 
+                            <Input
+                                type="number"
+                                placeholder="$0"
+                                className="py-1"
+                                value={(selectedValues as ConditionFilter)?.value?.[0]}
                                 onChange={(e) => {
                                     setSelectedValues((prev) => {
                                         return {
@@ -191,15 +204,15 @@ export function DataTableFilter<TData, TValue>({
                                             value: [Number(e.target.value), isBetween ? (prev as ConditionFilter)?.value?.[1] : ""]
                                         }
                                     })
-                                }} 
+                                }}
                             />
                             {(selectedValues as ConditionFilter)?.condition === "is-between" && (
                                 <>
                                     <span className="text-xs font-medium text-gray-500">and</span>
-                                    <Input 
-                                        type="number" 
-                                        placeholder="$0" 
-                                        className="py-1" 
+                                    <Input
+                                        type="number"
+                                        placeholder="$0"
+                                        className="py-1"
                                         value={(selectedValues as ConditionFilter)?.value?.[1]}
                                         onChange={(e) => {
                                             setSelectedValues((prev) => {
@@ -227,9 +240,12 @@ export function DataTableFilter<TData, TValue>({
                 >
                     <RiAddCircleLine className="-ml-1 size-4 shrink-0" aria-hidden={true} />
                     {title}
-                    {/* @Maxime: shows labels explicitly until 3 are met, then first label name + number of other selected */}
                     {(columnFilterLabels && columnFilterLabels.length > 0) && <span className="h-4 w-px bg-gray-300" aria-hidden={true} />}
-                    <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} />
+                    {/* @Maxime: how to make this that type is forwarded here?  */}
+                    <ColumnFiltersLabel
+                        columnFilterLabels={columnFilterLabels}
+                    // type={} 
+                    />
                     <RiArrowDownSLine className="size-4 shrink-0 text-gray-500" aria-hidden={true} />
                 </button>
             </PopoverTrigger>

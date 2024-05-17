@@ -15,94 +15,55 @@ export const status = [
   },
 ];
 
-export const countries = [
+export const regions = [
   {
-    value: "switzerland",
-    label: "Switzerland",
+    value: "US-West 1",
+    label: "US-West 1",
   },
   {
-    value: "germany",
-    label: "Germany",
+    value: "US-East 1",
+    label: "US-East 1",
   },
   {
-    value: "austria",
-    label: "Austria",
+    value: "US-East 2",
+    label: "US-East 2",
   },
   {
-    value: "france",
-    label: "France",
+    value: "US-West 2",
+    label: "US-West 2",
   },
   {
-    value: "spain",
-    label: "Spain",
+    value: "EU-West 1",
+    label: "EU-West 1",
   },
   {
-    value: "united-kingdom",
-    label: "United Kingdom",
+    value: "EU-North 1",
+    label: "EU-North 1",
   },
   {
-    value: "norway",
-    label: "Norway",
-  },
-  {
-    value: "united-states",
-    label: "United States",
-  },
-  {
-    value: "netherlands",
-    label: "Netherlands",
+    value: "EU-Central 1",
+    label: "EU-Central 1",
   },
 ];
 
-export const regions = [
-    {
-        value: "US-West 1",
-        label: "US-West 1",
-    },
-    {
-        value: "US-East 1",
-        label: "US-East 1",
-    },
-    {
-        value: "US-East 2",
-        label: "US-East 2",
-    },
-    {
-        value: "US-West 2",
-        label: "US-West 2",
-    },
-    {
-        value: "EU-West 1",
-        label: "EU-West 1",
-    },
-    {
-        value: "EU-North 1",
-        label: "EU-North 1",
-    },
-    {
-        value: "EU-Central 1",
-        label: "EU-Central 1",
-    },
-]
-
 export const conditions = [
-    {
-        value: "is-equal-to",
-        label: "is equal to"
-    },
-    {
-        value: "is-between",
-        label: "is between"
-    },
-    {
-        value: "is-greater-than",
-        label: "is greater than"
-    },
-    {
-        value: "is-less-than",
-        label: "is less than"
-    },
-]
+  {
+    value: "is-equal-to",
+    label: "is equal to",
+  },
+  {
+    value: "is-between",
+    label: "is between",
+  },
+  {
+    value: "is-greater-than",
+    label: "is greater than",
+  },
+  {
+    value: "is-less-than",
+    label: "is less than",
+  },
+];
 
 export const transactions: Transaction[] = [
   {
