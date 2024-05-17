@@ -1,10 +1,12 @@
 "use client"
 
 import { RiDeleteBin7Line, RiPencilLine, RiPlayListAddLine } from "@remixicon/react"
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, Row } from "@tanstack/react-table"
 import { Transaction } from "@/data/schema"
 import { Checkbox } from "@/components/Checkbox"
 import { DataTableRowActions } from "./data-table-row-actions"
+import { ConditionFilter } from "./data-table-filter"
+import { formatters } from "@/lib/utils"
 
 export const columns: ColumnDef<Transaction>[] = [
     {
@@ -64,6 +66,7 @@ export const columns: ColumnDef<Transaction>[] = [
         meta: {
             align: 'text-left',
         },
+        filterFn: "arrIncludesSome"
     },
     {
         header: 'Capacity',
@@ -80,6 +83,24 @@ export const columns: ColumnDef<Transaction>[] = [
         meta: {
             align: 'text-right',
         },
+        cell: ({ getValue }) => formatters.currency(getValue()),
+        filterFn: (row, columnId, filterValue: ConditionFilter) => {
+            const value = row.getValue(columnId) as number
+            const [min, max] = filterValue.value as [number, number]
+            
+            switch (filterValue.condition) {
+                case "is-equal-to":
+                    return value === min
+                case "is-between":
+                    return value >= min && value <= max
+                case "is-greater-than":
+                    return value > min
+                case "is-less-than":
+                    return value < min
+                default:
+                    return true
+            }
+        }
     },
     {
         header: 'Created at',
