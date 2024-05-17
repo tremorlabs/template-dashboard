@@ -114,7 +114,7 @@ export function DataTableFilter<TData, TValue>({
         }
 
         return undefined
-    }, [selectedValues, options])
+    }, [selectedValues, options, formatter])
 
 
     const getFisplayedFilter = () => {
