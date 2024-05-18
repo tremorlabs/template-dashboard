@@ -46,7 +46,7 @@ export const usNumberformatter = (number: number, decimals = 0) =>
     .format(Number(number))
     .toString();
 
-export const percentageFormatter = (number: number, decimals = 0) => {
+export const percentageFormatter = (number: number, decimals = 1) => {
     const formattedNumber = new Intl.NumberFormat("en-US", {
         style: "percent",
         minimumFractionDigits: decimals,
