@@ -105,7 +105,8 @@ export function DataTable<TData, TValue>({
                                                     ? 'bg-gray-50'
                                                     : '',
                                                 cell.column.columnDef.meta?.align,
-                                                'relative py-3',
+                                                // @SEV/CHRIS: first:-logic
+                                                'first:w-10 relative py-3 whitespace-nowrap',
                                             )}
                                         >
                                             {index === 0 && row.getIsSelected() && (
