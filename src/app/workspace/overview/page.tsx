@@ -5,7 +5,8 @@ import { Card } from "@/components/ui/dashboard/cards"
 import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar"
 import React from "react"
 import { DateRange } from "react-day-picker"
-import { subDays } from "date-fns";
+import { subDays, toDate } from "date-fns";
+import { overviews } from "@/data/data";
 
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
@@ -25,12 +26,12 @@ const categories = [
     },
 ] as const
 
-const today = new Date()
-today.setHours(0, 0, 0, 0)
+const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
+const maxDate = toDate(Math.max(...overviewsDates))
 export default function Example() {
     const [selectedDates, setSelectedDates] = React.useState<DateRange | undefined>({
-        from: subDays(today, 10),
-        to: today,
+        from: subDays(maxDate, 10),
+        to: maxDate
     })
     const [selectedPeriod, setSelectedPeriod] = React.useState<PeriodValue>('no-comparison')
 
@@ -40,6 +41,7 @@ export default function Example() {
                 <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
                 <div className="flex items-center justify-between mt-4">
                     <Filterbar 
+                        maxDate={maxDate}
                         selectedDates={selectedDates} 
                         onDatesChange={(dates) => setSelectedDates(dates)}
                         selectedPeriod={selectedPeriod}

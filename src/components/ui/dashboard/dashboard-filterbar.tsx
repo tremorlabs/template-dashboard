@@ -72,13 +72,14 @@ export const getPeriod = (dateRange: DateRange | undefined, value: PeriodValue):
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
 type FilterbarProps = {
-    selectedDates: DateRange | undefined
-    onDatesChange: (dates: DateRange | undefined) => void
-    selectedPeriod: PeriodValue,
-    onPeriodChange: (period: PeriodValue) => void
+    maxDate?: Date;
+    selectedDates: DateRange | undefined;
+    onDatesChange: (dates: DateRange | undefined) => void;
+    selectedPeriod: PeriodValue;
+    onPeriodChange: (period: PeriodValue) => void;
 }
 
-export function Filterbar({ selectedDates, onDatesChange, selectedPeriod, onPeriodChange }: FilterbarProps) {
+export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange }: FilterbarProps) {
     return (
         <>
             <div className="flex items-center gap-x-2">
@@ -86,6 +87,7 @@ export function Filterbar({ selectedDates, onDatesChange, selectedPeriod, onPeri
                     value={selectedDates}
                     onChange={onDatesChange}
                     className="w-fit"
+                    toDate={maxDate}
                 />
                 <span className="text-sm text-gray-500 font-medium">compared to</span>
                 <Select 
