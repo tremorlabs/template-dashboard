@@ -14,8 +14,8 @@ export const columns = [
         id: 'select',
         header: ({ table }) => (
             <Checkbox
-                checked={table.getIsSomeRowsSelected() ? "indeterminate" : table.getIsAllRowsSelected()}
-                onCheckedChange={() => table.toggleAllRowsSelected()}
+                checked={table.getIsAllPageRowsSelected() ? true : table.getIsSomeRowsSelected() ? "indeterminate" : false}
+                onCheckedChange={() => table.toggleAllPageRowsSelected()}
                 className="translate-y-0.5"
                 aria-label="Select all"
             />

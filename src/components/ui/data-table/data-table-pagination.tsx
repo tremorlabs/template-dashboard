@@ -61,7 +61,8 @@ export function DataTablePagination<TData>({
             <div className="flex items-center justify-between">
                 <div className="tabular-nums text-sm text-gray-500">
                     {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                    {(table.getState().pagination.pageIndex + 1) * pageSize} row(s) selected.
+                    {/* {(table.getState().pagination.pageIndex + 1) * pageSize} row(s) selected. */}
+                    {pageSize} row(s) selected.
                 </div>
                 <div className="flex items-center gap-x-6 lg:gap-x-8">
                     <p className="text-sm tabular-nums text-gray-500">
@@ -93,7 +94,10 @@ export function DataTablePagination<TData>({
                                     key={idx}
                                     variant="secondary"
                                     className="p-1.5"
-                                    onClick={button.onClick}
+                                    onClick={() => {
+                                        button.onClick()
+                                        table.resetRowSelection()
+                                    }}
                                     disabled={button.disabled}
                                 >
                                     <span className="sr-only">{button.srText}</span>
