@@ -233,6 +233,10 @@ export function DataTableFilter<TData, TValue>({
         }
     }
 
+    React.useEffect(() => {
+        setSelectedValues(columnFilters)
+    }, [columnFilters])
+
     return (
         <Popover>
             <PopoverTrigger asChild>
