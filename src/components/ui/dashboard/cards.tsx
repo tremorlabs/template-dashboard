@@ -17,7 +17,6 @@ import { OverviewData } from "@/data/schema";
 
 export type CardProps = {
     title: keyof OverviewData;
-    // value: number | string;
     type: 'currency' | 'unit';
     selectedDates: DateRange | undefined;
     selectedPeriod: PeriodValue;
@@ -28,7 +27,7 @@ const formattingMap = {
     unit: formatters.unit,
 };
 
-const getBadgeType = (value: number) => {
+export const getBadgeType = (value: number) => {
     if (value > 0) {
         return "success";
     } else if (value < 0) {
@@ -43,7 +42,6 @@ const getBadgeType = (value: number) => {
 
 export function Card({
     title,
-    // value,
     type,
     selectedDates,
     selectedPeriod,
@@ -52,41 +50,48 @@ export function Card({
     const selectedDatesInterval = selectedDates?.from && selectedDates?.to ? interval(selectedDates.from, selectedDates.to) : null;
     const allDatesInInterval = selectedDates?.from && selectedDates?.to ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to)) : null;
     const prevDates = getPeriod(selectedDates, selectedPeriod);
+    
     const prevDatesInterval = prevDates?.from && prevDates?.to ? interval(prevDates.from, prevDates.to) : null;
 
-    const chartData = React.useMemo(() => {
-        const data = overviews.filter((overview) => {
-            if (selectedDatesInterval) {
-                return isWithinInterval(overview.date, selectedDatesInterval);
-            }
-            return true;
-        })
+    const data = overviews.filter((overview) => {
+        if (selectedDatesInterval) {
+            return isWithinInterval(overview.date, selectedDatesInterval);
+        }
+        return true;
+    }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-        const prevData = overviews.filter((overview) => {
-            if (prevDatesInterval) {
-                return isWithinInterval(overview.date, prevDatesInterval);
-            }
-            return false;
-        })
+    const prevData = overviews.filter((overview) => {
+        if (prevDatesInterval) {
+            return isWithinInterval(overview.date, prevDatesInterval);
+        }
+        return false;
+    }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-        return allDatesInInterval?.map((date, index) => {
-            const overview = data[index];
-            const prevOverview = prevData[index];
-            const formattedDate = formatDate(date, "dd/MM/yyyy");
+    
 
-            return {
-                date: date,
-                formattedDate,
-                value: (overview?.[title] || null) as number | null,
-                previousValue: selectedPeriod !== "no-comparison" ? (prevOverview?.[title] || null) as number | null : null
-            };
-        }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    }, [selectedPeriod, selectedDates]);
+    const chartData = allDatesInInterval?.map((date, index) => {
+        const overview = data[index];
+        const prevOverview = prevData[index];
+        const value = overview?.[title] as number || null;
+        const previousValue = prevOverview?.[title] as number || null;
+
+        return {
+            title,
+            date: date,
+            formattedDate: formatDate(date, "dd/MM/yyyy"),
+            value,
+            previousDate: prevOverview?.date,
+            previousFormattedDate: prevOverview ? formatDate(prevOverview.date, "dd/MM/yyyy") : null,
+            previousValue: selectedPeriod !== "no-comparison" ? previousValue : null,
+            evolution: selectedPeriod !== "no-comparison" && value && previousValue ? (value - previousValue) / previousValue : 0,
+        };
+    }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     const categories = selectedPeriod === "no-comparison" ? ["value"] : ["value", "previousValue"];
     const value = chartData?.reduce((acc, item) => acc + (item.value || 0), 0) || 0;
     const previousValue = chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0;
     const evolution = selectedPeriod !== "no-comparison" ? (value - previousValue) / previousValue : 0;
+
     return (
         <div className="rounded-lg border border-gray-200 p-6 bg-white shadow-sm">
             <div className="flex items-center gap-x-2">

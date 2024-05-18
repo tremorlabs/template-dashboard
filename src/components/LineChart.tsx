@@ -27,7 +27,9 @@ import {
     hasOnlyOneValueForKey,
 } from "@/lib/chartUtils"
 import { useOnWindowResize } from "@/lib/useOnWindowResize"
-import { cx } from "@/lib/utils"
+import { cx, percentageFormatter } from "@/lib/utils"
+import { Badge } from "./Badge"
+import { getBadgeType } from "./ui/dashboard/cards"
 
 //#region Legend
 
@@ -390,6 +392,79 @@ interface ChartTooltipProps {
     valueFormatter: (value: number) => string
 }
 
+const OverviewChartTooltip = ({
+    active,
+    payload,
+    label,
+    categoryColors,
+    valueFormatter,
+}: ChartTooltipProps) => {
+    if (active && payload) {
+        const filteredPayload = payload.filter((item: any) => item.type !== "none")
+
+        if (!active || !payload) return null;
+
+        const title = payload[0].payload.title;
+        const evolution = payload[0].payload.evolution;
+        if (!(title && evolution)) return null;
+
+        return (
+            <div
+                className={cx(
+                    // base
+                    "rounded-md border text-sm shadow-md",
+                    // border color
+                    "border-gray-200 dark:border-gray-800",
+                    // background color
+                    "bg-white dark:bg-gray-950",
+                )}
+            >
+                <div
+                    className={cx(
+                        // base
+                        "border-b border-inherit px-4 py-2",
+                        "flex items-start justify-between"
+                    )}
+                >
+                    <p
+                        className={cx(
+                            // base
+                            "font-medium",
+                            // text color
+                            "text-gray-900 dark:text-gray-50",
+                        )}
+                    >
+                        {title}
+                    </p>
+                    <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
+                </div>
+                <div className={cx("space-y-1 px-4 py-2")}>
+                    {filteredPayload.map(
+                        (
+                            payload: any,
+                            index: number,
+                        ) => {
+                            const payloadData = payload.payload;
+                            return (
+                                <ChartTooltipRow
+                                    key={`id-${index}`}
+                                    value={valueFormatter(payload.value)}
+                                    name={index === 0 ? payloadData.formattedDate : payloadData.previousFormattedDate}
+                                    color={getColorClassName(
+                                        categoryColors.get(payload.name) as AvailableChartColorsKeys,
+                                        "bg",
+                                    )}
+                                />
+                            )
+                        }
+                    )}
+                </div>
+            </div>
+        )
+    }
+    return null
+}
+
 const ChartTooltip = ({
     active,
     payload,
@@ -686,7 +761,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                             content={
                                 showTooltip ? (
                                     ({ active, payload, label }) => (
-                                        <ChartTooltip
+                                        <OverviewChartTooltip
                                             active={active}
                                             payload={payload}
                                             label={label}
