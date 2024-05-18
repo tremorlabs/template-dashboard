@@ -27,7 +27,7 @@ const formattingMap = {
     unit: formatters.unit,
 };
 
-const getBadgeType = (value: number) => {
+export const getBadgeType = (value: number) => {
     if (value > 0) {
         return "success";
     } else if (value < 0) {
@@ -72,15 +72,18 @@ export function Card({
     const chartData = allDatesInInterval?.map((date, index) => {
         const overview = data[index];
         const prevOverview = prevData[index];
+        const value = overview?.[title] as number || null;
+        const previousValue = prevOverview?.[title] as number || null;
 
         return {
             title,
             date: date,
             formattedDate: formatDate(date, "dd/MM/yyyy"),
-            value: (overview?.[title] || null) as number | null,
+            value,
             previousDate: prevOverview?.date,
             previousFormattedDate: prevOverview ? formatDate(prevOverview.date, "dd/MM/yyyy") : null,
-            previousValue: selectedPeriod !== "no-comparison" ? (prevOverview?.[title] || null) as number | null : null
+            previousValue: selectedPeriod !== "no-comparison" ? previousValue : null,
+            evolution: selectedPeriod !== "no-comparison" && value && previousValue ? (value - previousValue) / previousValue : 0,
         };
     }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
