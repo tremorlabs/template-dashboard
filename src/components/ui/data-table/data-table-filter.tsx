@@ -265,7 +265,10 @@ export function DataTableFilter<TData, TValue>({
                         className="w-full py-1"
                         onClick={() => {
                             column?.setFilterValue("")
-                            setSelectedValues("")
+                            setSelectedValues((prev) => {
+                                if(typeof prev === "object" && "condition" in prev) return { condition: "", value: ["", ""] }
+                                return ""
+                            })
                         }}
                     >
                         Reset
