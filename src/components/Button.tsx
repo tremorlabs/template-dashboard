@@ -60,6 +60,17 @@ const buttonVariants = tv({
                 "disabled:bg-gray-100 disabled:text-gray-400",
                 "disabled:dark:bg-gray-800 disabled:dark:text-gray-600",
             ],
+            ghost: [
+                // base
+                "shadow-none",
+                // border
+                "border-transparent",
+                // text color
+                "text-gray-900 dark:text-gray-50",
+                // disabled
+                "disabled:bg-gray-100 disabled:text-gray-400",
+                "disabled:dark:bg-gray-800 disabled:dark:text-gray-600",
+            ],
             destructive: [
                 // text color
                 "text-white",

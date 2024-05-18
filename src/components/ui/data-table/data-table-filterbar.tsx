@@ -20,8 +20,6 @@ export function Filterbar<TData>({
     table,
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
-
-
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center gap-x-2">
@@ -50,27 +48,17 @@ export function Filterbar<TData>({
                         formatter={formatters.currency}
                     />
                 )}
-                {/* @CHRIS/SEV: focusRing does not work */}
-                {/* --- old --- */}
-                {/* <Input
-                    placeholder="Filter transactions..."
-                    type="search"
-                    value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("owner")?.setFilterValue(event.target.value)
-                    }
-                    className="w-[150px] lg:w-[250px]"
-                />
+                {/* @Maxime: already show button on the fly when filters are selected but not applied */}
                 {isFiltered && (
                     <Button
-                        variant="secondary"
+                        variant="ghost"
                         onClick={() => table.resetColumnFilters()}
-                        className="py-1.5 px-2 lg:px-3"
+                        className="px-2 py-1 text-indigo-600 font-semibold"
                     >
-                        Reset
-                        <RiCloseLine className="ml-2 size-4" />
+                        Clear filters
+                        {/* <RiCloseLine className="ml-2 size-4" /> */}
                     </Button>
-                )} */}
+                )}
             </div>
             <div className="flex items-center gap-2">
                 <Button variant="secondary" className="gap-x-2 font-semibold py-1 px-2">

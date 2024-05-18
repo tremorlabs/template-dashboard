@@ -117,7 +117,7 @@ export function DataTableFilter<TData, TValue>({
     }, [selectedValues, options, formatter])
 
 
-    const getFisplayedFilter = () => {
+    const getDisplayedFilter = () => {
         const hasEmptyOption = options?.some((option) => option.value === "")
 
         {/* @Chris: Here you can create one separate component by case if you want */ }
@@ -243,24 +243,27 @@ export function DataTableFilter<TData, TValue>({
                     <RiAddCircleLine className="-ml-1 size-4 shrink-0" aria-hidden={true} />
                     {title}
                     {(columnFilterLabels && columnFilterLabels.length > 0) && <span className="h-4 w-px bg-gray-300" aria-hidden={true} />}
-                    {/* @Maxime: how to make this that type is forwarded here?  */}
-                    <ColumnFiltersLabel
-                        columnFilterLabels={columnFilterLabels}
-                    // type={} 
-                    />
+                    <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} />
                     <RiArrowDownSLine className="size-4 shrink-0 text-gray-500" aria-hidden={true} />
                 </button>
             </PopoverTrigger>
             <PopoverContent align="start" sideOffset={7} className="w-fit space-y-2 max-w-52">
                 <div>
                     <Label className="font-medium">Filter by {title}</Label>
-                    {getFisplayedFilter()}
+                    {getDisplayedFilter()}
                 </div>
                 <PopoverClose className="w-full" onClick={() => column?.setFilterValue(selectedValues)}>
                     <Button className="w-full py-1">Apply</Button>
-                    {/* --- remove logic: --- */}
-                    {/* onClick={() => column?.setFilterValue(undefined)} */}
                 </PopoverClose>
+                {(columnFilterLabels && columnFilterLabels.length > 0) && (
+                    <Button
+                        variant="secondary"
+                        className="w-full py-1"
+                        onClick={() => column?.setFilterValue(undefined)}
+                    >
+                        Reset
+                    </Button>
+                )}
             </PopoverContent>
         </Popover>
     )
