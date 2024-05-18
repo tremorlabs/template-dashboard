@@ -7,6 +7,7 @@ import {
     RiArrowUpSLine,
     RiCheckLine,
 } from "@remixicon/react"
+import { format } from "date-fns"
 
 import { cx, focusInput, hasErrorInput } from "@/lib/utils"
 import { DateRange } from "react-day-picker"
@@ -245,7 +246,7 @@ const SelectItemPeriod = React.forwardRef<
             ref={forwardedRef}
             className={cx(
                 // base
-                "relative flex items-center w-80 rounded pr-3 py-2 pl-8 cursor-pointer outline-none transition-colors data-[state=checked]:font-semibold sm:text-sm",
+                "relative flex items-center rounded pr-3 py-2 pl-8 cursor-pointer outline-none transition-colors data-[state=checked]:font-semibold sm:text-sm",
                 // text color
                 "text-gray-900 dark:text-gray-50",
                 // disabled
@@ -267,16 +268,19 @@ const SelectItemPeriod = React.forwardRef<
                 </SelectPrimitives.ItemIndicator>
             </span>
             <div className="flex items-center w-full">
+                {/* adapt width accordingly if you use longer names for periods */}
                 <span className="w-32">
                     <SelectPrimitives.ItemText>
-                        <span>{children}</span>
+                        {children}
                     </SelectPrimitives.ItemText>
                 </span>
-                {period?.from && period?.to && (
-                    <span className="text-gray-400 font-normal whitespace-nowrap">
-                        {period.from.toLocaleDateString()} - {period.to.toLocaleDateString()}
-                    </span>
-                )}
+                <span>
+                    {period?.from && period?.to && (
+                        <span className="text-gray-400 font-normal whitespace-nowrap">
+                            {format(period.from, "MMM d, yyyy")} – {format(period.to, "MMM d, yyyy")}
+                        </span>
+                    )}
+                </span>
             </div>
         </SelectPrimitives.Item>
     )

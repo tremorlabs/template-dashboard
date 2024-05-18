@@ -422,7 +422,7 @@ const OverviewChartTooltip = ({
                 <div
                     className={cx(
                         // base
-                        "border-b border-inherit px-4 py-2",
+                        "border-b border-inherit p-2",
                         "flex items-start justify-between"
                     )}
                 >
@@ -440,7 +440,7 @@ const OverviewChartTooltip = ({
                         <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
                     )}
                 </div>
-                <div className={cx("space-y-1 px-4 py-2")}>
+                <div className={cx("space-y-1 p-2")}>
                     {filteredPayload.map(
                         (
                             payload: any,
