@@ -1,81 +1,26 @@
-import { formatters } from "@/lib/utils";
+import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
+import { DateRange } from "react-day-picker";
+import { PeriodValue } from "@/app/workspace/overview/page";
+import React from "react";
+import { overviews } from "@/data/data";
+import { getPeriod } from "./dashboard-filterbar";
+import { eachDayOfInterval, formatDate, interval, isEqual, isWithinInterval, toDate } from "date-fns";
+import { OverviewData } from "@/data/schema";
 
 //   @CHRIS: import mono font for number
 //   import { lusitana } from '@/app/ui/fonts';
 
 
 // @Maxime/Chris: dummy data -> remover afterwards
-const chartdata = [
-    {
-        date: "Jan 23",
-        value: 2890,
-        previousValue: 2338,
-    },
-    {
-        date: "Feb 23",
-        value: 2756,
-        previousValue: 2103,
-    },
-    {
-        date: "Mar 23",
-        value: 3322,
-        previousValue: 2194,
-    },
-    {
-        date: "Apr 23",
-        value: 3470,
-        previousValue: 2108,
-    },
-    {
-        date: "May 23",
-        value: 3475,
-        previousValue: 1812,
-    },
-    {
-        date: "Jun 23",
-        value: 3129,
-        previousValue: 1726,
-    },
-    {
-        date: "Jul 23",
-        value: 3490,
-        previousValue: 1982,
-    },
-    {
-        date: "Aug 23",
-        value: 2903,
-        previousValue: 2012,
-    },
-    {
-        date: "Sep 23",
-        value: 2643,
-        previousValue: 2342,
-    },
-    {
-        date: "Oct 23",
-        value: 2837,
-        previousValue: 2473,
-    },
-    {
-        date: "Nov 23",
-        value: 2954,
-        previousValue: 3848,
-    },
-    {
-        date: "Dec 23",
-        value: 3239,
-        previousValue: 3736,
-    },
-]
-
-
 
 export type CardProps = {
-    title: string;
-    value: number | string;
+    title: keyof OverviewData;
+    // value: number | string;
     type: 'currency' | 'unit';
+    selectedDates: DateRange | undefined;
+    selectedPeriod: PeriodValue;
 };
 
 const formattingMap = {
@@ -83,37 +28,89 @@ const formattingMap = {
     unit: formatters.unit,
 };
 
+const getBadgeType = (value: number) => {
+    if (value > 0) {
+        return "success";
+    } else if (value < 0) {
+        if(value < -50) {
+            return "warning";
+        }
+        return "error";
+    } else {
+        return "neutral";
+    }
+}
+
 export function Card({
     title,
-    value,
+    // value,
     type,
-}: {
-    title: string;
-    value: number | string;
-    type: 'currency' | 'unit';
-}) {
+    selectedDates,
+    selectedPeriod,
+}: CardProps) {
     const formatter = formattingMap[type];
+    const selectedDatesInterval = selectedDates?.from && selectedDates?.to ? interval(selectedDates.from, selectedDates.to) : null;
+    const allDatesInInterval = selectedDates?.from && selectedDates?.to ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to)) : null;
+    const prevDates = getPeriod(selectedDates, selectedPeriod);
+    const prevDatesInterval = prevDates?.from && prevDates?.to ? interval(prevDates.from, prevDates.to) : null;
+
+    const chartData = React.useMemo(() => {
+        const data = overviews.filter((overview) => {
+            if (selectedDatesInterval) {
+                return isWithinInterval(overview.date, selectedDatesInterval);
+            }
+            return true;
+        })
+
+        const prevData = overviews.filter((overview) => {
+            if (prevDatesInterval) {
+                return isWithinInterval(overview.date, prevDatesInterval);
+            }
+            return false;
+        })
+
+        return allDatesInInterval?.map((date, index) => {
+            const overview = data[index];
+            const prevOverview = prevData[index];
+            const formattedDate = formatDate(date, "dd/MM/yyyy");
+
+            return {
+                date: date,
+                formattedDate,
+                value: (overview?.[title] || null) as number | null,
+                previousValue: selectedPeriod !== "no-comparison" ? (prevOverview?.[title] || null) as number | null : null
+            };
+        }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    }, [selectedPeriod, selectedDates]);
+
+    const categories = selectedPeriod === "no-comparison" ? ["value"] : ["value", "previousValue"];
+    const value = chartData?.reduce((acc, item) => acc + (item.value || 0), 0) || 0;
+    const previousValue = chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0;
+    const evolution = selectedPeriod !== "no-comparison" ? (value - previousValue) / previousValue : 0;
     return (
         <div>
             <div className="flex items-center gap-x-2">
                 <dt className="text-sm text-gray-900 font-bold">{title}</dt>
-                <Badge variant="success">+12.3</Badge>
+                {selectedPeriod !== "no-comparison" && (
+                    <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
+                )}
             </div>
             <div className="mt-2 flex items-baseline justify-between">
                 <dd className="text-xl text-gray-900">{formatter(value)}</dd>
-                {/* don't show if comparison is not selected */}
-                <dd className="text-sm text-gray-500">from {formatter(3034)}</dd>
+                {selectedPeriod !== "no-comparison" && (
+                    <dd className="text-sm text-gray-500">from {formatter(previousValue)}</dd>
+                )}
             </div>
             <LineChart
                 className="mt-8 h-40"
-                data={chartdata}
-                index="date"
+                data={chartData || []}
+                index="formattedDate"
                 colors={["indigo", "gray"]}
-                maxValue={5000}
                 startEndOnly={true}
+                valueFormatter={(value) => formatter(value as number)}
                 showYAxis={false}
                 showLegend={false}
-                categories={["value", "previousValue"]}
+                categories={categories}
             />
 
         </div>

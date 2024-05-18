@@ -46,6 +46,17 @@ export const usNumberformatter = (number: number, decimals = 0) =>
     .format(Number(number))
     .toString();
 
+export const percentageFormatter = (number: number, decimals = 0) => {
+    const formattedNumber = new Intl.NumberFormat("en-US", {
+        style: "percent",
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    }).format(number);
+    const symbol = number > 0 && number !== Infinity ? "+" : "";
+
+    return `${symbol}${formattedNumber}`;
+}
+
 export const formatters: { [key: string]: any } = {
   currency: (number: number, currency: string = "USD") =>
     new Intl.NumberFormat("en-US", {

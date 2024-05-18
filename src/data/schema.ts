@@ -7,3 +7,10 @@ export interface Transaction {
   capacity: string;
   lastEdited: string;
 }
+
+export type OverviewData = {
+    date: string;
+    Sales: number;
+    Profit: number;
+    Users: number;
+}

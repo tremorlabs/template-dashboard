@@ -9,6 +9,7 @@ import {
 } from "@remixicon/react"
 
 import { cx, focusInput, hasErrorInput } from "@/lib/utils"
+import { DateRange } from "react-day-picker"
 
 const Select = SelectPrimitives.Root
 Select.displayName = "Select"
@@ -236,7 +237,7 @@ SelectItem.displayName = "SelectItem"
 const SelectItemPeriod = React.forwardRef<
     React.ElementRef<typeof SelectPrimitives.Item>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitives.Item> & {
-        period?: string,
+        period?: DateRange | undefined,
     }
 >(({ className, children, period, ...props }, forwardedRef) => {
     return (
@@ -271,7 +272,11 @@ const SelectItemPeriod = React.forwardRef<
                         <span>{children}</span>
                     </SelectPrimitives.ItemText>
                 </span>
-                <span className="text-gray-400 font-normal whitespace-nowrap">{period}</span>
+                {period?.from && period?.to && (
+                    <span className="text-gray-400 font-normal whitespace-nowrap">
+                        {period.from.toLocaleDateString()} - {period.to.toLocaleDateString()}
+                    </span>
+                )}
             </div>
         </SelectPrimitives.Item>
     )
