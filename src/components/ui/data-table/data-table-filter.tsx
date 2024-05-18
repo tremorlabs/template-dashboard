@@ -263,7 +263,10 @@ export function DataTableFilter<TData, TValue>({
                     <Button
                         variant="secondary"
                         className="w-full py-1"
-                        onClick={() => column?.setFilterValue(undefined)}
+                        onClick={() => {
+                            column?.setFilterValue("")
+                            setSelectedValues("")
+                        }}
                     >
                         Reset
                     </Button>
