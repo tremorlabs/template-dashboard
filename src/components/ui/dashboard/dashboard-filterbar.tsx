@@ -13,6 +13,8 @@ import { DateRange } from 'react-day-picker';
 import React from 'react';
 import { PeriodValue } from '@/app/workspace/overview/page';
 import { eachDayOfInterval, interval, subDays, subYears } from 'date-fns';
+import { OverviewData } from '@/data/schema';
+import { overviews } from '@/data/data';
 
 
 type Period = {
@@ -45,7 +47,7 @@ export const getPeriod = (dateRange: DateRange | undefined, value: PeriodValue):
         case 'previous-period':
             let previousPeriodFrom;
             let previousPeriodTo;
-            if(from && to) {
+            if (from && to) {
                 const datesInterval = interval(from, to)
                 const numberOfDaysBetween = eachDayOfInterval(datesInterval).length
                 previousPeriodTo = subDays(from, 1)
@@ -55,10 +57,10 @@ export const getPeriod = (dateRange: DateRange | undefined, value: PeriodValue):
         case 'last-year':
             let lastYearFrom;
             let lastYearTo;
-            if(from) {
+            if (from) {
                 lastYearFrom = subYears(from, 1)
             }
-            if(to) {
+            if (to) {
                 lastYearTo = subYears(to, 1)
             }
             return { from: lastYearFrom, to: lastYearTo }
@@ -68,6 +70,9 @@ export const getPeriod = (dateRange: DateRange | undefined, value: PeriodValue):
 
 }
 
+const getMaxDate = (data: OverviewData[]): Date => {
+    return new Date(Math.max(...data.map(item => new Date(item.date).getTime())));
+};
 
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
@@ -90,7 +95,7 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
                     toDate={maxDate}
                 />
                 <span className="text-sm text-gray-500 font-medium">compared to</span>
-                <Select 
+                <Select
                     defaultValue="no-comparison"
                     value={selectedPeriod}
                     onValueChange={(value) => {
