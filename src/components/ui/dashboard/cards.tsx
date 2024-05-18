@@ -32,7 +32,7 @@ const getBadgeType = (value: number) => {
     if (value > 0) {
         return "success";
     } else if (value < 0) {
-        if(value < -50) {
+        if (value < -50) {
             return "warning";
         }
         return "error";
@@ -88,7 +88,7 @@ export function Card({
     const previousValue = chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0;
     const evolution = selectedPeriod !== "no-comparison" ? (value - previousValue) / previousValue : 0;
     return (
-        <div>
+        <div className="rounded-lg border border-gray-200 p-6 bg-white shadow-sm">
             <div className="flex items-center gap-x-2">
                 <dt className="text-sm text-gray-900 font-bold">{title}</dt>
                 {selectedPeriod !== "no-comparison" && (
@@ -102,7 +102,7 @@ export function Card({
                 )}
             </div>
             <LineChart
-                className="mt-8 h-40"
+                className="mt-8 h-32"
                 data={chartData || []}
                 index="formattedDate"
                 colors={["indigo", "gray"]}

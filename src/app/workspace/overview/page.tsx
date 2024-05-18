@@ -24,6 +24,18 @@ const categories = [
         title: "Users",
         type: "unit",
     },
+    {
+        title: "Users",
+        type: "unit",
+    },
+    {
+        title: "Profit",
+        type: "currency",
+    },
+    {
+        title: "Sales",
+        type: "currency",
+    },
 ] as const
 
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
@@ -40,31 +52,22 @@ export default function Example() {
             <div className="border-b pb-4">
                 <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
                 <div className="flex items-center justify-between mt-4">
-                    <Filterbar 
+                    <Filterbar
                         maxDate={maxDate}
-                        selectedDates={selectedDates} 
+                        selectedDates={selectedDates}
                         onDatesChange={(dates) => setSelectedDates(dates)}
                         selectedPeriod={selectedPeriod}
                         onPeriodChange={(period) => setSelectedPeriod(period)}
                     />
-                    {/* <div className="flex items-center gap-x-2">
-                        <Button variant="secondary">
-                            Edit
-                        </Button>
-                        <Button className="gap-x-1">
-                            Add
-                            <RiAddLine className="-mr-1 size-5 shrink-0" aria-hidden={true} />
-                        </Button>
-                    </div> */}
                 </div>
             </div>
-            <dl className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <dl className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                 {categories.map((item) => (
-                    <Card 
-                        key={item.title} 
-                        title={item.title} 
+                    <Card
+                        key={item.title}
+                        title={item.title}
                         // value={item.value} 
-                        type={item.type} 
+                        type={item.type}
                         selectedDates={selectedDates}
                         selectedPeriod={selectedPeriod}
                     />

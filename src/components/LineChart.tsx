@@ -404,7 +404,7 @@ const ChartTooltip = ({
             <div
                 className={cx(
                     // base
-                    "rounded-md border text-sm shadow-md",
+                    "rounded-md border text-xs shadow-md",
                     // border color
                     "border-gray-200 dark:border-gray-800",
                     // background color
@@ -414,7 +414,7 @@ const ChartTooltip = ({
                 <div
                     className={cx(
                         // base
-                        "border-b border-inherit px-4 py-2",
+                        "border-b border-inherit px-2 py-1",
                     )}
                 >
                     <p
@@ -429,7 +429,7 @@ const ChartTooltip = ({
                     </p>
                 </div>
 
-                <div className={cx("space-y-1 px-4 py-2")}>
+                <div className={cx("space-y-1 px-2 py-1")}>
                     {filteredPayload.map(
                         (
                             { value, name }: { value: number; name: string },
