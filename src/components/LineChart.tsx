@@ -406,7 +406,7 @@ const OverviewChartTooltip = ({
 
         const title = payload[0].payload.title;
         const evolution = payload[0].payload.evolution;
-        if (!(title && evolution)) return null;
+        if (!title) return null;
 
         return (
             <div
@@ -436,7 +436,9 @@ const OverviewChartTooltip = ({
                     >
                         {title}
                     </p>
-                    <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
+                    {evolution !== undefined && (
+                        <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
+                    )}
                 </div>
                 <div className={cx("space-y-1 px-4 py-2")}>
                     {filteredPayload.map(

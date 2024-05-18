@@ -83,7 +83,7 @@ export function Card({
             previousDate: prevOverview?.date,
             previousFormattedDate: prevOverview ? formatDate(prevOverview.date, "dd/MM/yyyy") : null,
             previousValue: selectedPeriod !== "no-comparison" ? previousValue : null,
-            evolution: selectedPeriod !== "no-comparison" && value && previousValue ? (value - previousValue) / previousValue : 0,
+            evolution: selectedPeriod !== "no-comparison" && value && previousValue ? (value - previousValue) / previousValue : undefined,
         };
     }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
