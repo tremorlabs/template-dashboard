@@ -16,6 +16,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/Dropdown"
+import { ModalAddUser } from "@/components/ui/settings/modal-add-user";
 
 
 const data = [
@@ -96,11 +97,13 @@ export default function Users() {
                     <h3 className="font-semibold text-gray-900">Users</h3>
                     <p className="text-sm leading-6 text-gray-500">Workspace administrators can add, manage, and remove members.</p>
                 </div>
-                <Button className="mt-4 w-full sm:w-fit sm:mt-0 gap-2">
-                    <RiAddLine className="-ml-1 size-4 shrink-0" aria-hidden="true" />
-                    Add user
-                    {/* @CHRIS: aria-hidden="true" consistency */}
-                </Button>
+                <ModalAddUser>
+                    <Button className="mt-4 w-full sm:w-fit sm:mt-0 gap-2">
+                        <RiAddLine className="-ml-1 size-4 shrink-0" aria-hidden="true" />
+                        Add user
+                        {/* @CHRIS: aria-hidden="true" consistency */}
+                    </Button>
+                </ModalAddUser>
             </div>
             <ul role="list" className="mt-6 divide-y divide-gray-200">
                 {data.map((member) => (

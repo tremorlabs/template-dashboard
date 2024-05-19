@@ -76,7 +76,7 @@ const getMaxDate = (data: OverviewData[]): Date => {
 
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
-type FilterbarProps = {
+export type FilterbarProps = {
     maxDate?: Date;
     selectedDates: DateRange | undefined;
     onDatesChange: (dates: DateRange | undefined) => void;
