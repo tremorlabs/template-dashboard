@@ -7,6 +7,9 @@ export const siteConfig = {
     overview: "/workspace/overview",
     details: "/workspace/details",
     settings: "/workspace/settings",
+    general: "/workspace/settings/general",
+    billing: "/workspace/settings/billing",
+    users: "/workspace/settings/users",
   },
 };
 

@@ -16,9 +16,9 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../Dropdown";
 
 const navigation = [
-    { name: 'Overview', href: siteConfig.baseLinks.overview, icon: RiHome2Line, current: true },
-    { name: 'Details', href: siteConfig.baseLinks.details, icon: RiGroupLine, current: false },
-    { name: 'Settings', href: siteConfig.baseLinks.settings, icon: RiStackLine, current: false },
+    { name: 'Overview', href: siteConfig.baseLinks.overview, icon: RiHome2Line },
+    { name: 'Details', href: siteConfig.baseLinks.details, icon: RiGroupLine },
+    { name: 'Settings', href: siteConfig.baseLinks.settings, icon: RiStackLine },
 ]
 
 const data = [
@@ -52,15 +52,6 @@ const data = [
     },
 ];
 
-// const teams = [
-//     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-//     { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-//     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-// ]
-// const userNavigation = [
-//     { name: 'Your profile', href: '#' },
-//     { name: 'Sign out', href: '#' },
-// ]
 
 
 export function Sidebar() {

@@ -26,7 +26,9 @@ import {
 } from "@tanstack/react-table"
 
 interface DataTableProps<TData, TValue> {
-    columns: ColumnDef<TData, TValue>[]
+    // @CHRIS/MAXIME: take care of type mgmt later
+    columns: ColumnDef<TData, any>[]
+    // columns: ColumnDef<TData, TValue>[]
     data: TData[],
 }
 
