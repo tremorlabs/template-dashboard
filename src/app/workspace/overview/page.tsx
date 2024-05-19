@@ -44,7 +44,7 @@ const maxDate = toDate(Math.max(...overviewsDates))
 export default function Example() {
     const [isEditable, setIsEditable] = React.useState(false)
     const [parentRef, KPICardsOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(categories.map((item) => item.title), {
-        dragHandle: ".drag-icon",
+        // dragHandle: ".drag-icon",
         disabled: !isEditable,
         plugins: [animations()],
     })
