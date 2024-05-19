@@ -11,6 +11,11 @@ const data = [
 ];
 
 
+// ----- TODOs -------:
+
+// - Componentize
+
+
 export default function Billing() {
     return (
         <>
@@ -29,7 +34,7 @@ export default function Billing() {
                 <h4 className="text-base font-semibold text-gray-900">
                     This workspace is currently on free plan
                 </h4>
-                <p className="mt-2 text-sm text-gray-500 max-w-2xl leading-6">
+                <p className="mt-1 text-sm text-gray-500 max-w-2xl leading-6">
                     Boost your analytics and unlock advanced features with our premium
                     plans.
                 </p>

@@ -6,13 +6,10 @@ import { Card } from "@/components/Card";
 import { Input } from "@/components/Input"
 import { Label } from "@/components/Label"
 import { Divider } from "@/components/Divider";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/Select"
+
+// ----- TODOs -------:
+
+// - Componentize
 
 export default function General() {
     return (
@@ -102,6 +99,7 @@ export default function General() {
                                     >
                                         Role
                                     </Label>
+                                    {/* @CHRIS: replace with Select */}
                                     <Input
                                         type="text"
                                         id="role"
