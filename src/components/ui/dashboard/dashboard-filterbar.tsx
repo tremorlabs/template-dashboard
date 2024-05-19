@@ -82,9 +82,10 @@ type FilterbarProps = {
     onDatesChange: (dates: DateRange | undefined) => void;
     selectedPeriod: PeriodValue;
     onPeriodChange: (period: PeriodValue) => void;
+    isEditable?: boolean;
 }
 
-export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange }: FilterbarProps) {
+export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange, isEditable }: FilterbarProps) {
     return (
         <>
             <div className="flex items-center gap-x-2">
@@ -93,6 +94,7 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
                     onChange={onDatesChange}
                     className="w-fit"
                     toDate={maxDate}
+                    disabled={isEditable}
                 />
                 <span className="text-sm text-gray-500 font-medium">compared to</span>
                 <Select
@@ -101,6 +103,7 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
                     onValueChange={(value) => {
                         onPeriodChange(value as PeriodValue)
                     }}
+                    disabled={isEditable}
                 >
                     <SelectTrigger className="w-fit py-1 px-2">
                         <SelectValue />

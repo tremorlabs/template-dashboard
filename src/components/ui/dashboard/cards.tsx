@@ -122,6 +122,7 @@ export function Card({
                 showYAxis={false}
                 showLegend={false}
                 categories={categories}
+                showTooltip={!isEditable}
             />
 
         </div>

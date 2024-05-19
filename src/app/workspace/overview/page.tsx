@@ -9,6 +9,7 @@ import { subDays, toDate } from "date-fns";
 import { overviews } from "@/data/data";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { animations } from "@formkit/drag-and-drop";
+import { cx } from "@/lib/utils";
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
 const categories = [
@@ -45,7 +46,7 @@ export default function Example() {
     const [parentRef, KPICardsOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(categories.map((item) => item.title), {
         dragHandle: ".drag-icon",
         disabled: !isEditable,
-        plugins: [animations()]
+        plugins: [animations()],
     })
     const [selectedDates, setSelectedDates] = React.useState<DateRange | undefined>({
         from: subDays(maxDate, 10),
@@ -68,6 +69,7 @@ export default function Example() {
                         onDatesChange={(dates) => setSelectedDates(dates)}
                         selectedPeriod={selectedPeriod}
                         onPeriodChange={(period) => setSelectedPeriod(period)}
+                        isEditable={isEditable}
                     />
                     <Button
                         onClick={() => {
@@ -78,7 +80,13 @@ export default function Example() {
                     </Button>
                 </div>
             </div>
-            <dl ref={parentRef} className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <dl 
+                ref={parentRef} 
+                className={cx(
+                    "mt-4 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 rounded-lg p-1 border border-dashed border-transparent",
+                    isEditable ? "border-gray-200 bg-gray-50" : ""
+                )}        
+            >
                 {KPICardsOrder.map((item) => {
                     const category = categories.find((category) => category.title === item)
                     if (!category) return null
