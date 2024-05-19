@@ -9,6 +9,7 @@ import { Divider } from "@/components/Divider";
 
 // ----- TODOs -------:
 
+// - appearance preference settigns
 // - Componentize
 
 export default function General() {
