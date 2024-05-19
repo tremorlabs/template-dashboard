@@ -30,6 +30,7 @@ export const columns = [
             />
         ),
         enableSorting: false,
+        enableHiding: false,
         meta: {
             align: 'text-left',
         },
@@ -99,6 +100,7 @@ export const columns = [
         id: 'edit',
         header: "Edit",
         enableSorting: false,
+        enableHiding: false,
         meta: {
             align: 'text-right',
         },

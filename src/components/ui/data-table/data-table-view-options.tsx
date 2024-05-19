@@ -69,10 +69,10 @@ export function DataTableViewOptions<TData>({
     table,
 }: DataTableViewOptionsProps<TData>) {
     const [isEditable, setIsEditable] = React.useState(false)
-    const [parentRef, columnOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(table.getAllColumns().filter((column) => typeof column.accessorFn !== "undefined" && column.getCanHide()).map((column) => column.id), {
+    const [parentRef, columnOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(table.getAllColumns().map((column) => column.id), {
         dragHandle: ".drag-icon",
         plugins: [animations()],
-        disabled: !isEditable
+        disabled: !isEditable,
     })
 
     React.useEffect(() => {
@@ -99,11 +99,18 @@ export function DataTableViewOptions<TData>({
             <PopoverContent className="p-3">
                 <h3 className="text-xs font-medium text-gray-400 mb-2">Display properties</h3>
                 <ul ref={parentRef} className="space-y-2">
-                    {columnOrder.map((columnId) => {
+                    {columnOrder
+                    .map((columnId) => {
                         const column = table.getColumn(columnId)
                         if (!column) return null
                         return (
-                            <li key={column.id} className="flex items-center justify-between gap-x-2">
+                            <li 
+                                key={column.id} 
+                                className={cx(
+                                    "flex items-center justify-between gap-x-2", 
+                                    !column.getCanHide() && "hidden"
+                                )}
+                            >
                                 <label className="flex items-center gap-x-2">
                                     <Checkbox
                                         checked={column.getIsVisible()}
