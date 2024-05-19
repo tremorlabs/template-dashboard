@@ -103,6 +103,8 @@ export function DataTableViewOptions<TData>({
                     .map((columnId) => {
                         const column = table.getColumn(columnId)
                         if (!column) return null
+                        const header = column.columnDef.header as string
+                        
                         return (
                             <li 
                                 key={column.id} 
@@ -116,7 +118,7 @@ export function DataTableViewOptions<TData>({
                                         checked={column.getIsVisible()}
                                         onCheckedChange={() => column.toggleVisibility()}
                                     />
-                                    <span className="capitalize">{column.id}</span>
+                                    <span>{header}</span>
                                 </label>
                                 <RiDraggable className="drag-icon text-gray-400 cursor-move size-5" />
                             </li>
