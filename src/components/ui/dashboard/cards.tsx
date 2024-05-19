@@ -8,7 +8,6 @@ import { overviews } from "@/data/data";
 import { getPeriod } from "./dashboard-filterbar";
 import { eachDayOfInterval, formatDate, interval, isEqual, isWithinInterval, toDate } from "date-fns";
 import { OverviewData } from "@/data/schema";
-import { RiDraggable } from "@remixicon/react";
 
 //   @CHRIS: import mono font for number
 //   import { lusitana } from '@/app/ui/fonts';
@@ -21,7 +20,6 @@ export type CardProps = {
     type: 'currency' | 'unit';
     selectedDates: DateRange | undefined;
     selectedPeriod: PeriodValue;
-    isEditable?: boolean;
 };
 
 const formattingMap = {
@@ -47,13 +45,12 @@ export function Card({
     type,
     selectedDates,
     selectedPeriod,
-    isEditable,
 }: CardProps) {
     const formatter = formattingMap[type];
     const selectedDatesInterval = selectedDates?.from && selectedDates?.to ? interval(selectedDates.from, selectedDates.to) : null;
     const allDatesInInterval = selectedDates?.from && selectedDates?.to ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to)) : null;
     const prevDates = getPeriod(selectedDates, selectedPeriod);
-
+    
     const prevDatesInterval = prevDates?.from && prevDates?.to ? interval(prevDates.from, prevDates.to) : null;
 
     const data = overviews.filter((overview) => {
@@ -70,7 +67,7 @@ export function Card({
         return false;
     }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-
+    
 
     const chartData = allDatesInInterval?.map((date, index) => {
         const overview = data[index];
@@ -97,14 +94,11 @@ export function Card({
 
     return (
         <div className="rounded-lg border border-gray-200 p-6 bg-white shadow-sm">
-            <div className="flex items-center justify-between gap-x-2">
-                <div className="flex items-center gap-x-2">
-                    <dt className="text-sm text-gray-900 font-bold">{title}</dt>
-                    {selectedPeriod !== "no-comparison" && (
-                        <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
-                    )}
-                </div>
-                {isEditable && <RiDraggable className="drag-icon text-gray-400 cursor-move size-5" />}
+            <div className="flex items-center gap-x-2">
+                <dt className="text-sm text-gray-900 font-bold">{title}</dt>
+                {selectedPeriod !== "no-comparison" && (
+                    <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
+                )}
             </div>
             <div className="mt-2 flex items-baseline justify-between">
                 <dd className="text-xl text-gray-900">{formatter(value)}</dd>

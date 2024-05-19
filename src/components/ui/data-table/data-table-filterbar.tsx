@@ -1,6 +1,6 @@
 "use client"
 
-import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiDraggable, RiSettings2Line } from "@remixicon/react"
+import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiSettings2Line } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "@/components/Button"
@@ -11,7 +11,6 @@ import { DataTableFilter } from "./data-table-filter"
 
 import { regions, status, conditions } from "@/data/data"
 import { formatters } from "@/lib/utils"
-import React from "react"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -21,7 +20,6 @@ export function Filterbar<TData>({
     table,
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
-
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center gap-x-2">
@@ -68,7 +66,6 @@ export function Filterbar<TData>({
                     Export
                 </Button>
                 <DataTableViewOptions table={table} />
-
             </div>
         </div>
     )
