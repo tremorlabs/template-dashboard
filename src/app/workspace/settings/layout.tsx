@@ -10,7 +10,7 @@ import {
 
 const navigationSettings = [
     { name: 'General', href: siteConfig.baseLinks.general },
-    { name: 'Billing', href: siteConfig.baseLinks.billing },
+    { name: 'Billing & Usage', href: siteConfig.baseLinks.billing },
     { name: 'Users', href: siteConfig.baseLinks.users },
 ]
 

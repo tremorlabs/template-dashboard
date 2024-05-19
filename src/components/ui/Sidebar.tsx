@@ -158,7 +158,7 @@ export function Sidebar() {
                                         className="size-5 shrink-0 text-gray-700"
                                         aria-hidden="true"
                                     />
-                                    Emma Pfeiffer
+                                    Emma Stone
                                 </a>
                             </li>
                         </ul>
