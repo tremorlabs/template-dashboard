@@ -131,22 +131,25 @@ export default function Users() {
                                     content="A workspace must have at least one admin"
                                     className="text-xs max-w-44"
                                     sideOffset={5}
+                                    triggerAsChild={true}
                                 >
-                                    <Select
-                                        defaultValue={member.role}
-                                        disabled={member.role === "admin"}
-                                    >
-                                        <SelectTrigger className="h-8 w-32">
-                                            <SelectValue placeholder="Select" />
-                                        </SelectTrigger>
-                                        <SelectContent align="end">
-                                            {roles.map((role) => (
-                                                <SelectItem key={role.value} value={role.value} disabled={role.value === "admin"}>
-                                                    {role.label}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
+                                    <div>
+                                        <Select
+                                            defaultValue={member.role}
+                                            disabled={member.role === "admin"}
+                                        >
+                                            <SelectTrigger className="h-8 w-32">
+                                                <SelectValue placeholder="Select" />
+                                            </SelectTrigger>
+                                            <SelectContent align="end">
+                                                {roles.map((role) => (
+                                                    <SelectItem key={role.value} value={role.value} disabled={role.value === "admin"}>
+                                                        {role.label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
                                 </Tooltip>
                             ) : (
                                 <Select
