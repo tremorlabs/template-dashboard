@@ -19,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <Sidebar />
-        <section className="lg:pl-64">
-          {children}
-        </section>
+        <section className="lg:pl-64">{children}</section>
       </body>
     </html>
   );

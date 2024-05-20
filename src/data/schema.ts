@@ -9,8 +9,8 @@ export interface Transaction {
 }
 
 export type OverviewData = {
-    date: string;
-    Sales: number;
-    Profit: number;
-    Users: number;
-}
+  date: string;
+  Sales: number;
+  Profit: number;
+  Users: number;
+};
