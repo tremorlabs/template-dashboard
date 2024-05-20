@@ -1,4 +1,4 @@
-import { RiExternalLinkLine } from "@remixicon/react";
+import { RiArrowRightUpLine } from "@remixicon/react";
 import { Card } from "@/components/Card";
 import { ProgressBar } from "@/components/ProgressBar";
 import { Button } from "@/components/Button";
@@ -40,8 +40,9 @@ export default function Billing() {
                 </p>
                 <div className="mt-6 flex items-center space-x-2">
                     <Button asChild>
-                        <a href="#">
+                        <a href="#" className="flex items-center gap-x-1">
                             Compare plans
+                            <RiArrowRightUpLine className="size-4 shrink-0" aria-hidden="true" />
                         </a>
                     </Button>
                     <Button variant="secondary">
