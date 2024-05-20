@@ -93,6 +93,7 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
                     onChange={onDatesChange}
                     className="w-fit"
                     toDate={maxDate}
+                    align="start"
                 />
                 <span className="text-sm text-gray-500 font-medium">compared to</span>
                 <Select
