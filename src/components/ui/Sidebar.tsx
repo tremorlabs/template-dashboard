@@ -131,7 +131,7 @@ export function Sidebar() {
                                             <Link
                                                 href={item.href}
                                                 className={cx(
-                                                    pathname === item.href
+                                                    pathname === item.href || pathname.includes(item.href)
                                                         ? 'text-indigo-700 bg-indigo-50'
                                                         : 'text-gray-900 hover:bg-indigo-50',
                                                     'group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6'
