@@ -6,7 +6,7 @@ import { siteConfig } from "@/app/siteConfig"
 import {
     TabNavigation,
     TabNavigationLink,
-} from "@/components/ui/TabNavigation"
+} from "@/components/TabNavigation"
 
 const navigationSettings = [
     { name: 'General', href: siteConfig.baseLinks.general },

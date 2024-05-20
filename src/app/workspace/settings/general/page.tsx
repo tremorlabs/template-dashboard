@@ -7,9 +7,9 @@ import { Input } from "@/components/Input"
 import { Label } from "@/components/Label"
 import { Divider } from "@/components/Divider";
 
-// ----- TODOs -------:
+// ----- TODOs (CHRIS) -------:
 
-// - appearance preference settigns
+// save settings Button UI?
 // - Componentize
 
 export default function General() {

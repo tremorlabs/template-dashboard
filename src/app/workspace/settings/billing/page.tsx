@@ -11,7 +11,7 @@ const data = [
 ];
 
 
-// ----- TODOs -------:
+// ----- TODOs (CHRIS) -------:
 
 // - Componentize
 

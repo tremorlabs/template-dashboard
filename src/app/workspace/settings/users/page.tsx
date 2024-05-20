@@ -83,10 +83,9 @@ const roles = [
     },
 ]
 
-// ----- TODOs -------:
+// ----- TODOs (CHRIS) -------:
 
-// - Add user modal
-// - Pending invitations
+// - Pending invitations? -> UI
 // - Componentize
 
 export default function Users() {
