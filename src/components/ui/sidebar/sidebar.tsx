@@ -12,6 +12,8 @@ import {
 } from "./sidebar-workspaces-dropdown";
 
 import { UserProfile } from "./sidebar-user-profile";
+import { ModalAddWorkspace } from "./modal-add-workspace";
+import { Button } from "@/components/Button";
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
@@ -57,6 +59,13 @@ export function Sidebar() {
                     </li>
                   ))}
                 </ul>
+              </li>
+
+              {/* --- TEMP --- */}
+              <li className="-mx-2 mt-auto">
+                <ModalAddWorkspace>
+                  <Button>Add workspace</Button>
+                </ModalAddWorkspace>
               </li>
 
               <li className="-mx-2 mt-auto">
