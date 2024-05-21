@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes"
 import "./globals.css";
 import { Sidebar } from "@/components/ui/sidebar/sidebar";
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Sidebar />
-        <section className="lg:pl-64">{children}</section>
+        <ThemeProvider defaultTheme="system" attribute="class">
+          <Sidebar />
+          <section className="lg:pl-64">{children}</section>
+        </ThemeProvider>
       </body>
     </html>
   );

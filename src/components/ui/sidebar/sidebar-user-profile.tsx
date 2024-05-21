@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { RiArrowRightUpLine, RiMore2Fill } from "@remixicon/react";
+import { RiArrowRightUpLine, RiMore2Fill, RiMoonLine, RiSunLine, RiComputerLine } from "@remixicon/react";
 import { useTheme } from "next-themes"
 import { cx } from "@/lib/utils";
 import {
@@ -73,24 +73,27 @@ export function UserProfile() {
                   }}>
                   {/* @SEV: technically it should be a radio button group, but check-icon suits better here */}
                   <DropdownMenuRadioItem
-                    aria-label="Switch to light mode"
+                    aria-label="Switch to Light Mode"
                     value="light"
                     iconType="check"
                   >
+                    <RiSunLine className="size-4 shrink-0" aria-hidden="true" />
                     Light
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
-                    aria-label="Switch to dark mode"
+                    aria-label="Switch to Dark Mode"
                     value="dark"
                     iconType="check"
                   >
+                    <RiMoonLine className="size-4 shrink-0" aria-hidden="true" />
                     Dark
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
-                    aria-label="Switch to dark mode"
+                    aria-label="Switch to System Mode"
                     value="system"
                     iconType="check"
                   >
+                    <RiComputerLine className="size-4 shrink-0" aria-hidden="true" />
                     System
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
