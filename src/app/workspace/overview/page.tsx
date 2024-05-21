@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/Button";
 import { RiAddLine } from "@remixicon/react";
-import { Card } from "@/components/ui/dashboard/cards";
+import { MetricsCard } from "@/components/ui/dashboard/cards";
 import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar";
 import React from "react";
 import { DateRange } from "react-day-picker";
@@ -51,8 +51,8 @@ export default function Example() {
 
   return (
     <>
-      <div className="border-b pb-4">
-        <h1 className="text-lg font-semibold text-gray-900">Overview</h1>
+      <div className="border-b border-gray-200 dark:border-gray-800 pb-4">
+        <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Overview</h1>
         <div className="flex items-center justify-between mt-4">
           <Filterbar
             maxDate={maxDate}
@@ -65,10 +65,9 @@ export default function Example() {
       </div>
       <dl className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {categories.map((item) => (
-          <Card
+          <MetricsCard
             key={item.title}
             title={item.title}
-            // value={item.value}
             type={item.type}
             selectedDates={selectedDates}
             selectedPeriod={selectedPeriod}

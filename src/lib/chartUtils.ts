@@ -28,10 +28,10 @@ export const chartColors = {
     text: "text-amber-500",
   },
   gray: {
-    bg: "bg-gray-300",
-    stroke: "stroke-gray-300",
-    fill: "fill-gray-300",
-    text: "text-gray-300",
+    bg: "bg-gray-300 dark:bg-gray-700",
+    stroke: "stroke-gray-300 dark:stroke-gray-700",
+    fill: "fill-gray-300 dark:fill-gray-700",
+    text: "text-gray-300 dark:text-gray-700",
   },
   cyan: {
     bg: "bg-cyan-500",
@@ -60,12 +60,12 @@ export const chartColors = {
 export type AvailableChartColorsKeys = keyof typeof chartColors;
 
 export const AvailableChartColors: AvailableChartColorsKeys[] = Object.keys(
-  chartColors,
+  chartColors
 ) as Array<AvailableChartColorsKeys>;
 
 export const constructCategoryColors = (
   categories: string[],
-  colors: AvailableChartColorsKeys[],
+  colors: AvailableChartColorsKeys[]
 ): Map<string, AvailableChartColorsKeys> => {
   const categoryColors = new Map<string, AvailableChartColorsKeys>();
   categories.forEach((category, index) => {
@@ -76,7 +76,7 @@ export const constructCategoryColors = (
 
 export const getColorClassName = (
   color: AvailableChartColorsKeys,
-  type: ColorUtility,
+  type: ColorUtility
 ): string => {
   const fallbackColor = {
     bg: "bg-gray-500",
@@ -92,7 +92,7 @@ export const getColorClassName = (
 export const getYAxisDomain = (
   autoMinValue: boolean,
   minValue: number | undefined,
-  maxValue: number | undefined,
+  maxValue: number | undefined
 ) => {
   const minDomain = autoMinValue ? "auto" : minValue ?? 0;
   const maxDomain = maxValue ?? "auto";
@@ -103,7 +103,7 @@ export const getYAxisDomain = (
 
 export function hasOnlyOneValueForKey(
   array: any[],
-  keyToCheck: string,
+  keyToCheck: string
 ): boolean {
   let value: any = undefined;
   for (const obj of array) {

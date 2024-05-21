@@ -106,10 +106,10 @@ export const WorkspacesDropdownMobile = () => {
       {/* sidebar (xs-lg) */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 focus:outline-none">
+          <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white",
+                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
               )}
               aria-hidden="true"
             >
@@ -120,7 +120,7 @@ export const WorkspacesDropdownMobile = () => {
               aria-hidden={true}
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
-              <p className="truncate whitespace-nowrap font-medium text-gray-900">
+              <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
                 Retail analytics
               </p>
               <RiExpandUpDownLine
@@ -149,10 +149,10 @@ export const WorkspacesDropdownMobile = () => {
                     {workspace.initials}
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       {workspace.name}
                     </p>
-                    <p className="text-xs text-gray-700">{workspace.role}</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-300">{workspace.role}</p>
                   </div>
                 </div>
               </DropdownMenuItem>
@@ -161,6 +161,7 @@ export const WorkspacesDropdownMobile = () => {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <ModalAddWorkspace>
+              {/* @CHRIS: add modal */}
               Add workspace
             </ModalAddWorkspace>
           </DropdownMenuItem>

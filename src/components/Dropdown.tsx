@@ -51,7 +51,7 @@ const DropdownMenuSubMenuTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <RiArrowRightSLine className="ml-auto size-4 shrink-0" aria-hidden="true" />
+    <RiArrowRightSLine className="ml-auto size-4 shrink-0 text-gray-500" aria-hidden="true" />
   </DropdownMenuPrimitives.SubTrigger>
 ));
 DropdownMenuSubMenuTrigger.displayName = "DropdownMenuSubMenuTrigger";

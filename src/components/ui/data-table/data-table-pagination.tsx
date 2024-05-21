@@ -45,7 +45,6 @@ export function DataTablePagination<TData>({
     },
   ];
 
-  // @Maxime: problem where to put pageSize as variable -> does not seem to work if I change the number in the component in /data-table.tsx
   // Calculate the range for the last page
   const totalRows = table.getFilteredRowModel().rows.length;
   const lastPageStartIndex = Math.floor(totalRows / pageSize) * pageSize + 1;
@@ -65,18 +64,18 @@ export function DataTablePagination<TData>({
         <div className="flex items-center gap-x-6 lg:gap-x-8">
           <p className="text-sm tabular-nums text-gray-500">
             Showing{" "}
-            <span className="font-medium text-gray-900">
+            <span className="font-medium text-gray-900 dark:text-gray-50">
               {/* @Maxime/Sev: simplify? */}
               {table.getState().pagination.pageIndex ===
-              Math.floor(totalRows / pageSize)
+                Math.floor(totalRows / pageSize)
                 ? lastPageStartIndex + "-" + lastPageEndIndex
                 : table.getState().pagination.pageIndex * pageSize +
-                  1 +
-                  "-" +
-                  (table.getState().pagination.pageIndex + 1) * pageSize}
+                1 +
+                "-" +
+                (table.getState().pagination.pageIndex + 1) * pageSize}
             </span>{" "}
             of{" "}
-            <span className="font-medium text-gray-900">
+            <span className="font-medium text-gray-900 dark:text-gray-50">
               {table.getFilteredRowModel().rows.length}
             </span>
           </p>

@@ -1,6 +1,7 @@
 import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
+import { Card } from "@/components/Card";
 import { DateRange } from "react-day-picker";
 import { PeriodValue } from "@/app/workspace/overview/page";
 import React from "react";
@@ -15,6 +16,7 @@ import {
   toDate,
 } from "date-fns";
 import { OverviewData } from "@/data/schema";
+
 
 //   @CHRIS: import mono font for number
 //   import { lusitana } from '@/app/ui/fonts';
@@ -46,7 +48,7 @@ export const getBadgeType = (value: number) => {
   }
 };
 
-export function Card({
+export function MetricsCard({
   title,
   type,
   selectedDates,
@@ -124,9 +126,9 @@ export function Card({
       : 0;
 
   return (
-    <div className="rounded-lg border border-gray-200 p-6 bg-white shadow-sm">
+    <Card>
       <div className="flex items-center gap-x-2">
-        <dt className="text-sm text-gray-900 font-bold">{title}</dt>
+        <dt className="text-sm text-gray-900 dark:text-gray-50 font-bold">{title}</dt>
         {selectedPeriod !== "no-comparison" && (
           <Badge variant={getBadgeType(evolution)}>
             {percentageFormatter(evolution)}
@@ -134,7 +136,7 @@ export function Card({
         )}
       </div>
       <div className="mt-2 flex items-baseline justify-between">
-        <dd className="text-xl text-gray-900">{formatter(value)}</dd>
+        <dd className="text-xl text-gray-900 dark:text-gray-50">{formatter(value)}</dd>
         {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
             from {formatter(previousValue)}
@@ -152,12 +154,11 @@ export function Card({
         showLegend={false}
         categories={categories}
       />
-    </div>
+    </Card>
   );
 }
 
 //   @CHRIS: for second font
-//   <p
 //   className={`${lusitana.className}
 //     truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
 // >

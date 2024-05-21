@@ -19,7 +19,6 @@ import React from "react";
 import { Checkbox } from "@/components/Checkbox";
 import { SelectNative } from "@/components/SelectNative";
 import { Input } from "@/components/Input";
-import { formatters } from "@/lib/utils";
 
 export type ConditionFilter = {
   condition: string;
@@ -50,12 +49,7 @@ const ColumnFiltersLabel = ({
     return (
       <>
         {columnFilterLabels.map((value, index) => (
-          <span key={value} className={"text-indigo-600 font-semibold"}>
-            {/* {type === "number" ? (
-                            formatters.currency(value)
-                        ) : (
-                            { value }
-                        )} */}
+          <span key={value} className={"text-indigo-600 dark:text-indigo-500 font-semibold"}>
             {value}
             {index < columnFilterLabels.length - 1 && ", "}
           </span>
@@ -66,17 +60,8 @@ const ColumnFiltersLabel = ({
 
   return (
     <>
-      <span className="text-indigo-600 font-semibold">
-        {/* {type === "number" ? (
-                    formatters.currency(columnFilterLabels[0])
-                ) : (
-                    columnFilterLabels[0]
-                )} */}
-        {columnFilterLabels[0]}
-      </span>
-      <span className="text-indigo-600 font-semibold">
-        {" "}
-        and {columnFilterLabels.length - 1} more
+      <span className="text-indigo-600 dark:text-indigo-500 font-semibold">
+        {columnFilterLabels[0]} {" "}and {columnFilterLabels.length - 1} more
       </span>
     </>
   );
@@ -240,27 +225,27 @@ export function DataTableFilter<TData, TValue>({
               />
               {(selectedValues as ConditionFilter)?.condition ===
                 "is-between" && (
-                <>
-                  <span className="text-xs font-medium text-gray-500">and</span>
-                  <Input
-                    type="number"
-                    placeholder="$0"
-                    className="py-1"
-                    value={(selectedValues as ConditionFilter)?.value?.[1]}
-                    onChange={(e) => {
-                      setSelectedValues((prev) => {
-                        return {
-                          condition: (prev as ConditionFilter)?.condition,
-                          value: [
-                            (prev as ConditionFilter)?.value?.[0],
-                            e.target.value,
-                          ],
-                        };
-                      });
-                    }}
-                  />
-                </>
-              )}
+                  <>
+                    <span className="text-xs font-medium text-gray-500">and</span>
+                    <Input
+                      type="number"
+                      placeholder="$0"
+                      className="py-1"
+                      value={(selectedValues as ConditionFilter)?.value?.[1]}
+                      onChange={(e) => {
+                        setSelectedValues((prev) => {
+                          return {
+                            condition: (prev as ConditionFilter)?.condition,
+                            value: [
+                              (prev as ConditionFilter)?.value?.[0],
+                              e.target.value,
+                            ],
+                          };
+                        });
+                      }}
+                    />
+                  </>
+                )}
             </div>
           </div>
         );
@@ -274,9 +259,10 @@ export function DataTableFilter<TData, TValue>({
   return (
     <Popover>
       <PopoverTrigger asChild>
+        {/* clean up region array, e.g. US-West-1 */}
         <button
           type="button"
-          className="flex items-center gap-x-1.5 rounded-md px-2 py-1 hover:bg-gray-50 border border-gray-300 border-dashed text-sm text-gray-600 font-semibold"
+          className="flex items-center gap-x-1.5 rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-gray-900 border border-gray-300 dark:border-gray-700 border-dashed text-xs text-gray-600 dark:text-gray-400 font-semibold"
         >
           <RiAddCircleLine
             className="-ml-1 size-4 shrink-0"
@@ -284,7 +270,7 @@ export function DataTableFilter<TData, TValue>({
           />
           {title}
           {columnFilterLabels && columnFilterLabels.length > 0 && (
-            <span className="h-4 w-px bg-gray-300" aria-hidden={true} />
+            <span className="h-4 w-px bg-gray-300 dark:bg-gray-700" aria-hidden={true} />
           )}
           <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} />
           <RiArrowDownSLine

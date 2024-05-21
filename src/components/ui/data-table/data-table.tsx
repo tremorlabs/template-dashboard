@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
                 key={headerGroup.id}
-                className="border-y border-gray-200"
+                className="border-y border-gray-200 dark:border-gray-800"
               >
                 {headerGroup.headers.map((header) => (
                   <TableHeaderCell
@@ -90,27 +90,26 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHead>
-          {/* @CHRIS: add whitespace-nowrap to cells */}
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
                   onClick={() => row.toggleSelected(!row.getIsSelected())}
-                  className="group select-none hover:bg-gray-50"
+                  className="group select-none hover:bg-gray-50 hover:dark:bg-gray-400/10"
                 >
                   {row.getVisibleCells().map((cell, index) => (
                     <TableCell
                       key={cell.id}
                       className={cx(
-                        row.getIsSelected() ? "bg-gray-50" : "",
+                        row.getIsSelected() ? "bg-gray-50 dark:bg-gray-400/10" : "",
                         cell.column.columnDef.meta?.align,
                         // @SEV/CHRIS: first:-logic
                         "first:w-10 relative py-3 whitespace-nowrap",
                       )}
                     >
                       {index === 0 && row.getIsSelected() && (
-                        <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
+                        <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600 dark:bg-indigo-500" />
                       )}
                       {flexRender(
                         cell.column.columnDef.cell,
