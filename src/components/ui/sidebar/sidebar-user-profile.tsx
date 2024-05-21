@@ -1,7 +1,9 @@
 "use client";
 
+import * as React from "react";
 import { RiArrowRightUpLine, RiMore2Fill } from "@remixicon/react";
-import { cx, focusInput } from "@/lib/utils";
+import { useTheme } from "next-themes"
+import { cx } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,15 +12,27 @@ import {
   DropdownMenuSubMenuTrigger,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   DropdownMenuSubMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem
 } from "@/components/Dropdown";
 import { Button } from "@/components/Button";
 
 
 export function UserProfile() {
+  const [mounted, setMounted] = React.useState(false)
+  const { theme, setTheme } = useTheme()
+
+  // @CHRIS: harmonize React. usage
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
   return (
     <>
       <DropdownMenu>
@@ -52,29 +66,34 @@ export function UserProfile() {
             <DropdownMenuSubMenu>
               <DropdownMenuSubMenuTrigger>Theme</DropdownMenuSubMenuTrigger>
               <DropdownMenuSubMenuContent>
-                {/* @SEV: technically it should be a radio button group, but check-icon suits better here */}
-                <DropdownMenuCheckboxItem
-                  checked
-                // @SEV
-                // checked={ }
-                // onCheckedChange={ }
-                >
-                  Light
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem
-                // @SEV
-                // checked={ }
-                // onCheckedChange={ }
-                >
-                  Dark
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem
-                // @SEV
-                // checked={ }
-                // onCheckedChange={ }
-                >
-                  System
-                </DropdownMenuCheckboxItem>
+                <DropdownMenuRadioGroup
+                  value={theme}
+                  onValueChange={(value) => {
+                    setTheme(value)
+                  }}>
+                  {/* @SEV: technically it should be a radio button group, but check-icon suits better here */}
+                  <DropdownMenuRadioItem
+                    aria-label="Switch to light mode"
+                    value="light"
+                    iconType="check"
+                  >
+                    Light
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    aria-label="Switch to dark mode"
+                    value="dark"
+                    iconType="check"
+                  >
+                    Dark
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    aria-label="Switch to dark mode"
+                    value="system"
+                    iconType="check"
+                  >
+                    System
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
           </DropdownMenuGroup>

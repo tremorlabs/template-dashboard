@@ -247,8 +247,9 @@ const DropdownMenuRadioItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitives.RadioItem> & {
     shortcut?: string;
     hint?: string;
+    iconType?: "check" | "radio"
   }
->(({ className, hint, shortcut, children, ...props }, forwardedRef) => (
+>(({ className, hint, shortcut, children, iconType = "radio", ...props }, forwardedRef) => (
   <DropdownMenuPrimitives.RadioItem
     ref={forwardedRef}
     className={cx(
@@ -266,16 +267,25 @@ const DropdownMenuRadioItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className="absolute left-2 flex size-4 items-center justify-center">
-      <RiRadioButtonFill
-        aria-hidden="true"
-        className="size-full shrink-0 text-blue-500 group-data-[state=checked]/DropdownMenuRadioItem:flex group-data-[state=unchecked]/DropdownMenuRadioItem:hidden dark:text-blue-500"
-      />
-      <RiCheckboxBlankCircleLine
-        aria-hidden="true"
-        className="size-full shrink-0 text-gray-300 group-data-[state=unchecked]/DropdownMenuRadioItem:flex group-data-[state=checked]/DropdownMenuRadioItem:hidden dark:text-gray-700"
-      />
-    </span>
+    {iconType === "radio" ? (
+      <span className="absolute left-2 flex size-4 items-center justify-center">
+        <RiRadioButtonFill
+          aria-hidden="true"
+          className="size-full shrink-0 text-blue-500 group-data-[state=checked]/DropdownMenuRadioItem:flex group-data-[state=unchecked]/DropdownMenuRadioItem:hidden dark:text-blue-500"
+        />
+        <RiCheckboxBlankCircleLine
+          aria-hidden="true"
+          className="size-full shrink-0 text-gray-300 group-data-[state=unchecked]/DropdownMenuRadioItem:flex group-data-[state=checked]/DropdownMenuRadioItem:hidden dark:text-gray-700"
+        />
+      </span>
+    ) : iconType === "check" ? (
+      <span className="absolute left-2 flex size-4 items-center justify-center">
+        <RiCheckLine
+          aria-hidden="true"
+          className="size-full shrink-0 group-data-[state=checked]/DropdownMenuRadioItem:flex group-data-[state=unchecked]/DropdownMenuRadioItem:hidden text-gray-800 dark:text-gray-200"
+        />
+      </span>
+    ) : null}
     {children}
     {hint && (
       <span
