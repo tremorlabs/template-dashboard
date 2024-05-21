@@ -18,27 +18,7 @@ import {
 } from "@/components/Select";
 import { Label } from "@/components/Label";
 import { Input } from "@/components/Input";
-
-// @CHRIS: declare roles as central source (multiple times used)
-
-const roles = [
-  {
-    value: "admin",
-    label: "Admin",
-  },
-  {
-    value: "member",
-    label: "Member",
-  },
-  {
-    value: "viewer",
-    label: "Viewer",
-  },
-  {
-    value: "contributor",
-    label: "Contributor",
-  },
-];
+import { roles } from "@/data/data";
 
 export type ModalProps = {
   children: React.ReactNode;

@@ -6,6 +6,15 @@ import { Card } from "@/components/Card";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { Divider } from "@/components/Divider";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem
+} from "@/components/Select"
+
+import { roles } from "@/data/data";
 
 // ----- TODOs (CHRIS) -------:
 
@@ -100,15 +109,23 @@ export default function General() {
                   >
                     Role
                   </Label>
-                  {/* @CHRIS: replace with Select */}
-                  <Input
-                    type="text"
-                    id="role"
-                    name="role"
-                    placeholder="Viewer"
-                    disabled
-                    className="mt-2"
-                  />
+                  <Select defaultValue="member">
+                    <SelectTrigger
+                      name="role"
+                      id="role"
+                      className="mt-2"
+                      disabled
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {roles.map((role) => (
+                        <SelectItem key={role.value} value={role.value}>
+                          {role.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <p className="mt-2 text-xs text-gray-500">
                     Roles can only be changed by system admin.
                   </p>
@@ -260,177 +277,6 @@ export default function General() {
           </div>
         </form>
       </div>
-
-      {/* <form action="#" method="POST">
-                <div className="mt-6 space-y-8 sm:max-w-lg">
-                    <div>
-                        <Label className="text-sm font-semibold text-gray-900">
-                            Name
-                        </Label>
-                        <Input
-                            className="mt-2"
-                            disabled
-                            placeholder="sales-dashboard"
-                        />
-                        <p className="mt-2 text-xs text-gray-500">
-                            Contact your admin to change workspace names in production.
-                        </p>
-                    </div>
-                    <div>
-                        <Label
-                            htmlFor="select-input-1"
-                            className="text-sm font-semibold text-gray-900"
-                        >
-                            Default model
-                        </Label>
-                        <Select
-                        >
-                            <SelectTrigger
-                                name="select-input-1"
-                                id="select-input-1"
-                                className="mt-2"
-                            >
-                                <SelectValue placeholder="Select model" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="1">
-                                    GPT-3.5 (OpenAI)
-                                </SelectItem>
-                                <SelectItem value="2">
-                                    BERT (Google)
-                                </SelectItem>
-                                <SelectItem value="3">
-                                    LLaMA (Facebook)
-                                </SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
-                    <div>
-                        <Label
-                            htmlFor="select-input-2"
-                            className="text-sm font-semibold text-gray-900"
-                        >
-                            Training cycle
-                        </Label>
-                        <Select>
-                            <SelectTrigger
-                                name="select-input-2"
-                                id="select-input-2"
-                                className="mt-2"
-                            >
-                                <SelectValue placeholder="Select model" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="1">
-                                    Every 24 hours
-                                </SelectItem>
-                                <SelectItem value="2">
-                                    Once in a week
-                                </SelectItem>
-                                <SelectItem value="3">
-                                    Once in a month
-                                </SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
-                    <div>
-                        <h4 className="text-sm font-semibold text-gray-900">
-                            Workspace governance
-                        </h4>
-                        <div className="mt-6 space-y-6">
-                            <div className="relative flex items-start">
-                                <div className="flex h-6 items-center">
-                                    <Checkbox
-                                        id="checkbox-name-1"
-                                        aria-describedby="checkbox-name-1-description"
-                                        name="checkbox-name-1"
-                                    />
-                                </div>
-                                <div className="ml-3 text-sm leading-6">
-                                    <Label
-                                        htmlFor="checkbox-name-1"
-                                        className="font-medium"
-                                    >
-                                        Require team member approval for deploy requests
-                                    </Label>
-                                    <p
-                                        id="checkbox-name-1-description"
-                                        className="text-gray-500"
-                                    >
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="relative flex items-start">
-                                <div className="flex h-6 items-center">
-                                    <Checkbox
-                                        id="checkbox-name-2"
-                                        aria-describedby="checkbox-name-2-description"
-                                        name="checkbox-name-2"
-                                    />
-                                </div>
-                                <div className="ml-3 text-sm leading-6">
-                                    <Label
-                                        htmlFor="checkbox-name-2"
-                                        className="font-medium"
-                                    >
-                                        Enable audit logs
-                                    </Label>
-                                    <p
-                                        id="checkbox-name-2-description"
-                                        className="text-gray-500"
-                                    >
-                                        Lorem ipsum dolor sit amet.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="relative flex items-start">
-                                <div className="flex h-6 items-center">
-                                    <Checkbox
-                                        id="checkbox-name-3"
-                                        aria-describedby="checkbox-name-3-description"
-                                        name="checkbox-name-3"
-                                    />
-                                </div>
-                                <div className="ml-3 text-sm leading-6">
-                                    <Label
-                                        htmlFor="checkbox-name-3"
-                                        className="font-medium"
-                                    >
-                                        Enable email notifications for model deployment activities
-                                    </Label>
-                                    <p
-                                        id="checkbox-name-3-description"
-                                        className="text-gray-500"
-                                    >
-                                        Labore et dolore magna aliquyam erat. Lorem ipsum dolor
-                                        sit amet, consetetur sadipscing elitr.{' '}
-                                        <a
-                                            href="#"
-                                            className="inline-flex items-center gap-1 text-indigo-600 hover:underline hover:underline-offset-4"
-                                        >
-                                            Go to email settings
-                                            <RiExternalLinkLine
-                                                className="size-4"
-                                                aria-hidden={true}
-                                            />
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <Divider className="my-10" />
-                <div className="flex items-center justify-end space-x-4">
-                    <Button variant="secondary">
-                        Cancel
-                    </Button>
-                    <Button>
-                        Save settings
-                    </Button>
-                </div>
-            </form> */}
     </>
   );
 }

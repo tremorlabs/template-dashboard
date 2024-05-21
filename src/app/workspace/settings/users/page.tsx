@@ -17,7 +17,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
 import { ModalAddUser } from "@/components/ui/settings/modal-add-user";
+import { roles } from "@/data/data";
 
+
+// @CHRIS: move to data?
 const data = [
   {
     name: "Emma Stone",
@@ -63,24 +66,6 @@ const data = [
   },
 ];
 
-const roles = [
-  {
-    value: "admin",
-    label: "Admin",
-  },
-  {
-    value: "member",
-    label: "Member",
-  },
-  {
-    value: "viewer",
-    label: "Viewer",
-  },
-  {
-    value: "contributor",
-    label: "Contributor",
-  },
-];
 
 // ----- TODOs (CHRIS) -------:
 

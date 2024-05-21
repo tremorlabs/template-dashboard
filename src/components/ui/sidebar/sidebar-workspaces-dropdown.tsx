@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
+import { ModalAddWorkspace } from "./modal-add-workspace";
 
 const workspaces = [
   {
@@ -85,7 +86,11 @@ export const WorkspacesDropdownDesktop = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Add workspace</DropdownMenuItem>
+          <ModalAddWorkspace>
+            <DropdownMenuItem>
+              Add workspace
+            </DropdownMenuItem>
+          </ModalAddWorkspace>
         </DropdownMenuContent>
       </DropdownMenu>
     </>
@@ -151,7 +156,11 @@ export const WorkspacesDropdownMobile = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Add workspace</DropdownMenuItem>
+          <DropdownMenuItem>
+            <ModalAddWorkspace>
+              Add workspace
+            </ModalAddWorkspace>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </>

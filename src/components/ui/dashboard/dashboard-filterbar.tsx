@@ -95,6 +95,7 @@ export function Filterbar({
 }: FilterbarProps) {
   return (
     <>
+      {/* @CHRIS: harmonize input heights with the ones from /settings */}
       <div className="flex items-center gap-x-2">
         <DateRangePicker
           value={selectedDates}

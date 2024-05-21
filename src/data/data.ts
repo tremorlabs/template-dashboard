@@ -1,5 +1,24 @@
 import { OverviewData, Transaction } from "./schema";
 
+export const roles = [
+  {
+    value: "admin",
+    label: "Admin",
+  },
+  {
+    value: "member",
+    label: "Member",
+  },
+  {
+    value: "viewer",
+    label: "Viewer",
+  },
+  {
+    value: "contributor",
+    label: "Contributor",
+  },
+];
+
 export const status = [
   {
     value: "live",

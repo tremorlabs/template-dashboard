@@ -17,16 +17,6 @@ import {
 } from "@/components/Dropdown";
 import { Button } from "@/components/Button";
 
-const workspaces = [
-  {
-    value: "retail-analytics",
-    name: "Retail analytics",
-    initials: "RA",
-    role: "Member",
-    color: "bg-indigo-600",
-  },
-  // Add more workspaces...
-];
 
 export function UserProfile() {
   return (
@@ -65,9 +55,9 @@ export function UserProfile() {
                 {/* @SEV: technically it should be a radio button group, but check-icon suits better here */}
                 <DropdownMenuCheckboxItem
                   checked
-                  // @SEV
-                  // checked={ }
-                  // onCheckedChange={ }
+                // @SEV
+                // checked={ }
+                // onCheckedChange={ }
                 >
                   Light
                 </DropdownMenuCheckboxItem>
