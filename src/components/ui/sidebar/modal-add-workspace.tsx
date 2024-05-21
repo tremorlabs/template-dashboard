@@ -18,7 +18,33 @@ import {
 } from "@/components/Select";
 import { Label } from "@/components/Label";
 import { Input } from "@/components/Input";
-import { roles } from "@/data/data";
+import {
+    RadioCardGroup,
+    RadioCardItem,
+    RadioCardGroupIndicator
+} from "@/components/RadioCard";
+import { Badge } from "@/components/Badge";
+
+const databases = [
+    {
+        label: "Base performance",
+        value: "base-performance",
+        description: "1/8 vCPU, 1 GB RAM",
+        isRecommended: true,
+    },
+    {
+        label: "Advanced performance",
+        value: "advanced-performance",
+        description: "1/4 vCPU, 2 GB RAM",
+        isRecommended: false,
+    },
+    {
+        label: "Turbo performance",
+        value: "turbo-performance",
+        description: "1/2 vCPU, 4 GB RAM",
+        isRecommended: false,
+    },
+]
 
 export type ModalProps = {
     children: React.ReactNode;
@@ -29,7 +55,8 @@ export function ModalAddWorkspace({ children }: ModalProps) {
         <>
             {/* @SEV: Componentize-review, children correct prop if it should be wrapped around Button ? */}
             <Dialog>
-                <DialogTrigger asChild>{children}</DialogTrigger>
+                {/* use asChild in <DialogTrigger /> when wrapped around a Button */}
+                <DialogTrigger className="w-full text-left">{children}</DialogTrigger>
                 <DialogContent className="sm:max-w-2xl">
                     {/* @SEV/MAXIME: check whether form really appropriate */}
                     <form>
@@ -115,6 +142,32 @@ export function ModalAddWorkspace({ children }: ModalProps) {
                                         For best performance, choose a region closest to your application.
                                     </p>
                                 </div>
+                            </div>
+                            <div className="mt-4">
+                                <Label htmlFor="database" className="font-medium">Database configuration</Label>
+                                {/* @CHRIS: standardize defaultValue this way globally */}
+                                <RadioCardGroup defaultValue={databases[0].value} className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    {databases.map((database) => (
+                                        <RadioCardItem key={database.value} value={database.value}>
+                                            <div className="flex items-start gap-3">
+                                                <RadioCardGroupIndicator className="mt-0.5" />
+                                                <div>
+                                                    {database.isRecommended ? (
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="leading-5">{database.label}</span>
+                                                            <Badge>Recommended</Badge>
+                                                        </div>
+                                                    ) : (
+                                                        <span>{database.label}</span>
+                                                    )}
+                                                    <p className="mt-1 text-xs text-gray-500">
+                                                        1/8 vCPU, 1 GB RAM
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </RadioCardItem>
+                                    ))}
+                                </RadioCardGroup>
                             </div>
                         </DialogHeader>
                         <DialogFooter className="mt-6">

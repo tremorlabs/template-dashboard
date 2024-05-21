@@ -88,7 +88,10 @@ export const WorkspacesDropdownDesktop = () => {
           <DropdownMenuSeparator />
           <ModalAddWorkspace>
             <DropdownMenuItem>
-              Add workspace
+              <ModalAddWorkspace>
+                {/* <span className="flex justify-start">Add 2 workspace</span> */}
+                Add workspace
+              </ModalAddWorkspace>
             </DropdownMenuItem>
           </ModalAddWorkspace>
         </DropdownMenuContent>

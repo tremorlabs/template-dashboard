@@ -64,7 +64,7 @@ export function Sidebar() {
               {/* --- TEMP --- */}
               <li className="-mx-2 mt-auto">
                 <ModalAddWorkspace>
-                  <Button>Add workspace</Button>
+                  <span className="w-full">(TEMP )Add workspace</span>
                 </ModalAddWorkspace>
               </li>
 
