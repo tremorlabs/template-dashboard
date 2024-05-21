@@ -28,7 +28,7 @@ export function Sidebar() {
       {/* sidebar (lg+) */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex grow flex-col gap-y-7 overflow-y-auto bg-white border-r px-6 pb-4">
+        <div className="flex grow flex-col gap-y-7 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 px-6 pb-4">
           <div className="-mx-2 mt-6">
             <WorkspacesDropdownDesktop />
           </div>
@@ -43,8 +43,8 @@ export function Sidebar() {
                         href={item.href}
                         className={cx(
                           pathname === item.href || pathname.includes(item.href)
-                            ? "text-indigo-700 bg-indigo-50"
-                            : "text-gray-900 hover:bg-indigo-50",
+                            ? "text-indigo-700 bg-indigo-50 dark:text-gray-50 dark:bg-indigo-400/10"
+                            : "text-gray-900 dark:text-gray-50 hover:bg-indigo-50 hover:dark:bg-indigo-400/10",
                           "group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
                         )}
                       >
@@ -63,9 +63,9 @@ export function Sidebar() {
 
               {/* --- TEMP --- */}
               <li className="-mx-2 mt-auto">
-                <ModalAddWorkspace>
+                {/* <ModalAddWorkspace>
                   <span className="w-full">(TEMP )Add workspace</span>
-                </ModalAddWorkspace>
+                </ModalAddWorkspace> */}
               </li>
 
               <li className="-mx-2 mt-auto">

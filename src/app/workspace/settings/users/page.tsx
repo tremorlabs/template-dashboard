@@ -77,7 +77,7 @@ export default function Users() {
     <>
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900">Users</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-50">Users</h3>
           <p className="text-sm leading-6 text-gray-500">
             Workspace administrators can add, manage, and remove members.
           </p>
@@ -90,7 +90,7 @@ export default function Users() {
           </Button>
         </ModalAddUser>
       </div>
-      <ul role="list" className="mt-6 divide-y divide-gray-200">
+      <ul role="list" className="mt-6 divide-y divide-gray-200 dark:divide-gray-800">
         {data.map((member) => (
           <li
             key={member.name}
@@ -98,13 +98,13 @@ export default function Users() {
           >
             <div className="flex items-center space-x-4 truncate">
               <span
-                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700"
+                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 text-xs text-gray-700 dark:text-gray-300"
                 aria-hidden={true}
               >
                 {member.initials}
               </span>
               <div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                   {member.name}
                 </p>
                 <p className="text-xs text-gray-500">{member.email}</p>
@@ -167,10 +167,10 @@ export default function Users() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="aspect-square group hover:bg-gray-50 hover:border hover:border-gray-300 h-8 focus:outline-none"
+                    className="aspect-square group hover:bg-gray-50 hover:dark:bg-gray-900 hover:border hover:border-gray-300 hover:dark:border-gray-700 h-8 focus:outline-none"
                   >
                     <RiMore2Fill
-                      className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700"
+                      className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700 group-hover:dark:text-gray-400"
                       aria-hidden="true"
                     />
                   </Button>
@@ -180,7 +180,7 @@ export default function Users() {
                     View details
                   </DropdownMenuItem>
                   <DropdownMenuItem
-                    className="text-rose-600"
+                    className="text-rose-600 dark:text-rose-500"
                     disabled={member.role === "admin"}
                   >
                     Delete

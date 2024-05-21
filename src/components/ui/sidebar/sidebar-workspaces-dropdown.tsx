@@ -22,7 +22,7 @@ const workspaces = [
     name: "Retail analytics",
     initials: "RA",
     role: "Member",
-    color: "bg-indigo-600",
+    color: "bg-indigo-600 dark:bg-indigo-500",
   },
   // Add more workspaces...
 ];
@@ -33,10 +33,10 @@ export const WorkspacesDropdownDesktop = () => {
       {/* sidebar (lg+) */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 bg-white p-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none">
+          <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white",
+                "flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
               )}
               aria-hidden="true"
             >
@@ -44,10 +44,10 @@ export const WorkspacesDropdownDesktop = () => {
             </span>
             <div className="flex w-full items-center justify-between gap-x-4 truncate">
               <div className="truncate">
-                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900">
+                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
                   Retail analytics
                 </p>
-                <p className="whitespace-nowrap text-left text-xs text-gray-700">
+                <p className="whitespace-nowrap text-left text-xs text-gray-700 dark:text-gray-300">
                   Member
                 </p>
               </div>
@@ -76,10 +76,10 @@ export const WorkspacesDropdownDesktop = () => {
                     {workspace.initials}
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       {workspace.name}
                     </p>
-                    <p className="text-xs text-gray-700">{workspace.role}</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-400">{workspace.role}</p>
                   </div>
                 </div>
               </DropdownMenuItem>

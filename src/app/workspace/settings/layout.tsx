@@ -20,7 +20,7 @@ export default function Layout({
   return (
     // @CHRIS: rework HTML semantics
     <nav>
-      <h1 className="text-lg font-semibold text-gray-900">Settings</h1>
+      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
       <TabNavigation className="mt-8">
         {navigationSettings.map((item) => (
           <TabNavigationLink

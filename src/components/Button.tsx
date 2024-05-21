@@ -22,7 +22,7 @@ const buttonVariants = tv({
         // border
         "border-transparent",
         // text color
-        "text-white dark:text-gray-900",
+        "text-white dark:text-gray-50",
         // background color
         "bg-indigo-600 dark:bg-indigo-500",
         // hover color
@@ -93,7 +93,7 @@ const buttonVariants = tv({
 
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   isLoading?: boolean;
   loadingText?: string;

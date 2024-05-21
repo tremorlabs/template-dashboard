@@ -29,7 +29,7 @@ export default function General() {
         <form className="sm:max-w-6xl">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
             <div>
-              <h2 className="font-semibold text-gray-900">
+              <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Personal information
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -39,12 +39,12 @@ export default function General() {
             <div className="sm:max-w-3xl md:col-span-2">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-6">
                 <div className="col-span-full sm:col-span-3">
-                  <label
+                  <Label
                     htmlFor="first-name"
-                    className="text-sm font-medium text-gray-900"
+                    className="font-medium"
                   >
                     First name
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     id="first-name"
@@ -55,12 +55,12 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
-                  <label
+                  <Label
                     htmlFor="last-name"
-                    className="text-sm font-medium text-gray-900"
+                    className="font-medium"
                   >
                     Last name
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     id="last-name"
@@ -71,12 +71,12 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full">
-                  <label
+                  <Label
                     htmlFor="email"
-                    className="text-sm font-medium text-gray-900"
+                    className="font-medium"
                   >
                     Email
-                  </label>
+                  </Label>
                   <Input
                     type="email"
                     id="email"
@@ -89,7 +89,7 @@ export default function General() {
                 <div className="col-span-full sm:col-span-3">
                   <Label
                     htmlFor="year"
-                    className="text-sm font-medium text-gray-900"
+                    className="font-medium"
                   >
                     Birth year
                   </Label>
@@ -105,7 +105,7 @@ export default function General() {
                 <div className="col-span-full sm:col-span-3">
                   <Label
                     htmlFor="email"
-                    className="text-sm font-medium text-gray-900"
+                    className="font-medium"
                   >
                     Role
                   </Label>
@@ -138,7 +138,7 @@ export default function General() {
         <form className="sm:max-w-6xl">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
             <div>
-              <h2 className="font-semibold text-gray-900">
+              <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Notification settings
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -147,13 +147,13 @@ export default function General() {
             </div>
             <div className="sm:max-w-3xl md:col-span-2">
               <fieldset>
-                <legend className="text-sm font-medium text-gray-900">
+                <legend className="text-sm font-medium text-gray-900 dark:text-gray-50">
                   Team
                 </legend>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
                   Configure the types of team alerts you want to receive.
                 </p>
-                <ul role="list" className="mt-4 divide-y">
+                <ul role="list" className="mt-4 divide-y divide-gray-200 dark:divide-gray-800">
                   <li className="flex items-center gap-x-3 py-3">
                     <Checkbox
                       id="team-requests"
@@ -171,13 +171,13 @@ export default function General() {
                 </ul>
               </fieldset>
               <fieldset className="mt-6">
-                <legend className="text-sm font-medium text-gray-900">
+                <legend className="text-sm font-medium text-gray-900 dark:text-gray-50">
                   Usage
                 </legend>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
                   Configure the types of usage alerts you want to receive.
                 </p>
-                <ul role="list" className="mt-4 divide-y">
+                <ul role="list" className="mt-4 divide-y divide-gray-200 dark:divide-gray-800">
                   <li className="flex items-center gap-x-3 py-3">
                     <Checkbox id="api-requests" name="api-requests" />
                     <Label htmlFor="api-requests">API incidents</Label>
@@ -212,13 +212,13 @@ export default function General() {
         <form className="sm:max-w-6xl">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
             <div>
-              <h2 className="font-semibold text-gray-900">Danger zone</h2>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-50">Danger zone</h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
                 Manage general workspace. Contact system admin for more
                 information.{" "}
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1 text-indigo-600 hover:underline hover:underline-offset-4"
+                  className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-500 hover:underline hover:underline-offset-4"
                 >
                   Learn more
                   <RiExternalLinkLine
@@ -232,7 +232,7 @@ export default function General() {
               <Card className="p-4">
                 <div className="flex items-start gap-10 justify-between">
                   <div>
-                    <h4 className="text-sm text-gray-900 font-medium">
+                    <h4 className="text-sm text-gray-900 dark:text-gray-50 font-medium">
                       Leave workspace
                     </h4>
                     <p className="mt-2 text-sm leading-6 text-gray-500">
@@ -241,7 +241,7 @@ export default function General() {
                     </p>
                   </div>
                   {/* @CHRIS: dark mode in button */}
-                  <Button variant="secondary" className="text-rose-600">
+                  <Button variant="secondary" className="text-rose-600 dark:text-rose-500">
                     Leave
                   </Button>
                 </div>
@@ -249,10 +249,10 @@ export default function General() {
               <Card className="overflow-hidden p-0">
                 <div className="p-4 flex items-start gap-10 justify-between">
                   <div>
-                    <h4 className="text-sm text-gray-400 font-medium">
+                    <h4 className="text-sm text-gray-400 dark:text-gray-600 font-medium">
                       Delete workspace
                     </h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-400">
+                    <p className="mt-2 text-sm leading-6 text-gray-400 dark:text-gray-600">
                       Revoke your access to this team. Other people you have
                       added to the workspace will remain.
                     </p>
@@ -261,12 +261,12 @@ export default function General() {
                   <Button
                     variant="secondary"
                     disabled
-                    className="text-rose-600 disabled:text-rose-300 disabled:opacity-50 whitespace-nowrap"
+                    className="text-rose-600 dark:text-rose-500 disabled:text-rose-300 disabled:dark:text-rose-700 disabled:opacity-50 whitespace-nowrap"
                   >
                     Delete workspace
                   </Button>
                 </div>
-                <div className="p-4 border-t border-gray-200 bg-gray-50">
+                <div className="p-4 border-t border-gray-200 dark:border-gray-900 bg-gray-50 dark:bg-gray-900">
                   <p className="text-sm text-gray-500">
                     You cannot leave the team because you are not the system
                     admin.
