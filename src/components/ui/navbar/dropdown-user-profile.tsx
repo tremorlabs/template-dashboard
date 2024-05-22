@@ -20,9 +20,10 @@ import {
 
 export type DropdownUserProfileProps = {
     children: React.ReactNode;
+    align?: "center" | "start" | "end"
 };
 
-export function DropdownUserProfile({ children }: DropdownUserProfileProps) {
+export function DropdownUserProfile({ children, align = "start" }: DropdownUserProfileProps) {
     const [mounted, setMounted] = React.useState(false)
     const { theme, setTheme } = useTheme()
 
@@ -40,7 +41,7 @@ export function DropdownUserProfile({ children }: DropdownUserProfileProps) {
                 <DropdownMenuTrigger asChild>
                     {children}
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent align={align}>
                     <DropdownMenuLabel>emma.stone@acme.com</DropdownMenuLabel>
                     <DropdownMenuGroup>
                         <DropdownMenuSubMenu>

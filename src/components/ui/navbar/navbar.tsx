@@ -60,14 +60,12 @@ export function Navbar() {
                   ))}
                 </ul>
               </li>
-
               {/* --- TEMP --- */}
               <li className="-mx-2 mt-auto">
                 {/* <ModalAddWorkspace>
                   <span className="w-full">(TEMP )Add workspace</span>
                 </ModalAddWorkspace> */}
               </li>
-
               <li className="-mx-2 mt-auto">
                 <UserProfileDesktop />
               </li>

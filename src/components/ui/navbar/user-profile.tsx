@@ -39,7 +39,7 @@ export const UserProfileDesktop = () => {
 
 export const UserProfileMobile = () => {
   return (
-    <DropdownUserProfile>
+    <DropdownUserProfile align="end">
       <Button
         variant="ghost"
         // @SEV: focus glitch when focusInput is not used, with focusInput -> focusInput stays until clicked again -> not good
@@ -50,7 +50,7 @@ export const UserProfileMobile = () => {
       >
 
         <span
-          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-gray-300 dark:border-gray-800 bg-white text-xs text-gray-700 dark:bg-gray-950 dark:text-gray-300"
+          className="flex size-7 shrink-0 items-center justify-center rounded-full border border-gray-300 dark:border-gray-800 bg-white text-xs text-gray-700 dark:bg-gray-950 dark:text-gray-300"
           aria-hidden="true"
         >
           ES

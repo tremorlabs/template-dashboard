@@ -21,7 +21,7 @@ export default function Layout({
   return (
     // @CHRIS: rework HTML semantics
     <nav>
-      <div className="mt-6 flex items-center gap-2">
+      <div className="flex items-center gap-2">
         {/* <RiMenuLine className="size-5 shrink-0 text-gray-900" aria-hidden="true" /> */}
         {/* <MobileSidebar /> */}
         <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
