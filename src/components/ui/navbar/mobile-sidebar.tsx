@@ -12,34 +12,28 @@
   }
   ```
 */
-import { Fragment, useState } from 'react'
+
+// @CHRIS: consolidate Fragment
+import { Fragment } from 'react'
+import React from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
+import { RiGroupLine, RiHome2Line, RiStackLine } from "@remixicon/react";
+import { cx } from '@/lib/utils'
+import { RiCloseLine, RiMenuLine } from '@remixicon/react'
+import Link from 'next/link'
+import { usePathname } from "next/navigation";
+import { siteConfig } from '@/app/siteConfig'
 
 const navigation = [
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Team', href: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
-]
-const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
-const userNavigation = [
-    { name: 'Your profile', href: '#' },
-    { name: 'Sign out', href: '#' },
-]
+    { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
+    { name: "Details", href: siteConfig.baseLinks.details, icon: RiGroupLine },
+    { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiStackLine },
+];
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
 
-export default function Example() {
-    const [sidebarOpen, setSidebarOpen] = useState(false)
-
+export default function MobileSidebar() {
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+    const pathname = usePathname();
     return (
         <>
             {/*
@@ -51,8 +45,13 @@ export default function Example() {
         ```
       */}
             <div>
-                <Transition.Root show={sidebarOpen} as={Fragment}>
-                    <Dialog className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
+                {/* @CHRIS: replace button + bring back p-2.5 */}
+                <button type="button" className="p-2 flex items-center justify-center text-gray-900 lg:hidden" onClick={() => setMobileMenuOpen(true)}>
+                    <span className="sr-only">Open sidebar</span>
+                    <RiMenuLine className="size-5 shrink-0" aria-hidden="true" />
+                </button>
+                <Transition.Root show={mobileMenuOpen} as={Fragment}>
+                    <Dialog className="relative z-50 lg:hidden" onClose={setMobileMenuOpen}>
                         <Transition.Child
                             as={Fragment}
                             enter="transition-opacity ease-linear duration-300"
@@ -86,39 +85,38 @@ export default function Example() {
                                         leaveTo="opacity-0"
                                     >
                                         <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
-                                            <button type="button" className="-m-2.5 p-2.5" onClick={() => setSidebarOpen(false)}>
+                                            <button type="button" className="-m-2.5 p-2.5" onClick={() => setMobileMenuOpen(false)}>
                                                 <span className="sr-only">Close sidebar</span>
-                                                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                                                <RiCloseLine className="size-6 text-white" aria-hidden="true" />
                                             </button>
                                         </div>
                                     </Transition.Child>
-                                    {/* Sidebar component, swap this element with another sidebar if you like */}
-                                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
-
-                                        <nav className="flex flex-1 flex-col">
+                                    {/* @CHRIS: dark mode */}
+                                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+                                        <nav className="mt-6 flex flex-1 flex-col">
                                             <ul role="list" className="flex flex-1 flex-col gap-y-7">
                                                 <li>
-                                                    <ul role="list" className="-mx-2 space-y-1">
+                                                    <ul role="list" className="-mx-2 space-y-0.5">
+                                                        {/* @SEV: should we componentize this */}
                                                         {navigation.map((item) => (
                                                             <li key={item.name}>
-                                                                <a
+                                                                <Link
                                                                     href={item.href}
-                                                                    className={classNames(
-                                                                        item.current
-                                                                            ? 'bg-indigo-700 text-white'
-                                                                            : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
-                                                                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                                                                    className={cx(
+                                                                        pathname === item.href || pathname.includes(item.href)
+                                                                            ? "text-indigo-700 bg-indigo-50 dark:text-gray-50 dark:bg-indigo-400/10"
+                                                                            : "text-gray-900 dark:text-gray-50 hover:bg-indigo-50 hover:dark:bg-indigo-400/10",
+                                                                        "group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
                                                                     )}
                                                                 >
                                                                     {/* <item.icon
-                                    className={classNames(
-                                      item.current ? 'text-white' : 'text-indigo-200 group-hover:text-white',
-                                      'h-6 w-6 shrink-0'
-                                    )}
-                                    aria-hidden="true"
-                                  /> */}
+                                                                        className={cx(
+                                                                            'size-4 shrink-0 text-gray-900'
+                                                                        )}
+                                                                        aria-hidden="true"
+                                                                    /> */}
                                                                     {item.name}
-                                                                </a>
+                                                                </Link>
                                                             </li>
                                                         ))}
                                                     </ul>

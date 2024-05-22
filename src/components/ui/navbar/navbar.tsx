@@ -11,6 +11,8 @@ import {
   WorkspacesDropdownMobile,
 } from "./sidebar-workspaces-dropdown";
 
+import MobileSidebar from "./mobile-sidebar";
+
 import { UserProfileDesktop, UserProfileMobile } from "./user-profile";
 
 const navigation = [
@@ -47,11 +49,11 @@ export function Navbar() {
                         )}
                       >
                         {/* <item.icon
-                                                className={cx(
-                                                    'size-4 shrink-0 text-gray-900'
-                                                )}
-                                                aria-hidden="true"
-                                            /> */}
+                          className={cx(
+                            'size-4 shrink-0 text-gray-900'
+                          )}
+                          aria-hidden="true"
+                        /> */}
                         {item.name}
                       </Link>
                     </li>
@@ -77,7 +79,10 @@ export function Navbar() {
       {/* top navbar (xs-lg) */}
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 px-2 shadow-sm sm:gap-x-6 sm:px-4 lg:hidden">
         <WorkspacesDropdownMobile />
-        <UserProfileMobile />
+        <div className="flex items-center gap-2">
+          <UserProfileMobile />
+          <MobileSidebar />
+        </div>
       </div>
     </>
   );
