@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { TabNavigation, TabNavigationLink } from "@/components/TabNavigation";
+import { RiMenuLine } from "@remixicon/react";
 
 const navigationSettings = [
   { name: "General", href: siteConfig.baseLinks.general },
@@ -20,7 +21,10 @@ export default function Layout({
   return (
     // @CHRIS: rework HTML semantics
     <nav>
-      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
+      <div className="flex items-center gap-2">
+        <RiMenuLine className="size-5 shrink-0 text-gray-900" aria-hidden="true" />
+        <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
+      </div>
       <TabNavigation className="mt-8">
         {navigationSettings.map((item) => (
           <TabNavigationLink

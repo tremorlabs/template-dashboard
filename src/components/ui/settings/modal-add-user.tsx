@@ -20,11 +20,11 @@ import { Label } from "@/components/Label";
 import { Input } from "@/components/Input";
 import { roles } from "@/data/data";
 
-export type ModalProps = {
+export type ModalAddUserProps = {
   children: React.ReactNode;
 };
 
-export function ModalAddUser({ children }: ModalProps) {
+export function ModalAddUser({ children }: ModalAddUserProps) {
   return (
     <>
       {/* @SEV: Componentize-review */}

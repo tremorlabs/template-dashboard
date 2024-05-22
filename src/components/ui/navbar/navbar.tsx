@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
-import { cx, focusInput } from "@/lib/utils";
+import { cx } from "@/lib/utils";
 import { RiGroupLine, RiHome2Line, RiStackLine } from "@remixicon/react";
 
 import {
@@ -11,9 +11,7 @@ import {
   WorkspacesDropdownMobile,
 } from "./sidebar-workspaces-dropdown";
 
-import { UserProfile } from "./sidebar-user-profile";
-import { ModalAddWorkspace } from "./modal-add-workspace";
-import { Button } from "@/components/Button";
+import { UserProfileDesktop, UserProfileMobile } from "./user-profile";
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
@@ -21,7 +19,7 @@ const navigation = [
   { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiStackLine },
 ];
 
-export function Sidebar() {
+export function Navbar() {
   const pathname = usePathname();
   return (
     <>
@@ -69,18 +67,17 @@ export function Sidebar() {
               </li>
 
               <li className="-mx-2 mt-auto">
-                <UserProfile />
+                <UserProfileDesktop />
               </li>
             </ul>
           </nav>
         </div>
       </div>
 
-      {/* sidebar (xs-lg) */}
-      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:hidden">
-        <div className="-mx-2">
-          <WorkspacesDropdownMobile />
-        </div>
+      {/* top navbar (xs-lg) */}
+      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 px-2 shadow-sm sm:gap-x-6 sm:px-4 lg:hidden">
+        <WorkspacesDropdownMobile />
+        <UserProfileMobile />
       </div>
     </>
   );
