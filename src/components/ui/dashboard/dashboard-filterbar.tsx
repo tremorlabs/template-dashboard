@@ -78,56 +78,47 @@ const getMaxDate = (data: OverviewData[]): Date => {
 
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
-export type FilterbarProps = {
-  maxDate?: Date;
-  selectedDates: DateRange | undefined;
-  onDatesChange: (dates: DateRange | undefined) => void;
-  selectedPeriod: PeriodValue;
-  onPeriodChange: (period: PeriodValue) => void;
-};
+type FilterbarProps = {
+    maxDate?: Date;
+    selectedDates: DateRange | undefined;
+    onDatesChange: (dates: DateRange | undefined) => void;
+    selectedPeriod: PeriodValue;
+    onPeriodChange: (period: PeriodValue) => void;
+    isEditable?: boolean;
+}
 
-export function Filterbar({
-  maxDate,
-  selectedDates,
-  onDatesChange,
-  selectedPeriod,
-  onPeriodChange,
-}: FilterbarProps) {
-  return (
-    <>
-      {/* @CHRIS: harmonize input heights with the ones from /settings */}
-      <div className="flex items-center gap-x-2">
-        <DateRangePicker
-          value={selectedDates}
-          onChange={onDatesChange}
-          className="w-fit"
-          toDate={maxDate}
-          align="start"
-        />
-        <span className="text-sm text-gray-500 font-medium">compared to</span>
-        <Select
-          defaultValue="no-comparison"
-          value={selectedPeriod}
-          onValueChange={(value) => {
-            onPeriodChange(value as PeriodValue);
-          }}
-        >
-          <SelectTrigger className="w-fit py-1 px-2">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {periods.map((period) => (
-              <SelectItemPeriod
-                key={period.value}
-                value={period.value}
-                period={getPeriod(selectedDates, period.value)}
-              >
-                {period.label}
-              </SelectItemPeriod>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    </>
-  );
+export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange, isEditable }: FilterbarProps) {
+    return (
+        <>
+            <div className="flex items-center gap-x-2">
+                <DateRangePicker
+                    value={selectedDates}
+                    onChange={onDatesChange}
+                    className="w-fit"
+                    toDate={maxDate}
+                    disabled={isEditable}
+                />
+                <span className="text-sm text-gray-500 font-medium">compared to</span>
+                <Select
+                    defaultValue="no-comparison"
+                    value={selectedPeriod}
+                    onValueChange={(value) => {
+                        onPeriodChange(value as PeriodValue)
+                    }}
+                    disabled={isEditable}
+                >
+                    <SelectTrigger className="w-fit py-1 px-2">
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {periods.map((period) => (
+                            <SelectItemPeriod key={period.value} value={period.value} period={getPeriod(selectedDates, period.value)}>
+                                {period.label}
+                            </SelectItemPeriod>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+        </>
+    )
 }
