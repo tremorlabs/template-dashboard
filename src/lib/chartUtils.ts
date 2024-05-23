@@ -28,10 +28,10 @@ export const chartColors = {
     text: "text-amber-500",
   },
   gray: {
-    bg: "bg-gray-300",
-    stroke: "stroke-gray-300",
-    fill: "fill-gray-300",
-    text: "text-gray-300",
+    bg: "bg-gray-300 dark:bg-gray-700",
+    stroke: "stroke-gray-300 dark:stroke-gray-700",
+    fill: "fill-gray-300 dark:fill-gray-700",
+    text: "text-gray-300 dark:text-gray-700",
   },
   cyan: {
     bg: "bg-cyan-500",

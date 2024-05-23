@@ -1,10 +1,10 @@
 "use client";
-import { Button } from "@/components/Button"
-import { RiAddLine } from "@remixicon/react"
-import { Card } from "@/components/ui/dashboard/cards"
-import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar"
-import React from "react"
-import { DateRange } from "react-day-picker"
+import { Button } from "@/components/Button";
+import { RiAddLine } from "@remixicon/react";
+import { MetricsCard } from "@/components/ui/dashboard/cards";
+import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar";
+import React from "react";
+import { DateRange } from "react-day-picker";
 import { subDays, toDate } from "date-fns";
 import { overviews } from "@/data/data";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
@@ -39,8 +39,8 @@ const categories = [
     // },
 ] as const
 
-const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
-const maxDate = toDate(Math.max(...overviewsDates))
+const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
+const maxDate = toDate(Math.max(...overviewsDates));
 export default function Example() {
     const [isEditable, setIsEditable] = React.useState(false)
     const [parentRef, KPICardsOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(categories.map((item) => item.title), {
@@ -91,7 +91,7 @@ export default function Example() {
                     const category = categories.find((category) => category.title === item)
                     if (!category) return null
                     return (
-                        <Card
+                        <MetricsCard
                             key={item}
                             title={category.title}
                             // value={category.value} 

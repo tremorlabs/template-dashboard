@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "selector",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
@@ -25,6 +26,21 @@ const config: Config = {
           from: { opacity: "0", transform: "translateX(-6px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
+        dialogOverlayShow: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        dialogContentShow: {
+          from: {
+            opacity: "0",
+            transform: "translate(-50%, -45%) scale(0.95)",
+          },
+          to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        },
+        drawerSlideLeftAndFade: {
+          from: { opacity: "0", transform: "translateX(50%)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
       },
       animation: {
         hide: "hide 150ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -35,6 +51,12 @@ const config: Config = {
         slideUpAndFade: "slideUpAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideRightAndFade:
           "slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        drawerSlideLeftAndFade:
+          "drawerSlideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        dialogOverlayShow:
+          "dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        dialogContentShow:
+          "dialogContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

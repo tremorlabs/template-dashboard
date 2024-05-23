@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
 import { RiEqualizer2Line, RiDraggable } from "@remixicon/react"
 import { cx, focusInput } from "@/lib/utils"
 import { Table } from "@tanstack/react-table"
 
-import { Button } from "@/components/Button"
+import { Button } from "@/components/Button";
 import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuLabel,
-    DropdownMenuTrigger
-} from "@/components/Dropdown"
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/Dropdown";
 
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { animations } from "@formkit/drag-and-drop";
@@ -20,7 +20,7 @@ import { Checkbox } from "@/components/Checkbox"
 import React from "react"
 
 interface DataTableViewOptionsProps<TData> {
-    table: Table<TData>
+  table: Table<TData>;
 }
 
 // export function DataTableViewOptions<TData>({
@@ -66,7 +66,7 @@ interface DataTableViewOptionsProps<TData> {
 // }
 
 export function DataTableViewOptions<TData>({
-    table,
+  table,
 }: DataTableViewOptionsProps<TData>) {
     const [isEditable, setIsEditable] = React.useState(false)
     const [parentRef, columnOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(table.getAllColumns().map((column) => column.id), {

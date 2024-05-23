@@ -1,7 +1,10 @@
 export default function Example() {
-    return (
-        <>
-            <h1 className="text-lg font-semibold text-gray-900">Settings</h1>
-        </>
-    )
+  return (
+    <>
+      <p className="text-sm text-gray-500">
+        [/settings should not be publicly exposed, if clicked forward to
+        /settings/general]
+      </p>
+    </>
+  );
 }

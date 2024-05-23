@@ -47,15 +47,15 @@ export const usNumberformatter = (number: number, decimals = 0) =>
     .toString();
 
 export const percentageFormatter = (number: number, decimals = 1) => {
-    const formattedNumber = new Intl.NumberFormat("en-US", {
-        style: "percent",
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-    }).format(number);
-    const symbol = number > 0 && number !== Infinity ? "+" : "";
+  const formattedNumber = new Intl.NumberFormat("en-US", {
+    style: "percent",
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(number);
+  const symbol = number > 0 && number !== Infinity ? "+" : "";
 
-    return `${symbol}${formattedNumber}`;
-}
+  return `${symbol}${formattedNumber}`;
+};
 
 export const formatters: { [key: string]: any } = {
   currency: (number: number, currency: string = "USD") =>

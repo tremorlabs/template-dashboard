@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
 import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiDraggable, RiSettings2Line } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 
-import { Button } from "@/components/Button"
-import { Input } from "@/components/Input"
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 
-import { DataTableViewOptions } from "./data-table-view-options"
-import { DataTableFilter } from "./data-table-filter"
+import { DataTableViewOptions } from "./data-table-view-options";
+import { DataTableFilter } from "./data-table-filter";
 
 import { regions, status, conditions } from "@/data/data"
 import { formatters } from "@/lib/utils"
 import React from "react"
 
 interface DataTableToolbarProps<TData> {
-    table: Table<TData>
+  table: Table<TData>;
 }
 
 export function Filterbar<TData>({

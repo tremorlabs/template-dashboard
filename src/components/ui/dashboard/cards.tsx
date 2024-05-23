@@ -1,18 +1,26 @@
 import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
+import { Card } from "@/components/Card";
 import { DateRange } from "react-day-picker";
 import { PeriodValue } from "@/app/workspace/overview/page";
 import React from "react";
 import { overviews } from "@/data/data";
 import { getPeriod } from "./dashboard-filterbar";
-import { eachDayOfInterval, formatDate, interval, isEqual, isWithinInterval, toDate } from "date-fns";
+import {
+  eachDayOfInterval,
+  formatDate,
+  interval,
+  isEqual,
+  isWithinInterval,
+  toDate,
+} from "date-fns";
 import { OverviewData } from "@/data/schema";
 import { RiDraggable } from "@remixicon/react";
 
+
 //   @CHRIS: import mono font for number
 //   import { lusitana } from '@/app/ui/fonts';
-
 
 // @Maxime/Chris: dummy data -> remover afterwards
 
@@ -25,24 +33,24 @@ export type CardProps = {
 };
 
 const formattingMap = {
-    currency: formatters.currency,
-    unit: formatters.unit,
+  currency: formatters.currency,
+  unit: formatters.unit,
 };
 
 export const getBadgeType = (value: number) => {
-    if (value > 0) {
-        return "success";
-    } else if (value < 0) {
-        if (value < -50) {
-            return "warning";
-        }
-        return "error";
-    } else {
-        return "neutral";
+  if (value > 0) {
+    return "success";
+  } else if (value < 0) {
+    if (value < -50) {
+      return "warning";
     }
-}
+    return "error";
+  } else {
+    return "neutral";
+  }
+};
 
-export function Card({
+export function MetricsCard({
     title,
     type,
     selectedDates,
@@ -130,7 +138,6 @@ export function Card({
 }
 
 //   @CHRIS: for second font
-//   <p
 //   className={`${lusitana.className}
 //     truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
 // >
