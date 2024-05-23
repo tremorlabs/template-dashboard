@@ -1,3 +1,4 @@
+import { cx } from "@/lib/utils";
 import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
@@ -8,12 +9,12 @@ import React from "react";
 import { overviews } from "@/data/data";
 import { getPeriod } from "./dashboard-filterbar";
 import {
-  eachDayOfInterval,
-  formatDate,
-  interval,
-  isEqual,
-  isWithinInterval,
-  toDate,
+    eachDayOfInterval,
+    formatDate,
+    interval,
+    isEqual,
+    isWithinInterval,
+    toDate,
 } from "date-fns";
 import { OverviewData } from "@/data/schema";
 import { RiDraggable } from "@remixicon/react";
@@ -33,21 +34,21 @@ export type CardProps = {
 };
 
 const formattingMap = {
-  currency: formatters.currency,
-  unit: formatters.unit,
+    currency: formatters.currency,
+    unit: formatters.unit,
 };
 
 export const getBadgeType = (value: number) => {
-  if (value > 0) {
-    return "success";
-  } else if (value < 0) {
-    if (value < -50) {
-      return "warning";
+    if (value > 0) {
+        return "success";
+    } else if (value < 0) {
+        if (value < -50) {
+            return "warning";
+        }
+        return "error";
+    } else {
+        return "neutral";
     }
-    return "error";
-  } else {
-    return "neutral";
-  }
 };
 
 export function MetricsCard({
@@ -104,7 +105,11 @@ export function MetricsCard({
     const evolution = selectedPeriod !== "no-comparison" ? (value - previousValue) / previousValue : 0;
 
     return (
-        <div className="rounded-lg border border-gray-200 p-6 bg-white shadow-sm">
+        // @SEV/@MAXIME: cursor-grab is not applied on <Chart/> + when moving cursor switches to default cursor
+        <Card className={cx(
+            isEditable ? "cursor-grab active:cursor-grabbing hover:-translate-y-px hover:shadow-md" : "",
+            "transition"
+        )}>
             <div className="flex items-center justify-between gap-x-2">
                 <div className="flex items-center gap-x-2">
                     <dt className="text-sm text-gray-900 font-bold">{title}</dt>
@@ -112,7 +117,7 @@ export function MetricsCard({
                         <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
                     )}
                 </div>
-                {isEditable && <RiDraggable className="drag-icon text-gray-400 cursor-move size-5" />}
+                {isEditable && <RiDraggable className="text-gray-400 cursor-move size-5" aria-hidden="true" />}
             </div>
             <div className="mt-2 flex items-baseline justify-between">
                 <dd className="text-xl text-gray-900">{formatter(value)}</dd>
@@ -133,7 +138,7 @@ export function MetricsCard({
                 showTooltip={!isEditable}
             />
 
-        </div>
+        </Card>
     );
 }
 
