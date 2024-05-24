@@ -57,6 +57,14 @@ export const percentageFormatter = (number: number, decimals = 1) => {
   return `${symbol}${formattedNumber}`;
 };
 
+export const millionFormatter = (number: number, decimals = 1) => {
+    const formattedNumber = new Intl.NumberFormat("en-US", {
+        style: "decimal",
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    }).format(number);
+    return `${formattedNumber}M`;
+}
 export const formatters: { [key: string]: any } = {
   currency: (number: number, currency: string = "USD") =>
     new Intl.NumberFormat("en-US", {

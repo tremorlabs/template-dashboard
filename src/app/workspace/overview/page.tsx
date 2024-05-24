@@ -7,16 +7,17 @@ import { MetricsCard } from "@/components/ui/dashboard/cards";
 import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar";
 import React from "react";
 import { DateRange } from "react-day-picker";
-import { subDays, toDate } from "date-fns";
+import { set, subDays, toDate } from "date-fns";
 import { overviews } from "@/data/data";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { animations } from "@formkit/drag-and-drop";
-import { cx } from "@/lib/utils";
+import { cx, millionFormatter } from "@/lib/utils";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { Divider } from "@/components/Divider";
-import { LineChart } from "@/components/LineChart2";
+import { LineChart, LineChartEventProps } from "@/components/LineChart2";
 import { ProgressBar } from "@/components/ProgressBar";
 import { dummyData } from "@/data/data";
+import CountUp from "react-countup"
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -84,6 +85,30 @@ const dataRows = [
     },
 ]
 
+type InitialAverageValues = {
+    "Rows read": {
+        start: number,
+        end: number
+    },
+    "Rows written": {
+        start: number,
+        end: number
+    }
+}
+const initialAverageValues: InitialAverageValues = {
+    "Rows read": {
+        start: 0,
+        end: dummyData.reduce((sum, dataPoint) => sum + dataPoint["Rows read"], 0) / dummyData.length
+    },
+    "Rows written": {
+        start: 0,
+        end: dummyData.reduce((sum, dataPoint) => sum + dataPoint["Rows written"], 0) / dummyData.length
+    }
+}
+
+type Categories = keyof InitialAverageValues
+
+
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
 const maxDate = toDate(Math.max(...overviewsDates));
 export default function Example() {
@@ -98,6 +123,38 @@ export default function Example() {
         to: maxDate
     })
     const [selectedPeriod, setSelectedPeriod] = React.useState<PeriodValue>('no-comparison')
+    const [values, setValues] = React.useState<InitialAverageValues>(initialAverageValues)
+    const [categoryClicked, setCategoryClicked] = React.useState<Categories | null>(null)
+
+    const handleValueChange = (e: LineChartEventProps) => {
+        const category = e?.categoryClicked as Categories
+        switch (e?.eventType) {
+            case 'dot':
+                setValues((prev) => ({
+                    ...prev,
+                    [category]: {
+                        start: prev?.[category]?.end,
+                        end: e?.[category] }
+                }))
+                setCategoryClicked(category)
+                break;
+            case 'category':
+                setValues((prev) => ({
+                    ...prev,
+                    [category]: {
+                        start: prev?.[category]?.end,
+                        end: initialAverageValues[category].end
+                    }
+                }))
+                setCategoryClicked(category)
+                break;
+            default:
+                setValues(initialAverageValues)
+                setCategoryClicked(null)
+                break;
+          }
+
+    }
 
     React.useEffect(() => {
         updateConfig({ disabled: !isEditable })
@@ -113,13 +170,31 @@ export default function Example() {
                 {/* @CHRIS: padding */}
                 <Card className="xl:col-span-2 border-transparent shadow-none rounded-none pl-0 pt-2 pr-0 sm:pr-8">
                     <div className="flex items-center gap-10">
-                        <div>
+                        <div
+                            className={categoryClicked && categoryClicked !== "Rows read" ? "opacity-50" : ""}
+                        >
                             <h2 className="text-sm text-gray-900 font-bold">Rows read</h2>
-                            <dd className="mt-1 text-2xl text-gray-900">0.5M</dd>
+                            <dd className="mt-1 text-2xl text-gray-900">
+                            <CountUp
+                                start={values["Rows read"].start}
+                                end={values["Rows read"].end}
+                                duration={0.8}
+                                formattingFn={millionFormatter}
+                            />
+                        </dd>
                         </div>
-                        <div>
+                        <div
+                            className={categoryClicked && categoryClicked !== "Rows written" ? "opacity-50" : ""}
+                        >
                             <h2 className="text-sm text-gray-900 font-bold">Rows written</h2>
-                            <dd className="mt-1 text-2xl text-gray-900">0.24M</dd>
+                            <dd className="mt-1 text-2xl text-gray-900">
+                                <CountUp
+                                    start={values["Rows written"].start}
+                                    end={values["Rows written"].end}
+                                    duration={0.8}
+                                    formattingFn={millionFormatter}
+                                />
+                            </dd>
                         </div>
                     </div>
                     <LineChart
@@ -128,7 +203,7 @@ export default function Example() {
                         categories={["Rows read", "Rows written"]}
                         colors={["indigo", "amber"]}
                         showYAxis={false}
-                        onValueChange={() => { }}
+                        onValueChange={handleValueChange}
                         className="h-64"
                     />
                 </Card>
