@@ -84,6 +84,75 @@ export const conditions = [
   },
 ];
 
+// @CHRIS: replace with better data
+export const dummyData = [
+  {
+    date: "00:00",
+    "Rows read": 120,
+    "Rows written": 44,
+  },
+  {
+    date: "01:00",
+    "Rows read": 201,
+    "Rows written": 99,
+  },
+  {
+    date: "02:00",
+    "Rows read": 194,
+    "Rows written": 89,
+  },
+  {
+    date: "03:00",
+    "Rows read": 121,
+    "Rows written": 79,
+  },
+  {
+    date: "04:00",
+    "Rows read": 103,
+    "Rows written": 163,
+  },
+  {
+    date: "05:00",
+    "Rows read": 59,
+    "Rows written": 172,
+  },
+  {
+    date: "06:00",
+    "Rows read": 40,
+    "Rows written": 129,
+  },
+  {
+    date: "07:00",
+    "Rows read": 61,
+    "Rows written": 23,
+  },
+  {
+    date: "08:00",
+    "Rows read": 62,
+    "Rows written": 79,
+  },
+  {
+    date: "09:00",
+    "Rows read": 89,
+    "Rows written": 65,
+  },
+  {
+    date: "10:00",
+    "Rows read": 31,
+    "Rows written": 40,
+  },
+  {
+    date: "11:00",
+    "Rows read": 31,
+    "Rows written": 40,
+  },
+  {
+    date: "12:00",
+    "Rows read": 31,
+    "Rows written": 40,
+  },
+];
+
 export const transactions: Transaction[] = [
   {
     workspace: "sales_by_day_api",

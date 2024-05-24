@@ -14,8 +14,8 @@ const progressBarVariants = tv({
     variant: {
       default: {
         // @CHRIS: indigo dark mode
-        background: "bg-indigo-200 dark:bg-blue-500/30",
-        bar: "bg-indigo-600 dark:bg-blue-500",
+        background: "bg-indigo-100 dark:bg-indigo-500/30",
+        bar: "bg-indigo-500 dark:bg-indigo-500",
       },
       neutral: {
         background: "bg-gray-200 dark:bg-gray-500/40",
@@ -42,7 +42,7 @@ const progressBarVariants = tv({
 
 interface ProgressBarProps
   extends React.HTMLProps<HTMLDivElement>,
-    VariantProps<typeof progressBarVariants> {
+  VariantProps<typeof progressBarVariants> {
   value?: number;
   max?: number;
   showAnimation?: boolean;

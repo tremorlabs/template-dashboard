@@ -79,46 +79,47 @@ const getMaxDate = (data: OverviewData[]): Date => {
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
 type FilterbarProps = {
-    maxDate?: Date;
-    selectedDates: DateRange | undefined;
-    onDatesChange: (dates: DateRange | undefined) => void;
-    selectedPeriod: PeriodValue;
-    onPeriodChange: (period: PeriodValue) => void;
-    isEditable?: boolean;
+  maxDate?: Date;
+  selectedDates: DateRange | undefined;
+  onDatesChange: (dates: DateRange | undefined) => void;
+  selectedPeriod: PeriodValue;
+  onPeriodChange: (period: PeriodValue) => void;
+  isEditable?: boolean;
 }
 
 export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange, isEditable }: FilterbarProps) {
-    return (
-        <>
-            <div className="flex items-center gap-x-2">
-                <DateRangePicker
-                    value={selectedDates}
-                    onChange={onDatesChange}
-                    className="w-fit"
-                    toDate={maxDate}
-                    disabled={isEditable}
-                />
-                <span className="text-sm text-gray-500 font-medium">compared to</span>
-                <Select
-                    defaultValue="no-comparison"
-                    value={selectedPeriod}
-                    onValueChange={(value) => {
-                        onPeriodChange(value as PeriodValue)
-                    }}
-                    disabled={isEditable}
-                >
-                    <SelectTrigger className="w-fit py-1 px-2">
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {periods.map((period) => (
-                            <SelectItemPeriod key={period.value} value={period.value} period={getPeriod(selectedDates, period.value)}>
-                                {period.label}
-                            </SelectItemPeriod>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className="sm:flex sm:items-center sm:gap-2 w-full">
+        <DateRangePicker
+          value={selectedDates}
+          onChange={onDatesChange}
+          className="w-full sm:w-fit"
+          toDate={maxDate}
+          disabled={isEditable}
+        />
+        <span className="hidden sm:block text-sm text-gray-500 font-medium">compared to</span>
+        <Select
+          defaultValue="no-comparison"
+          value={selectedPeriod}
+          onValueChange={(value) => {
+            onPeriodChange(value as PeriodValue)
+          }}
+          disabled={isEditable}
+        >
+          {/* @CHRIS: modal mobile view */}
+          <SelectTrigger className="mt-2 sm:mt-0 w-full sm:w-fit py-1 px-2">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {periods.map((period) => (
+              <SelectItemPeriod key={period.value} value={period.value} period={getPeriod(selectedDates, period.value)}>
+                {period.label}
+              </SelectItemPeriod>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </>
+  )
 }

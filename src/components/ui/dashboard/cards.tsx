@@ -108,7 +108,7 @@ export function MetricsCard({
         // @SEV/@MAXIME: cursor-grab is not applied on <Chart/> + when moving cursor switches to default cursor
         <Card className={cx(
             isEditable ? "cursor-grab active:cursor-grabbing hover:-translate-y-px hover:shadow-md" : "",
-            "transition"
+            "transition border-transparent shadow-none p-0"
         )}>
             <div className="flex items-center justify-between gap-x-2">
                 <div className="flex items-center gap-x-2">
@@ -137,7 +137,6 @@ export function MetricsCard({
                 categories={categories}
                 showTooltip={!isEditable}
             />
-
         </Card>
     );
 }
