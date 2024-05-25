@@ -2,7 +2,7 @@
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
-import { RiArrowRightSLine, RiTableLine, RiGitBranchLine, RiSettings5Line } from "@remixicon/react";
+import { RiSettings5Line, RiSearchLine, RiNotification2Line, RiQuestionLine } from "@remixicon/react";
 import { MetricsCard } from "@/components/ui/dashboard/cards";
 import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar";
 import React from "react";
@@ -169,10 +169,52 @@ export default function Example() {
             {/* @CHRIS: add ID to section */}
             {/* @CHRIS: pay attention between title alignment of first and second card */}
 
-            <h1 className="text-lg font-semibold text-gray-900">Today</h1>
+            <div className="sticky top-0 h-14 z-30 flex items-center justify-between w-full bg-white/90 backdrop-blur-sm">
+                <div className="-mx-2 flex items-center gap-3 w-80 rounded-lg hover:bg-gray-100 p-2">
+                    <RiSearchLine className="size-4 shrink-0 text-gray-600" aria-hidden="true" />
+                    <p className="text-sm text-gray-600">Search metrics...</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <Button
+                            variant="ghost"
+                            className={cx(
+                                // focusInput,
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                            )}
+                        >
+                            <RiQuestionLine className="size-5 text-gray-900 group-hover:text-gray-900" aria-hidden="true" />
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            className={cx(
+                                // focusInput,
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                            )}
+                        >
+                            <RiSettings5Line className="size-5 text-gray-900 group-hover:text-gray-900" aria-hidden="true" />
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            className={cx(
+                                // focusInput,
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                            )}
+                        >
+                            <RiNotification2Line className="size-5 text-gray-900 group-hover:text-gray-900" aria-hidden="true" />
+                        </Button>
+                    </div>
+                    <Button>
+                        {/* <RiAddLine className="-ml-1 size-5" aria-hidden="true" /> */}
+                        Add metric
+                    </Button>
+                </div>
+            </div>
+
+            <h1 className="mt-6 text-lg font-semibold text-gray-900">Today</h1>
             <div className="mt-4 gap-px bg-gray-200 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
                 {/* @CHRIS: padding */}
-                <Card className="xl:col-span-2 border-transparent shadow-none rounded-none pl-0 pt-2 pr-0 sm:pr-8">
+                <Card className="col-span-3 border-transparent shadow-none rounded-none pl-0 pt-2 pr-0 sm:pr-0">
                     <div className="flex items-center gap-10">
                         <div
                             className={categoryClicked && categoryClicked !== "Rows read" ? "opacity-50" : ""}
@@ -198,19 +240,19 @@ export default function Example() {
                         colors={["indigo", "amber"]}
                         showYAxis={false}
                         onValueChange={handleValueChange}
-                        className="h-64"
+                        className="h-72"
                     />
                 </Card>
                 {/* @CHRIS: padding */}
-                <Card className="xl:col-span-1 border-transparent shadow-none rounded-none pl-0 pr-0 sm:pl-8 pt-8 sm:pt-2">
-                    {/* @CHRIS: dt/dl syntax */}
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-bold text-gray-900">Usage</h3>
-                            <Badge variant="neutral">67%</Badge>
-                        </div>
+                {/* <Card className="col-span-3 border-transparent shadow-none rounded-none p-0 pt-6">
+                    <div className="flex items-center gap-2">
+                        <h3 className="text-sm font-bold text-gray-900">Usage</h3>
+                        <Badge variant="neutral">67%</Badge>
                     </div>
-                    <ul role="list" className="mt-10 space-y-5">
+                    <dd className="mt-2 text-2xl text-gray-900">
+                        88.0M
+                    </dd>
+                    <ul role="list" className="mt-4 space-y-5">
                         {dataRows.map((item) => (
                             <li key={item.title}>
                                 <p className="text-sm flex justify-between">
@@ -228,10 +270,10 @@ export default function Example() {
                         Monthly usage resets in 12 days.{" "}
                         <a href="#" className="text-indigo-600">Manage plan.</a>
                     </p>
-                </Card>
+                </Card> */}
             </div >
             <h1 className="mt-10 text-lg font-semibold text-gray-900">Overview</h1>
-            <div className="sticky top-0 z-20 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 flex items-center justify-between py-4">
+            <div className="sticky top-14 z-20 w-full border-b bg-white/90 backdrop-blur-sm border-gray-200 flex items-center justify-between py-4">
                 <Filterbar
                     maxDate={maxDate}
                     selectedDates={selectedDates}
@@ -242,7 +284,7 @@ export default function Example() {
                 />
                 <Button
                     variant={isEditable ? "primary" : "secondary"}
-                    className="hidden sm:flex gap-2 py-1"
+                    className="hidden sm:flex gap-2"
                     onClick={() => {
                         setIsEditable((prev) => !prev)
                     }}

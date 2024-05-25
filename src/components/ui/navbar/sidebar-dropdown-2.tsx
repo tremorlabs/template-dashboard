@@ -11,6 +11,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/Dropdown";
+import { Logo } from "../../../../public/Logo";
 import { ModalAddWorkspace } from "./modal-add-workspace";
 
 
@@ -29,56 +30,59 @@ export const WorkspacesDropdownDesktop = () => {
     return (
         <>
             {/* sidebar (lg+) */}
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <button className="flex w-full items-center justify-between gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 px-2 py-1.5 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
-                        <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-50">
-                            Retail analytics
-                        </p>
-                        <RiExpandUpDownLine
-                            className="size-4 shrink-0 text-gray-500"
-                            aria-hidden={true}
-                        />
-                    </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                    <DropdownMenuGroup>
-                        <DropdownMenuLabel>
-                            Workspaces ({workspaces.length})
-                        </DropdownMenuLabel>
-                        {workspaces.map((workspace) => (
-                            <DropdownMenuItem key={workspace.value}>
-                                <div className="flex w-full items-center gap-x-2.5">
-                                    <span
-                                        className={cx(
-                                            workspace.color,
-                                            "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
-                                        )}
-                                        aria-hidden={true}
-                                    >
-                                        {workspace.initials}
-                                    </span>
-                                    <div>
-                                        <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
-                                            {workspace.name}
-                                        </p>
-                                        <p className="text-xs text-gray-700 dark:text-gray-400">{workspace.role}</p>
+            <div className="flex items-center gap-3 w-full">
+                <Logo className="h-8" />
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild className="w-full">
+                        <button className="flex w-full items-center justify-between gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 px-2 py-1.5 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
+                            <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-50">
+                                Retail analytics
+                            </p>
+                            <RiExpandUpDownLine
+                                className="size-4 shrink-0 text-gray-500"
+                                aria-hidden={true}
+                            />
+                        </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuGroup>
+                            <DropdownMenuLabel>
+                                Workspaces ({workspaces.length})
+                            </DropdownMenuLabel>
+                            {workspaces.map((workspace) => (
+                                <DropdownMenuItem key={workspace.value}>
+                                    <div className="flex w-full items-center gap-x-2.5">
+                                        <span
+                                            className={cx(
+                                                workspace.color,
+                                                "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                                            )}
+                                            aria-hidden={true}
+                                        >
+                                            {workspace.initials}
+                                        </span>
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
+                                                {workspace.name}
+                                            </p>
+                                            <p className="text-xs text-gray-700 dark:text-gray-400">{workspace.role}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator />
+                        <ModalAddWorkspace>
+                            <DropdownMenuItem>
+                                <ModalAddWorkspace>
+                                    {/* <span className="flex justify-start">Add 2 workspace</span> */}
+                                    Add workspace
+                                </ModalAddWorkspace>
                             </DropdownMenuItem>
-                        ))}
-                    </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
-                    <ModalAddWorkspace>
-                        <DropdownMenuItem>
-                            <ModalAddWorkspace>
-                                {/* <span className="flex justify-start">Add 2 workspace</span> */}
-                                Add workspace
-                            </ModalAddWorkspace>
-                        </DropdownMenuItem>
-                    </ModalAddWorkspace>
-                </DropdownMenuContent>
-            </DropdownMenu>
+                        </ModalAddWorkspace>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </div>
         </>
     );
 };

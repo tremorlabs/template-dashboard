@@ -23,7 +23,6 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" attribute="class">
           <Navbar />
           <section className="lg:pl-64">
-            <Searchbar />
             {children}
           </section>
         </ThemeProvider>

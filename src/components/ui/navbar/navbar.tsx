@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { cx } from "@/lib/utils";
 import { RiTableLine, RiHome2Line, RiSettings5Line } from "@remixicon/react";
-import { WorkspacesDropdownDesktop } from "./sidebar-dropdown-2";
+// import { WorkspacesDropdownDesktop } from "./sidebar-dropdown-2";
 
 import {
-  // WorkspacesDropdownDesktop,
+  WorkspacesDropdownDesktop,
   WorkspacesDropdownMobile,
 } from "./sidebar-workspaces-dropdown";
 
@@ -28,15 +28,15 @@ export function Navbar() {
     <>
       {/* sidebar (lg+) */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
-        <div className="flex grow flex-col overflow-y-auto bg-gray-50 dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
-          <div className="-mx-2 h-20 px-6 flex items-center border-b border-gray-200 dark:border-gray-800">
-            {/* <WorkspacesDropdownDesktop /> */}
+        <div className="px-6 pt-6 pb-4 flex grow flex-col gap-y-6 overflow-y-auto bg-gray-50 dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
+          {/* <WorkspacesDropdownDesktop /> */}
+          <div className="-mx-2">
             <WorkspacesDropdownDesktop />
           </div>
-          <nav className="pt-4 px-6 pb-4 flex flex-1 flex-col">
+          <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
-                <ul role="list" className="-mx-2 space-y-0.5">
+                <ul role="list" className="-mx-2 space-y-2">
                   {/* @SEV: should we componentize this */}
                   {navigation.map((item) => (
                     <li key={item.name}>
@@ -51,7 +51,7 @@ export function Navbar() {
                       >
                         <item.icon
                           className={cx(
-                            'size-4 shrink-0'
+                            'size-5 shrink-0'
                           )}
                           aria-hidden="true"
                         />
@@ -61,12 +61,6 @@ export function Navbar() {
                   ))}
                 </ul>
               </li>
-              {/* --- TEMP --- */}
-              {/* <li className="-mx-2 mt-auto">
-                <ModalAddWorkspace>
-                  <span className="w-full">(TEMP )Add workspace</span>
-                </ModalAddWorkspace>
-              </li> */}
               <li className="-mx-2 mt-auto">
                 <UserProfileDesktop />
               </li>
