@@ -11,13 +11,13 @@ import { set, subDays, toDate } from "date-fns";
 import { overviews } from "@/data/data";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { animations } from "@formkit/drag-and-drop";
-import { cx, millionFormatter } from "@/lib/utils";
+import { cx } from "@/lib/utils";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { Divider } from "@/components/Divider";
 import { LineChart, LineChartEventProps } from "@/components/LineChart2";
 import { ProgressBar } from "@/components/ProgressBar";
 import { dummyData } from "@/data/data";
-import CountUp from "react-countup"
+import { Input } from "@/components/Input";
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -85,6 +85,8 @@ const dataRows = [
     },
 ]
 
+// @CHRIS: for count-up animation
+
 type InitialAverageValues = {
     "Rows read": {
         start: number,
@@ -114,6 +116,7 @@ const maxDate = toDate(Math.max(...overviewsDates));
 export default function Example() {
     const [isEditable, setIsEditable] = React.useState(false)
     const [parentRef, KPICardsOrder, _, updateConfig] = useDragAndDrop<HTMLUListElement, string>(categories.map((item) => item.title), {
+        // @CHRIS
         // dragHandle: ".drag-icon",
         disabled: !isEditable,
         plugins: [animations()],
@@ -134,7 +137,8 @@ export default function Example() {
                     ...prev,
                     [category]: {
                         start: prev?.[category]?.end,
-                        end: e?.[category] }
+                        end: e?.[category]
+                    }
                 }))
                 setCategoryClicked(category)
                 break;
@@ -152,7 +156,7 @@ export default function Example() {
                 setValues(initialAverageValues)
                 setCategoryClicked(null)
                 break;
-          }
+        }
 
     }
 
@@ -175,25 +179,15 @@ export default function Example() {
                         >
                             <h2 className="text-sm text-gray-900 font-bold">Rows read</h2>
                             <dd className="mt-1 text-2xl text-gray-900">
-                            <CountUp
-                                start={values["Rows read"].start}
-                                end={values["Rows read"].end}
-                                duration={0.8}
-                                formattingFn={millionFormatter}
-                            />
-                        </dd>
+                                88.0M
+                            </dd>
                         </div>
                         <div
                             className={categoryClicked && categoryClicked !== "Rows written" ? "opacity-50" : ""}
                         >
                             <h2 className="text-sm text-gray-900 font-bold">Rows written</h2>
                             <dd className="mt-1 text-2xl text-gray-900">
-                                <CountUp
-                                    start={values["Rows written"].start}
-                                    end={values["Rows written"].end}
-                                    duration={0.8}
-                                    formattingFn={millionFormatter}
-                                />
+                                82.0M
                             </dd>
                         </div>
                     </div>

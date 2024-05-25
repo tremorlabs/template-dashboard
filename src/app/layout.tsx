@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes"
 import "./globals.css";
 import { Navbar } from "@/components/ui/navbar/navbar";
+import { Searchbar } from "@/components/ui/navbar/searchbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,10 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}>
         <ThemeProvider defaultTheme="system" attribute="class">
           <Navbar />
-          <section className="lg:pl-64">{children}</section>
+          <section className="lg:pl-64">
+            <Searchbar />
+            {children}
+          </section>
         </ThemeProvider>
       </body>
     </html>
