@@ -10,7 +10,7 @@ export interface Transaction {
 
 export type OverviewData = {
   date: string;
-  Sales: number;
-  Profit: number;
-  Users: number;
+  "Rows written": number;
+  "Rows read": number;
+  Queries: number;
 };

@@ -19,39 +19,39 @@ export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 // @CHRIS: declare via types
 const categories = [
     {
-        title: "Sales",
-        type: "currency",
-    },
-    {
-        title: "Profit",
-        type: "currency",
-    },
-    {
-        title: "Users",
+        title: "Rows read",
         type: "unit",
     },
     {
-        title: "Sales",
-        type: "currency",
-    },
-    {
-        title: "Profit",
-        type: "currency",
-    },
-    {
-        title: "Users",
+        title: "Rows written",
         type: "unit",
     },
     {
-        title: "Sales",
-        type: "currency",
+        title: "Queries",
+        type: "unit",
     },
     {
-        title: "Profit",
-        type: "currency",
+        title: "Rows read",
+        type: "unit",
     },
     {
-        title: "Users",
+        title: "Rows written",
+        type: "unit",
+    },
+    {
+        title: "Queries",
+        type: "unit",
+    },
+    {
+        title: "Rows read",
+        type: "unit",
+    },
+    {
+        title: "Rows written",
+        type: "unit",
+    },
+    {
+        title: "Queries",
         type: "unit",
     },
 ] as const
