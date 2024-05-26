@@ -108,7 +108,7 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
           disabled={isEditable}
         >
           {/* @CHRIS: modal mobile view */}
-          <SelectTrigger className="mt-2 sm:mt-0 w-full sm:w-fit px-2">
+          <SelectTrigger className="mt-2 sm:mt-0 w-full sm:w-fit py-1 px-2">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

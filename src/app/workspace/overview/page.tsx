@@ -17,7 +17,7 @@ import { Divider } from "@/components/Divider";
 import { LineChart, LineChartEventProps } from "@/components/LineChart2";
 import { ProgressBar } from "@/components/ProgressBar";
 import { dummyData } from "@/data/data";
-import { Input } from "@/components/Input";
+import { Input } from "@/components/Input2";
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -85,6 +85,30 @@ const dataRows = [
     },
 ]
 
+const dataRows2 = [
+    {
+        title: "Active users",
+        percentage: 21.7,
+        current: 21.7,
+        allowed: 100,
+        unit: "%"
+    },
+    {
+        title: "Total users",
+        percentage: 40,
+        current: 8,
+        allowed: 20,
+        unit: ""
+    },
+    {
+        title: "Uptime",
+        percentage: 98.3,
+        current: 98.3,
+        allowed: 100,
+        unit: "%"
+    },
+]
+
 // @CHRIS: for count-up animation
 
 type InitialAverageValues = {
@@ -126,6 +150,7 @@ export default function Example() {
         to: maxDate
     })
     const [selectedPeriod, setSelectedPeriod] = React.useState<PeriodValue>('no-comparison')
+
     const [values, setValues] = React.useState<InitialAverageValues>(initialAverageValues)
     const [categoryClicked, setCategoryClicked] = React.useState<Categories | null>(null)
 
@@ -168,12 +193,8 @@ export default function Example() {
         <>
             {/* @CHRIS: add ID to section */}
             {/* @CHRIS: pay attention between title alignment of first and second card */}
-
-            <div className="sticky top-0 h-14 z-30 flex items-center justify-between w-full bg-white/90 backdrop-blur-sm">
-                <div className="-mx-2 flex items-center gap-3 w-80 rounded-lg hover:bg-gray-100 p-2">
-                    <RiSearchLine className="size-4 shrink-0 text-gray-600" aria-hidden="true" />
-                    <p className="text-sm text-gray-600">Search metrics...</p>
-                </div>
+            <div className="sticky top-4 z-30 flex items-center justify-between w-full bg-white/90 backdrop-blur-sm py-2">
+                <Input type="search" placeholder="Search metrics..." className="w-80 -mx-2" />
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                         <Button
@@ -204,17 +225,19 @@ export default function Example() {
                             <RiNotification2Line className="size-5 text-gray-900 group-hover:text-gray-900" aria-hidden="true" />
                         </Button>
                     </div>
-                    <Button>
+                    <Button className="py-1 px-2">
                         {/* <RiAddLine className="-ml-1 size-5" aria-hidden="true" /> */}
                         Add metric
                     </Button>
                 </div>
-            </div>
+            </div >
 
             <h1 className="mt-6 text-lg font-semibold text-gray-900">Today</h1>
-            <div className="mt-4 gap-px bg-gray-200 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+            {/* <div className="mt-4 gap-px bg-gray-200 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"> */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
+
                 {/* @CHRIS: padding */}
-                <Card className="col-span-3 border-transparent shadow-none rounded-none pl-0 pt-2 pr-0 sm:pr-0">
+                {/* <Card className="col-span-3 border-transparent shadow-none rounded-none pl-0 pt-2 pr-0 sm:pr-0">
                     <div className="flex items-center gap-10">
                         <div
                             className={categoryClicked && categoryClicked !== "Rows read" ? "opacity-50" : ""}
@@ -236,44 +259,129 @@ export default function Example() {
                     <LineChart
                         data={dummyData}
                         index="date"
-                        categories={["Rows read", "Rows written"]}
+                        categories={["Rows read"]}
                         colors={["indigo", "amber"]}
                         showYAxis={false}
                         onValueChange={handleValueChange}
                         className="h-72"
                     />
-                </Card>
+                </Card> */}
                 {/* @CHRIS: padding */}
-                {/* <Card className="col-span-3 border-transparent shadow-none rounded-none p-0 pt-6">
+
+                <div>
                     <div className="flex items-center gap-2">
                         <h3 className="text-sm font-bold text-gray-900">Usage</h3>
-                        <Badge variant="neutral">67%</Badge>
+                        <Badge variant="neutral">+0.2%</Badge>
                     </div>
-                    <dd className="mt-2 text-2xl text-gray-900">
-                        88.0M
-                    </dd>
+                    <p className="flex items-baseline gap-2">
+                        <span className="mt-2 text-xl text-gray-900">
+                            68.1%
+                        </span>
+                        <span className="text-sm text-gray-500">of allowed capacity</span>
+                    </p>
                     <ul role="list" className="mt-4 space-y-5">
                         {dataRows.map((item) => (
                             <li key={item.title}>
                                 <p className="text-sm flex justify-between">
                                     <span className="font-medium text-gray-900">{item.title}</span>
                                     <span className="font-medium text-gray-900">
-                                        {item.current} out of{" "}
-                                        <span className="font-normal text-gray-500">{item.allowed}{item.unit}</span>
+                                        {item.current}
+                                        <span className="font-normal text-gray-500">/{item.allowed}{item.unit}</span>
                                     </span>
                                 </p>
                                 <ProgressBar value={item.percentage} className="mt-2 [&>*]:h-1.5" />
                             </li>
                         ))}
                     </ul>
-                    <p className="mt-6 text-xs text-gray-500">
+                    <p className="mt-6 text-xs text-gray-600">
                         Monthly usage resets in 12 days.{" "}
                         <a href="#" className="text-indigo-600">Manage plan.</a>
                     </p>
-                </Card> */}
+                </div>
+
+                <div className="flex flex-col justify-between">
+                    <div className="flex items-center gap-2">
+                        <h3 className="text-sm font-bold text-gray-900">Workspace</h3>
+                        <Badge variant="neutral">+2.9%</Badge>
+                    </div>
+                    <p className="flex items-baseline gap-2">
+                        <span className="mt-2 text-xl text-gray-900">
+                            21.7%
+                        </span>
+                        <span className="text-sm text-gray-500">active users</span>
+                    </p>
+                    <ul role="list" className="mt-4 space-y-5">
+                        {dataRows2.map((item) => (
+                            <li key={item.title}>
+                                <p className="text-sm flex justify-between">
+                                    <span className="font-medium text-gray-900">{item.title}</span>
+                                    <span className="font-medium text-gray-900">
+                                        {item.current}
+                                        <span className="font-normal text-gray-500">/{item.allowed}{item.unit}</span>
+                                    </span>
+                                </p>
+                                <ProgressBar value={item.percentage} className="mt-2 [&>*]:h-1.5" />
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="mt-6 text-xs text-gray-600">
+                        With free plan, up to 20 members can be invited.{" "}
+                        <a href="#" className="text-indigo-600">Invite users.</a>
+                    </p>
+                </div>
+
+                <div className="flex flex-col justify-between">
+                    <div>
+                        <div className="flex items-center gap-2">
+                            <h3 className="text-sm font-bold text-gray-900">Costs</h3>
+                            <Badge variant="neutral">-1.4%</Badge>
+                        </div>
+                        <p className="flex items-baseline gap-2">
+                            <span className="mt-2 text-xl text-gray-900">
+                                $293.5
+                            </span>
+                            <span className="text-sm text-gray-500">current billing cycle</span>
+                        </p>
+                        <div className="mt-4">
+                            <p className="text-sm flex justify-between">
+                                <span className="font-medium text-gray-900">Current costs</span>
+                            </p>
+                            <div className="mt-2 flex items-center gap-0.5">
+                                <div className="rounded-full h-1.5 bg-indigo-500 w-[68.1%]" />
+                                <div className="rounded-full h-1.5 bg-purple-500 w-[20.8%]" />
+                                <div className="rounded-full h-1.5 bg-gray-400 w-[11.1%]" />
+                            </div>
+                        </div>
+                        <ul role="list" className="mt-5 space-y-1.5">
+                            <li className="flex items-center gap-2">
+                                <span className="size-2.5 rounded-sm bg-indigo-500" aria-hidden="true" />
+                                <span className="text-sm text-gray-900">Base tier</span>
+                                <span className="text-sm text-gray-600">($200 / 68.3%)</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <span className="size-2.5 rounded-sm bg-purple-500" aria-hidden="true" />
+                                <span className="text-sm text-gray-900">On-demand charges</span>
+                                <span className="text-sm text-gray-600">($61.1 / 20.8%)</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <span className="size-2.5 rounded-sm bg-gray-400" aria-hidden="true" />
+                                <span className="text-sm text-gray-900">Caching</span>
+                                <span className="text-sm text-gray-600">($31.9 / 11.1%)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <p className="mt-6 text-xs text-gray-600">
+                        Set hard caps in{" "}
+                        <a href="#" className="text-indigo-600">cost spend management.</a>
+                    </p>
+                </div>
+
+
+
             </div >
-            <h1 className="mt-10 text-lg font-semibold text-gray-900">Overview</h1>
-            <div className="sticky top-14 z-20 w-full border-b bg-white/90 backdrop-blur-sm border-gray-200 flex items-center justify-between py-4">
+            <h1 className="mt-16 text-lg font-semibold text-gray-900">Overview</h1>
+            <div className="sticky top-[68px] z-20 w-full bg-white/90 backdrop-blur-sm border-b flex items-center justify-between pt-2 pb-4">
+                {/* @CHRIS: bring button in filterbar */}
                 <Filterbar
                     maxDate={maxDate}
                     selectedDates={selectedDates}
@@ -284,7 +392,7 @@ export default function Example() {
                 />
                 <Button
                     variant={isEditable ? "primary" : "secondary"}
-                    className="hidden sm:flex gap-2"
+                    className="hidden sm:flex gap-2 py-1 px-2"
                     onClick={() => {
                         setIsEditable((prev) => !prev)
                     }}
@@ -299,7 +407,7 @@ export default function Example() {
             <dl
                 ref={parentRef}
                 className={cx(
-                    "mt-8 grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 rounded-lg border border-dashed border-transparent",
+                    "mt-8 grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
                     isEditable ? "p-2 border-gray-200 bg-gray-50" : "transition"
                 )}
             >

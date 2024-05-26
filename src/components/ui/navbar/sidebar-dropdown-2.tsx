@@ -44,7 +44,8 @@ export const WorkspacesDropdownDesktop = () => {
                             />
                         </button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    {/* <DropdownMenuContent className="!min-w-[calc(var(--radix-dropdown-menu-trigger-width))]"> */}
+                    <DropdownMenuContent align="end" className="!min-w-52">
                         <DropdownMenuGroup>
                             <DropdownMenuLabel>
                                 Workspaces ({workspaces.length})
