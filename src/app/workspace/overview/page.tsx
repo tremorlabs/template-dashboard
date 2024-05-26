@@ -107,7 +107,7 @@ const data2 = [
 const data3 = [
     {
         title: "Base tier",
-        percentage: 48.1,
+        percentage: 68.1,
         value: "$200",
         color: "bg-indigo-500 dark:bg-indigo-500"
     },
