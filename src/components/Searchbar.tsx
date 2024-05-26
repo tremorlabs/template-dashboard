@@ -1,10 +1,10 @@
 // Tremor Raw Input [v1.0.0]
 
 import * as React from "react";
-import { RiEyeFill, RiEyeOffFill, RiSearchLine } from "@remixicon/react";
+import { RiSearchLine } from "@remixicon/react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cx, focusInput, focusRing, hasErrorInput } from "@/lib/utils";
+import { cx, hasErrorInput } from "@/lib/utils";
 
 const inputStyles = tv({
     base: [
@@ -39,7 +39,7 @@ interface InputProps
     inputClassName?: string;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
     (
         {
             className,
@@ -84,6 +84,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
 );
 
-Input.displayName = "Input";
+Searchbar.displayName = "Searchbar";
 
-export { Input, inputStyles, type InputProps };
+export { Searchbar, inputStyles, type InputProps };

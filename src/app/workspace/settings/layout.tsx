@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { TabNavigation, TabNavigationLink } from "@/components/TabNavigation";
-import MobileSidebar from "@/components/ui/navbar/mobile-sidebar";
+import MobileSidebar from "@/components/ui/navigation/mobile-sidebar";
 
 const navigationSettings = [
   { name: "General", href: siteConfig.baseLinks.general },

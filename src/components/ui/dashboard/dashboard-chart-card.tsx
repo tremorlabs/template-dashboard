@@ -2,7 +2,6 @@ import { cx } from "@/lib/utils";
 import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
-import { Card } from "@/components/Card";
 import { DateRange } from "react-day-picker";
 import { PeriodValue } from "@/app/workspace/overview/page";
 import React from "react";
@@ -12,16 +11,10 @@ import {
     eachDayOfInterval,
     formatDate,
     interval,
-    isEqual,
     isWithinInterval,
-    toDate,
 } from "date-fns";
 import { OverviewData } from "@/data/schema";
 import { RiDraggable } from "@remixicon/react";
-
-
-//   @CHRIS: import mono font for number
-//   import { lusitana } from '@/app/ui/fonts';
 
 // @Maxime/Chris: dummy data -> remover afterwards
 
@@ -51,7 +44,7 @@ export const getBadgeType = (value: number) => {
     }
 };
 
-export function MetricsCard({
+export function ChartCard({
     title,
     type,
     selectedDates,
@@ -106,9 +99,9 @@ export function MetricsCard({
 
     return (
         // @SEV/@MAXIME: cursor-grab is not applied on <Chart/> + when moving cursor switches to default cursor
-        <Card className={cx(
+        <div className={cx(
             isEditable ? "cursor-grab active:cursor-grabbing hover:-translate-y-px hover:shadow-md" : "",
-            "transition border-transparent shadow-none p-0"
+            "transition"
         )}>
             <div className="flex items-center justify-between gap-x-2">
                 <div className="flex items-center gap-x-2">
@@ -137,7 +130,7 @@ export function MetricsCard({
                 categories={categories}
                 showTooltip={!isEditable}
             />
-        </Card>
+        </div>
     );
 }
 
