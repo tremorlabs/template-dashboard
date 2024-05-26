@@ -46,8 +46,8 @@ export function Navbar() {
                           pathname === item.href || pathname.includes(item.href)
                             // ? "text-indigo-600 bg-indigo-50 dark:text-gray-50",
                             ? "text-indigo-600 dark:text-indigo-500"
-                            : "text-gray-600 dark:text-gray-50",
-                          "hover:bg-gray-100 font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
+                            : "text-gray-600 dark:text-gray-400",
+                          "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
                         )}
                       >
                         <item.icon

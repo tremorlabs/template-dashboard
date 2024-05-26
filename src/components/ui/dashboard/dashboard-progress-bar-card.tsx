@@ -34,11 +34,11 @@ export function ProgressBarCard({
         <>
             <div>
                 <div className="flex items-center gap-2">
-                    <dt className="text-sm font-bold text-gray-900">{title}</dt>
+                    <dt className="text-sm font-bold text-gray-900 dark:text-gray-50">{title}</dt>
                     <Badge variant="neutral">{change}</Badge>
                 </div>
                 <dd className="mt-2 flex items-baseline gap-2">
-                    <span className="text-xl text-gray-900">
+                    <span className="text-xl text-gray-900 dark:text-gray-50">
                         {value}
                     </span>
                     <span className="text-sm text-gray-500">{valueDescription}</span>
@@ -47,8 +47,8 @@ export function ProgressBarCard({
                     {data.map((item) => (
                         <li key={item.title}>
                             <p className="text-sm flex justify-between">
-                                <span className="font-medium text-gray-900">{item.title}</span>
-                                <span className="font-medium text-gray-900">
+                                <span className="font-medium text-gray-900 dark:text-gray-50">{item.title}</span>
+                                <span className="font-medium text-gray-900 dark:text-gray-50">
                                     {item.current}
                                     <span className="font-normal text-gray-500">/{item.allowed}{item.unit}</span>
                                 </span>
@@ -57,9 +57,9 @@ export function ProgressBarCard({
                         </li>
                     ))}
                 </ul>
-                <p className="mt-6 text-xs text-gray-600">
+                <p className="mt-6 text-xs text-gray-600 dark:text-gray-400">
                     {ctaDescription}{" "}
-                    <a href={ctaLink} className="text-indigo-600">{ctaText}</a>
+                    <a href={ctaLink} className="text-indigo-600 dark:text-indigo-500">{ctaText}</a>
                 </p>
             </div>
         </>

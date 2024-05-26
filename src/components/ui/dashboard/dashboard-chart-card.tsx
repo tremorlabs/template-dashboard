@@ -105,7 +105,7 @@ export function ChartCard({
         )}>
             <div className="flex items-center justify-between gap-x-2">
                 <div className="flex items-center gap-x-2">
-                    <dt className="text-sm text-gray-900 font-bold">{title}</dt>
+                    <dt className="text-sm text-gray-900 dark:text-gray-50 font-bold">{title}</dt>
                     {selectedPeriod !== "no-comparison" && (
                         <Badge variant={getBadgeType(evolution)}>{percentageFormatter(evolution)}</Badge>
                     )}
@@ -113,7 +113,7 @@ export function ChartCard({
                 {isEditable && <RiDraggable className="text-gray-400 cursor-move size-5" aria-hidden="true" />}
             </div>
             <div className="mt-2 flex items-baseline justify-between">
-                <dd className="text-xl text-gray-900">{formatter(value)}</dd>
+                <dd className="text-xl text-gray-900 dark:text-gray-50">{formatter(value)}</dd>
                 {selectedPeriod !== "no-comparison" && (
                     <dd className="text-sm text-gray-500">from {formatter(previousValue)}</dd>
                 )}

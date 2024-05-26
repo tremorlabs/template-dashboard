@@ -7,8 +7,8 @@ export default function BodyNavbar() {
     return (
         <>
             {/* filling element between top of page and sticky search bar when page is scrolled */}
-            <div className="fixed z-30 top-0 h-4 bg-white/90 backdrop-blur-sm inset-x-0" />
-            <div className="sticky hidden top-4 z-30 lg:flex items-center justify-between bg-white/90 backdrop-blur-sm py-2">
+            <div className="fixed z-30 top-0 h-4 bg-white/90 dark:bg-gray-950/80 backdrop-blur-sm inset-x-0" />
+            <div className="sticky hidden top-4 z-30 lg:flex items-center justify-between bg-white/90 dark:bg-gray-950/80 backdrop-blur-sm py-2">
                 {/* @SEV: the Searchbar is built based on input -> wanted to add variant to Input but too much divergence from "base" styling -> discussion */}
 
                 {/* @SEV: just in case -mx-2 alignment by purpose -> icon alignment vs. hover-state alignment */}
@@ -19,28 +19,28 @@ export default function BodyNavbar() {
                             variant="ghost"
                             className={cx(
                                 // focusInput,
-                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
                             )}
                         >
-                            <RiQuestionLine className="size-5 text-gray-600 group-hover:text-gray-900" aria-hidden="true" />
+                            <RiQuestionLine className="size-5 text-gray-600 group-hover:text-gray-900 dark:text-gray-400 group-hover:dark:text-gray-50" aria-hidden="true" />
                         </Button>
                         <Button
                             variant="ghost"
                             className={cx(
                                 // focusInput,
-                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
                             )}
                         >
-                            <RiSettings5Line className="size-5 text-gray-600 group-hover:text-gray-900" aria-hidden="true" />
+                            <RiSettings5Line className="size-5 text-gray-600 group-hover:text-gray-900 dark:text-gray-400 group-hover:dark:text-gray-50" aria-hidden="true" />
                         </Button>
                         <Button
                             variant="ghost"
                             className={cx(
                                 // focusInput,
-                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 focus:outline-none",
+                                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
                             )}
                         >
-                            <RiNotification4Line className="size-5 text-gray-600 group-hover:text-gray-900" aria-hidden="true" />
+                            <RiNotification4Line className="size-5 text-gray-600 group-hover:text-gray-900 dark:text-gray-400 group-hover:dark:text-gray-50" aria-hidden="true" />
                         </Button>
                     </div>
                     <Button className="hidden sm:flex py-1 px-2">

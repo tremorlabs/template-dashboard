@@ -107,21 +107,21 @@ const data2 = [
 const data3 = [
     {
         title: "Base tier",
-        percentage: 68.1,
+        percentage: 48.1,
         value: "$200",
-        color: "bg-indigo-500"
+        color: "bg-indigo-500 dark:bg-indigo-500"
     },
     {
         title: "On-demand charges",
         percentage: 20.8,
         value: "$61.1",
-        color: "bg-purple-500"
+        color: "bg-purple-500 dark:bg-indigo-500"
     },
     {
         title: "Caching",
         percentage: 11.1,
         value: "$31.9",
-        color: "bg-gray-400"
+        color: "bg-gray-400 dark:bg-gray-600"
     },
 ]
 
@@ -155,7 +155,7 @@ export default function Example() {
             {/* @SEV: can also be put into /overview/Layout.tsx? */}
             <BodyNavbar />
 
-            <h1 className="lg:mt-6 text-lg font-semibold text-gray-900">Today</h1>
+            <h1 className="lg:mt-6 text-lg font-semibold text-gray-900 dark:text-gray-50">Today</h1>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
                 <ProgressBarCard
                     title="Usage"
@@ -190,9 +190,9 @@ export default function Example() {
                 />
             </div >
 
-            <h1 className="mt-16 text-lg font-semibold text-gray-900">Overview</h1>
+            <h1 className="mt-16 text-lg font-semibold text-gray-900 dark:text-gray-50">Overview</h1>
 
-            <div className="sticky -mx-6 px-6 lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 backdrop-blur-sm border-b flex items-center justify-between pt-4 lg:pt-2 pb-4">
+            <div className="sticky -mx-6 px-6 lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 flex items-center justify-between pt-4 lg:pt-2 pb-4">
                 {/* @CHRIS: bring "Edit"-button in filterbar */}
                 <Filterbar
                     maxDate={maxDate}
@@ -205,9 +205,10 @@ export default function Example() {
                 <Button
                     variant={isEditable ? "primary" : "secondary"}
                     className="hidden sm:flex gap-2 py-1 px-2"
-                    onClick={() => {
-                        setIsEditable((prev) => !prev)
-                    }}
+                // @CHRIS
+                // onClick={() => {
+                //     setIsEditable((prev) => !prev)
+                // }}
                 >
                     {!isEditable && (
                         <RiSettings5Line className="-ml-1 size-4 shrink-0" aria-hidden="true" />
@@ -220,7 +221,7 @@ export default function Example() {
                 ref={parentRef}
                 className={cx(
                     "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
-                    isEditable ? "p-2 border-gray-200 bg-gray-50" : "transition"
+                    isEditable ? "p-2 border-gray-200 dark:border-gray-800 dark:bg-gray-900 bg-gray-50" : "transition"
                 )}
             >
                 {KPICardsOrder.map((item) => {

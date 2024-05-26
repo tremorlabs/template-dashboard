@@ -12,7 +12,7 @@ const inputStyles = tv({
         "relative peer block w-full appearance-none rounded-md px-2.5 py-2 outline-none transition text-sm",
         // background
         // @CHRIS dark mode
-        "bg-transparent hover:bg-gray-100 focus:bg-gray-100",
+        "bg-transparent hover:bg-gray-100 focus:bg-gray-100 hover:dark:bg-gray-900 focus:dark:bg-gray-900",
         // text color
         "text-gray-900 dark:text-gray-50",
         // placeholder color

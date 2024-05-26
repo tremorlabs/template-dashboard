@@ -36,17 +36,17 @@ export function CategoryBarCard({
             <div className="flex flex-col justify-between">
                 <div>
                     <div className="flex items-center gap-2">
-                        <h3 className="text-sm font-bold text-gray-900">{title}</h3>
+                        <h3 className="text-sm font-bold text-gray-900 dark:text-gray-50">{title}</h3>
                         <Badge variant="neutral">{change}</Badge>
                     </div>
                     <p className="mt-2 flex items-baseline gap-2">
-                        <span className="text-xl text-gray-900">
+                        <span className="text-xl text-gray-900 dark:text-gray-50">
                             {value}
                         </span>
                         <span className="text-sm text-gray-500">{valueDescription}</span>
                     </p>
                     <div className="mt-4">
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                             {subtitle}
                         </p>
                         <div className="mt-2 flex items-center gap-0.5">
@@ -55,8 +55,9 @@ export function CategoryBarCard({
                                     key={item.title}
                                     className={cx(
                                         item.color,
-                                        `rounded-full h-1.5 w-[${item.percentage}%]`
+                                        `rounded-full h-1.5`
                                     )}
+                                    style={{ width: `${item.percentage}%` }}
                                 />
                             ))}
                         </div>
@@ -71,15 +72,15 @@ export function CategoryBarCard({
                                     )}
                                     aria-hidden="true"
                                 />
-                                <span className="text-gray-900">{item.title}</span>
-                                <span className="text-gray-600">({item.value} / {item.percentage}%)</span>
+                                <span className="text-gray-900 dark:text-gray-50">{item.title}</span>
+                                <span className="text-gray-600 dark:text-gray-400">({item.value} / {item.percentage}%)</span>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <p className="mt-6 text-xs text-gray-600">
+                <p className="mt-6 text-xs text-gray-600 dark:text-gray-400">
                     {ctaDescription}{" "}
-                    <a href={ctaLink} className="text-indigo-600">{ctaText}</a>
+                    <a href={ctaLink} className="text-indigo-600 dark:text-gray-500">{ctaText}</a>
                 </p>
             </div>
         </>
