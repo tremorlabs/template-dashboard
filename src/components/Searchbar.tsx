@@ -10,9 +10,6 @@ const inputStyles = tv({
     base: [
         // base
         "relative peer block w-full appearance-none rounded-md px-2.5 py-2 outline-none transition text-sm",
-        // background
-        // @CHRIS dark mode
-        "bg-transparent hover:bg-gray-100 focus:bg-gray-100 hover:dark:bg-gray-900 focus:dark:bg-gray-900",
         // text color
         "text-gray-900 dark:text-gray-50",
         // placeholder color
@@ -30,6 +27,19 @@ const inputStyles = tv({
         hasError: {
             true: hasErrorInput,
         },
+        variant: {
+            ghost: [
+                // background
+                "bg-transparent hover:bg-gray-100 focus:bg-gray-100 hover:dark:bg-gray-900 focus:dark:bg-gray-900",
+            ],
+            light: [
+                // background
+                "bg-gray-100 dark:bg-gray-900",
+            ],
+        },
+    },
+    defaultVariants: {
+        variant: "ghost",
     },
 });
 
@@ -45,18 +55,18 @@ const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
             className,
             inputClassName,
             hasError,
+            variant,
             ...props
         }: InputProps,
         forwardedRef,
     ) => {
-
         return (
             <div className={cx("relative w-full", className)}>
                 <input
                     ref={forwardedRef}
                     type="search"
                     className={cx(
-                        inputStyles({ hasError }),
+                        inputStyles({ hasError, variant }),
                         // to fit input text next to search icon
                         "pl-9",
                         inputClassName,

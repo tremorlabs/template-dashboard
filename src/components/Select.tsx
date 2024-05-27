@@ -162,7 +162,7 @@ const SelectContent = React.forwardRef<
           className={cx(
             "p-1",
             position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[calc(var(--radix-select-trigger-width))]",
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[calc(var(--radix-select-trigger-width))]",
           )}
         >
           {children}
@@ -267,7 +267,7 @@ const SelectItemPeriod = React.forwardRef<
       </span>
       <div className="flex items-center w-full">
         {/* adapt width accordingly if you use longer names for periods */}
-        <span className="w-32">
+        <span className="w-40 sm:w-32">
           <SelectPrimitives.ItemText>{children}</SelectPrimitives.ItemText>
         </span>
         <span>

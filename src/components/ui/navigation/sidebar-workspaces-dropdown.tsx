@@ -16,6 +16,8 @@ import {
 } from "@/components/Dropdown";
 import { ModalAddWorkspace } from "./modal-add-workspace";
 
+import { Logo } from "../../../../public/Logo";
+
 const workspaces = [
   {
     value: "retail-analytics",
@@ -31,13 +33,12 @@ export const WorkspacesDropdownDesktop = () => {
   return (
     <>
       {/* sidebar (lg+) */}
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
             <span
-              className={cx(
-                "flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
-              )}
+              className="flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
               aria-hidden="true"
             >
               RA
@@ -58,6 +59,24 @@ export const WorkspacesDropdownDesktop = () => {
             </div>
           </button>
         </DropdownMenuTrigger>
+
+        {/* --- Version B --- */}
+        {/* <DropdownMenuTrigger asChild>
+          <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
+            <Logo className="size-5 shrink-0" />
+            <div className="flex w-full items-center justify-between gap-x-4 truncate">
+              <div className="truncate">
+                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
+                  retail_analytics_US
+                </p>
+              </div>
+              <RiExpandUpDownLine
+                className="size-5 shrink-0 text-gray-500"
+                aria-hidden={true}
+              />
+            </div>
+          </button>
+        </DropdownMenuTrigger> */}
         <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuLabel>

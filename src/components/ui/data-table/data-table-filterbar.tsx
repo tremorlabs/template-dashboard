@@ -1,10 +1,10 @@
 "use client";
 
-import { RiAddCircleLine, RiCloseLine, RiDownloadLine, RiDraggable, RiSettings2Line } from "@remixicon/react"
+import { RiDownloadLine } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
+import { Searchbar } from "@/components/Searchbar";
 
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTableFilter } from "./data-table-filter";
@@ -14,7 +14,7 @@ import { formatters } from "@/lib/utils"
 import React from "react"
 
 interface DataTableToolbarProps<TData> {
-  table: Table<TData>;
+    table: Table<TData>;
 }
 
 export function Filterbar<TData>({
@@ -23,8 +23,8 @@ export function Filterbar<TData>({
     const isFiltered = table.getState().columnFilters.length > 0
 
     return (
-        <div className="flex items-center justify-between">
-            <div className="flex flex-1 items-center gap-x-2">
+        <div className="flex flex-wrap sm:gap-x-6 items-center justify-between">
+            <div className="flex flex-wrap flex-1 items-center gap-2">
                 {table.getColumn("status")?.getIsVisible() && (
                     <DataTableFilter
                         column={table.getColumn("status")}
@@ -50,7 +50,18 @@ export function Filterbar<TData>({
                         formatter={formatters.currency}
                     />
                 )}
-                {/* @Maxime: already show button on the fly when filters are selected but not applied */}
+                {table.getColumn("owner")?.getIsVisible() && (
+                    <Searchbar
+                        placeholder="Search by owner..."
+                        variant="light"
+                        // @Maxime: how to allow more columns (e.g. status, owner or region)
+                        value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) =>
+                            table.getColumn("owner")?.setFilterValue(event.target.value)
+                        }
+                        className="[&>input]:h-[30px] w-full sm:max-w-[250px] lg:max-w-[300px]"
+                    />
+                )}
                 {isFiltered && (
                     <Button
                         variant="ghost"
@@ -63,12 +74,11 @@ export function Filterbar<TData>({
                 )}
             </div>
             <div className="flex items-center gap-2">
-                <Button variant="secondary" className="gap-x-2 font-semibold py-1 px-2">
-                    <RiDownloadLine className="-ml-px size-4 shrink-0" aria-hidden={true} />
+                <Button variant="secondary" className="hidden lg:flex gap-x-2 py-1 px-2">
+                    <RiDownloadLine className="-ml-px size-4 shrink-0" aria-hidden="true" />
                     Export
                 </Button>
                 <DataTableViewOptions table={table} />
-
             </div>
         </div>
     )

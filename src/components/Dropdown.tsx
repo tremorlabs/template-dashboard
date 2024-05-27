@@ -120,7 +120,7 @@ const DropdownMenuContent = React.forwardRef<
           // text color
           "text-gray-900 dark:text-gray-50",
           // border color
-          "border-gray-300 dark:border-gray-800",
+          "border-gray-200 dark:border-gray-800",
           // transition
           "will-change-[transform,opacity]",
           "data-[state=closed]:animate-hide",

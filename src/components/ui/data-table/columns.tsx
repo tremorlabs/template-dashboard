@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  RiDeleteBin7Line,
-  RiPencilLine,
-  RiPlayListAddLine,
-} from "@remixicon/react";
 import { ColumnDef, Row, createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "@/data/schema";
 import { Checkbox } from "@/components/Checkbox";
-import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableRowActions } from "./data-table-row-actions-2";
 import { ConditionFilter } from "./data-table-filter";
 import { formatters } from "@/lib/utils";
 
@@ -78,7 +73,7 @@ export const columns = [
         filterFn: (row, columnId, filterValue: ConditionFilter) => {
             const value = row.getValue(columnId) as number
             const [min, max] = filterValue.value as [number, number]
-            
+
             switch (filterValue.condition) {
                 case "is-equal-to":
                     return value === min

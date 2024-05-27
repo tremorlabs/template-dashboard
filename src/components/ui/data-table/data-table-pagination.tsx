@@ -1,3 +1,4 @@
+import { cx } from "@/lib/utils";
 import {
   RiArrowLeftDoubleLine,
   RiArrowLeftSLine,
@@ -5,7 +6,6 @@ import {
   RiArrowRightDoubleLine,
 } from "@remixicon/react";
 import { Table } from "@tanstack/react-table";
-
 import { Button } from "@/components/Button";
 import { Tooltip } from "@/components/Tooltip";
 
@@ -24,24 +24,28 @@ export function DataTablePagination<TData>({
       onClick: () => table.setPageIndex(0),
       disabled: !table.getCanPreviousPage(),
       srText: "First page",
+      mobileView: "hidden sm:block",
     },
     {
       icon: RiArrowLeftSLine,
       onClick: () => table.previousPage(),
       disabled: !table.getCanPreviousPage(),
       srText: "Previous page",
+      mobileView: "",
     },
     {
       icon: RiArrowRightSLine,
       onClick: () => table.nextPage(),
       disabled: !table.getCanNextPage(),
       srText: "Next page",
+      mobileView: "",
     },
     {
       icon: RiArrowRightDoubleLine,
       onClick: () => table.setPageIndex(table.getPageCount() - 1),
       disabled: !table.getCanNextPage(),
       srText: "Last page",
+      mobileView: "hidden sm:block",
     },
   ];
 
@@ -58,11 +62,10 @@ export function DataTablePagination<TData>({
       <div className="flex items-center justify-between">
         <div className="tabular-nums text-sm text-gray-500">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {/* {(table.getState().pagination.pageIndex + 1) * pageSize} row(s) selected. */}
           {pageSize} row(s) selected.
         </div>
         <div className="flex items-center gap-x-6 lg:gap-x-8">
-          <p className="text-sm tabular-nums text-gray-500">
+          <p className="hidden sm:block text-sm tabular-nums text-gray-500">
             Showing{" "}
             <span className="font-medium text-gray-900 dark:text-gray-50">
               {/* @Maxime/Sev: simplify? */}
@@ -80,10 +83,11 @@ export function DataTablePagination<TData>({
             </span>
           </p>
           <div className="flex items-center gap-x-1.5">
+            {/* @CHRIS: idx consistency */}
             {paginationButtons.map((button, idx) => (
+              // @SEV: make tooltip work on disabled button
               <Tooltip
                 side="top"
-                showArrow={false}
                 sideOffset={5}
                 content={button.srText}
                 key={idx}
@@ -92,7 +96,10 @@ export function DataTablePagination<TData>({
                 <Button
                   key={idx}
                   variant="secondary"
-                  className="p-1.5"
+                  className={cx(
+                    button.mobileView,
+                    "p-1.5"
+                  )}
                   onClick={() => {
                     button.onClick();
                     table.resetRowSelection();
@@ -100,7 +107,7 @@ export function DataTablePagination<TData>({
                   disabled={button.disabled}
                 >
                   <span className="sr-only">{button.srText}</span>
-                  <button.icon className="size-4 shrink-0" aria-hidden={true} />
+                  <button.icon className="size-4 shrink-0" aria-hidden="true" />
                 </Button>
               </Tooltip>
             ))}

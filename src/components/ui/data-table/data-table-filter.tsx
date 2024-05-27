@@ -132,7 +132,7 @@ export function DataTableFilter<TData, TValue>({
             onChange={(e) => {
               setSelectedValues(e.target.value);
             }}
-            className="mt-2 py-1"
+            className="mt-2 sm:py-1"
           >
             {!hasEmptyOption && <option value="">All</option>}
             {options?.map((item) => (
@@ -192,7 +192,7 @@ export function DataTableFilter<TData, TValue>({
                   };
                 });
               }}
-              className="mt-2"
+              className="mt-2 sm:py-1"
             >
               {!hasEmptyOption && <option value="">Select a condition</option>}
               {options?.map((condition) => (
@@ -209,7 +209,7 @@ export function DataTableFilter<TData, TValue>({
               <Input
                 type="number"
                 placeholder="$0"
-                className="py-1"
+                className="sm:[&>input]:py-1"
                 value={(selectedValues as ConditionFilter)?.value?.[0]}
                 onChange={(e) => {
                   setSelectedValues((prev) => {
@@ -230,7 +230,7 @@ export function DataTableFilter<TData, TValue>({
                     <Input
                       type="number"
                       placeholder="$0"
-                      className="py-1"
+                      className="sm:[&>input]:py-1"
                       value={(selectedValues as ConditionFilter)?.value?.[1]}
                       onChange={(e) => {
                         setSelectedValues((prev) => {
@@ -255,17 +255,16 @@ export function DataTableFilter<TData, TValue>({
   React.useEffect(() => {
     setSelectedValues(columnFilters);
   }, [columnFilters]);
-
   return (
     <Popover>
       <PopoverTrigger asChild>
         {/* clean up region array, e.g. US-West-1 */}
         <button
           type="button"
-          className="flex items-center gap-x-1.5 rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-gray-900 border border-gray-300 dark:border-gray-700 border-dashed text-xs text-gray-600 dark:text-gray-400 font-semibold"
+          className="flex items-center gap-x-1.5 rounded-md px-2 py-1.5 hover:bg-gray-50 hover:dark:bg-gray-900 border border-gray-300 dark:border-gray-700 border-dashed text-xs text-gray-600 dark:text-gray-400 font-medium whitespace-nowrap"
         >
           <RiAddCircleLine
-            className="-ml-1 size-4 shrink-0"
+            className="-ml-px size-4 shrink-0"
             aria-hidden={true}
           />
           {title}
@@ -292,12 +291,12 @@ export function DataTableFilter<TData, TValue>({
           className="w-full"
           onClick={() => column?.setFilterValue(selectedValues)}
         >
-          <Button className="w-full py-1">Apply</Button>
+          <Button className="w-full sm:py-1">Apply</Button>
         </PopoverClose>
         {columnFilterLabels && columnFilterLabels.length > 0 && (
           <Button
             variant="secondary"
-            className="w-full py-1"
+            className="w-full sm:py-1"
             onClick={() => {
               column?.setFilterValue("");
               setSelectedValues((prev) => {

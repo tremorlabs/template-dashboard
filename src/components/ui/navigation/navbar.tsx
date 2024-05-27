@@ -28,7 +28,8 @@ export function Navbar() {
     <>
       {/* sidebar (lg+) */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
-        <div className="px-6 pt-4 pb-4 flex grow flex-col gap-y-4 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
+        {/* @SEV/CHRIS: shadow-inner only right hand side */}
+        <div className="px-6 py-4 flex grow flex-col gap-y-4 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
           {/* @SEV/CHRIS: other workspace dropdown version /sidebar-dropdown-2 */}
           <div className="-mx-2">
             <WorkspacesDropdownDesktop />
@@ -46,13 +47,13 @@ export function Navbar() {
                           pathname === item.href || pathname.includes(item.href)
                             // ? "text-indigo-600 bg-indigo-50 dark:text-gray-50",
                             ? "text-indigo-600 dark:text-indigo-500"
-                            : "text-gray-600 dark:text-gray-400",
-                          "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
+                            : "text-gray-600 dark:text-gray-400 hover:text-gray-900 hover:dark:text-gray-50",
+                          "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm leading-6",
                         )}
                       >
                         <item.icon
                           className={cx(
-                            'size-4 shrink-0'
+                            'size-5 shrink-0'
                           )}
                           aria-hidden="true"
                         />

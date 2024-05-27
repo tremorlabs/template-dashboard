@@ -149,13 +149,11 @@ export default function Example() {
         <>
             {/* @CHRIS: add ID to section */}
 
-            {/* filling element between top of page and sticky search bar when page is scrolled */}
-            {/* <div className="fixed z-30 top-16 lg:top-0 h-4 bg-white/90 backdrop-blur-sm inset-x-0" /> */}
-
             {/* @SEV: can also be put into /overview/Layout.tsx? */}
             <BodyNavbar />
 
             <h1 className="lg:mt-6 text-lg font-semibold text-gray-900 dark:text-gray-50">Today</h1>
+
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
                 <ProgressBarCard
                     title="Usage"
@@ -192,7 +190,8 @@ export default function Example() {
 
             <h1 className="mt-16 text-lg font-semibold text-gray-900 dark:text-gray-50">Overview</h1>
 
-            <div className="sticky -mx-6 px-6 lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 flex items-center justify-between pt-4 lg:pt-2 pb-4">
+
+            <div className="sticky lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 flex items-center justify-between pt-4 lg:pt-2 pb-4">
                 {/* @CHRIS: bring "Edit"-button in filterbar */}
                 <Filterbar
                     maxDate={maxDate}

@@ -66,89 +66,74 @@ export function DataTable<TData, TValue>({
     <>
       <div className="space-y-3">
         <Filterbar table={table} />
-        <Table>
-          <TableHead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow
-                key={headerGroup.id}
-                className="border-y border-gray-200 dark:border-gray-800"
-              >
-                {headerGroup.headers.map((header) => (
-                  <TableHeaderCell
-                    key={header.id}
-                    className={cx(
-                      header.column.columnDef.meta?.align,
-                      "py-2.5",
-                    )}
-                  >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-                  </TableHeaderCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableHead>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+        <div className="overflow-hidden overflow-x-auto">
+          <Table>
+            <TableHead>
+              {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
-                  key={row.id}
-                  onClick={() => row.toggleSelected(!row.getIsSelected())}
-                  className="group select-none hover:bg-gray-50 hover:dark:bg-gray-400/10"
+                  key={headerGroup.id}
+                  className="border-y border-gray-200 dark:border-gray-800"
                 >
-                  {row.getVisibleCells().map((cell, index) => (
-                    <TableCell
-                      key={cell.id}
+                  {headerGroup.headers.map((header) => (
+                    <TableHeaderCell
+                      key={header.id}
                       className={cx(
-                        row.getIsSelected() ? "bg-gray-50 dark:bg-gray-400/10" : "",
-                        cell.column.columnDef.meta?.align,
-                        // @SEV/CHRIS: first:-logic
-                        "first:w-10 relative py-3 whitespace-nowrap",
+                        header.column.columnDef.meta?.align,
+                        "py-2.5 whitespace-nowrap",
                       )}
                     >
-                      {index === 0 && row.getIsSelected() && (
-                        <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600 dark:bg-indigo-500" />
-                      )}
                       {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
+                        header.column.columnDef.header,
+                        header.getContext(),
                       )}
-                    </TableCell>
+                    </TableHeaderCell>
                   ))}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-          {/* <TableFoot>
-                    <TableRow>
-                        <TableHeaderCell colSpan={1}>
-                            <Checkbox
-                                {...{
-                                    checked: table.getIsAllPageRowsSelected(),
-                                    indeterminate: table.getIsSomePageRowsSelected(),
-                                    onChange: table.getToggleAllPageRowsSelectedHandler(),
-                                }}
-                                className="translate-y-0.5"
-                            />
-                        </TableHeaderCell>
-                        <TableHeaderCell colSpan={7} className="font-normal tabular-nums py-3">
-                            {Object.keys(rowSelection).length} of{' '}
-                            {table.getRowModel().rows.length} Page Row(s) selected
-                        </TableHeaderCell>
-                    </TableRow>
-                </TableFoot> */}
-        </Table>
+              ))}
+            </TableHead>
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    onClick={() => row.toggleSelected(!row.getIsSelected())}
+                    className="group select-none hover:bg-gray-50 hover:dark:bg-gray-900"
+                  >
+                    {row.getVisibleCells().map((cell, index) => (
+                      <TableCell
+                        key={cell.id}
+                        className={cx(
+                          row.getIsSelected() ? "bg-gray-50 dark:bg-gray-900" : "",
+                          cell.column.columnDef.meta?.align,
+                          // @SEV/CHRIS: first:-logic
+                          "first:w-10 text-gray-700 dark:text-gray-300 relative py-2 whitespace-nowrap",
+                        )}
+                      >
+                        {index === 0 && row.getIsSelected() && (
+                          <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600 dark:bg-indigo-500" />
+                        )}
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+        {/* @SEV: should we put pagination into <TableFooter>? */}
         <DataTablePagination table={table} pageSize={pageSize} />
       </div>
     </>
