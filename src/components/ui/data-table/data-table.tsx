@@ -47,7 +47,8 @@ export function DataTable<TData, TValue>({
     },
     initialState: {
       columnVisibility: {
-        owner: false,
+        // @CHRIS: define column that should be hidden by default
+        // owner: false,
       },
       pagination: {
         pageIndex: 0,

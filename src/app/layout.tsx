@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}>
+      <body className={`${inter.className} max-w-screen-2xl mx-auto antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}>
         <ThemeProvider defaultTheme="system" attribute="class">
           <Navbar />
           <section className="lg:pl-64">

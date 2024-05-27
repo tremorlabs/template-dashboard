@@ -78,9 +78,9 @@ export function CategoryBarCard({
                         ))}
                     </ul>
                 </div>
-                <p className="mt-6 text-xs text-gray-600 dark:text-gray-400">
+                <p className="mt-6 text-xs text-gray-500">
                     {ctaDescription}{" "}
-                    <a href={ctaLink} className="text-indigo-600 dark:text-gray-500">{ctaText}</a>
+                    <a href={ctaLink} className="text-indigo-600 dark:text-indigo-500">{ctaText}</a>
                 </p>
             </div>
         </>
