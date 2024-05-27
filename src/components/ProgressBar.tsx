@@ -15,7 +15,7 @@ const progressBarVariants = tv({
       default: {
         // @CHRIS: indigo dark mode
         background: "bg-indigo-100 dark:bg-indigo-500/30",
-        bar: "bg-indigo-500 dark:bg-indigo-500",
+        bar: "bg-indigo-600 dark:bg-indigo-500",
       },
       neutral: {
         background: "bg-gray-200 dark:bg-gray-500/40",

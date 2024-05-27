@@ -3,7 +3,7 @@
 import { ColumnDef, Row, createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "@/data/schema";
 import { Checkbox } from "@/components/Checkbox";
-import { DataTableRowActions } from "./data-table-row-actions-2";
+import { DataTableRowActions } from "./data-table-row-actions";
 import { ConditionFilter } from "./data-table-filter";
 import { formatters } from "@/lib/utils";
 

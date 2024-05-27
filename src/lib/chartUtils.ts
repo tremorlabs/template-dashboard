@@ -40,10 +40,10 @@ export const chartColors = {
     text: "text-cyan-500",
   },
   indigo: {
-    bg: "bg-indigo-500",
-    stroke: "stroke-indigo-500",
-    fill: "fill-indigo-500",
-    text: "text-indigo-500",
+    bg: "bg-indigo-600",
+    stroke: "stroke-indigo-600",
+    fill: "fill-indigo-600",
+    text: "text-indigo-600",
   },
   pink: {
     bg: "bg-pink-500",
