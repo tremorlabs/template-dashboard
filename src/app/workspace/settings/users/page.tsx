@@ -114,7 +114,7 @@ export default function Users() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              {/* @SEV/CHRIS: [Sidenote]: SelectTrigger Icon is not in <SelectNative /> show */}
+              {/* @SEV/CHRIS: [Sidenote]: SelectTrigger Icon is not in <SelectNative /> shown */}
               {member.role === "admin" ? (
                 <Tooltip
                   content="A workspace must have at least one admin"

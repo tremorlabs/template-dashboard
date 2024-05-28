@@ -42,10 +42,8 @@ export const UserProfileMobile = () => {
     <DropdownUserProfile align="end">
       <Button
         variant="ghost"
-        // @SEV: focus glitch when focusInput is not used, with focusInput -> focusInput stays until clicked again -> not good
         className={cx(
-          // focusInput,
-          "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:dark:bg-gray-400/10 focus:outline-none",
+          "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 hover:dark:bg-gray-400/10 data-[state=open]:bg-gray-400/10",
         )}
       >
         <span

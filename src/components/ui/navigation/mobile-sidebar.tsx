@@ -1,20 +1,6 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-
 import React from "react";
-import { RiGroupLine, RiHome2Line, RiStackLine } from "@remixicon/react";
+import { RiHome2Line, RiSettings5Line, RiListCheck } from "@remixicon/react";
+import { focusRing } from "@/lib/utils";
 import { cx } from "@/lib/utils";
 import { RiMenuLine } from "@remixicon/react";
 import Link from "next/link";
@@ -26,8 +12,6 @@ import {
   DrawerBody,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -35,8 +19,12 @@ import {
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiGroupLine },
-  { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiStackLine },
+  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
+  {
+    name: "Settings",
+    href: siteConfig.baseLinks.settings,
+    icon: RiSettings5Line,
+  },
 ];
 
 export default function MobileSidebar() {
@@ -48,11 +36,7 @@ export default function MobileSidebar() {
           <Button
             variant="ghost"
             aria-label="open sidebar"
-            // @SEV: focus glitch when focusInput is not used, with focusInput -> focusInput stays until clicked again -> not good
-            className={cx(
-              // focusInput,
-              "group flex items-center rounded-md p-2 text-sm font-medium hover:bg-gray-100 hover:dark:bg-gray-400/10 focus:outline-none",
-            )}
+            className="group flex items-center rounded-md p-2 text-sm font-medium hover:bg-gray-100 data-[state=open]:bg-gray-100 hover:dark:bg-gray-400/10 data-[state=open]:bg-gray-400/10"
           >
             <RiMenuLine className="size-5 shrink-0" aria-hidden="true" />
           </Button>
@@ -60,14 +44,9 @@ export default function MobileSidebar() {
         <DrawerContent className="sm:max-w-lg">
           <DrawerHeader>
             <DrawerTitle>Retail Analytics</DrawerTitle>
-            {/* <DrawerDescription className="mt-1 text-sm">
-                            Your account has been created successfully. You can now login to
-                            your account. For more information, please contact us.
-                        </DrawerDescription> */}
           </DrawerHeader>
           <DrawerBody>
-            <ul role="list" className="-mx-2 space-y-0.5">
-              {/* @SEV: should we componentize this */}
+            <ul role="list" className="-mx-2 space-y-1.5">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <DrawerClose asChild>
@@ -75,17 +54,13 @@ export default function MobileSidebar() {
                       href={item.href}
                       className={cx(
                         pathname === item.href || pathname.includes(item.href)
-                          ? "text-indigo-700 bg-indigo-50 dark:text-gray-50 dark:bg-indigo-400/10"
-                          : "text-gray-900 dark:text-gray-50 hover:bg-indigo-50 hover:dark:bg-indigo-400/10",
-                        "group font-medium flex items-center gap-x-3 rounded-md px-2 py-1.5 text-sm leading-6",
+                          ? "text-indigo-600 dark:text-indigo-400"
+                          : "text-gray-600 dark:text-gray-400 hover:text-gray-900 hover:dark:text-gray-50",
+                        "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition",
+                        focusRing,
                       )}
                     >
-                      {/* <item.icon
-                                            className={cx(
-                                                'size-4 shrink-0 text-gray-900'
-                                            )}
-                                            aria-hidden="true"
-                                        /> */}
+                      <item.icon className="size-5 shrink-0" aria-hidden="true" />
                       {item.name}
                     </Link>
                   </DrawerClose>

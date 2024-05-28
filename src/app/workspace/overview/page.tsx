@@ -165,7 +165,7 @@ export default function Example() {
         Today
       </h1>
 
-      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
+      <div className="mt-4 sm:mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
         <ProgressBarCard
           title="Usage"
           change="+0.2%"

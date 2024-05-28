@@ -27,8 +27,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                // focusInput,
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiQuestionLine
@@ -39,8 +38,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                // focusInput,
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiSettings5Line
@@ -51,8 +49,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                // focusInput,
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiNotification4Line

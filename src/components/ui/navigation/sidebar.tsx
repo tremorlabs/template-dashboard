@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { cx, focusRing } from "@/lib/utils";
-import { RiTableLine, RiHome2Line, RiSettings5Line } from "@remixicon/react";
+import { RiHome2Line, RiSettings5Line, RiListCheck } from "@remixicon/react";
 // import { WorkspacesDropdownDesktop } from "./sidebar-dropdown-2";
 
 import {
@@ -18,7 +18,7 @@ import { UserProfileDesktop, UserProfileMobile } from "./user-profile";
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiTableLine },
+  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
   {
     name: "Settings",
     href: siteConfig.baseLinks.settings,
@@ -32,9 +32,7 @@ export function Sidebar() {
     <>
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
-        {/* @SEV/CHRIS: shadow-inner only right hand side: for this you would need a flex layout and add a shadow to the main content, not here */}
         <aside className="px-6 py-4 flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
-          {/* @SEV/CHRIS: other workspace dropdown version /sidebar-dropdown-2: this one is good */}
           <div className="-mx-2">
             <WorkspacesDropdownDesktop />
           </div>
@@ -67,6 +65,7 @@ export function Sidebar() {
           </div>
         </aside>
       </nav>
+
       {/* top navbar (xs-lg) */}
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 px-2 shadow-sm sm:gap-x-6 sm:px-4 lg:hidden">
         <WorkspacesDropdownMobile />
