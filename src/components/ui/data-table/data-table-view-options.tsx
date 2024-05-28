@@ -48,7 +48,7 @@ export function DataTableViewOptions<TData>({
             "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none",
           )}
         >
-          <RiEqualizer2Line className="-ml-px size-4" aria-hidden={true} />
+          <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
           View options
         </Button>
       </PopoverTrigger>

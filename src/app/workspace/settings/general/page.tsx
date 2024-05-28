@@ -27,7 +27,7 @@ export default function General() {
       {/* <h2 className="font-semibold text-gray-900">General</h2> */}
       <div className="space-y-10">
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Personal information
@@ -121,7 +121,7 @@ export default function General() {
         </form>
         <Divider />
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Notification settings
@@ -201,7 +201,7 @@ export default function General() {
         </form>
         <Divider />
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Danger zone
@@ -216,7 +216,7 @@ export default function General() {
                   Learn more
                   <RiExternalLinkLine
                     className="size-4 shrink-0"
-                    aria-hidden={true}
+                    aria-hidden="true"
                   />
                 </a>
               </p>

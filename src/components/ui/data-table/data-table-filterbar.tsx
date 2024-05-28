@@ -57,7 +57,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
             onChange={(event) =>
               table.getColumn("owner")?.setFilterValue(event.target.value)
             }
-            className="[&>input]:h-[30px] w-full sm:max-w-[250px] lg:max-w-[300px]"
+            className="[&>input]:h-[30px] w-full sm:max-w-[250px] lg:max-w-[310px]"
           />
         )}
         {isFiltered && (

@@ -74,29 +74,11 @@ export const WorkspacesDropdownDesktop = () => {
               </div>
               <RiExpandUpDownLine
                 className="size-5 shrink-0 text-gray-500"
-                aria-hidden={true}
+                aria-hidden="true"
               />
             </div>
           </button>
         </DropdownMenuTrigger>
-
-        {/* --- Version B --- */}
-        {/* <DropdownMenuTrigger asChild>
-          <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
-            <Logo className="size-5 shrink-0" />
-            <div className="flex w-full items-center justify-between gap-x-4 truncate">
-              <div className="truncate">
-                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                  retail_analytics_US
-                </p>
-              </div>
-              <RiExpandUpDownLine
-                className="size-5 shrink-0 text-gray-500"
-                aria-hidden={true}
-              />
-            </div>
-          </button>
-        </DropdownMenuTrigger> */}
         <DropdownMenuContent
           hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
@@ -119,7 +101,7 @@ export const WorkspacesDropdownDesktop = () => {
                       workspace.color,
                       "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
-                    aria-hidden={true}
+                    aria-hidden="true"
                   >
                     {workspace.initials}
                   </span>
@@ -183,7 +165,7 @@ export const WorkspacesDropdownMobile = () => {
             </span>
             <RiArrowRightSLine
               className="size-4 shrink-0 text-gray-500"
-              aria-hidden={true}
+              aria-hidden="true"
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
               <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
@@ -191,7 +173,7 @@ export const WorkspacesDropdownMobile = () => {
               </p>
               <RiExpandUpDownLine
                 className="size-4 shrink-0 text-gray-500"
-                aria-hidden={true}
+                aria-hidden="true"
               />
             </div>
           </button>

@@ -23,7 +23,7 @@ export default function Layout({
       <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
         Settings
       </h1>
-      <TabNavigation className="mt-8">
+      <TabNavigation className="mt-4 sm:mt-6 lg:mt-10">
         {navigationSettings.map((item) => (
           <TabNavigationLink
             key={item.name}

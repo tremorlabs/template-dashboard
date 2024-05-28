@@ -65,7 +65,7 @@ const LegendItem = ({
           getColorClassName(color, "bg"),
           activeLegend && activeLegend !== name ? "opacity-40" : "opacity-100",
         )}
-        aria-hidden={true}
+        aria-hidden="true"
       />
       <p
         className={cx(
@@ -74,7 +74,7 @@ const LegendItem = ({
           // text color
           "text-gray-700 dark:text-gray-300",
           hasOnValueChange &&
-            "group-hover:text-gray-900 dark:group-hover:text-gray-50",
+          "group-hover:text-gray-900 dark:group-hover:text-gray-50",
           activeLegend && activeLegend !== name ? "opacity-40" : "opacity-100",
         )}
       >
@@ -592,10 +592,10 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             onClick={
               hasOnValueChange && (activeLegend || activeDot)
                 ? () => {
-                    setActiveDot(undefined);
-                    setActiveLegend(undefined);
-                    onValueChange?.(null);
-                  }
+                  setActiveDot(undefined);
+                  setActiveLegend(undefined);
+                  onValueChange?.(null);
+                }
                 : undefined
             }
             margin={{
@@ -711,7 +711,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                     activeLegend,
                     hasOnValueChange
                       ? (clickedLegendItem: string) =>
-                          onCategoryClick(clickedLegendItem)
+                        onCategoryClick(clickedLegendItem)
                       : undefined,
                     enableLegendSlider,
                   )
@@ -827,26 +827,26 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             {/* hidden lines to increase clickable target area */}
             {onValueChange
               ? categories.map((category) => (
-                  <Line
-                    className={cx("cursor-pointer")}
-                    strokeOpacity={0}
-                    key={category}
-                    name={category}
-                    type="linear"
-                    dataKey={category}
-                    stroke="transparent"
-                    fill="transparent"
-                    legendType="none"
-                    tooltipType="none"
-                    strokeWidth={12}
-                    connectNulls={connectNulls}
-                    onClick={(props: any, event) => {
-                      event.stopPropagation();
-                      const { name } = props;
-                      onCategoryClick(name);
-                    }}
-                  />
-                ))
+                <Line
+                  className={cx("cursor-pointer")}
+                  strokeOpacity={0}
+                  key={category}
+                  name={category}
+                  type="linear"
+                  dataKey={category}
+                  stroke="transparent"
+                  fill="transparent"
+                  legendType="none"
+                  tooltipType="none"
+                  strokeWidth={12}
+                  connectNulls={connectNulls}
+                  onClick={(props: any, event) => {
+                    event.stopPropagation();
+                    const { name } = props;
+                    onCategoryClick(name);
+                  }}
+                />
+              ))
               : null}
           </RechartsLineChart>
         </ResponsiveContainer>

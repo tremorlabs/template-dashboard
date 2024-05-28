@@ -102,7 +102,7 @@ export default function Users() {
             <div className="flex items-center space-x-4 truncate">
               <span
                 className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 text-xs text-gray-700 dark:text-gray-300"
-                aria-hidden={true}
+                aria-hidden="true"
               >
                 {member.initials}
               </span>
@@ -165,12 +165,11 @@ export default function Users() {
                   </SelectContent>
                 </Select>
               )}
-              {/* @SEV/CHRIS: take care of focus glitch  */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="aspect-square group hover:bg-gray-50 hover:dark:bg-gray-900 hover:border hover:border-gray-300 hover:dark:border-gray-700 h-8 focus:outline-none"
+                    className="aspect-square group hover:bg-gray-50 data-[state=open]:bg-gray-50 hover:dark:bg-gray-900 data-[state=open]:dark:bg-gray-900 hover:border hover:border-gray-300 data-[state=open]:border-gray-300 hover:dark:border-gray-700 data-[state=open]:dark:border-gray-700 h-8"
                   >
                     <RiMore2Fill
                       className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700 group-hover:dark:text-gray-400"
