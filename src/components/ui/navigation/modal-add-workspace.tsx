@@ -24,6 +24,7 @@ import {
   RadioCardGroupIndicator,
 } from "@/components/RadioCard";
 import { Badge } from "@/components/Badge";
+import { DropdownMenuItem } from "@/components/Dropdown";
 
 const databases = [
   {
@@ -47,16 +48,25 @@ const databases = [
 ];
 
 export type ModalProps = {
-  children: React.ReactNode;
+  itemName: string
+  onSelect: () => void
+  onOpenChange: (open: boolean) => void
 };
 
-export function ModalAddWorkspace({ children }: ModalProps) {
+export function ModalAddWorkspace({ itemName, onSelect, onOpenChange }: ModalProps) {
   return (
     <>
       {/* @SEV: Componentize-review, children correct prop if it should be wrapped around Button ? */}
-      <Dialog>
+      <Dialog onOpenChange={onOpenChange}>
         {/* use asChild in <DialogTrigger /> when wrapped around a Button */}
-        <DialogTrigger className="w-full text-left">{children}</DialogTrigger>
+        <DialogTrigger className="w-full text-left">
+          <DropdownMenuItem onSelect={event => {
+            event.preventDefault()
+            onSelect && onSelect()
+          }}>
+            {itemName}
+            </DropdownMenuItem>
+            </DialogTrigger>
         <DialogContent className="sm:max-w-2xl">
           {/* @SEV/MAXIME: check whether form really appropriate */}
           <form>

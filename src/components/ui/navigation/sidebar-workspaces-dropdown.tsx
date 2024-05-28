@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
 import { ModalAddWorkspace } from "./modal-add-workspace";
+import React from "react";
 
 const workspaces = [
   {
@@ -25,16 +26,35 @@ const workspaces = [
 ];
 
 export const WorkspacesDropdownDesktop = () => {
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
+  const focusRef = React.useRef<null | HTMLButtonElement>(null);
+
+  const handleDialogItemSelect = () => {
+    focusRef.current = dropdownTriggerRef.current;
+  };
+
+  const handleDialogItemOpenChange = (open: boolean) => {
+    setHasOpenDialog(open);
+    if (open === false) {
+      setDropdownOpen(false);
+    }
+  };
   return (
     <>
       {/* sidebar (lg+) */}
-      <DropdownMenu>
+      <DropdownMenu
+        open={dropdownOpen}
+        onOpenChange={setDropdownOpen}
+        modal={false}
+      >
         <DropdownMenuTrigger asChild>
           <button
             className={cx(
               focusInput,
               // @CHRIS: focusRing or focusInput (focus:outline-none)
-              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 transition-all",
+              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 transition-all"
             )}
           >
             <span
@@ -77,7 +97,16 @@ export const WorkspacesDropdownDesktop = () => {
             </div>
           </button>
         </DropdownMenuTrigger> */}
-        <DropdownMenuContent>
+        <DropdownMenuContent
+          hidden={hasOpenDialog}
+          onCloseAutoFocus={(event) => {
+            if (focusRef.current) {
+              focusRef.current.focus();
+              focusRef.current = null;
+              event.preventDefault();
+            }
+          }}
+        >
           <DropdownMenuGroup>
             <DropdownMenuLabel>
               Workspaces ({workspaces.length})
@@ -88,7 +117,7 @@ export const WorkspacesDropdownDesktop = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden={true}
                   >
@@ -107,14 +136,11 @@ export const WorkspacesDropdownDesktop = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <ModalAddWorkspace>
-            <DropdownMenuItem>
-              <ModalAddWorkspace>
-                {/* <span className="flex justify-start">Add 2 workspace</span> */}
-                Add workspace
-              </ModalAddWorkspace>
-            </DropdownMenuItem>
-          </ModalAddWorkspace>
+          <ModalAddWorkspace
+            onSelect={handleDialogItemSelect}
+            onOpenChange={handleDialogItemOpenChange}
+            itemName="Add workspace"
+          />
         </DropdownMenuContent>
       </DropdownMenu>
     </>
@@ -122,15 +148,34 @@ export const WorkspacesDropdownDesktop = () => {
 };
 
 export const WorkspacesDropdownMobile = () => {
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
+  const focusRef = React.useRef<null | HTMLButtonElement>(null);
+
+  const handleDialogItemSelect = () => {
+    focusRef.current = dropdownTriggerRef.current;
+  };
+
+  const handleDialogItemOpenChange = (open: boolean) => {
+    setHasOpenDialog(open);
+    if (open === false) {
+      setDropdownOpen(false);
+    }
+  };
   return (
     <>
       {/* sidebar (xs-lg) */}
-      <DropdownMenu>
+      <DropdownMenu
+        open={dropdownOpen}
+        onOpenChange={setDropdownOpen}
+        modal={false}
+      >
         <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
+                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
               )}
               aria-hidden="true"
             >
@@ -151,7 +196,17 @@ export const WorkspacesDropdownMobile = () => {
             </div>
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="!min-w-72">
+        <DropdownMenuContent
+          className="!min-w-72"
+          hidden={hasOpenDialog}
+          onCloseAutoFocus={(event) => {
+            if (focusRef.current) {
+              focusRef.current.focus();
+              focusRef.current = null;
+              event.preventDefault();
+            }
+          }}
+        >
           <DropdownMenuGroup>
             <DropdownMenuLabel>
               Workspaces ({workspaces.length})
@@ -163,7 +218,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden="true"
                   >
@@ -182,12 +237,11 @@ export const WorkspacesDropdownMobile = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <ModalAddWorkspace>
-              {/* @CHRIS: add modal */}
-              Add workspace
-            </ModalAddWorkspace>
-          </DropdownMenuItem>
+          <ModalAddWorkspace
+            onSelect={handleDialogItemSelect}
+            onOpenChange={handleDialogItemOpenChange}
+            itemName="Add workspace"
+          />
         </DropdownMenuContent>
       </DropdownMenu>
     </>
