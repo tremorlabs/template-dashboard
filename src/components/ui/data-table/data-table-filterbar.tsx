@@ -64,7 +64,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="px-2 py-1 text-indigo-600 font-semibold"
+            className="px-2 py-1 text-indigo-600 dark:text-indigo-500 font-semibold"
           >
             Clear filters
             {/* <RiCloseLine className="ml-2 size-4" /> */}

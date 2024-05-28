@@ -38,6 +38,7 @@ export function DataTableViewOptions<TData>({
   React.useEffect(() => {
     table.setColumnOrder(columnOrder);
   }, [columnOrder]);
+
   return (
     <Popover onOpenChange={(isOpen) => setIsEditable(isOpen)}>
       <PopoverTrigger asChild>
@@ -52,11 +53,11 @@ export function DataTableViewOptions<TData>({
           View options
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="p-3">
+      <PopoverContent align="end" className="space-y-2 max-w-52">
         <h3 className="text-xs font-medium text-gray-500 mb-2">
           Display properties
         </h3>
-        <ul ref={parentRef} className="space-y-2">
+        <ul role="list" ref={parentRef} className="space-y-2">
           {columnOrder.map((columnId) => {
             const column = table.getColumn(columnId);
             if (!column) return null;
@@ -66,18 +67,18 @@ export function DataTableViewOptions<TData>({
               <li
                 key={column.id}
                 className={cx(
-                  "flex items-center justify-between gap-x-2",
+                  "flex items-center justify-between gap-x-2 drag-icon cursor-grab active:cursor-grabbing",
                   !column.getCanHide() && "hidden",
                 )}
               >
-                <label className="flex items-center gap-x-2">
+                <span className="flex items-center gap-x-2">
                   <Checkbox
                     checked={column.getIsVisible()}
                     onCheckedChange={() => column.toggleVisibility()}
                   />
-                  <span>{header}</span>
-                </label>
-                <RiDraggable className="drag-icon text-gray-400 cursor-move size-5" />
+                  <span className="text-gray-900">{header}</span>
+                </span>
+                <RiDraggable className="text-gray-400 dark:text-gray-600 size-5" />
               </li>
             );
           })}

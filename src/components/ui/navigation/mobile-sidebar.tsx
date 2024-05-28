@@ -46,7 +46,7 @@ export default function MobileSidebar() {
             <DrawerTitle>Retail Analytics</DrawerTitle>
           </DrawerHeader>
           <DrawerBody>
-            <ul role="list" className="-mx-2 space-y-1.5">
+            <ul role="list" className="space-y-1.5">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <DrawerClose asChild>
@@ -56,7 +56,7 @@ export default function MobileSidebar() {
                         pathname === item.href || pathname.includes(item.href)
                           ? "text-indigo-600 dark:text-indigo-400"
                           : "text-gray-600 dark:text-gray-400 hover:text-gray-900 hover:dark:text-gray-50",
-                        "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition",
+                        "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-base sm:text-sm transition",
                         focusRing,
                       )}
                     >

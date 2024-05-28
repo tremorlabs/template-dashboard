@@ -12,8 +12,8 @@ const badgeVariants = tv({
   variants: {
     variant: {
       default: [
-        "bg-blue-50 text-blue-900 ring-blue-500/30",
-        "dark:bg-blue-400/10 dark:text-blue-400 dark:ring-blue-400/30",
+        "bg-indigo-50 text-indigo-900 ring-indigo-500/30",
+        "dark:bg-indigo-400/10 dark:text-indigo-400 dark:ring-indigo-400/30",
       ],
       neutral: [
         "bg-gray-50 text-gray-900 ring-gray-500/30",
@@ -40,7 +40,7 @@ const badgeVariants = tv({
 
 interface BadgeProps
   extends React.ComponentPropsWithoutRef<"span">,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> { }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   ({ className, variant, ...props }: BadgeProps, forwardedRef) => {

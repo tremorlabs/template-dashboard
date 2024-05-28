@@ -287,7 +287,7 @@ export function DataTableFilter<TData, TValue>({
       <PopoverContent
         align="start"
         sideOffset={7}
-        className="w-fit space-y-2 max-w-52"
+        className="space-y-2 max-w-52"
       >
         <div>
           <Label className="font-medium">Filter by {title}</Label>

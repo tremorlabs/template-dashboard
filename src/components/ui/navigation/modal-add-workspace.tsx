@@ -56,19 +56,16 @@ export type ModalProps = {
 export function ModalAddWorkspace({ itemName, onSelect, onOpenChange }: ModalProps) {
   return (
     <>
-      {/* @SEV: Componentize-review, children correct prop if it should be wrapped around Button ? */}
       <Dialog onOpenChange={onOpenChange}>
-        {/* use asChild in <DialogTrigger /> when wrapped around a Button */}
         <DialogTrigger className="w-full text-left">
           <DropdownMenuItem onSelect={event => {
             event.preventDefault()
             onSelect && onSelect()
           }}>
             {itemName}
-            </DropdownMenuItem>
-            </DialogTrigger>
+          </DropdownMenuItem>
+        </DialogTrigger>
         <DialogContent className="sm:max-w-2xl">
-          {/* @SEV/MAXIME: check whether form really appropriate */}
           <form>
             <DialogHeader>
               <DialogTitle>Add new workspace</DialogTitle>

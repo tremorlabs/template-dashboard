@@ -74,12 +74,12 @@ const RadioCardItem = React.forwardRef<
       ref={forwardedRef}
       className={cx(
         // base
-        "group relative w-full rounded-md border p-4 text-left shadow-sm focus:outline-none",
+        "group relative w-full rounded-md border p-4 text-left shadow-sm focus:outline-none transition-all",
         // background color
-        " bg-white dark:bg-[#090E1A]",
+        " bg-white dark:bg-gray-950",
         // border color
-        "border-gray-200 dark:border-gray-900",
-        "data-[state=checked]:border-indigo-600",
+        "border-gray-200 dark:border-gray-800",
+        "data-[state=checked]:border-indigo-600 data-[state=checked]:dark:border-indigo-600",
         focusInput,
         className,
       )}
