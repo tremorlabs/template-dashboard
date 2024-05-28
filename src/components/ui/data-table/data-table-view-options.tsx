@@ -29,7 +29,7 @@ export function DataTableViewOptions<TData>({
       dragHandle: ".drag-icon",
       plugins: [animations()],
       disabled: !isEditable,
-    },
+    }
   );
 
   React.useEffect(() => {
@@ -47,7 +47,7 @@ export function DataTableViewOptions<TData>({
           variant="secondary"
           className={cx(
             // focusInput,
-            "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none",
+            "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none"
           )}
         >
           <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
@@ -66,7 +66,7 @@ export function DataTableViewOptions<TData>({
                 key={column.id}
                 className={cx(
                   "flex items-center justify-between gap-x-2 drag-icon cursor-grab active:cursor-grabbing",
-                  !column.getCanHide() && "hidden",
+                  !column.getCanHide() && "hidden"
                 )}
               >
                 <span className="flex items-center gap-x-2">
@@ -74,7 +74,10 @@ export function DataTableViewOptions<TData>({
                     checked={column.getIsVisible()}
                     onCheckedChange={() => column.toggleVisibility()}
                   />
-                  <span className="text-gray-900">{(column.columnDef.meta?.displayName as string) || column.id}</span>
+                  <span className="text-gray-900">
+                    {(column.columnDef.meta?.displayName as string) ||
+                      column.id}
+                  </span>
                 </span>
                 <RiDraggable className="text-gray-400 dark:text-gray-600 size-5" />
               </li>
