@@ -11,7 +11,7 @@ export const UserProfileDesktop = () => {
   return (
     <DropdownUserProfile>
       <Button
-        aria-label="User settings" 
+        aria-label="User settings"
         variant="ghost"
         // @SEV: focus glitch when focusInput is not used, with focusInput -> focusInput stays until clicked again -> not good
         className={cx(

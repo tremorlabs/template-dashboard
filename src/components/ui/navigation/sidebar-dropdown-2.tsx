@@ -54,7 +54,7 @@ export const WorkspacesDropdownDesktop = () => {
                     <span
                       className={cx(
                         workspace.color,
-                        "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
+                        "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
                       )}
                       aria-hidden={true}
                     >
@@ -97,7 +97,7 @@ export const WorkspacesDropdownMobile = () => {
           <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
+                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
               )}
               aria-hidden="true"
             >
@@ -130,7 +130,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
                     )}
                     aria-hidden="true"
                   >

@@ -216,10 +216,10 @@ export default function Example() {
         <Button
           variant={isEditable ? "primary" : "secondary"}
           className="hidden sm:flex gap-2 py-1 px-2"
-        // @CHRIS
-        // onClick={() => {
-        //     setIsEditable((prev) => !prev)
-        // }}
+          // @CHRIS
+          // onClick={() => {
+          //     setIsEditable((prev) => !prev)
+          // }}
         >
           {!isEditable && (
             <RiSettings5Line
