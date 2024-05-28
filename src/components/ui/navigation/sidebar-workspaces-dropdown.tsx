@@ -1,9 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { siteConfig } from "@/app/siteConfig";
-import { cx } from "@/lib/utils";
+import { cx, focusRing } from "@/lib/utils";
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react";
 import {
   DropdownMenu,
@@ -15,8 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
 import { ModalAddWorkspace } from "./modal-add-workspace";
-
-import { Logo } from "../../../../public/Logo";
 
 const workspaces = [
   {
@@ -33,10 +28,14 @@ export const WorkspacesDropdownDesktop = () => {
   return (
     <>
       {/* sidebar (lg+) */}
-
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 focus:outline-none">
+          <button
+            className={cx(
+              focusRing,
+              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900"
+            )}
+          >
             <span
               className="flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
               aria-hidden="true"
@@ -88,7 +87,7 @@ export const WorkspacesDropdownDesktop = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden={true}
                   >
@@ -98,7 +97,9 @@ export const WorkspacesDropdownDesktop = () => {
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       {workspace.name}
                     </p>
-                    <p className="text-xs text-gray-700 dark:text-gray-400">{workspace.role}</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-400">
+                      {workspace.role}
+                    </p>
                   </div>
                 </div>
               </DropdownMenuItem>
@@ -128,7 +129,7 @@ export const WorkspacesDropdownMobile = () => {
           <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
+                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
               )}
               aria-hidden="true"
             >
@@ -161,7 +162,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden="true"
                   >
@@ -171,7 +172,9 @@ export const WorkspacesDropdownMobile = () => {
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       {workspace.name}
                     </p>
-                    <p className="text-xs text-gray-700 dark:text-gray-300">{workspace.role}</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-300">
+                      {workspace.role}
+                    </p>
                   </div>
                 </div>
               </DropdownMenuItem>

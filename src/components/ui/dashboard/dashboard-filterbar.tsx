@@ -85,9 +85,16 @@ type FilterbarProps = {
   selectedPeriod: PeriodValue;
   onPeriodChange: (period: PeriodValue) => void;
   isEditable?: boolean;
-}
+};
 
-export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPeriod, onPeriodChange, isEditable }: FilterbarProps) {
+export function Filterbar({
+  maxDate,
+  selectedDates,
+  onDatesChange,
+  selectedPeriod,
+  onPeriodChange,
+  isEditable,
+}: FilterbarProps) {
   return (
     <>
       <div className="sm:flex sm:items-center sm:gap-2 w-full">
@@ -98,12 +105,14 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
           toDate={maxDate}
           disabled={isEditable}
         />
-        <span className="hidden sm:block text-sm text-gray-500 font-medium">compared to</span>
+        <span className="hidden sm:block text-sm text-gray-500 font-medium">
+          compared to
+        </span>
         <Select
           defaultValue="no-comparison"
           value={selectedPeriod}
           onValueChange={(value) => {
-            onPeriodChange(value as PeriodValue)
+            onPeriodChange(value as PeriodValue);
           }}
           disabled={isEditable}
         >
@@ -113,7 +122,11 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
           </SelectTrigger>
           <SelectContent>
             {periods.map((period) => (
-              <SelectItemPeriod key={period.value} value={period.value} period={getPeriod(selectedDates, period.value)}>
+              <SelectItemPeriod
+                key={period.value}
+                value={period.value}
+                period={getPeriod(selectedDates, period.value)}
+              >
                 {period.label}
               </SelectItemPeriod>
             ))}
@@ -121,5 +134,5 @@ export function Filterbar({ maxDate, selectedDates, onDatesChange, selectedPerio
         </Select>
       </div>
     </>
-  )
+  );
 }

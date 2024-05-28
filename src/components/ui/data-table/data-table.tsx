@@ -104,7 +104,9 @@ export function DataTable<TData, TValue>({
                       <TableCell
                         key={cell.id}
                         className={cx(
-                          row.getIsSelected() ? "bg-gray-50 dark:bg-gray-900" : "",
+                          row.getIsSelected()
+                            ? "bg-gray-50 dark:bg-gray-900"
+                            : "",
                           cell.column.columnDef.meta?.align,
                           // @SEV/CHRIS: first:-logic
                           "first:w-10 text-gray-700 dark:text-gray-300 relative py-2 whitespace-nowrap",

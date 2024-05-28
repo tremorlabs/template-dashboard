@@ -49,7 +49,10 @@ const ColumnFiltersLabel = ({
     return (
       <>
         {columnFilterLabels.map((value, index) => (
-          <span key={value} className={"text-indigo-600 dark:text-indigo-500 font-semibold"}>
+          <span
+            key={value}
+            className={"text-indigo-600 dark:text-indigo-400 font-semibold"}
+          >
             {value}
             {index < columnFilterLabels.length - 1 && ", "}
           </span>
@@ -60,8 +63,8 @@ const ColumnFiltersLabel = ({
 
   return (
     <>
-      <span className="text-indigo-600 dark:text-indigo-500 font-semibold">
-        {columnFilterLabels[0]} {" "}and {columnFilterLabels.length - 1} more
+      <span className="text-indigo-600 dark:text-indigo-400 font-semibold">
+        {columnFilterLabels[0]} and {columnFilterLabels.length - 1} more
       </span>
     </>
   );
@@ -225,27 +228,27 @@ export function DataTableFilter<TData, TValue>({
               />
               {(selectedValues as ConditionFilter)?.condition ===
                 "is-between" && (
-                  <>
-                    <span className="text-xs font-medium text-gray-500">and</span>
-                    <Input
-                      type="number"
-                      placeholder="$0"
-                      className="sm:[&>input]:py-1"
-                      value={(selectedValues as ConditionFilter)?.value?.[1]}
-                      onChange={(e) => {
-                        setSelectedValues((prev) => {
-                          return {
-                            condition: (prev as ConditionFilter)?.condition,
-                            value: [
-                              (prev as ConditionFilter)?.value?.[0],
-                              e.target.value,
-                            ],
-                          };
-                        });
-                      }}
-                    />
-                  </>
-                )}
+                <>
+                  <span className="text-xs font-medium text-gray-500">and</span>
+                  <Input
+                    type="number"
+                    placeholder="$0"
+                    className="sm:[&>input]:py-1"
+                    value={(selectedValues as ConditionFilter)?.value?.[1]}
+                    onChange={(e) => {
+                      setSelectedValues((prev) => {
+                        return {
+                          condition: (prev as ConditionFilter)?.condition,
+                          value: [
+                            (prev as ConditionFilter)?.value?.[0],
+                            e.target.value,
+                          ],
+                        };
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         );
@@ -269,7 +272,10 @@ export function DataTableFilter<TData, TValue>({
           />
           {title}
           {columnFilterLabels && columnFilterLabels.length > 0 && (
-            <span className="h-4 w-px bg-gray-300 dark:bg-gray-700" aria-hidden={true} />
+            <span
+              className="h-4 w-px bg-gray-300 dark:bg-gray-700"
+              aria-hidden={true}
+            />
           )}
           <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} />
           <RiArrowDownSLine

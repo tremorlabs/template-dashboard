@@ -19,7 +19,6 @@ import {
 import { ModalAddUser } from "@/components/ui/settings/modal-add-user";
 import { roles } from "@/data/data";
 
-
 // @CHRIS: move to data?
 const data = [
   {
@@ -66,7 +65,6 @@ const data = [
   },
 ];
 
-
 // ----- TODOs (CHRIS) -------:
 
 // - Pending invitations? -> UI
@@ -77,7 +75,9 @@ export default function Users() {
     <>
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900 dark:text-gray-50">Users</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-50">
+            Users
+          </h3>
           <p className="text-sm leading-6 text-gray-500">
             Workspace administrators can add, manage, and remove members.
           </p>
@@ -90,7 +90,10 @@ export default function Users() {
           </Button>
         </ModalAddUser>
       </div>
-      <ul role="list" className="mt-6 divide-y divide-gray-200 dark:divide-gray-800">
+      <ul
+        role="list"
+        className="mt-6 divide-y divide-gray-200 dark:divide-gray-800"
+      >
         {data.map((member) => (
           <li
             key={member.name}

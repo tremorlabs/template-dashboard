@@ -67,13 +67,20 @@ export default function Billing() {
       {/* @CHRIS: take care of other existing dataCard => naming */}
       <Card className="mt-6 overflow-hidden p-0">
         <div className="flex items-start px-5 py-2">
-          <ul role="list" className="w-full divide-y divide-gray-200 dark:divide-gray-800">
+          <ul
+            role="list"
+            className="w-full divide-y divide-gray-200 dark:divide-gray-800"
+          >
             {data.map((item) => (
               <li key={item.name} className="py-4 text-sm">
                 <div className="w-full">
                   <div className="flex items-center justify-between">
-                    <p className="font-medium text-gray-900 dark:text-gray-50">{item.name}</p>
-                    <p className="font-medium text-gray-700 dark:text-gray-300">{item.value}</p>
+                    <p className="font-medium text-gray-900 dark:text-gray-50">
+                      {item.name}
+                    </p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">
+                      {item.value}
+                    </p>
                   </div>
                   <div className="w-full md:w-1/2">
                     {item.percentageValue && (

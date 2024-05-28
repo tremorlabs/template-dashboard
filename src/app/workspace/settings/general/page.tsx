@@ -11,8 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
   SelectContent,
-  SelectItem
-} from "@/components/Select"
+  SelectItem,
+} from "@/components/Select";
 
 import { roles } from "@/data/data";
 
@@ -39,10 +39,7 @@ export default function General() {
             <div className="sm:max-w-3xl md:col-span-2">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-6">
                 <div className="col-span-full sm:col-span-3">
-                  <Label
-                    htmlFor="first-name"
-                    className="font-medium"
-                  >
+                  <Label htmlFor="first-name" className="font-medium">
                     First name
                   </Label>
                   <Input
@@ -55,10 +52,7 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
-                  <Label
-                    htmlFor="last-name"
-                    className="font-medium"
-                  >
+                  <Label htmlFor="last-name" className="font-medium">
                     Last name
                   </Label>
                   <Input
@@ -71,10 +65,7 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full">
-                  <Label
-                    htmlFor="email"
-                    className="font-medium"
-                  >
+                  <Label htmlFor="email" className="font-medium">
                     Email
                   </Label>
                   <Input
@@ -87,10 +78,7 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
-                  <Label
-                    htmlFor="year"
-                    className="font-medium"
-                  >
+                  <Label htmlFor="year" className="font-medium">
                     Birth year
                   </Label>
                   <Input
@@ -103,10 +91,7 @@ export default function General() {
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
-                  <Label
-                    htmlFor="email"
-                    className="font-medium"
-                  >
+                  <Label htmlFor="email" className="font-medium">
                     Role
                   </Label>
                   <Select defaultValue="member">
@@ -153,7 +138,10 @@ export default function General() {
                 <p className="mt-1 text-sm leading-6 text-gray-500">
                   Configure the types of team alerts you want to receive.
                 </p>
-                <ul role="list" className="mt-4 divide-y divide-gray-200 dark:divide-gray-800">
+                <ul
+                  role="list"
+                  className="mt-4 divide-y divide-gray-200 dark:divide-gray-800"
+                >
                   <li className="flex items-center gap-x-3 py-3">
                     <Checkbox
                       id="team-requests"
@@ -177,7 +165,10 @@ export default function General() {
                 <p className="mt-1 text-sm leading-6 text-gray-500">
                   Configure the types of usage alerts you want to receive.
                 </p>
-                <ul role="list" className="mt-4 divide-y divide-gray-200 dark:divide-gray-800">
+                <ul
+                  role="list"
+                  className="mt-4 divide-y divide-gray-200 dark:divide-gray-800"
+                >
                   <li className="flex items-center gap-x-3 py-3">
                     <Checkbox id="api-requests" name="api-requests" />
                     <Label htmlFor="api-requests">API incidents</Label>
@@ -212,13 +203,15 @@ export default function General() {
         <form className="sm:max-w-6xl">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-3">
             <div>
-              <h2 className="font-semibold text-gray-900 dark:text-gray-50">Danger zone</h2>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-50">
+                Danger zone
+              </h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
                 Manage general workspace. Contact system admin for more
                 information.{" "}
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-500 hover:underline hover:underline-offset-4"
+                  className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline hover:underline-offset-4"
                 >
                   Learn more
                   <RiExternalLinkLine
@@ -241,7 +234,10 @@ export default function General() {
                     </p>
                   </div>
                   {/* @CHRIS: dark mode in button */}
-                  <Button variant="secondary" className="text-rose-600 dark:text-rose-500">
+                  <Button
+                    variant="secondary"
+                    className="text-rose-600 dark:text-rose-500"
+                  >
                     Leave
                   </Button>
                 </div>
