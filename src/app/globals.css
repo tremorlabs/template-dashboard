@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .backdrop-blur-nav {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }

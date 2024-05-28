@@ -203,7 +203,7 @@ export default function Example() {
         Overview
       </h1>
 
-      <div className="sticky lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 flex items-center justify-between py-4 lg:pt-2 pb-4">
+      <div className="sticky lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-nav border-b border-gray-200 dark:border-gray-800 flex items-center justify-between py-4 lg:pt-2 pb-4">
         {/* @CHRIS: bring "Edit"-button in filterbar */}
         <Filterbar
           maxDate={maxDate}
@@ -216,10 +216,10 @@ export default function Example() {
         <Button
           variant={isEditable ? "primary" : "secondary"}
           className="hidden sm:flex gap-2 py-1 px-2"
-          // @CHRIS
-          // onClick={() => {
-          //     setIsEditable((prev) => !prev)
-          // }}
+        // @CHRIS
+        // onClick={() => {
+        //     setIsEditable((prev) => !prev)
+        // }}
         >
           {!isEditable && (
             <RiSettings5Line

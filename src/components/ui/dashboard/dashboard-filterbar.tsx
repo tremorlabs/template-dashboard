@@ -70,12 +70,6 @@ export const getPeriod = (
   }
 };
 
-const getMaxDate = (data: OverviewData[]): Date => {
-  return new Date(
-    Math.max(...data.map((item) => new Date(item.date).getTime())),
-  );
-};
-
 // @CHRIS/SEV: old filterbar in /Filterbar.tsx
 
 type FilterbarProps = {

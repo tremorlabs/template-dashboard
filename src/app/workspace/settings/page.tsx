@@ -1,3 +1,5 @@
+// @SEV: how to hide this page completly
+
 export default function Example() {
   return (
     <>

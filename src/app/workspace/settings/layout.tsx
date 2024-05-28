@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { TabNavigation, TabNavigationLink } from "@/components/TabNavigation";
-import MobileSidebar from "@/components/ui/navigation/mobile-sidebar";
 
 const navigationSettings = [
   { name: "General", href: siteConfig.baseLinks.general },
@@ -19,9 +18,9 @@ export default function Layout({
 }>) {
   const pathname = usePathname();
   return (
-    // @CHRIS: rework HTML semantics
-    <nav>
-      <h1 className="mt-4 text-lg font-semibold text-gray-900 dark:text-gray-50">
+    // @SEV/CHRIS: what HTML semantics here in parent?    
+    <section className="p-4 sm:pt-7 sm:px-6 sm:pb-6">
+      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
         Settings
       </h1>
       <TabNavigation className="mt-8">
@@ -35,7 +34,7 @@ export default function Layout({
           </TabNavigationLink>
         ))}
       </TabNavigation>
-      <div className="pt-6">{children}</div>
-    </nav>
+      <div className="mt-6">{children}</div>
+    </section>
   );
 }

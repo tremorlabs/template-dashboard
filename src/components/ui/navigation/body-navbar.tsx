@@ -6,21 +6,18 @@ import {
   RiSettings5Line,
   RiNotification4Line,
 } from "@remixicon/react";
+// @CHRIS: kickout useScroll
+
 import useScroll from "@/lib/use-scroll";
 
 export default function BodyNavbar() {
-  const scrolled = useScroll(15);
   return (
     <>
       {/* filling element between top of page and sticky search bar when page is scrolled */}
-      <div className="fixed z-30 top-0 h-4 bg-white dark:bg-gray-950 backdrop-blur-nav inset-x-0" />
+      <div className="fixed z-30 top-0 h-4 bg-white/90 backdrop-blur-nav dark:bg-gray-950/90 inset-x-0" />
       <div
         className={cx(
-          "sticky hidden top-4 z-30 lg:flex items-center justify-between bg-white dark:bg-gray-950 backdrop-blur-sm py-2 border-b border-transparent transition-all",
-          // @CHRIS
-          //  scrolled
-          //  ? "border-gray-200 dark:border-white/15"
-          //  : ""
+          "sticky hidden top-4 z-30 lg:flex lg:items-center lg:justify-between bg-white/90 dark:bg-gray-950/90 backdrop-blur-nav py-2 transition-all",
         )}
       >
         {/* @SEV: the Searchbar is built based on input -> wanted to add variant to Input but too much divergence from "base" styling -> discussion */}
