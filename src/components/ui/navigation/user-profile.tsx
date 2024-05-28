@@ -13,10 +13,9 @@ export const UserProfileDesktop = () => {
       <Button
         aria-label="User settings"
         variant="ghost"
-        // @SEV: focus glitch when focusInput is not used, with focusInput -> focusInput stays until clicked again -> not good
         className={cx(
           focusRing,
-          "group w-full flex items-center justify-between rounded-md p-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:dark:bg-gray-400/10 focus:outline-non",
+          "group w-full flex items-center justify-between rounded-md p-2 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 hover:dark:bg-gray-400/10 data-[state=open]:bg-gray-400/10",
         )}
       >
         <span className="flex items-center gap-3">
@@ -41,6 +40,7 @@ export const UserProfileMobile = () => {
   return (
     <DropdownUserProfile align="end">
       <Button
+        aria-label="User settings"
         variant="ghost"
         className={cx(
           "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 hover:dark:bg-gray-400/10 data-[state=open]:bg-gray-400/10",
