@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/app/siteConfig";
 import { cx, focusRing } from "@/lib/utils";
 import { RiHome2Line, RiSettings5Line, RiListCheck } from "@remixicon/react";
-// import { WorkspacesDropdownDesktop } from "./sidebar-dropdown-2";
 
 import {
   WorkspacesDropdownDesktop,

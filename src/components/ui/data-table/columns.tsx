@@ -18,8 +18,8 @@ export const columns = [
           table.getIsAllPageRowsSelected()
             ? true
             : table.getIsSomeRowsSelected()
-              ? "indeterminate"
-              : false
+            ? "indeterminate"
+            : false
         }
         onCheckedChange={() => table.toggleAllPageRowsSelected()}
         className="translate-y-0.5"
@@ -39,6 +39,7 @@ export const columns = [
     enableHiding: false,
     meta: {
       align: "text-left",
+      displayName: "Select",
     },
   }),
   columnHelper.accessor("owner", {
@@ -48,6 +49,7 @@ export const columns = [
     enableSorting: true,
     meta: {
       align: "text-left",
+      displayName: "Owner",
     },
   }),
   columnHelper.accessor("status", {
@@ -57,6 +59,7 @@ export const columns = [
     enableSorting: true,
     meta: {
       align: "text-left",
+      displayName: "Status",
     },
   }),
   columnHelper.accessor("region", {
@@ -66,6 +69,7 @@ export const columns = [
     enableSorting: false,
     meta: {
       align: "text-left",
+      displayName: "Region",
     },
     filterFn: "arrIncludesSome",
   }),
@@ -76,6 +80,7 @@ export const columns = [
     enableSorting: false,
     meta: {
       align: "text-left",
+      displayName: "Capacity",
     },
   }),
   columnHelper.accessor("costs", {
@@ -85,6 +90,7 @@ export const columns = [
     enableSorting: true,
     meta: {
       align: "text-left",
+      displayName: "Costs",
     },
     cell: ({ getValue }) => formatters.currency(getValue()),
     filterFn: (row, columnId, filterValue: ConditionFilter) => {
@@ -113,6 +119,7 @@ export const columns = [
     enableSorting: false,
     meta: {
       align: "text-right",
+      displayName: "Last edited",
     },
   }),
   columnHelper.display({
@@ -122,6 +129,7 @@ export const columns = [
     enableHiding: false,
     meta: {
       align: "text-right",
+      displayName: "Edit",
     },
     cell: ({ row }) => <DataTableRowActions row={row} />,
   }),

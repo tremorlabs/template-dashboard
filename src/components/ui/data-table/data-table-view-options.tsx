@@ -60,7 +60,6 @@ export function DataTableViewOptions<TData>({
           {columnOrder.map((columnId) => {
             const column = table.getColumn(columnId);
             if (!column) return null;
-            const header = column.columnDef.header as string;
 
             return (
               <li
@@ -75,7 +74,7 @@ export function DataTableViewOptions<TData>({
                     checked={column.getIsVisible()}
                     onCheckedChange={() => column.toggleVisibility()}
                   />
-                  <span className="text-gray-900">{header}</span>
+                  <span className="text-gray-900">{(column.columnDef.meta?.displayName as string) || column.id}</span>
                 </span>
                 <RiDraggable className="text-gray-400 dark:text-gray-600 size-5" />
               </li>
