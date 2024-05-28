@@ -4,6 +4,7 @@ import { RiEqualizer2Line, RiDraggable } from "@remixicon/react";
 import { cx, focusInput } from "@/lib/utils";
 import { Table } from "@tanstack/react-table";
 
+import { Label } from "@/components/Label";
 import { Button } from "@/components/Button";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { animations } from "@formkit/drag-and-drop";
@@ -54,9 +55,7 @@ export function DataTableViewOptions<TData>({
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="space-y-2 max-w-52">
-        <h3 className="text-xs font-medium text-gray-500 mb-2">
-          Display properties
-        </h3>
+        <Label className="font-medium">Display properties</Label>
         <ul role="list" ref={parentRef} className="space-y-2">
           {columnOrder.map((columnId) => {
             const column = table.getColumn(columnId);
