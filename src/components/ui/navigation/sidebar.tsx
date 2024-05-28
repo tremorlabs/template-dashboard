@@ -33,7 +33,7 @@ export function Sidebar() {
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
         {/* @SEV/CHRIS: shadow-inner only right hand side: for this you would need a flex layout and add a shadow to the main content, not here */}
-        <aside className="px-6 py-4 flex grow flex-col gap-y-10 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
+        <aside className="px-6 py-4 flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
           {/* @SEV/CHRIS: other workspace dropdown version /sidebar-dropdown-2: this one is good */}
           <div className="-mx-2">
             <WorkspacesDropdownDesktop />

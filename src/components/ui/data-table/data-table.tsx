@@ -80,7 +80,7 @@ export function DataTable<TData, TValue>({
                       key={header.id}
                       className={cx(
                         header.column.columnDef.meta?.align,
-                        "py-2.5 whitespace-nowrap",
+                        "py-2 whitespace-nowrap",
                       )}
                     >
                       {flexRender(

@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/Checkbox";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { ConditionFilter } from "./data-table-filter";
 import { formatters } from "@/lib/utils";
+import { DataTableColumnHeader } from "./data-table-column-header";
 
 const columnHelper = createColumnHelper<Transaction>();
 export const columns = [
@@ -41,21 +42,27 @@ export const columns = [
     },
   }),
   columnHelper.accessor("owner", {
-    header: "Owner",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Owner" />
+    ),
     enableSorting: true,
     meta: {
       align: "text-left",
     },
   }),
   columnHelper.accessor("status", {
-    header: "Status",
-    enableSorting: false,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Status" />
+    ),
+    enableSorting: true,
     meta: {
       align: "text-left",
     },
   }),
   columnHelper.accessor("region", {
-    header: "Region",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Region" />
+    ),
     enableSorting: false,
     meta: {
       align: "text-left",
@@ -63,17 +70,21 @@ export const columns = [
     filterFn: "arrIncludesSome",
   }),
   columnHelper.accessor("capacity", {
-    header: "Capacity",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Capacity" />
+    ),
     enableSorting: false,
     meta: {
       align: "text-left",
     },
   }),
   columnHelper.accessor("costs", {
-    header: "Costs",
-    enableSorting: false,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Costs" />
+    ),
+    enableSorting: true,
     meta: {
-      align: "text-right",
+      align: "text-left",
     },
     cell: ({ getValue }) => formatters.currency(getValue()),
     filterFn: (row, columnId, filterValue: ConditionFilter) => {
@@ -94,8 +105,11 @@ export const columns = [
       }
     },
   }),
+  // @CHRIS: wording consistency
   columnHelper.accessor("lastEdited", {
-    header: "Created at",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Created at" />
+    ),
     enableSorting: false,
     meta: {
       align: "text-right",
