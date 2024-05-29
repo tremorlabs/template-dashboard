@@ -123,7 +123,7 @@ const Calendar = ({
           "text-gray-900 dark:text-gray-50",
         ),
         day: cx(
-          "size-9 rounded text-sm text-gray-900 dark:text-gray-50",
+          "size-9 rounded text-sm text-gray-900 dark:text-gray-50 focus:z-10",
           "hover:bg-gray-200 hover:dark:bg-gray-700",
           focusRing,
         ),

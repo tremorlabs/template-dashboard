@@ -3,7 +3,7 @@ import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
 import { DateRange } from "react-day-picker";
-import { PeriodValue } from "@/app/workspace/overview/page";
+import { PeriodValue } from "@/app/(main)/overview/page";
 import React from "react";
 import { overviews } from "@/data/data";
 import { getPeriod } from "./dashboard-filterbar";

@@ -6,28 +6,22 @@ import {
   RiSettings5Line,
   RiNotification4Line,
 } from "@remixicon/react";
-// @CHRIS: kickout useScroll
-
-import useScroll from "@/lib/use-scroll";
 
 export default function BodyNavbar() {
   return (
     <>
-      {/* filling element between top of page and sticky search bar when page is scrolled */}
-      <div className="fixed z-30 top-0 h-4 bg-white/90 backdrop-blur-nav dark:bg-gray-950/90 inset-x-0" />
       <div
         className={cx(
-          "sticky hidden top-4 z-30 lg:flex lg:items-center lg:justify-between bg-white/90 dark:bg-gray-950/90 backdrop-blur-nav py-2 transition-all",
+          "sticky hidden top-0 z-50 lg:flex items-center justify-between bg-white/90 backdrop-blur-nav dark:bg-gray-950/90 transition-all pt-6 pb-3 px-6"
         )}
       >
-        {/* @SEV: the Searchbar is built based on input -> wanted to add variant to Input but too much divergence from "base" styling -> discussion */}
-        <Searchbar placeholder="Search metrics..." className="w-80 -mx-2" />
+        <Searchbar placeholder="Search" className="w-72 -mx-2" />
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
               )}
             >
               <RiQuestionLine
@@ -38,7 +32,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
               )}
             >
               <RiSettings5Line
@@ -49,7 +43,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
               )}
             >
               <RiNotification4Line

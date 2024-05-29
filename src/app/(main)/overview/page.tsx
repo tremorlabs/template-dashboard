@@ -82,7 +82,7 @@ const data = [
 
 const data2 = [
   {
-    title: "Active users",
+    title: "Weekly active users",
     percentage: 21.7,
     current: 21.7,
     allowed: 100,
@@ -90,9 +90,9 @@ const data2 = [
   },
   {
     title: "Total users",
-    percentage: 40,
-    current: 8,
-    allowed: 20,
+    percentage: 70,
+    current: 28,
+    allowed: 40,
     unit: "",
   },
   {
@@ -139,7 +139,7 @@ export default function Example() {
       // dragHandle: ".drag-icon",
       disabled: !isEditable,
       plugins: [animations()],
-    },
+    }
   );
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
@@ -156,13 +156,8 @@ export default function Example() {
 
   return (
     <>
-      {/* @CHRIS: add ID to section */}
-
-      {/* @SEV: can also be put into /overview/Layout.tsx? */}
-      <BodyNavbar />
-
-      <h1 className="lg:mt-6 text-lg font-semibold text-gray-900 dark:text-gray-50">
-        Today
+      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+        Current billing cycle
       </h1>
 
       <div className="mt-4 sm:mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
@@ -180,7 +175,7 @@ export default function Example() {
           title="Workspace"
           change="+2.9%"
           value="21.7%"
-          valueDescription="active users"
+          valueDescription="weekly active users"
           ctaDescription="With free plan, up to 20 members can be invited."
           ctaText="Invite users."
           ctaLink="#"
@@ -216,10 +211,10 @@ export default function Example() {
         <Button
           variant={isEditable ? "primary" : "secondary"}
           className="hidden sm:flex gap-2 py-1 px-2"
-        // @CHRIS
-        // onClick={() => {
-        //     setIsEditable((prev) => !prev)
-        // }}
+          // @CHRIS
+          // onClick={() => {
+          //     setIsEditable((prev) => !prev)
+          // }}
         >
           {!isEditable && (
             <RiSettings5Line
@@ -237,12 +232,12 @@ export default function Example() {
           "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
           isEditable
             ? "p-2 border-gray-200 dark:border-gray-800 dark:bg-gray-900 bg-gray-50"
-            : "transition",
+            : "transition"
         )}
       >
         {KPICardsOrder.map((item) => {
           const category = categories.find(
-            (category) => category.title === item,
+            (category) => category.title === item
           );
           if (!category) return null;
           return (

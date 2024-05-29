@@ -11,7 +11,7 @@ import {
 import { DateRangePicker } from "@/components/DatePicker";
 import { DateRange } from "react-day-picker";
 import React from "react";
-import { PeriodValue } from "@/app/workspace/overview/page";
+import { PeriodValue } from "@/app/(main)/overview/page";
 import { eachDayOfInterval, interval, subDays, subYears } from "date-fns";
 import { OverviewData } from "@/data/schema";
 import { overviews } from "@/data/data";
