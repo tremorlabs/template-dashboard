@@ -12,7 +12,6 @@ import { animations } from "@formkit/drag-and-drop";
 import { cx } from "@/lib/utils";
 import { ProgressBarCard } from "@/components/ui/dashboard/dashboard-progress-bar-card";
 import { CategoryBarCard } from "@/components/ui/dashboard/dashboard-category-bar-card";
-import BodyNavbar from "@/components/ui/navigation/body-navbar";
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison";
 
