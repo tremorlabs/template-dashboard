@@ -4,7 +4,7 @@ import { Filterbar } from "@/components/ui/overview/dashboard-filterbar";
 import React from "react";
 import { DateRange } from "react-day-picker";
 import { set, subDays, toDate } from "date-fns";
-import { overviews } from "@/data/data";
+import { overviews } from "@/data/overview-data";
 import { cx } from "@/lib/utils";
 import { ProgressBarCard } from "@/components/ui/overview/dashboard-progress-bar-card";
 import { CategoryBarCard } from "@/components/ui/overview/dashboard-category-bar-card";
@@ -113,7 +113,7 @@ export default function Example() {
     React.useState<PeriodValue>("last-year");
 
   const [selectedCategories, setSelectedCategories] = React.useState<string[]>(
-    categories.map((category) => category.title),
+    categories.map((category) => category.title)
   );
 
   return (
@@ -177,7 +177,7 @@ export default function Example() {
 
       <dl
         className={cx(
-          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition",
+          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition"
         )}
       >
         {categories

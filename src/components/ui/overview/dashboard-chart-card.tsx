@@ -5,7 +5,7 @@ import { LineChart } from "@/components/LineChart";
 import { DateRange } from "react-day-picker";
 import { PeriodValue } from "@/app/(main)/overview/page";
 import React from "react";
-import { overviews } from "@/data/data";
+import { overviews } from "@/data/overview-data";
 import { getPeriod } from "./dashboard-filterbar";
 import {
   eachDayOfInterval,
@@ -157,6 +157,7 @@ export function ChartCard({
         showLegend={false}
         categories={categories}
         showTooltip={isThumbnail ? false : true}
+        autoMinValue
       />
     </div>
   );
