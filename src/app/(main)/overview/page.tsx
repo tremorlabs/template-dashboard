@@ -9,11 +9,9 @@ import { cx } from "@/lib/utils";
 import { ProgressBarCard } from "@/components/ui/overview/dashboard-progress-bar-card";
 import { CategoryBarCard } from "@/components/ui/overview/dashboard-category-bar-card";
 import { OverviewData } from "@/data/schema";
-import { CardProps } from "@/components/Card";
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison";
 
-// @CHRIS: declare via types
 const categories: {
   title: keyof OverviewData;
   type: "currency" | "unit";
@@ -103,6 +101,7 @@ const data3 = [
 
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
 const maxDate = toDate(Math.max(...overviewsDates));
+const minDate = toDate(Math.min(...overviewsDates));
 export default function Example() {
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
@@ -165,6 +164,7 @@ export default function Example() {
         {/* @CHRIS: bring "Edit"-button in filterbar */}
         <Filterbar
           maxDate={maxDate}
+          minDate={minDate}
           selectedDates={selectedDates}
           onDatesChange={(dates) => setSelectedDates(dates)}
           selectedPeriod={selectedPeriod}

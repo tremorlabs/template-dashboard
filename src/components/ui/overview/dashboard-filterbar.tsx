@@ -86,10 +86,9 @@ export const getPeriod = (
   }
 };
 
-// @CHRIS/SEV: old filterbar in /Filterbar.tsx
-
 type FilterbarProps = {
   maxDate?: Date;
+  minDate?: Date;
   selectedDates: DateRange | undefined;
   onDatesChange: (dates: DateRange | undefined) => void;
   selectedPeriod: PeriodValue;
@@ -101,6 +100,7 @@ type FilterbarProps = {
 
 export function Filterbar({
   maxDate,
+  minDate,
   selectedDates,
   onDatesChange,
   selectedPeriod,
@@ -131,6 +131,7 @@ export function Filterbar({
           onChange={onDatesChange}
           className="w-full sm:w-fit"
           toDate={maxDate}
+          fromDate={minDate}
         />
         <span className="hidden sm:block text-sm text-gray-500 font-medium">
           compared to
