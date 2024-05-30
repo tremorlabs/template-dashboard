@@ -114,7 +114,7 @@ export default function Example() {
     React.useState<PeriodValue>("last-year");
 
   const [selectedCategories, setSelectedCategories] = React.useState<string[]>(
-    categories.map((category) => category.title)
+    categories.map((category) => category.title),
   );
 
   return (
@@ -175,14 +175,9 @@ export default function Example() {
         />
       </div>
 
-    
-              
-             
-             
-        
       <dl
         className={cx(
-          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition"
+          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition",
         )}
       >
         {categories

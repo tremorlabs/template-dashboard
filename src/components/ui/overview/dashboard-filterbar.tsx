@@ -55,7 +55,7 @@ const periods: Period[] = [
 
 export const getPeriod = (
   dateRange: DateRange | undefined,
-  value: PeriodValue
+  value: PeriodValue,
 ): DateRange | undefined => {
   if (!dateRange) return undefined;
   const from = dateRange.from;
@@ -109,13 +109,14 @@ export function Filterbar({
   setSelectedCategories,
   selectedCategories,
 }: FilterbarProps) {
-  const [tempSelectedCategories, setTempSelectedCategories] = React.useState(selectedCategories);
+  const [tempSelectedCategories, setTempSelectedCategories] =
+    React.useState(selectedCategories);
 
   const handleCategoryChange = (category: string) => {
     setTempSelectedCategories((prev: any) =>
       prev.includes(category)
         ? prev.filter((item: any) => item !== category)
-        : [...prev, category]
+        : [...prev, category],
     );
   };
 
@@ -184,7 +185,7 @@ export function Filterbar({
           </DialogHeader>
           <div
             className={cx(
-              "mt-8 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition max-h-[70vh] overflow-y-scroll"
+              "mt-8 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition max-h-[70vh] overflow-y-scroll",
             )}
           >
             {categories.map((category) => {
@@ -224,7 +225,9 @@ export function Filterbar({
               </Button>
             </DialogClose>
             <DialogClose asChild>
-              <Button className="w-full sm:w-fit" onClick={handleApply}>Apply</Button>
+              <Button className="w-full sm:w-fit" onClick={handleApply}>
+                Apply
+              </Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>

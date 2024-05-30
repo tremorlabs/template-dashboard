@@ -24,7 +24,7 @@ export function DataTableColumnHeader<TData, TValue>({
       className={cx(
         column.columnDef.enableSorting === true
           ? "cursor-pointer select-none inline-flex items-center -mx-2 px-2 py-1 gap-2 rounded-md hover:bg-gray-50 hover:dark:bg-gray-900"
-          : ""
+          : "",
       )}
     >
       <span>{title}</span>
@@ -33,14 +33,14 @@ export function DataTableColumnHeader<TData, TValue>({
           <RiArrowUpSLine
             className={cx(
               "size-4 text-gray-900 dark:text-gray-50",
-              column.getIsSorted() === "desc" ? "opacity-30" : ""
+              column.getIsSorted() === "desc" ? "opacity-30" : "",
             )}
             aria-hidden="true"
           />
           <RiArrowDownSLine
             className={cx(
               "size-4 text-gray-900 dark:text-gray-50",
-              column.getIsSorted() === "asc" ? "opacity-30" : ""
+              column.getIsSorted() === "asc" ? "opacity-30" : "",
             )}
             aria-hidden="true"
           />

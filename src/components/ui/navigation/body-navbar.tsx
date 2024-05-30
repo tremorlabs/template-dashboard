@@ -12,7 +12,7 @@ export default function BodyNavbar() {
     <>
       <div
         className={cx(
-          "sticky hidden top-0 z-50 lg:flex items-center justify-between bg-white/90 backdrop-blur-nav dark:bg-gray-950/90 transition-all pt-6 pb-3 px-6"
+          "sticky hidden top-0 z-50 lg:flex items-center justify-between bg-white/90 backdrop-blur-nav dark:bg-gray-950/90 transition-all pt-6 pb-3 px-6",
         )}
       >
         <Searchbar placeholder="Search" className="w-72 -mx-2" />
@@ -21,7 +21,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiQuestionLine
@@ -32,7 +32,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiSettings5Line
@@ -43,7 +43,7 @@ export default function BodyNavbar() {
             <Button
               variant="ghost"
               className={cx(
-                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900"
+                "group flex items-center rounded-md p-1.5 hover:bg-gray-100 hover:dark:bg-gray-900",
               )}
             >
               <RiNotification4Line

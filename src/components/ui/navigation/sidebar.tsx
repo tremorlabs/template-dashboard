@@ -49,7 +49,7 @@ export function Sidebar() {
                         ? "text-indigo-600 dark:text-indigo-400"
                         : "text-gray-600 dark:text-gray-400 hover:text-gray-900 hover:dark:text-gray-50",
                       "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition",
-                      focusRing
+                      focusRing,
                     )}
                   >
                     <item.icon className="size-5 shrink-0" aria-hidden="true" />

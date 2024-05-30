@@ -61,8 +61,8 @@ export function DataTablePagination<TData>({
     <>
       <div className="flex items-center justify-between">
         <div className="tabular-nums text-sm text-gray-500">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
-          selected.
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
         <div className="flex items-center gap-x-6 lg:gap-x-8">
           <p className="hidden sm:block text-sm tabular-nums text-gray-500">
@@ -70,12 +70,12 @@ export function DataTablePagination<TData>({
             <span className="font-medium text-gray-900 dark:text-gray-50">
               {/* @Sev: simplify? */}
               {table.getState().pagination.pageIndex ===
-                Math.floor(totalRows / pageSize)
+              Math.floor(totalRows / pageSize)
                 ? lastPageStartIndex + "-" + lastPageEndIndex
                 : table.getState().pagination.pageIndex * pageSize +
-                1 +
-                "-" +
-                (table.getState().pagination.pageIndex + 1) * pageSize}
+                  1 +
+                  "-" +
+                  (table.getState().pagination.pageIndex + 1) * pageSize}
             </span>{" "}
             of{" "}
             <span className="font-medium text-gray-900 dark:text-gray-50">
