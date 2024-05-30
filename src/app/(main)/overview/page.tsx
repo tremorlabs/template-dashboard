@@ -1,22 +1,23 @@
 "use client";
-import { Button } from "@/components/Button";
-import { RiSettings5Line } from "@remixicon/react";
-import { ChartCard } from "@/components/ui/dashboard/dashboard-chart-card";
-import { Filterbar } from "@/components/ui/dashboard/dashboard-filterbar";
+import { ChartCard } from "@/components/ui/overview/dashboard-chart-card";
+import { Filterbar } from "@/components/ui/overview/dashboard-filterbar";
 import React from "react";
 import { DateRange } from "react-day-picker";
 import { set, subDays, toDate } from "date-fns";
 import { overviews } from "@/data/data";
-import { useDragAndDrop } from "@formkit/drag-and-drop/react";
-import { animations } from "@formkit/drag-and-drop";
 import { cx } from "@/lib/utils";
-import { ProgressBarCard } from "@/components/ui/dashboard/dashboard-progress-bar-card";
-import { CategoryBarCard } from "@/components/ui/dashboard/dashboard-category-bar-card";
+import { ProgressBarCard } from "@/components/ui/overview/dashboard-progress-bar-card";
+import { CategoryBarCard } from "@/components/ui/overview/dashboard-category-bar-card";
+import { OverviewData } from "@/data/schema";
+import { CardProps } from "@/components/Card";
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison";
 
 // @CHRIS: declare via types
-const categories = [
+const categories: {
+  title: keyof OverviewData;
+  type: "currency" | "unit";
+}[] = [
   {
     title: "Rows read",
     type: "unit",
@@ -29,31 +30,7 @@ const categories = [
     title: "Queries",
     type: "unit",
   },
-  {
-    title: "Rows read",
-    type: "unit",
-  },
-  {
-    title: "Rows written",
-    type: "unit",
-  },
-  {
-    title: "Queries",
-    type: "unit",
-  },
-  {
-    title: "Rows read",
-    type: "unit",
-  },
-  {
-    title: "Rows written",
-    type: "unit",
-  },
-  {
-    title: "Queries",
-    type: "unit",
-  },
-] as const;
+];
 
 const data = [
   {
@@ -127,19 +104,6 @@ const data3 = [
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
 const maxDate = toDate(Math.max(...overviewsDates));
 export default function Example() {
-  const [isEditable, setIsEditable] = React.useState(false);
-  const [parentRef, KPICardsOrder, _, updateConfig] = useDragAndDrop<
-    HTMLUListElement,
-    string
-  >(
-    categories.map((item) => item.title),
-    {
-      // @CHRIS
-      // dragHandle: ".drag-icon",
-      disabled: !isEditable,
-      plugins: [animations()],
-    }
-  );
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
   >({
@@ -149,9 +113,9 @@ export default function Example() {
   const [selectedPeriod, setSelectedPeriod] =
     React.useState<PeriodValue>("last-year");
 
-  React.useEffect(() => {
-    updateConfig({ disabled: !isEditable });
-  }, [isEditable]);
+  const [selectedCategories, setSelectedCategories] = React.useState<string[]>(
+    categories.map((category) => category.title)
+  );
 
   return (
     <>
@@ -205,52 +169,36 @@ export default function Example() {
           onDatesChange={(dates) => setSelectedDates(dates)}
           selectedPeriod={selectedPeriod}
           onPeriodChange={(period) => setSelectedPeriod(period)}
-          isEditable={isEditable}
+          categories={categories}
+          setSelectedCategories={setSelectedCategories}
+          selectedCategories={selectedCategories}
         />
-        <Button
-          variant={isEditable ? "primary" : "secondary"}
-          className="hidden sm:flex gap-2 py-1 px-2"
-          // @CHRIS
-          // onClick={() => {
-          //     setIsEditable((prev) => !prev)
-          // }}
-        >
-          {!isEditable && (
-            <RiSettings5Line
-              className="-ml-1 size-4 shrink-0"
-              aria-hidden="true"
-            />
-          )}
-          {isEditable ? "Save" : "Edit"}
-        </Button>
       </div>
 
+    
+              
+             
+             
+        
       <dl
-        ref={parentRef}
         className={cx(
-          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
-          isEditable
-            ? "p-2 border-gray-200 dark:border-gray-800 dark:bg-gray-900 bg-gray-50"
-            : "transition"
+          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition"
         )}
       >
-        {KPICardsOrder.map((item) => {
-          const category = categories.find(
-            (category) => category.title === item
-          );
-          if (!category) return null;
-          return (
-            <ChartCard
-              key={item}
-              title={category.title}
-              // value={category.value}
-              type={category.type}
-              selectedDates={selectedDates}
-              selectedPeriod={selectedPeriod}
-              isEditable={isEditable}
-            />
-          );
-        })}
+        {categories
+          .filter((category) => selectedCategories.includes(category.title))
+          .map((category) => {
+            return (
+              <ChartCard
+                key={category.title}
+                title={category.title}
+                // value={category.value}
+                type={category.type}
+                selectedDates={selectedDates}
+                selectedPeriod={selectedPeriod}
+              />
+            );
+          })}
       </dl>
     </>
   );

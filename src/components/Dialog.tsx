@@ -6,7 +6,7 @@ import * as DialogPrimitives from "@radix-ui/react-dialog";
 import { cx, focusRing } from "@/lib/utils";
 
 const Dialog = (
-  props: React.ComponentPropsWithoutRef<typeof DialogPrimitives.Root>,
+  props: React.ComponentPropsWithoutRef<typeof DialogPrimitives.Root>
 ) => {
   return <DialogPrimitives.Root {...props} />;
 };
@@ -38,7 +38,7 @@ const DialogOverlay = React.forwardRef<
         "bg-black/70",
         // transition
         "data-[state=open]:animate-dialogOverlayShow",
-        className,
+        className
       )}
       {...props}
     />
@@ -66,7 +66,7 @@ const DialogContent = React.forwardRef<
             // transition
             "data-[state=open]:animate-dialogContentShow",
             focusRing,
-            className,
+            className
           )}
           {...props}
         />
@@ -97,7 +97,7 @@ const DialogTitle = React.forwardRef<
       "text-lg font-semibold",
       // text color
       "text-gray-900 dark:text-gray-50",
-      className,
+      className
     )}
     {...props}
   />
@@ -128,7 +128,7 @@ const DialogFooter = ({
     <div
       className={cx(
         "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-        className,
+        className
       )}
       {...props}
     />

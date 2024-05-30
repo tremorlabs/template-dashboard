@@ -31,7 +31,7 @@ export function Sidebar() {
     <>
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
-        <aside className="px-6 py-4 flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
+        <aside className="px-6 py-4 flex grow flex-col gap-y-6 overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800">
           <div className="-mx-2">
             <WorkspacesDropdownDesktop />
           </div>
@@ -49,7 +49,7 @@ export function Sidebar() {
                         ? "text-indigo-600 dark:text-indigo-400"
                         : "text-gray-600 dark:text-gray-400 hover:text-gray-900 hover:dark:text-gray-50",
                       "hover:bg-gray-100 hover:dark:bg-gray-900 font-medium flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition",
-                      focusRing,
+                      focusRing
                     )}
                   >
                     <item.icon className="size-5 shrink-0" aria-hidden="true" />

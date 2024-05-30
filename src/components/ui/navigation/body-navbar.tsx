@@ -52,7 +52,6 @@ export default function BodyNavbar() {
               />
             </Button>
           </div>
-          <Button className="hidden sm:flex py-1 px-2">Add metric</Button>
         </div>
       </div>
     </>
