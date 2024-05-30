@@ -1,13 +1,15 @@
 "use client"
 
+import React from "react";
 import { RiArrowRightUpLine } from "@remixicon/react";
-import { Card } from "@/components/Card";
 import { ProgressBar } from "@/components/ProgressBar";
 import { Divider } from "@/components/Divider";
 import { Input } from "@/components/Input";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { Switch } from "@/components/Switch";
 import { Label } from "@/components/Label";
+import { Button } from "@/components/Button";
+import { Card } from "@/components/Card";
 
 const data = [
   {
@@ -43,22 +45,18 @@ const data = [
   },
 ];
 
-
-// ----- TODOs (CHRIS) -------:
-
-// - Componentize
-
 export default function Billing() {
+  const [isSpendMgmtEnabled, setIsSpendMgmtEnabled] = React.useState(true);
   return (
     <>
-      <div className="rounded-lg bg-gray-50 dark:bg-gray-400/10 p-6 ring-1 ring-inset ring-gray-200 dark:ring-gray-800 sm:max-w-7xl">
+      <div className="sm:max-w-6xl rounded-lg bg-gray-50 dark:bg-gray-400/10 p-6 ring-1 ring-inset ring-gray-200 dark:ring-gray-800">
         <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-50">
           This workspace is currently on free plan
         </h4>
         <p className="mt-1 text-sm text-gray-500 max-w-2xl leading-6">
           Boost your analytics and unlock advanced features with our premium
           plans.{" "}
-          <a href="#" className="inline-flex items-center gap-x-1 text-indigo-600 dark:text-indigo-500">
+          <a href="#" className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-500">
             Compare plans
             <RiArrowRightUpLine
               className="size-4 shrink-0"
@@ -67,135 +65,213 @@ export default function Billing() {
           </a>
         </p>
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
-        <div>
-          <h2 className="font-semibold text-gray-900 dark:text-gray-50">
-            Billing
-          </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-500">
-            Overview of current billing cycle based on fixed and on-demand charges.
-          </p>
-        </div>
-        <div className="md:col-span-2">
-          <ul
-            role="list"
-            className="w-full divide-y divide-gray-200 dark:divide-gray-800 border-b border-gray-200 dark:border-gray-800"
-          >
-            {data.map((item) => (
-              <li key={item.name} className="py-4 px-2 md:p-4 text-sm">
-                <div className="w-full">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium text-gray-900 dark:text-gray-50">
-                      {item.name}
-                    </p>
-                    <p className="font-medium text-gray-700 dark:text-gray-300">
-                      {item.value}
-                    </p>
-                  </div>
-                  <div className="w-full md:w-1/2">
-                    {item.percentageValue && (
-                      <ProgressBar
-                        value={item.percentageValue}
-                        className="mt-2 [&>*]:h-1.5"
-                      />
-                    )}
-                    <p className="mt-1 flex items-center justify-between text-xs text-gray-500">
-                      <span>{item.description}</span>
-                      <span>{item.capacity}</span>
-                    </p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-          {/* <div className="mt-2 px-4 py-2.5 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800"> */}
-          <div className="px-2 py-4 md:p-4">
-            <p className="flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-50">
-              <span>Total for May 24</span>
-              <span className="font-semibold">$280</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <Divider />
-      <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
-        <div>
-          <h2 className="font-semibold text-gray-900 dark:text-gray-50">
-            Cost spend management
-          </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-500">
-            Set hard caps for on-demand charges.
-          </p>
-        </div>
-        {/* @CHRIS: ver-STATE */}
-        <div className="md:col-span-2">
-          <div className="md:p-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <ProgressCircle value={62.2} radius={20} strokeWidth={4.5} />
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
-                    &#36;280 / 350 (62.2&#37;)
-                  </p>
-                  <Label
-                    htmlFor="spend-mgmt"
-                    className="text-gray-500 dark:text-gray-500"
-                  >
-                    Spend management enabled
-                  </Label>
-                </div>
-              </div>
-              <Switch id="spend-mgmt" name="spend-mgmt" defaultChecked />
-            </div>
-            {/* <div className="mt-6 flex items-center justify-between">
-              <p className="text-sm text-gray-900 dark:text-gray-50">
-                Set amount ($)
+      <div className="mt-6 space-y-10">
+        <div className="sm:max-w-6xl">
+          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+            <div>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-50">
+                Billing
+              </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-500">
+                Overview of current billing cycle based on fixed and on-demand charges.
               </p>
-              <Input
-                placeholder="$120"
-                enableStepper={false}
-                className="w-20"
-              />
-            </div> */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="md:col-span-1">
-                <Label className="font-medium">
-                  Set amount
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  placeholder="350$"
-                  type="number"
-                  className="mt-2"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <Label className="font-medium">
-                  Provide email for notifications
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  placeholder="admin@company.com"
-                  type="email"
-                  className="mt-2"
-                />
+            </div>
+            <div className="md:col-span-2">
+              <ul
+                role="list"
+                className="w-full divide-y divide-gray-200 dark:divide-gray-800 border-b border-gray-200 dark:border-gray-800"
+              >
+                {data.map((item) => (
+                  <li key={item.name} className="py-4 px-2 md:p-4 text-sm">
+                    <div className="w-full">
+                      <div className="flex items-center justify-between">
+                        <p className="font-medium text-gray-900 dark:text-gray-50">
+                          {item.name}
+                        </p>
+                        <p className="font-medium text-gray-700 dark:text-gray-300">
+                          {item.value}
+                        </p>
+                      </div>
+                      <div className="w-full md:w-2/3">
+                        {item.percentageValue && (
+                          <ProgressBar
+                            value={item.percentageValue}
+                            className="mt-2 [&>*]:h-1.5"
+                          />
+                        )}
+                        <p className="mt-1 flex items-center justify-between text-xs text-gray-500">
+                          <span>{item.description}</span>
+                          <span>{item.capacity}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="px-2 py-4 md:p-4">
+                <p className="flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-50">
+                  <span>Total for May 24</span>
+                  <span className="font-semibold">$280</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Divider />
-      <div className="mt-6 grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
-        <div>
-          <h2 className="font-semibold text-gray-900 dark:text-gray-50">
-            Add-Ons
-          </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-500">
-            Additional services to boost your services.
-          </p>
-        </div>
+        <Divider />
+        <form>
+          <div className="sm:max-w-6xl">
+            <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+              <div>
+                <h2 className="font-semibold text-gray-900 dark:text-gray-50">
+                  Cost spend management
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-gray-500">
+                  Set hard caps for on-demand charges.
+                </p>
+              </div>
+              {/* @SEV/CHRIS: detail: when switch triggerd -> jumps a little bit around */}
+              <div className="md:col-span-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <ProgressCircle
+                      value={isSpendMgmtEnabled ? 62.2 : 0}
+                      radius={20}
+                      strokeWidth={4.5}
+                    />
+                    <div>
+                      {isSpendMgmtEnabled ? (
+                        <>
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
+                            &#36;280 / 350 (62.2&#37;)
+                          </p>
+                          <Label
+                            htmlFor="spend-mgmt"
+                            className="text-gray-500 dark:text-gray-500"
+                          >
+                            Spend management enabled
+                          </Label>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
+                            &#36;0 / 0 (0&#37;)
+                          </p>
+                          <Label
+                            htmlFor="spend-mgmt"
+                            className="text-gray-500 dark:text-gray-500"
+                          >
+                            Spend management disabled
+                          </Label>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  <Switch
+                    id="spend-mgmt"
+                    name="spend-mgmt"
+                    checked={isSpendMgmtEnabled}
+                    onCheckedChange={() => {
+                      setIsSpendMgmtEnabled(!isSpendMgmtEnabled)
+                    }}
+                  />
+                </div>
+                {isSpendMgmtEnabled && (
+                  <>
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="md:col-span-1">
+                        <Label className="font-medium">
+                          Set amount ($)
+                        </Label>
+                        <Input
+                          id="hard-cap"
+                          name="hard-cap"
+                          defaultValue={350}
+                          type="number"
+                          className="mt-2"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <Label className="font-medium">
+                          Provide email for notifications
+                        </Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          placeholder="admin@company.com"
+                          type="email"
+                          className="mt-2"
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-6 flex justify-end">
+                      <Button type="submit" variant="secondary">Update</Button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </form>
+        <Divider />
+        <form>
+          <div className="sm:max-w-6xl">
+            <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+              <div>
+                <h2 className="font-semibold text-gray-900 dark:text-gray-50">
+                  Add-Ons
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-gray-500">
+                  Additional services to boost your services.
+                </p>
+              </div>
+              <div className="md:col-span-2 space-y-6">
+                <Card className="overflow-hidden p-0">
+                  <div className="px-4 pt-4 pb-6">
+                    <span className="text-sm text-gray-500">$25/month</span>
+                    <h4 className="mt-4 text-sm text-gray-900 dark:text-gray-50 font-semibold">
+                      Advanced bot protection
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
+                      Safeguard your assets with our cutting-edge bot protection.
+                      Our AI solution identifies and mitigates automated traffic to protect your workspace from bad bots.
+                    </p>
+                  </div>
+                  <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
+                    <div className="flex items-center gap-3">
+                      <Switch id="bot-protection" name="bot-protection" />
+                      <Label htmlFor="bot-protection">Activate</Label>
+                    </div>
+                    <a href="#" className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1">
+                      Learn more
+                      <RiArrowRightUpLine className="size-4 shrink-0" aria-hidden="true" />
+                    </a>
+                  </div>
+                </Card>
+                <Card className="overflow-hidden p-0">
+                  <div className="px-4 pt-4 pb-6">
+                    <span className="text-sm text-gray-500">$50/month</span>
+                    <h4 className="mt-4 text-sm text-gray-900 dark:text-gray-50 font-semibold">
+                      Workspace insights
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
+                      Real-time analysis of your workspace&#39;s usage, enabling you to make well-informed decisions for optimization.
+                    </p>
+                  </div>
+                  <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
+                    <div className="flex items-center gap-3">
+                      <Switch id="insights" name="insights" />
+                      <Label htmlFor="insights">Activate</Label>
+                    </div>
+                    <a href="#" className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1">
+                      Learn more
+                      <RiArrowRightUpLine className="size-4 shrink-0" aria-hidden="true" />
+                    </a>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </>
   );

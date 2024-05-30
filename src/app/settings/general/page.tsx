@@ -36,7 +36,7 @@ export default function General() {
                 Manage your personal information and role.
               </p>
             </div>
-            <div className="sm:max-w-3xl md:col-span-2">
+            <div className="md:col-span-2">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-6">
                 <div className="col-span-full sm:col-span-3">
                   <Label htmlFor="first-name" className="font-medium">
@@ -130,7 +130,7 @@ export default function General() {
                 Configure the types of notifications you want to receive.
               </p>
             </div>
-            <div className="sm:max-w-3xl md:col-span-2">
+            <div className="md:col-span-2">
               <fieldset>
                 <legend className="text-sm font-medium text-gray-900 dark:text-gray-50">
                   Team
@@ -221,7 +221,7 @@ export default function General() {
                 </a>
               </p>
             </div>
-            <div className="sm:max-w-3xl md:col-span-2 space-y-6">
+            <div className="md:col-span-2 space-y-6">
               <Card className="p-4">
                 <div className="flex items-start gap-10 justify-between">
                   <div>
