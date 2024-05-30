@@ -132,6 +132,7 @@ export function Filterbar({
           className="w-full sm:w-fit"
           toDate={maxDate}
           fromDate={minDate}
+          align="start"
         />
         <span className="hidden sm:block text-sm text-gray-500 font-medium">
           compared to

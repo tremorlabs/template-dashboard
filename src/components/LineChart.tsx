@@ -27,7 +27,10 @@ import {
   hasOnlyOneValueForKey,
 } from "@/lib/chartUtils";
 import { useOnWindowResize } from "@/lib/useOnWindowResize";
-import { cx } from "@/lib/utils";
+import { cx, percentageFormatter } from "@/lib/utils";
+import { Badge } from "./Badge";
+import { getBadgeType } from "./ui/overview/dashboard-chart-card";
+
 
 //#region Legend
 
@@ -51,7 +54,7 @@ const LegendItem = ({
         // base
         "group inline-flex flex-nowrap items-center gap-1.5 whitespace-nowrap rounded px-2 py-1 transition",
         hasOnValueChange
-          ? "cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+          ? "bg-transpaent cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
           : "cursor-default",
       )}
       onClick={(e) => {
@@ -65,7 +68,7 @@ const LegendItem = ({
           getColorClassName(color, "bg"),
           activeLegend && activeLegend !== name ? "opacity-40" : "opacity-100",
         )}
-        aria-hidden="true"
+        aria-hidden={true}
       />
       <p
         className={cx(
@@ -74,7 +77,7 @@ const LegendItem = ({
           // text color
           "text-gray-700 dark:text-gray-300",
           hasOnValueChange &&
-            "group-hover:text-gray-900 dark:group-hover:text-gray-50",
+          "group-hover:text-gray-900 dark:group-hover:text-gray-50",
           activeLegend && activeLegend !== name ? "opacity-40" : "opacity-100",
         )}
       >
@@ -390,7 +393,7 @@ interface ChartTooltipProps {
   valueFormatter: (value: number) => string;
 }
 
-const ChartTooltip = ({
+const OverviewChartTooltip = ({
   active,
   payload,
   label,
@@ -399,6 +402,12 @@ const ChartTooltip = ({
 }: ChartTooltipProps) => {
   if (active && payload) {
     const filteredPayload = payload.filter((item: any) => item.type !== "none");
+
+    if (!active || !payload) return null;
+
+    const title = payload[0].payload.title;
+    const evolution = payload[0].payload.evolution;
+    if (!title) return null;
 
     return (
       <div
@@ -414,7 +423,77 @@ const ChartTooltip = ({
         <div
           className={cx(
             // base
-            "border-b border-inherit px-4 py-2",
+            "border-b border-inherit p-2",
+            "flex items-start justify-between",
+          )}
+        >
+          <p
+            className={cx(
+              // base
+              "font-medium",
+              // text color
+              "text-gray-900 dark:text-gray-50",
+            )}
+          >
+            {title}
+          </p>
+          {evolution !== undefined && (
+            <Badge variant={getBadgeType(evolution)}>
+              {percentageFormatter(evolution)}
+            </Badge>
+          )}
+        </div>
+        <div className={cx("space-y-1 p-2")}>
+          {filteredPayload.map((payload: any, index: number) => {
+            const payloadData = payload.payload;
+            return (
+              <ChartTooltipRow
+                key={`id-${index}`}
+                value={valueFormatter(payload.value)}
+                name={
+                  index === 0
+                    ? payloadData.formattedDate
+                    : payloadData.previousFormattedDate
+                }
+                color={getColorClassName(
+                  categoryColors.get(payload.name) as AvailableChartColorsKeys,
+                  "bg",
+                )}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
+
+const ChartTooltip = ({
+  active,
+  payload,
+  label,
+  categoryColors,
+  valueFormatter,
+}: ChartTooltipProps) => {
+  if (active && payload) {
+    const filteredPayload = payload.filter((item: any) => item.type !== "none");
+
+    return (
+      <div
+        className={cx(
+          // base
+          "rounded-md border text-xs shadow-md",
+          // border color
+          "border-gray-200 dark:border-gray-800",
+          // background color
+          "bg-white dark:bg-gray-950",
+        )}
+      >
+        <div
+          className={cx(
+            // base
+            "border-b border-inherit px-2 py-1",
           )}
         >
           <p
@@ -429,7 +508,7 @@ const ChartTooltip = ({
           </p>
         </div>
 
-        <div className={cx("space-y-1 px-4 py-2")}>
+        <div className={cx("space-y-1 px-2 py-1")}>
           {filteredPayload.map(
             (
               { value, name }: { value: number; name: string },
@@ -592,17 +671,17 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             onClick={
               hasOnValueChange && (activeLegend || activeDot)
                 ? () => {
-                    setActiveDot(undefined);
-                    setActiveLegend(undefined);
-                    onValueChange?.(null);
-                  }
+                  setActiveDot(undefined);
+                  setActiveLegend(undefined);
+                  onValueChange?.(null);
+                }
                 : undefined
             }
             margin={{
               bottom: xAxisLabel ? 30 : undefined,
               left: yAxisLabel ? 20 : undefined,
               right: yAxisLabel ? 5 : undefined,
-              top: 5,
+              top: 0,
             }}
           >
             {showGridLines ? (
@@ -686,7 +765,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
               content={
                 showTooltip ? (
                   ({ active, payload, label }) => (
-                    <ChartTooltip
+                    <OverviewChartTooltip
                       active={active}
                       payload={payload}
                       label={label}
@@ -711,7 +790,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                     activeLegend,
                     hasOnValueChange
                       ? (clickedLegendItem: string) =>
-                          onCategoryClick(clickedLegendItem)
+                        onCategoryClick(clickedLegendItem)
                       : undefined,
                     enableLegendSlider,
                   )
@@ -827,26 +906,26 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             {/* hidden lines to increase clickable target area */}
             {onValueChange
               ? categories.map((category) => (
-                  <Line
-                    className={cx("cursor-pointer")}
-                    strokeOpacity={0}
-                    key={category}
-                    name={category}
-                    type="linear"
-                    dataKey={category}
-                    stroke="transparent"
-                    fill="transparent"
-                    legendType="none"
-                    tooltipType="none"
-                    strokeWidth={12}
-                    connectNulls={connectNulls}
-                    onClick={(props: any, event) => {
-                      event.stopPropagation();
-                      const { name } = props;
-                      onCategoryClick(name);
-                    }}
-                  />
-                ))
+                <Line
+                  className={cx("cursor-pointer")}
+                  strokeOpacity={0}
+                  key={category}
+                  name={category}
+                  type="linear"
+                  dataKey={category}
+                  stroke="transparent"
+                  fill="transparent"
+                  legendType="none"
+                  tooltipType="none"
+                  strokeWidth={12}
+                  connectNulls={connectNulls}
+                  onClick={(props: any, event) => {
+                    event.stopPropagation();
+                    const { name } = props;
+                    onCategoryClick(name);
+                  }}
+                />
+              ))
               : null}
           </RechartsLineChart>
         </ResponsiveContainer>

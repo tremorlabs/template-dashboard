@@ -28,6 +28,26 @@ const categories: {
     title: "Queries",
     type: "unit",
   },
+  {
+    title: "Payments completed",
+    type: "currency",
+  },
+  {
+    title: "Sign ups",
+    type: "unit",
+  },
+  {
+    title: "Logins",
+    type: "unit",
+  },
+  {
+    title: "Sign outs",
+    type: "unit",
+  },
+  {
+    title: "Support calls",
+    type: "unit",
+  },
 ];
 
 const data = [
@@ -101,12 +121,11 @@ const data3 = [
 
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
 const maxDate = toDate(Math.max(...overviewsDates));
-const minDate = toDate(Math.min(...overviewsDates));
 export default function Example() {
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
   >({
-    from: subDays(maxDate, 10),
+    from: subDays(maxDate, 30),
     to: maxDate,
   });
   const [selectedPeriod, setSelectedPeriod] =
@@ -161,10 +180,9 @@ export default function Example() {
       </h1>
 
       <div className="sticky lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-nav border-b border-gray-200 dark:border-gray-800 flex items-center justify-between py-4 lg:pt-2 pb-4">
-        {/* @CHRIS: bring "Edit"-button in filterbar */}
         <Filterbar
           maxDate={maxDate}
-          minDate={minDate}
+          minDate={new Date(2024, 0, 1)}
           selectedDates={selectedDates}
           onDatesChange={(dates) => setSelectedDates(dates)}
           selectedPeriod={selectedPeriod}

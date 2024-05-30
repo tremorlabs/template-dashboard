@@ -5,22 +5,35 @@ function generateRandomData(
   previousValue,
   min,
   max,
-  avg,
   variance,
   isWeekend,
-  weekendReduction
+  weekendReduction,
+  momentum
 ) {
-  let randomDrift = (Math.random() - 0.5) * 2 * variance; // random drift within variance range
-  let randomValue = previousValue * (1 + randomDrift);
-  
-  // Ensure the value stays within the specified min and max bounds
-  randomValue = Math.max(min, Math.min(max, randomValue));
+  let drift = (Math.random() - 0.5) * 2 * variance;
+  drift += momentum; // Apply momentum
+
+  let randomValue = previousValue * (1 + drift);
+
+  // Ensure the value stays within the specified min and max bounds with stronger correction
+  if (randomValue < min) {
+    randomValue = min + (min - randomValue) * 0.2; // Apply stronger correction if below min
+  } else if (randomValue > max) {
+    randomValue = max - (randomValue - max) * 0.2; // Apply stronger correction if above max
+  }
 
   if (isWeekend && weekendReduction) {
     const reductionFactor = 1 - (Math.random() * 0.15 + 0.1); // Reduce by 10-25%
     randomValue *= reductionFactor;
   }
-  return Math.round(randomValue);
+
+  // Calculate new momentum based on the current drift
+  momentum = drift * 0.5; // Adjust momentum scaling factor as needed
+
+  return {
+    value: Math.round(randomValue),
+    momentum
+  };
 }
 
 function generateData(startDate, endDate, categories) {
@@ -30,8 +43,10 @@ function generateData(startDate, endDate, categories) {
 
   // Initialize previous values with average values for each category
   const previousValues = {};
+  const momenta = {}; // Track momentum for each category
   categories.forEach((category) => {
-    previousValues[category.name] = category.avg;
+    previousValues[category.name] = (category.min + category.max) / 2; // Initialize with mid-point value
+    momenta[category.name] = 0; // Initialize momentum
   });
 
   while (currentDate <= endDateObj) {
@@ -41,16 +56,18 @@ function generateData(startDate, endDate, categories) {
     };
 
     categories.forEach((category) => {
-      dataEntry[category.name] = generateRandomData(
+      const result = generateRandomData(
         previousValues[category.name],
         category.min,
         category.max,
-        category.avg,
         category.variance,
         isWeekend,
-        category.weekendReduction
+        category.weekendReduction,
+        momenta[category.name]
       );
-      previousValues[category.name] = dataEntry[category.name];
+      dataEntry[category.name] = result.value;
+      previousValues[category.name] = result.value;
+      momenta[category.name] = result.momentum;
     });
 
     overviews.push(dataEntry);
@@ -65,24 +82,56 @@ const categories = [
     name: "Rows written",
     min: 2500,
     max: 3700,
-    avg: 3300,
-    variance: 0.1,
+    variance: 0.01,
     weekendReduction: false,
   },
   {
     name: "Rows read",
     min: 18000,
     max: 28000,
-    avg: 22500,
-    variance: 0.05,
+    variance: 0.03,
     weekendReduction: false,
   },
   {
     name: "Queries",
     min: 478,
     max: 612,
-    avg: 556,
+    variance: 0.01,
+    weekendReduction: true,
+  },
+  {
+    name: "Payments completed",
+    min: 80,
+    max: 125,
+    variance: 0.5,
+    weekendReduction: true,
+  },
+  {
+    name: "Sign ups",
+    min: 60,
+    max: 80,
+    variance: 0.5,
+    weekendReduction: true,
+  },
+  {
+    name: "Logins",
+    min: 844,
+    max: 2048,
+    variance: 0.2,
+    weekendReduction: false,
+  },
+  {
+    name: "Sign outs",
+    min: 900,
+    max: 1200,
     variance: 0.1,
+    weekendReduction: false,
+  },
+  {
+    name: "Support calls",
+    min: 2,
+    max: 19,
+    variance: 0.5,
     weekendReduction: true,
   },
 ];

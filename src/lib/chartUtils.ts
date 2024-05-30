@@ -105,15 +105,16 @@ export function hasOnlyOneValueForKey(
   array: any[],
   keyToCheck: string,
 ): boolean {
-  let value: any = undefined;
+  const val: any[] = []
+
   for (const obj of array) {
     if (Object.prototype.hasOwnProperty.call(obj, keyToCheck)) {
-      if (value === undefined) {
-        value = obj[keyToCheck];
-      } else if (value !== obj[keyToCheck]) {
-        return false;
+      val.push(obj[keyToCheck])
+      if (val.length > 1) {
+        return false
       }
     }
   }
-  return true;
+
+  return true
 }

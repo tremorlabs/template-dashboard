@@ -13,4 +13,9 @@ export type OverviewData = {
   "Rows written": number;
   "Rows read": number;
   Queries: number;
+  "Payments completed": number;
+  "Sign ups": number;
+  Logins: number;
+  "Sign outs": number;
+  "Support calls": number;
 };
