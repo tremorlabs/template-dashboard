@@ -11,7 +11,7 @@ import React, {
 } from "react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
-import { Table } from "@tanstack/react-table";
+import { Column, Table } from "@tanstack/react-table";
 
 import ReactDOM from "react-dom";
 import invariant from "tiny-invariant";
@@ -39,8 +39,6 @@ import { RiDraggable, RiEqualizer2Line } from "@remixicon/react";
 import { cx } from "@/lib/utils";
 import { Label } from "@/components/Label";
 import { Checkbox } from "@/components/Checkbox";
-
-type ItemPosition = "first" | "last" | "middle" | "only";
 
 type CleanupFn = () => void;
 
@@ -100,28 +98,6 @@ function isItemData(data: Record<string | symbol, unknown>): data is ItemData {
   return data[itemKey] === true;
 }
 
-function getItemPosition({
-  index,
-  items,
-}: {
-  index: number;
-  items: Item[];
-}): ItemPosition {
-  if (items.length === 1) {
-    return "only";
-  }
-
-  if (index === 0) {
-    return "first";
-  }
-
-  if (index === items.length - 1) {
-    return "last";
-  }
-
-  return "middle";
-}
-
 type DraggableState =
   | { type: "idle" }
   | { type: "preview"; container: HTMLElement }
@@ -133,10 +109,11 @@ const draggingState: DraggableState = { type: "dragging" };
 function ListItem({
   item,
   index,
+  column,
 }: {
   item: Item;
   index: number;
-  position: ItemPosition;
+  column: Column<any, unknown> | undefined;
 }) {
   const { registerItem, instanceId } = useListContext();
 
@@ -228,7 +205,7 @@ function ListItem({
         onDrop() {
           setClosestEdge(null);
         },
-      }),
+      })
     );
   }, [instanceId, item, index, registerItem]);
 
@@ -238,19 +215,20 @@ function ListItem({
         <div
           className={cx(
             "relative flex items-center justify-between gap-2",
-            draggableState.type === "dragging" && "opacity-50",
+            draggableState.type === "dragging" && "opacity-50"
           )}
         >
           <div className="flex items-center gap-2">
             <Checkbox
-              // checked={column.getIsVisible()}
-              checked={true}
-              // onCheckedChange={() => column.toggleVisibility()}
+              checked={column?.getIsVisible()}
+              onCheckedChange={() => column?.toggleVisibility()}
             />
             <span>{item.label}</span>
           </div>
 
           <Button
+          aria-hidden={true}
+          tabIndex={-1}
             variant="secondary"
             className="px-px py-1"
             ref={dragHandleRef}
@@ -264,38 +242,11 @@ function ListItem({
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
           <div>{item.label}</div>,
-          draggableState.container,
+          draggableState.container
         )}
     </Fragment>
   );
 }
-
-const defaultItems: Item[] = [
-  {
-    id: "task-1",
-    label: "Organize",
-  },
-  {
-    id: "task-2",
-    label: "Create",
-  },
-  {
-    id: "task-3",
-    label: "Update",
-  },
-  {
-    id: "task-4",
-    label: "Plan",
-  },
-  {
-    id: "task-5",
-    label: "Coordinate",
-  },
-  {
-    id: "task-6",
-    label: "Manage",
-  },
-];
 
 function getItemRegistry() {
   const registry = new Map<string, HTMLElement>();
@@ -329,15 +280,11 @@ interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
 
-export default function ListExample<TData>({
-  table,
-}: DataTableViewOptionsProps<TData>) {
-  const tableColumns: Item[] = table
-    .getAllColumns()
-    .map((column) => ({
-      id: column.id,
-      label: column.columnDef.meta?.displayName as string,
-    }));
+function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
+  const tableColumns: Item[] = table.getAllColumns().map((column) => ({
+    id: column.id,
+    label: column.columnDef.meta?.displayName as string,
+  }));
   const [{ items, lastCardMoved }, setListState] = useState<ListState>({
     items: tableColumns,
     lastCardMoved: null,
@@ -349,6 +296,7 @@ export default function ListExample<TData>({
 
   useEffect(() => {
     table.setColumnOrder(items.map((item) => item.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   const reorderItem = useCallback(
@@ -390,7 +338,7 @@ export default function ListExample<TData>({
         };
       });
     },
-    [],
+    []
   );
 
   useEffect(() => {
@@ -411,7 +359,7 @@ export default function ListExample<TData>({
         }
 
         const indexOfTarget = items.findIndex(
-          (item) => item.id === targetData.item.id,
+          (item) => item.id === targetData.item.id
         );
         if (indexOfTarget < 0) {
           return;
@@ -443,7 +391,7 @@ export default function ListExample<TData>({
     liveRegion.announce(
       `You've moved ${item.label} from position ${
         previousIndex + 1
-      } to position ${currentIndex + 1} of ${numberOfItems}.`,
+      } to position ${currentIndex + 1} of ${numberOfItems}.`
     );
   }, [lastCardMoved, registry]);
 
@@ -474,11 +422,11 @@ export default function ListExample<TData>({
               variant="secondary"
               className={cx(
                 // focusInput,
-                "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none",
+                "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none"
               )}
             >
               <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
-              View options new
+              View options
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end" className="space-y-2 w-fit">
@@ -489,12 +437,11 @@ export default function ListExample<TData>({
                   const column = table.getColumn(item.id);
                   if (!column) return null;
                   return (
-                    <div key={item.id} className={cx(!column.getCanHide() && "hidden")}>
-                      <ListItem
-                        item={item}
-                        index={index}
-                        position={getItemPosition({ index, items })}
-                      />
+                    <div
+                      key={column.id}
+                      className={cx(!column.getCanHide() && "hidden")}
+                    >
+                      <ListItem column={column} item={item} index={index} />
                     </div>
                   );
                 })}
@@ -506,3 +453,5 @@ export default function ListExample<TData>({
     </div>
   );
 }
+
+export { ViewOptions };
