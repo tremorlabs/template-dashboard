@@ -6,7 +6,7 @@ import { Table } from "@tanstack/react-table";
 import { Button } from "@/components/Button";
 import { Searchbar } from "@/components/Searchbar";
 
-import { DataTableViewOptions } from "./data-table-view-options";
+import { ViewOptions } from "./data-table-view-options";
 import { DataTableFilter } from "./data-table-filter";
 
 import { regions, status, conditions } from "@/data/data";
@@ -82,7 +82,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
           />
           Export
         </Button>
-        <DataTableViewOptions table={table} />
+        <ViewOptions table={table} />
       </div>
     </div>
   );

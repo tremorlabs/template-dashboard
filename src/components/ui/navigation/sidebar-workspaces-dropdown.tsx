@@ -54,7 +54,7 @@ export const WorkspacesDropdownDesktop = () => {
             className={cx(
               focusInput,
               // @CHRIS: focusRing or focusInput (focus:outline-none)
-              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 transition-all"
+              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 transition-all",
             )}
           >
             <span
@@ -99,7 +99,7 @@ export const WorkspacesDropdownDesktop = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
                     )}
                     aria-hidden="true"
                   >
@@ -157,7 +157,7 @@ export const WorkspacesDropdownMobile = () => {
           <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
+                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
               )}
               aria-hidden="true"
             >
@@ -200,7 +200,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white"
+                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
                     )}
                     aria-hidden="true"
                   >

@@ -48,20 +48,26 @@ const databases = [
 ];
 
 export type ModalProps = {
-  itemName: string
-  onSelect: () => void
-  onOpenChange: (open: boolean) => void
+  itemName: string;
+  onSelect: () => void;
+  onOpenChange: (open: boolean) => void;
 };
 
-export function ModalAddWorkspace({ itemName, onSelect, onOpenChange }: ModalProps) {
+export function ModalAddWorkspace({
+  itemName,
+  onSelect,
+  onOpenChange,
+}: ModalProps) {
   return (
     <>
       <Dialog onOpenChange={onOpenChange}>
         <DialogTrigger className="w-full text-left">
-          <DropdownMenuItem onSelect={event => {
-            event.preventDefault()
-            onSelect && onSelect()
-          }}>
+          <DropdownMenuItem
+            onSelect={(event) => {
+              event.preventDefault();
+              onSelect && onSelect();
+            }}
+          >
             {itemName}
           </DropdownMenuItem>
         </DialogTrigger>

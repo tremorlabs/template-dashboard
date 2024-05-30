@@ -18,8 +18,8 @@ export const columns = [
           table.getIsAllPageRowsSelected()
             ? true
             : table.getIsSomeRowsSelected()
-            ? "indeterminate"
-            : false
+              ? "indeterminate"
+              : false
         }
         onCheckedChange={() => table.toggleAllPageRowsSelected()}
         className="translate-y-0.5"

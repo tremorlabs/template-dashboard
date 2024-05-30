@@ -183,7 +183,7 @@ const triggerStyles = tv({
 
 interface TriggerProps
   extends React.ComponentProps<"button">,
-  VariantProps<typeof triggerStyles> {
+    VariantProps<typeof triggerStyles> {
   placeholder?: string;
 }
 
@@ -869,9 +869,9 @@ const RangeDatePicker = ({
         ? new Time(value.from.getHours(), value.from.getMinutes())
         : defaultValue?.from
           ? new Time(
-            defaultValue.from.getHours(),
-            defaultValue.from.getMinutes(),
-          )
+              defaultValue.from.getHours(),
+              defaultValue.from.getMinutes(),
+            )
           : new Time(0, 0),
     );
     setEndTime(
@@ -888,8 +888,9 @@ const RangeDatePicker = ({
       return null;
     }
 
-    return `${range.from ? formatDate(range.from, locale, showTimePicker) : ""} - ${range.to ? formatDate(range.to, locale, showTimePicker) : ""
-      }`;
+    return `${
+      range.from ? formatDate(range.from, locale, showTimePicker) : ""
+    } - ${range.to ? formatDate(range.to, locale, showTimePicker) : ""}`;
   }, [range, locale, showTimePicker]);
 
   const onApply = () => {
@@ -1134,7 +1135,9 @@ const validatePresets = (
 
           if (presetDay && presetDay < fromDay.getDate()) {
             throw new Error(
-              `Preset ${preset.dateRange.from}'s 'from' is before fromDay ${format(fromDay, "MMM dd, yyyy")}.`,
+              `Preset ${
+                preset.dateRange.from
+              }'s 'from' is before fromDay ${format(fromDay, "MMM dd, yyyy")}.`,
             );
           }
         }

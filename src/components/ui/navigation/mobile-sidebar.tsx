@@ -60,7 +60,10 @@ export default function MobileSidebar() {
                         focusRing,
                       )}
                     >
-                      <item.icon className="size-5 shrink-0" aria-hidden="true" />
+                      <item.icon
+                        className="size-5 shrink-0"
+                        aria-hidden="true"
+                      />
                       {item.name}
                     </Link>
                   </DrawerClose>

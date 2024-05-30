@@ -3,7 +3,7 @@ import { formatters, percentageFormatter } from "@/lib/utils";
 import { Badge } from "@/components/Badge";
 import { LineChart } from "@/components/LineChart";
 import { DateRange } from "react-day-picker";
-import { PeriodValue } from "@/app/workspace/overview/page";
+import { PeriodValue } from "@/app/(main)/overview/page";
 import React from "react";
 import { overviews } from "@/data/data";
 import { getPeriod } from "./dashboard-filterbar";
@@ -23,7 +23,7 @@ export type CardProps = {
   type: "currency" | "unit";
   selectedDates: DateRange | undefined;
   selectedPeriod: PeriodValue;
-  isEditable?: boolean;
+  isThumbnail?: boolean;
 };
 
 const formattingMap = {
@@ -49,7 +49,7 @@ export function ChartCard({
   type,
   selectedDates,
   selectedPeriod,
-  isEditable,
+  isThumbnail,
 }: CardProps) {
   const formatter = formattingMap[type];
   const selectedDatesInterval =
@@ -123,15 +123,7 @@ export function ChartCard({
       : 0;
 
   return (
-    // @SEV/@MAXIME: cursor-grab is not applied on <Chart/> + when moving cursor switches to default cursor
-    <div
-      className={cx(
-        isEditable
-          ? "cursor-grab active:cursor-grabbing hover:-translate-y-px hover:shadow-md"
-          : "",
-        "transition",
-      )}
-    >
+    <div className={cx("transition")}>
       <div className="flex items-center justify-between gap-x-2">
         <div className="flex items-center gap-x-2">
           <dt className="text-sm text-gray-900 dark:text-gray-50 font-bold">
@@ -143,12 +135,6 @@ export function ChartCard({
             </Badge>
           )}
         </div>
-        {isEditable && (
-          <RiDraggable
-            className="text-gray-400 cursor-move size-5"
-            aria-hidden="true"
-          />
-        )}
       </div>
       <div className="mt-2 flex items-baseline justify-between">
         <dd className="text-xl text-gray-900 dark:text-gray-50">
@@ -170,15 +156,8 @@ export function ChartCard({
         showYAxis={false}
         showLegend={false}
         categories={categories}
-        showTooltip={!isEditable}
+        showTooltip={isThumbnail ? false : true}
       />
     </div>
   );
 }
-
-//   @CHRIS: for second font
-//   className={`${lusitana.className}
-//     truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-// >
-//   {value}
-// </p>

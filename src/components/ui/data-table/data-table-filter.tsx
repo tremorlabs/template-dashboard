@@ -228,27 +228,27 @@ export function DataTableFilter<TData, TValue>({
               />
               {(selectedValues as ConditionFilter)?.condition ===
                 "is-between" && (
-                  <>
-                    <span className="text-xs font-medium text-gray-500">and</span>
-                    <Input
-                      type="number"
-                      placeholder="$0"
-                      className="sm:[&>input]:py-1"
-                      value={(selectedValues as ConditionFilter)?.value?.[1]}
-                      onChange={(e) => {
-                        setSelectedValues((prev) => {
-                          return {
-                            condition: (prev as ConditionFilter)?.condition,
-                            value: [
-                              (prev as ConditionFilter)?.value?.[0],
-                              e.target.value,
-                            ],
-                          };
-                        });
-                      }}
-                    />
-                  </>
-                )}
+                <>
+                  <span className="text-xs font-medium text-gray-500">and</span>
+                  <Input
+                    type="number"
+                    placeholder="$0"
+                    className="sm:[&>input]:py-1"
+                    value={(selectedValues as ConditionFilter)?.value?.[1]}
+                    onChange={(e) => {
+                      setSelectedValues((prev) => {
+                        return {
+                          condition: (prev as ConditionFilter)?.condition,
+                          value: [
+                            (prev as ConditionFilter)?.value?.[0],
+                            e.target.value,
+                          ],
+                        };
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         );
