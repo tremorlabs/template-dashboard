@@ -49,7 +49,7 @@ export default function Billing() {
         </h4>
         <p className="mt-1 text-sm text-gray-500 max-w-2xl leading-6">
           Boost your analytics and unlock advanced features with our premium
-          plans.
+          plans. See our pro plans and upgrade today.
         </p>
         <div className="mt-6 flex items-center space-x-2">
           <Button asChild>
