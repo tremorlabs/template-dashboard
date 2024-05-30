@@ -264,7 +264,8 @@ export default function General() {
                 </div>
                 <div className="p-4 border-t border-gray-200 dark:border-gray-900 bg-gray-50 dark:bg-gray-900">
                   <p className="text-sm text-gray-500">
-                    You cannot delete the workspace because you are not the system admin.
+                    You cannot delete the workspace because you are not the
+                    system admin.
                   </p>
                 </div>
               </Card>

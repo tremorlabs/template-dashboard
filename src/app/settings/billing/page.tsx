@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { RiArrowRightUpLine } from "@remixicon/react";
@@ -56,7 +56,10 @@ export default function Billing() {
         <p className="mt-1 text-sm text-gray-500 max-w-2xl leading-6">
           Boost your analytics and unlock advanced features with our premium
           plans.{" "}
-          <a href="#" className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-500">
+          <a
+            href="#"
+            className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-500"
+          >
             Compare plans
             <RiArrowRightUpLine
               className="size-4 shrink-0"
@@ -73,7 +76,8 @@ export default function Billing() {
                 Billing
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
-                Overview of current billing cycle based on fixed and on-demand charges.
+                Overview of current billing cycle based on fixed and on-demand
+                charges.
               </p>
             </div>
             <div className="md:col-span-2">
@@ -171,7 +175,7 @@ export default function Billing() {
                     name="spend-mgmt"
                     checked={isSpendMgmtEnabled}
                     onCheckedChange={() => {
-                      setIsSpendMgmtEnabled(!isSpendMgmtEnabled)
+                      setIsSpendMgmtEnabled(!isSpendMgmtEnabled);
                     }}
                   />
                 </div>
@@ -179,9 +183,7 @@ export default function Billing() {
                   <>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="md:col-span-1">
-                        <Label className="font-medium">
-                          Set amount ($)
-                        </Label>
+                        <Label className="font-medium">Set amount ($)</Label>
                         <Input
                           id="hard-cap"
                           name="hard-cap"
@@ -204,7 +206,9 @@ export default function Billing() {
                       </div>
                     </div>
                     <div className="mt-6 flex justify-end">
-                      <Button type="submit" variant="secondary">Update</Button>
+                      <Button type="submit" variant="secondary">
+                        Update
+                      </Button>
                     </div>
                   </>
                 )}
@@ -232,8 +236,9 @@ export default function Billing() {
                       Advanced bot protection
                     </h4>
                     <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
-                      Safeguard your assets with our cutting-edge bot protection.
-                      Our AI solution identifies and mitigates automated traffic to protect your workspace from bad bots.
+                      Safeguard your assets with our cutting-edge bot
+                      protection. Our AI solution identifies and mitigates
+                      automated traffic to protect your workspace from bad bots.
                     </p>
                   </div>
                   <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
@@ -241,9 +246,15 @@ export default function Billing() {
                       <Switch id="bot-protection" name="bot-protection" />
                       <Label htmlFor="bot-protection">Activate</Label>
                     </div>
-                    <a href="#" className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1">
+                    <a
+                      href="#"
+                      className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1"
+                    >
                       Learn more
-                      <RiArrowRightUpLine className="size-4 shrink-0" aria-hidden="true" />
+                      <RiArrowRightUpLine
+                        className="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                     </a>
                   </div>
                 </Card>
@@ -254,7 +265,8 @@ export default function Billing() {
                       Workspace insights
                     </h4>
                     <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
-                      Real-time analysis of your workspace&#39;s usage, enabling you to make well-informed decisions for optimization.
+                      Real-time analysis of your workspace&#39;s usage, enabling
+                      you to make well-informed decisions for optimization.
                     </p>
                   </div>
                   <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
@@ -262,9 +274,15 @@ export default function Billing() {
                       <Switch id="insights" name="insights" />
                       <Label htmlFor="insights">Activate</Label>
                     </div>
-                    <a href="#" className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1">
+                    <a
+                      href="#"
+                      className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1"
+                    >
                       Learn more
-                      <RiArrowRightUpLine className="size-4 shrink-0" aria-hidden="true" />
+                      <RiArrowRightUpLine
+                        className="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                     </a>
                   </div>
                 </Card>

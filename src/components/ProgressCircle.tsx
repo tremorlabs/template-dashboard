@@ -41,7 +41,7 @@ const progressCircleVariants = tv({
 
 interface ProgressCircleProps
   extends Omit<React.SVGProps<SVGSVGElement>, "value">,
-  VariantProps<typeof progressCircleVariants> {
+    VariantProps<typeof progressCircleVariants> {
   value?: number;
   max?: number;
   showAnimation?: boolean;

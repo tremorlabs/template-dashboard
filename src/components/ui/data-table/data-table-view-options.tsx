@@ -205,7 +205,7 @@ function ListItem({
         onDrop() {
           setClosestEdge(null);
         },
-      })
+      }),
     );
   }, [instanceId, item, index, registerItem]);
 
@@ -215,7 +215,7 @@ function ListItem({
         <div
           className={cx(
             "relative flex items-center justify-between gap-2",
-            draggableState.type === "dragging" && "opacity-50"
+            draggableState.type === "dragging" && "opacity-50",
           )}
         >
           <div className="flex items-center gap-2">
@@ -227,8 +227,8 @@ function ListItem({
           </div>
 
           <Button
-          aria-hidden={true}
-          tabIndex={-1}
+            aria-hidden={true}
+            tabIndex={-1}
             variant="secondary"
             className="px-px py-1"
             ref={dragHandleRef}
@@ -242,7 +242,7 @@ function ListItem({
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
           <div>{item.label}</div>,
-          draggableState.container
+          draggableState.container,
         )}
     </Fragment>
   );
@@ -338,7 +338,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         };
       });
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -359,7 +359,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         }
 
         const indexOfTarget = items.findIndex(
-          (item) => item.id === targetData.item.id
+          (item) => item.id === targetData.item.id,
         );
         if (indexOfTarget < 0) {
           return;
@@ -391,7 +391,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     liveRegion.announce(
       `You've moved ${item.label} from position ${
         previousIndex + 1
-      } to position ${currentIndex + 1} of ${numberOfItems}.`
+      } to position ${currentIndex + 1} of ${numberOfItems}.`,
     );
   }, [lastCardMoved, registry]);
 
@@ -422,7 +422,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
               variant="secondary"
               className={cx(
                 // focusInput,
-                "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none"
+                "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none",
               )}
             >
               <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />

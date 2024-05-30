@@ -235,14 +235,14 @@ export default function Users() {
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       {user.email}
                     </p>
-                    <p className="text-xs text-gray-500">Expires in {user.expires} days</p>
+                    <p className="text-xs text-gray-500">
+                      Expires in {user.expires} days
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {/* @SEV/CHRIS: [Sidenote]: SelectTrigger Icon is not in <SelectNative /> shown */}
-                  <Select
-                    defaultValue={user.role}
-                  >
+                  <Select defaultValue={user.role}>
                     <SelectTrigger className="h-8 w-32">
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
