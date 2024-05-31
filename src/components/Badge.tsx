@@ -1,9 +1,9 @@
 // Tremor Raw Badge [v0.0.0]
 
-import React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import React from "react"
+import { tv, type VariantProps } from "tailwind-variants"
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
 const badgeVariants = tv({
   base: cx(
@@ -36,7 +36,7 @@ const badgeVariants = tv({
   defaultVariants: {
     variant: "default",
   },
-});
+})
 
 interface BadgeProps
   extends React.ComponentPropsWithoutRef<"span">,
@@ -50,10 +50,10 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         className={cx(badgeVariants({ variant }), className)}
         {...props}
       />
-    );
+    )
   },
-);
+)
 
-Badge.displayName = "Badge";
+Badge.displayName = "Badge"
 
-export { Badge, badgeVariants, type BadgeProps };
+export { Badge, badgeVariants, type BadgeProps }

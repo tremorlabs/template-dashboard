@@ -11,6 +11,6 @@ export const siteConfig = {
     billing: "/settings/billing",
     users: "/settings/users",
   },
-};
+}
 
-export type siteConfig = typeof siteConfig;
+export type siteConfig = typeof siteConfig

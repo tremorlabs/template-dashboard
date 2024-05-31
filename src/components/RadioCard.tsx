@@ -1,9 +1,9 @@
 // Tremor Raw Radio Card [v0.0.0]
 
-import * as React from "react";
-import * as RadioGroupPrimitives from "@radix-ui/react-radio-group";
+import * as RadioGroupPrimitives from "@radix-ui/react-radio-group"
+import * as React from "react"
 
-import { cx, focusInput, focusRing } from "@/lib/utils";
+import { cx, focusInput, focusRing } from "@/lib/utils"
 
 const RadioCardGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitives.Root>,
@@ -15,9 +15,9 @@ const RadioCardGroup = React.forwardRef<
       className={cx("grid gap-2", className)}
       {...props}
     />
-  );
-});
-RadioCardGroup.displayName = "RadioCardGroup";
+  )
+})
+RadioCardGroup.displayName = "RadioCardGroup"
 
 const RadioCardGroupIndicator = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitives.Indicator>,
@@ -27,9 +27,9 @@ const RadioCardGroupIndicator = React.forwardRef<
     <div
       className={cx(
         // base
-        "relative flex size-4 shrink-0  appearance-none items-center justify-center rounded-full border shadow-sm outline-none",
+        "relative flex size-4 shrink-0 appearance-none items-center justify-center rounded-full border shadow-sm outline-none",
         // border color
-        " border-gray-300 dark:border-gray-800",
+        "border-gray-300 dark:border-gray-800",
         // background color
         "bg-white dark:bg-gray-950",
         // checked
@@ -61,9 +61,9 @@ const RadioCardGroupIndicator = React.forwardRef<
         />
       </RadioGroupPrimitives.Indicator>
     </div>
-  );
-});
-RadioCardGroupIndicator.displayName = "RadioCardGroupIndicator";
+  )
+})
+RadioCardGroupIndicator.displayName = "RadioCardGroupIndicator"
 
 const RadioCardItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitives.Item>,
@@ -74,9 +74,9 @@ const RadioCardItem = React.forwardRef<
       ref={forwardedRef}
       className={cx(
         // base
-        "group relative w-full rounded-md border p-4 text-left shadow-sm focus:outline-none transition-all",
+        "group relative w-full rounded-md border p-4 text-left shadow-sm transition-all focus:outline-none",
         // background color
-        " bg-white dark:bg-gray-950",
+        "bg-white dark:bg-gray-950",
         // border color
         "border-gray-200 dark:border-gray-800",
         "data-[state=checked]:border-indigo-600 data-[state=checked]:dark:border-indigo-600",
@@ -87,8 +87,8 @@ const RadioCardItem = React.forwardRef<
     >
       {children}
     </RadioGroupPrimitives.Item>
-  );
-});
-RadioCardItem.displayName = "RadioCardItem";
+  )
+})
+RadioCardItem.displayName = "RadioCardItem"
 
-export { RadioCardGroup, RadioCardGroupIndicator, RadioCardItem };
+export { RadioCardGroup, RadioCardGroupIndicator, RadioCardItem }

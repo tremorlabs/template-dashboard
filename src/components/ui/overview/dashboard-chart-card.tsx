@@ -1,48 +1,45 @@
-import { cx } from "@/lib/utils";
-import { formatters, percentageFormatter } from "@/lib/utils";
-import { Badge } from "@/components/Badge";
-import { LineChart } from "@/components/LineChart";
-import { DateRange } from "react-day-picker";
-import { PeriodValue } from "@/app/(main)/overview/page";
-import React from "react";
-import { overviews } from "@/data/overview-data";
-import { getPeriod } from "./dashboard-filterbar";
+import { PeriodValue } from "@/app/(main)/overview/page"
+import { Badge } from "@/components/Badge"
+import { LineChart } from "@/components/LineChart"
+import { overviews } from "@/data/overview-data"
+import { OverviewData } from "@/data/schema"
+import { cx, formatters, percentageFormatter } from "@/lib/utils"
 import {
   eachDayOfInterval,
   formatDate,
   interval,
   isWithinInterval,
-} from "date-fns";
-import { OverviewData } from "@/data/schema";
-import { RiDraggable } from "@remixicon/react";
+} from "date-fns"
+import { DateRange } from "react-day-picker"
+import { getPeriod } from "./dashboard-filterbar"
 
 // @Maxime/Chris: dummy data -> remover afterwards
 
 export type CardProps = {
-  title: keyof OverviewData;
-  type: "currency" | "unit";
-  selectedDates: DateRange | undefined;
-  selectedPeriod: PeriodValue;
-  isThumbnail?: boolean;
-};
+  title: keyof OverviewData
+  type: "currency" | "unit"
+  selectedDates: DateRange | undefined
+  selectedPeriod: PeriodValue
+  isThumbnail?: boolean
+}
 
 const formattingMap = {
   currency: formatters.currency,
   unit: formatters.unit,
-};
+}
 
 export const getBadgeType = (value: number) => {
   if (value > 0) {
-    return "success";
+    return "success"
   } else if (value < 0) {
     if (value < -50) {
-      return "warning";
+      return "warning"
     }
-    return "error";
+    return "error"
   } else {
-    return "neutral";
+    return "neutral"
   }
-};
+}
 
 export function ChartCard({
   title,
@@ -51,46 +48,46 @@ export function ChartCard({
   selectedPeriod,
   isThumbnail,
 }: CardProps) {
-  const formatter = formattingMap[type];
+  const formatter = formattingMap[type]
   const selectedDatesInterval =
     selectedDates?.from && selectedDates?.to
       ? interval(selectedDates.from, selectedDates.to)
-      : null;
+      : null
   const allDatesInInterval =
     selectedDates?.from && selectedDates?.to
       ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to))
-      : null;
-  const prevDates = getPeriod(selectedDates, selectedPeriod);
+      : null
+  const prevDates = getPeriod(selectedDates, selectedPeriod)
 
   const prevDatesInterval =
     prevDates?.from && prevDates?.to
       ? interval(prevDates.from, prevDates.to)
-      : null;
+      : null
 
   const data = overviews
     .filter((overview) => {
       if (selectedDatesInterval) {
-        return isWithinInterval(overview.date, selectedDatesInterval);
+        return isWithinInterval(overview.date, selectedDatesInterval)
       }
-      return true;
+      return true
     })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
   const prevData = overviews
     .filter((overview) => {
       if (prevDatesInterval) {
-        return isWithinInterval(overview.date, prevDatesInterval);
+        return isWithinInterval(overview.date, prevDatesInterval)
       }
-      return false;
+      return false
     })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
   const chartData = allDatesInInterval
     ?.map((date, index) => {
-      const overview = data[index];
-      const prevOverview = prevData[index];
-      const value = (overview?.[title] as number) || null;
-      const previousValue = (prevOverview?.[title] as number) || null;
+      const overview = data[index]
+      const prevOverview = prevData[index]
+      const value = (overview?.[title] as number) || null
+      const previousValue = (prevOverview?.[title] as number) || null
 
       return {
         title,
@@ -107,26 +104,26 @@ export function ChartCard({
           selectedPeriod !== "no-comparison" && value && previousValue
             ? (value - previousValue) / previousValue
             : undefined,
-      };
+      }
     })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
   const categories =
-    selectedPeriod === "no-comparison" ? ["value"] : ["value", "previousValue"];
+    selectedPeriod === "no-comparison" ? ["value"] : ["value", "previousValue"]
   const value =
-    chartData?.reduce((acc, item) => acc + (item.value || 0), 0) || 0;
+    chartData?.reduce((acc, item) => acc + (item.value || 0), 0) || 0
   const previousValue =
-    chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0;
+    chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0
   const evolution =
     selectedPeriod !== "no-comparison"
       ? (value - previousValue) / previousValue
-      : 0;
+      : 0
 
   return (
     <div className={cx("transition")}>
       <div className="flex items-center justify-between gap-x-2">
         <div className="flex items-center gap-x-2">
-          <dt className="text-sm text-gray-900 dark:text-gray-50 font-bold">
+          <dt className="text-sm font-bold text-gray-900 dark:text-gray-50">
             {title}
           </dt>
           {selectedPeriod !== "no-comparison" && (
@@ -160,5 +157,5 @@ export function ChartCard({
         autoMinValue
       />
     </div>
-  );
+  )
 }

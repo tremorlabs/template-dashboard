@@ -1,9 +1,9 @@
 // Tremor Raw ProgressBar [v0.0.0]
 
-import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import * as React from "react"
+import { tv, type VariantProps } from "tailwind-variants"
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
 const progressBarVariants = tv({
   slots: {
@@ -38,15 +38,15 @@ const progressBarVariants = tv({
   defaultVariants: {
     variant: "default",
   },
-});
+})
 
 interface ProgressBarProps
   extends React.HTMLProps<HTMLDivElement>,
     VariantProps<typeof progressBarVariants> {
-  value?: number;
-  max?: number;
-  showAnimation?: boolean;
-  label?: string;
+  value?: number
+  max?: number
+  showAnimation?: boolean
+  label?: string
 }
 
 const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
@@ -62,8 +62,8 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
     }: ProgressBarProps,
     forwardedRef,
   ) => {
-    const safeValue = Math.min(max, Math.max(value, 0));
-    const { background, bar } = progressBarVariants({ variant });
+    const safeValue = Math.min(max, Math.max(value, 0))
+    const { background, bar } = progressBarVariants({ variant })
     return (
       <div
         ref={forwardedRef}
@@ -100,10 +100,10 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
           </span>
         ) : null}
       </div>
-    );
+    )
   },
-);
+)
 
-ProgressBar.displayName = "ProgressBar";
+ProgressBar.displayName = "ProgressBar"
 
-export { ProgressBar, progressBarVariants, type ProgressBarProps };
+export { ProgressBar, progressBarVariants, type ProgressBarProps }

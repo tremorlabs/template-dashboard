@@ -1,25 +1,23 @@
-"use client";
+"use client"
 
-import { RiAddLine, RiMore2Fill } from "@remixicon/react";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/Button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/Dropdown"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/Select";
-import { Tooltip } from "@/components/Tooltip";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/Dropdown";
-import { ModalAddUser } from "@/components/ui/settings/modal-add-user";
-import { Divider } from "@/components/Divider";
-import { Badge } from "@/components/Badge";
-import { roles } from "@/data/data";
+} from "@/components/Select"
+import { Tooltip } from "@/components/Tooltip"
+import { ModalAddUser } from "@/components/ui/settings/modal-add-user"
+import { roles } from "@/data/data"
+import { RiAddLine, RiMore2Fill } from "@remixicon/react"
 
 // @CHRIS: move to data?
 const users = [
@@ -65,7 +63,7 @@ const users = [
     email: "m.brown@gmail.com",
     role: "contributor",
   },
-];
+]
 
 const invitedUsers = [
   {
@@ -80,7 +78,7 @@ const invitedUsers = [
     role: "viewer",
     expires: 8,
   },
-];
+]
 
 // ----- TODOs (CHRIS) -------:
 
@@ -101,7 +99,7 @@ export default function Users() {
             </p>
           </div>
           <ModalAddUser>
-            <Button className="mt-4 w-full sm:w-fit sm:mt-0 gap-2">
+            <Button className="mt-4 w-full gap-2 sm:mt-0 sm:w-fit">
               <RiAddLine className="-ml-1 size-4 shrink-0" aria-hidden="true" />
               Add user
               {/* @CHRIS: aria-hidden="true" consistency */}
@@ -119,7 +117,7 @@ export default function Users() {
             >
               <div className="flex items-center space-x-4 truncate">
                 <span
-                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 text-xs text-gray-700 dark:text-gray-300"
+                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                   aria-hidden="true"
                 >
                   {user.initials}
@@ -136,7 +134,7 @@ export default function Users() {
                 {user.role === "admin" ? (
                   <Tooltip
                     content="A workspace must have at least one admin"
-                    className="text-xs max-w-44"
+                    className="max-w-44 text-xs"
                     sideOffset={5}
                     triggerAsChild={true}
                   >
@@ -187,7 +185,7 @@ export default function Users() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="aspect-square group hover:bg-gray-50 data-[state=open]:bg-gray-50 hover:dark:bg-gray-900 data-[state=open]:dark:bg-gray-900 hover:border hover:border-gray-300 data-[state=open]:border-gray-300 hover:dark:border-gray-700 data-[state=open]:dark:border-gray-700 h-8"
+                      className="group aspect-square h-8 hover:border hover:border-gray-300 hover:bg-gray-50 data-[state=open]:border-gray-300 data-[state=open]:bg-gray-50 hover:dark:border-gray-700 hover:dark:bg-gray-900 data-[state=open]:dark:border-gray-700 data-[state=open]:dark:bg-gray-900"
                     >
                       <RiMore2Fill
                         className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700 group-hover:dark:text-gray-400"
@@ -226,7 +224,7 @@ export default function Users() {
               >
                 <div className="flex items-center space-x-4 truncate">
                   <span
-                    className="flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 text-xs text-gray-700 dark:text-gray-300"
+                    className="flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                     aria-hidden="true"
                   >
                     {user.initials}
@@ -262,7 +260,7 @@ export default function Users() {
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="aspect-square group hover:bg-gray-50 data-[state=open]:bg-gray-50 hover:dark:bg-gray-900 data-[state=open]:dark:bg-gray-900 hover:border hover:border-gray-300 data-[state=open]:border-gray-300 hover:dark:border-gray-700 data-[state=open]:dark:border-gray-700 h-8"
+                        className="group aspect-square h-8 hover:border hover:border-gray-300 hover:bg-gray-50 data-[state=open]:border-gray-300 data-[state=open]:bg-gray-50 hover:dark:border-gray-700 hover:dark:bg-gray-900 data-[state=open]:dark:border-gray-700 data-[state=open]:dark:bg-gray-900"
                       >
                         <RiMore2Fill
                           className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700 group-hover:dark:text-gray-400"
@@ -286,5 +284,5 @@ export default function Users() {
         </div>
       </div>
     </>
-  );
+  )
 }

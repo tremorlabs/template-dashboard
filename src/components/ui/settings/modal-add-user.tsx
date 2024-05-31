@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+import { Button } from "@/components/Button"
 import {
   Dialog,
   DialogClose,
@@ -8,21 +8,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/Dialog";
+} from "@/components/Dialog"
+import { Input } from "@/components/Input"
+import { Label } from "@/components/Label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/Select";
-import { Label } from "@/components/Label";
-import { Input } from "@/components/Input";
-import { roles } from "@/data/data";
+} from "@/components/Select"
+import { roles } from "@/data/data"
 
 export type ModalAddUserProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function ModalAddUser({ children }: ModalAddUserProps) {
   return (
@@ -94,5 +94,5 @@ export function ModalAddUser({ children }: ModalAddUserProps) {
         </DialogContent>
       </Dialog>
     </>
-  );
+  )
 }

@@ -1,47 +1,47 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import {
-  RiArrowRightUpLine,
-  RiMoonLine,
-  RiSunLine,
-  RiComputerLine,
-} from "@remixicon/react";
-import { useTheme } from "next-themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuSubMenu,
   DropdownMenuGroup,
-  DropdownMenuSubMenuTrigger,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  DropdownMenuSubMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-} from "@/components/Dropdown";
+  DropdownMenuSeparator,
+  DropdownMenuSubMenu,
+  DropdownMenuSubMenuContent,
+  DropdownMenuSubMenuTrigger,
+  DropdownMenuTrigger,
+} from "@/components/Dropdown"
+import {
+  RiArrowRightUpLine,
+  RiComputerLine,
+  RiMoonLine,
+  RiSunLine,
+} from "@remixicon/react"
+import { useTheme } from "next-themes"
+import * as React from "react"
 
 export type DropdownUserProfileProps = {
-  children: React.ReactNode;
-  align?: "center" | "start" | "end";
-};
+  children: React.ReactNode
+  align?: "center" | "start" | "end"
+}
 
 export function DropdownUserProfile({
   children,
   align = "start",
 }: DropdownUserProfileProps) {
-  const [mounted, setMounted] = React.useState(false);
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false)
+  const { theme, setTheme } = useTheme()
 
   // @CHRIS: harmonize React. usage
   React.useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   if (!mounted) {
-    return null;
+    return null
   }
   return (
     <>
@@ -56,7 +56,7 @@ export function DropdownUserProfile({
                 <DropdownMenuRadioGroup
                   value={theme}
                   onValueChange={(value) => {
-                    setTheme(value);
+                    setTheme(value)
                   }}
                 >
                   <DropdownMenuRadioItem
@@ -98,21 +98,21 @@ export function DropdownUserProfile({
             <DropdownMenuItem>
               Changelog
               <RiArrowRightUpLine
-                className="ml-1 mb-1 text-gray-500 size-2.5 shrink-0"
+                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
                 aria-hidden="true"
               />
             </DropdownMenuItem>
             <DropdownMenuItem>
               Documentation
               <RiArrowRightUpLine
-                className="ml-1 mb-1 text-gray-500 size-2.5 shrink-0"
+                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
                 aria-hidden="true"
               />
             </DropdownMenuItem>
             <DropdownMenuItem>
               Join Slack community
               <RiArrowRightUpLine
-                className="ml-1 mb-1 text-gray-500 size-2.5 shrink-0"
+                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
                 aria-hidden="true"
               />
             </DropdownMenuItem>
@@ -124,5 +124,5 @@ export function DropdownUserProfile({
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  );
+  )
 }

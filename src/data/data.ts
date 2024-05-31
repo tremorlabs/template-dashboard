@@ -1,4 +1,4 @@
-import { OverviewData, Transaction } from "./schema";
+import { Transaction } from "./schema"
 
 export const roles = [
   {
@@ -17,7 +17,7 @@ export const roles = [
     value: "contributor",
     label: "Contributor",
   },
-];
+]
 
 export const status = [
   {
@@ -32,7 +32,7 @@ export const status = [
     value: "archived",
     label: "Archived",
   },
-];
+]
 
 export const regions = [
   {
@@ -63,7 +63,7 @@ export const regions = [
     value: "EU-Central 1",
     label: "EU-Central 1",
   },
-];
+]
 
 export const conditions = [
   {
@@ -82,7 +82,7 @@ export const conditions = [
     value: "is-less-than",
     label: "is less than",
   },
-];
+]
 
 // @CHRIS: replace with better data
 export const dummyData = [
@@ -151,7 +151,7 @@ export const dummyData = [
     "Rows read": 31,
     "Rows written": 40,
   },
-];
+]
 
 export const transactions: Transaction[] = [
   {
@@ -478,7 +478,7 @@ export const transactions: Transaction[] = [
     capacity: "55%",
     lastEdited: "28/09/2023 12:15",
   },
-];
+]
 
 // export const overviews: OverviewData[] = [
 //   {

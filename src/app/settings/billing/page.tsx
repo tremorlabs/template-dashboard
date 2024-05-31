@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import React from "react";
-import { RiArrowRightUpLine } from "@remixicon/react";
-import { ProgressBar } from "@/components/ProgressBar";
-import { Divider } from "@/components/Divider";
-import { Input } from "@/components/Input";
-import { ProgressCircle } from "@/components/ProgressCircle";
-import { Switch } from "@/components/Switch";
-import { Label } from "@/components/Label";
-import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
+import { Button } from "@/components/Button"
+import { Card } from "@/components/Card"
+import { Divider } from "@/components/Divider"
+import { Input } from "@/components/Input"
+import { Label } from "@/components/Label"
+import { ProgressBar } from "@/components/ProgressBar"
+import { ProgressCircle } from "@/components/ProgressCircle"
+import { Switch } from "@/components/Switch"
+import { RiArrowRightUpLine } from "@remixicon/react"
+import React from "react"
 
 const data = [
   {
@@ -43,17 +43,17 @@ const data = [
     description: "4 GB query cache, $120/mo",
     value: "$120.00",
   },
-];
+]
 
 export default function Billing() {
-  const [isSpendMgmtEnabled, setIsSpendMgmtEnabled] = React.useState(true);
+  const [isSpendMgmtEnabled, setIsSpendMgmtEnabled] = React.useState(true)
   return (
     <>
-      <div className="sm:max-w-6xl rounded-lg bg-gray-50 dark:bg-gray-400/10 p-6 ring-1 ring-inset ring-gray-200 dark:ring-gray-800">
+      <div className="rounded-lg bg-gray-50 p-6 ring-1 ring-inset ring-gray-200 sm:max-w-6xl dark:bg-gray-400/10 dark:ring-gray-800">
         <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-50">
           This workspace is currently on free plan
         </h4>
-        <p className="mt-1 text-sm text-gray-500 max-w-2xl leading-6">
+        <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           Boost your analytics and unlock advanced features with our premium
           plans.{" "}
           <a
@@ -70,7 +70,7 @@ export default function Billing() {
       </div>
       <div className="mt-6 space-y-10">
         <div className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Billing
@@ -83,10 +83,10 @@ export default function Billing() {
             <div className="md:col-span-2">
               <ul
                 role="list"
-                className="w-full divide-y divide-gray-200 dark:divide-gray-800 border-b border-gray-200 dark:border-gray-800"
+                className="w-full divide-y divide-gray-200 border-b border-gray-200 dark:divide-gray-800 dark:border-gray-800"
               >
                 {data.map((item) => (
-                  <li key={item.name} className="py-4 px-2 md:p-4 text-sm">
+                  <li key={item.name} className="px-2 py-4 text-sm md:p-4">
                     <div className="w-full">
                       <div className="flex items-center justify-between">
                         <p className="font-medium text-gray-900 dark:text-gray-50">
@@ -124,7 +124,7 @@ export default function Billing() {
         <Divider />
         <form>
           <div className="sm:max-w-6xl">
-            <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
                 <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                   Cost spend management
@@ -175,13 +175,13 @@ export default function Billing() {
                     name="spend-mgmt"
                     checked={isSpendMgmtEnabled}
                     onCheckedChange={() => {
-                      setIsSpendMgmtEnabled(!isSpendMgmtEnabled);
+                      setIsSpendMgmtEnabled(!isSpendMgmtEnabled)
                     }}
                   />
                 </div>
                 {isSpendMgmtEnabled && (
                   <>
-                    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
                       <div className="md:col-span-1">
                         <Label className="font-medium">Set amount ($)</Label>
                         <Input
@@ -219,7 +219,7 @@ export default function Billing() {
         <Divider />
         <form>
           <div className="sm:max-w-6xl">
-            <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
                 <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                   Add-Ons
@@ -228,27 +228,27 @@ export default function Billing() {
                   Additional services to boost your services.
                 </p>
               </div>
-              <div className="md:col-span-2 space-y-6">
+              <div className="space-y-6 md:col-span-2">
                 <Card className="overflow-hidden p-0">
-                  <div className="px-4 pt-4 pb-6">
+                  <div className="px-4 pb-6 pt-4">
                     <span className="text-sm text-gray-500">$25/month</span>
-                    <h4 className="mt-4 text-sm text-gray-900 dark:text-gray-50 font-semibold">
+                    <h4 className="mt-4 text-sm font-semibold text-gray-900 dark:text-gray-50">
                       Advanced bot protection
                     </h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-gray-500">
                       Safeguard your assets with our cutting-edge bot
                       protection. Our AI solution identifies and mitigates
                       automated traffic to protect your workspace from bad bots.
                     </p>
                   </div>
-                  <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
+                  <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-900 dark:bg-gray-900">
                     <div className="flex items-center gap-3">
                       <Switch id="bot-protection" name="bot-protection" />
                       <Label htmlFor="bot-protection">Activate</Label>
                     </div>
                     <a
                       href="#"
-                      className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1"
+                      className="inline-flex items-center gap-1 text-sm text-indigo-600 dark:text-indigo-500"
                     >
                       Learn more
                       <RiArrowRightUpLine
@@ -259,24 +259,24 @@ export default function Billing() {
                   </div>
                 </Card>
                 <Card className="overflow-hidden p-0">
-                  <div className="px-4 pt-4 pb-6">
+                  <div className="px-4 pb-6 pt-4">
                     <span className="text-sm text-gray-500">$50/month</span>
-                    <h4 className="mt-4 text-sm text-gray-900 dark:text-gray-50 font-semibold">
+                    <h4 className="mt-4 text-sm font-semibold text-gray-900 dark:text-gray-50">
                       Workspace insights
                     </h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-500 max-w-xl">
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-gray-500">
                       Real-time analysis of your workspace&#39;s usage, enabling
                       you to make well-informed decisions for optimization.
                     </p>
                   </div>
-                  <div className="p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900">
+                  <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-900 dark:bg-gray-900">
                     <div className="flex items-center gap-3">
                       <Switch id="insights" name="insights" />
                       <Label htmlFor="insights">Activate</Label>
                     </div>
                     <a
                       href="#"
-                      className="text-sm text-indigo-600 dark:text-indigo-500 inline-flex items-center gap-1"
+                      className="inline-flex items-center gap-1 text-sm text-indigo-600 dark:text-indigo-500"
                     >
                       Learn more
                       <RiArrowRightUpLine
@@ -292,5 +292,5 @@ export default function Billing() {
         </form>
       </div>
     </>
-  );
+  )
 }

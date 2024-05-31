@@ -1,17 +1,17 @@
-import { cx } from "@/lib/utils";
+import { Button } from "@/components/Button"
+import { Tooltip } from "@/components/Tooltip"
+import { cx } from "@/lib/utils"
 import {
   RiArrowLeftDoubleLine,
   RiArrowLeftSLine,
-  RiArrowRightSLine,
   RiArrowRightDoubleLine,
-} from "@remixicon/react";
-import { Table } from "@tanstack/react-table";
-import { Button } from "@/components/Button";
-import { Tooltip } from "@/components/Tooltip";
+  RiArrowRightSLine,
+} from "@remixicon/react"
+import { Table } from "@tanstack/react-table"
 
 interface DataTablePaginationProps<TData> {
-  table: Table<TData>;
-  pageSize: number;
+  table: Table<TData>
+  pageSize: number
 }
 
 export function DataTablePagination<TData>({
@@ -47,25 +47,25 @@ export function DataTablePagination<TData>({
       srText: "Last page",
       mobileView: "hidden sm:block",
     },
-  ];
+  ]
 
   // Calculate the range for the last page
-  const totalRows = table.getFilteredRowModel().rows.length;
-  const lastPageStartIndex = Math.floor(totalRows / pageSize) * pageSize + 1;
+  const totalRows = table.getFilteredRowModel().rows.length
+  const lastPageStartIndex = Math.floor(totalRows / pageSize) * pageSize + 1
   const lastPageEndIndex = Math.min(
     totalRows,
     lastPageStartIndex + pageSize - 1,
-  );
+  )
 
   return (
     <>
       <div className="flex items-center justify-between">
-        <div className="tabular-nums text-sm text-gray-500">
+        <div className="text-sm tabular-nums text-gray-500">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
         <div className="flex items-center gap-x-6 lg:gap-x-8">
-          <p className="hidden sm:block text-sm tabular-nums text-gray-500">
+          <p className="hidden text-sm tabular-nums text-gray-500 sm:block">
             Showing{" "}
             <span className="font-medium text-gray-900 dark:text-gray-50">
               {/* @Sev: simplify? */}
@@ -98,8 +98,8 @@ export function DataTablePagination<TData>({
                   variant="secondary"
                   className={cx(button.mobileView, "p-1.5")}
                   onClick={() => {
-                    button.onClick();
-                    table.resetRowSelection();
+                    button.onClick()
+                    table.resetRowSelection()
                   }}
                   disabled={button.disabled}
                 >
@@ -112,5 +112,5 @@ export function DataTablePagination<TData>({
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,7 +1,5 @@
-"use client";
+"use client"
 
-import { cx, focusInput, focusRing } from "@/lib/utils";
-import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +8,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/Dropdown";
-import { ModalAddWorkspace } from "./modal-add-workspace";
-import React from "react";
+} from "@/components/Dropdown"
+import { cx, focusInput } from "@/lib/utils"
+import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
+import React from "react"
+import { ModalAddWorkspace } from "./modal-add-workspace"
 
 const workspaces = [
   {
@@ -23,24 +23,24 @@ const workspaces = [
     color: "bg-indigo-600 dark:bg-indigo-500",
   },
   // Add more workspaces...
-];
+]
 
 export const WorkspacesDropdownDesktop = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
-  const focusRef = React.useRef<null | HTMLButtonElement>(null);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
   const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current;
-  };
+    focusRef.current = dropdownTriggerRef.current
+  }
 
   const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open);
+    setHasOpenDialog(open)
     if (open === false) {
-      setDropdownOpen(false);
+      setDropdownOpen(false)
     }
-  };
+  }
   return (
     <>
       {/* sidebar (lg+) */}
@@ -54,11 +54,11 @@ export const WorkspacesDropdownDesktop = () => {
             className={cx(
               focusInput,
               // @CHRIS: focusRing or focusInput (focus:outline-none)
-              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 p-2 text-sm shadow-sm hover:bg-gray-50 hover:dark:bg-gray-900 transition-all",
+              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 bg-white p-2 text-sm shadow-sm transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-950 hover:dark:bg-gray-900",
             )}
           >
             <span
-              className="flex size-8 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white"
+              className="flex aspect-square size-8 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500"
               aria-hidden="true"
             >
               RA
@@ -83,9 +83,9 @@ export const WorkspacesDropdownDesktop = () => {
           hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
-              focusRef.current.focus();
-              focusRef.current = null;
-              event.preventDefault();
+              focusRef.current.focus()
+              focusRef.current = null
+              event.preventDefault()
             }
           }}
         >
@@ -99,7 +99,7 @@ export const WorkspacesDropdownDesktop = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex aspect-square size-8 items-center justify-center rounded p-2 text-xs font-medium text-white",
                     )}
                     aria-hidden="true"
                   >
@@ -126,25 +126,25 @@ export const WorkspacesDropdownDesktop = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  );
-};
+  )
+}
 
 export const WorkspacesDropdownMobile = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
-  const focusRef = React.useRef<null | HTMLButtonElement>(null);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
   const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current;
-  };
+    focusRef.current = dropdownTriggerRef.current
+  }
 
   const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open);
+    setHasOpenDialog(open)
     if (open === false) {
-      setDropdownOpen(false);
+      setDropdownOpen(false)
     }
-  };
+  }
   return (
     <>
       {/* sidebar (xs-lg) */}
@@ -154,10 +154,10 @@ export const WorkspacesDropdownMobile = () => {
         modal={false}
       >
         <DropdownMenuTrigger asChild>
-          <button className="flex items-center gap-x-1.5 p-2 rounded-md hover:bg-gray-100 hover:dark:bg-gray-900 focus:outline-none">
+          <button className="flex items-center gap-x-1.5 rounded-md p-2 hover:bg-gray-100 focus:outline-none hover:dark:bg-gray-900">
             <span
               className={cx(
-                "flex size-7 aspect-square items-center justify-center rounded bg-indigo-600 dark:bg-indigo-500 p-2 text-xs font-medium text-white",
+                "flex aspect-square size-7 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500",
               )}
               aria-hidden="true"
             >
@@ -183,9 +183,9 @@ export const WorkspacesDropdownMobile = () => {
           hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
-              focusRef.current.focus();
-              focusRef.current = null;
-              event.preventDefault();
+              focusRef.current.focus()
+              focusRef.current = null
+              event.preventDefault()
             }
           }}
         >
@@ -200,7 +200,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 aspect-square items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex aspect-square size-8 items-center justify-center rounded p-2 text-xs font-medium text-white",
                     )}
                     aria-hidden="true"
                   >
@@ -227,5 +227,5 @@ export const WorkspacesDropdownMobile = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  );
-};
+  )
+}

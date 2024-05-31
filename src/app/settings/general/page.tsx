@@ -1,20 +1,20 @@
-"use client";
-import { RiExternalLinkLine } from "@remixicon/react";
-import { Button } from "@/components/Button";
-import { Checkbox } from "@/components/Checkbox";
-import { Card } from "@/components/Card";
-import { Input } from "@/components/Input";
-import { Label } from "@/components/Label";
-import { Divider } from "@/components/Divider";
+"use client"
+import { Button } from "@/components/Button"
+import { Card } from "@/components/Card"
+import { Checkbox } from "@/components/Checkbox"
+import { Divider } from "@/components/Divider"
+import { Input } from "@/components/Input"
+import { Label } from "@/components/Label"
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/Select";
+  SelectTrigger,
+  SelectValue,
+} from "@/components/Select"
+import { RiExternalLinkLine } from "@remixicon/react"
 
-import { roles } from "@/data/data";
+import { roles } from "@/data/data"
 
 // ----- TODOs (CHRIS) -------:
 
@@ -27,7 +27,7 @@ export default function General() {
       {/* <h2 className="font-semibold text-gray-900">General</h2> */}
       <div className="space-y-10">
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Personal information
@@ -121,7 +121,7 @@ export default function General() {
         </form>
         <Divider />
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Notification settings
@@ -201,7 +201,7 @@ export default function General() {
         </form>
         <Divider />
         <form className="sm:max-w-6xl">
-          <div className="grid grid-cols-1 gap-y-8 gap-x-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
                 Danger zone
@@ -211,7 +211,7 @@ export default function General() {
                 information.{" "}
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline hover:underline-offset-4"
+                  className="inline-flex items-center gap-1 text-indigo-600 hover:underline hover:underline-offset-4 dark:text-indigo-400"
                 >
                   Learn more
                   <RiExternalLinkLine
@@ -221,11 +221,11 @@ export default function General() {
                 </a>
               </p>
             </div>
-            <div className="md:col-span-2 space-y-6">
+            <div className="space-y-6 md:col-span-2">
               <Card className="p-4">
-                <div className="flex items-start gap-10 justify-between">
+                <div className="flex items-start justify-between gap-10">
                   <div>
-                    <h4 className="text-sm text-gray-900 dark:text-gray-50 font-medium">
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-gray-50">
                       Leave workspace
                     </h4>
                     <p className="mt-2 text-sm leading-6 text-gray-500">
@@ -243,9 +243,9 @@ export default function General() {
                 </div>
               </Card>
               <Card className="overflow-hidden p-0">
-                <div className="p-4 flex items-start gap-10 justify-between">
+                <div className="flex items-start justify-between gap-10 p-4">
                   <div>
-                    <h4 className="text-sm text-gray-400 dark:text-gray-600 font-medium">
+                    <h4 className="text-sm font-medium text-gray-400 dark:text-gray-600">
                       Delete workspace
                     </h4>
                     <p className="mt-2 text-sm leading-6 text-gray-400 dark:text-gray-600">
@@ -257,12 +257,12 @@ export default function General() {
                   <Button
                     variant="secondary"
                     disabled
-                    className="text-rose-600 dark:text-rose-500 disabled:text-rose-300 disabled:dark:text-rose-700 disabled:opacity-50 whitespace-nowrap"
+                    className="whitespace-nowrap text-rose-600 disabled:text-rose-300 disabled:opacity-50 dark:text-rose-500 disabled:dark:text-rose-700"
                   >
                     Delete workspace
                   </Button>
                 </div>
-                <div className="p-4 border-t border-gray-200 dark:border-gray-900 bg-gray-50 dark:bg-gray-900">
+                <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-900 dark:bg-gray-900">
                   <p className="text-sm text-gray-500">
                     You cannot delete the workspace because you are not the
                     system admin.
@@ -274,5 +274,5 @@ export default function General() {
         </form>
       </div>
     </>
-  );
+  )
 }

@@ -1,8 +1,8 @@
 // Tremor Raw Divider [v0.0.0]
 
-import * as React from "react";
+import * as React from "react"
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
 interface DividerProps extends React.ComponentPropsWithoutRef<"div"> {}
 
@@ -51,8 +51,8 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
       )}
     </div>
   ),
-);
+)
 
-Divider.displayName = "Divider";
+Divider.displayName = "Divider"
 
-export { Divider };
+export { Divider }

@@ -1,15 +1,15 @@
 // Tremor Raw Input [v1.0.0]
 
-import * as React from "react";
-import { RiSearchLine } from "@remixicon/react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { RiSearchLine } from "@remixicon/react"
+import * as React from "react"
+import { tv, type VariantProps } from "tailwind-variants"
 
-import { cx, hasErrorInput } from "@/lib/utils";
+import { cx, hasErrorInput } from "@/lib/utils"
 
 const inputStyles = tv({
   base: [
     // base
-    "relative peer block w-full appearance-none rounded-md px-2.5 py-2 outline-none transition text-sm",
+    "peer relative block w-full appearance-none rounded-md px-2.5 py-2 text-sm outline-none transition",
     // text color
     "text-gray-900 dark:text-gray-50",
     // placeholder color
@@ -41,12 +41,12 @@ const inputStyles = tv({
   defaultVariants: {
     variant: "ghost",
   },
-});
+})
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputStyles> {
-  inputClassName?: string;
+  inputClassName?: string
 }
 
 const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
@@ -81,10 +81,10 @@ const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
           <RiSearchLine className="size-4 shrink-0" aria-hidden="true" />
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-Searchbar.displayName = "Searchbar";
+Searchbar.displayName = "Searchbar"
 
-export { Searchbar, inputStyles, type InputProps };
+export { Searchbar, inputStyles, type InputProps }

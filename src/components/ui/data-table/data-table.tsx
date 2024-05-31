@@ -1,43 +1,42 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { cx } from "@/lib/utils";
 import {
   Table,
   TableBody,
   TableCell,
-  TableFoot,
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@/components/Table";
+} from "@/components/Table"
+import { cx } from "@/lib/utils"
+import * as React from "react"
 
-import { Filterbar } from "./data-table-filterbar";
-import { DataTablePagination } from "./data-table-pagination";
+import { Filterbar } from "./data-table-filterbar"
+import { DataTablePagination } from "./data-table-pagination"
 
 import {
-  flexRender,
   ColumnDef,
+  flexRender,
   getCoreRowModel,
-  getSortedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table";
+} from "@tanstack/react-table"
 
 interface DataTableProps<TData, TValue> {
   // @CHRIS/MAXIME: take care of type mgmt later
-  columns: ColumnDef<TData, any>[];
+  columns: ColumnDef<TData, any>[]
   // columns: ColumnDef<TData, TValue>[]
-  data: TData[];
+  data: TData[]
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const pageSize = 10;
-  const [rowSelection, setRowSelection] = React.useState({});
+  const pageSize = 10
+  const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({
     data,
     columns,
@@ -61,7 +60,7 @@ export function DataTable<TData, TValue>({
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  });
+  })
 
   return (
     <>
@@ -80,7 +79,7 @@ export function DataTable<TData, TValue>({
                       key={header.id}
                       className={cx(
                         header.column.columnDef.meta?.align,
-                        "py-1.5 whitespace-nowrap",
+                        "whitespace-nowrap py-1.5",
                       )}
                     >
                       {flexRender(
@@ -109,7 +108,7 @@ export function DataTable<TData, TValue>({
                             : "",
                           cell.column.columnDef.meta?.align,
                           // @SEV/CHRIS: first:-logic
-                          "first:w-10 text-gray-700 dark:text-gray-300 relative py-2 whitespace-nowrap",
+                          "relative whitespace-nowrap py-2 text-gray-700 first:w-10 dark:text-gray-300",
                         )}
                       >
                         {index === 0 && row.getIsSelected() && (
@@ -140,5 +139,5 @@ export function DataTable<TData, TValue>({
         <DataTablePagination table={table} pageSize={pageSize} />
       </div>
     </>
-  );
+  )
 }

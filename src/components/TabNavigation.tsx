@@ -1,25 +1,25 @@
 // Tremor Raw TabNavigation [v0.0.0]
 
-import * as React from "react";
-import * as NavigationMenuPrimitives from "@radix-ui/react-navigation-menu";
+import * as NavigationMenuPrimitives from "@radix-ui/react-navigation-menu"
+import * as React from "react"
 
-import { cx, focusRing } from "@/lib/utils";
+import { cx, focusRing } from "@/lib/utils"
 
 function getSubtree(
   options: { asChild: boolean | undefined; children: React.ReactNode },
   content: React.ReactNode | ((children: React.ReactNode) => React.ReactNode),
 ) {
-  const { asChild, children } = options;
+  const { asChild, children } = options
   if (!asChild)
-    return typeof content === "function" ? content(children) : content;
+    return typeof content === "function" ? content(children) : content
 
-  const firstChild = React.Children.only(children) as React.ReactElement;
+  const firstChild = React.Children.only(children) as React.ReactElement
   return React.cloneElement(firstChild, {
     children:
       typeof content === "function"
         ? content(firstChild.props.children)
         : content,
-  });
+  })
 }
 
 const TabNavigation = React.forwardRef<
@@ -33,7 +33,7 @@ const TabNavigation = React.forwardRef<
     <NavigationMenuPrimitives.List
       className={cx(
         // base
-        "flex items-center gap-4 justify-start whitespace-nowrap border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "flex items-center justify-start gap-4 whitespace-nowrap border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         // border color
         "border-gray-200 dark:border-gray-800",
         className,
@@ -42,8 +42,8 @@ const TabNavigation = React.forwardRef<
       {children}
     </NavigationMenuPrimitives.List>
   </NavigationMenuPrimitives.Root>
-));
-TabNavigation.displayName = "TabNavigation";
+))
+TabNavigation.displayName = "TabNavigation"
 
 const TabNavigationLink = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitives.Link>,
@@ -92,8 +92,8 @@ const TabNavigationLink = React.forwardRef<
       ))}
     </NavigationMenuPrimitives.Link>
   </NavigationMenuPrimitives.Item>
-));
+))
 
-TabNavigationLink.displayName = "TabNavigationLink";
+TabNavigationLink.displayName = "TabNavigationLink"
 
-export { TabNavigation, TabNavigationLink };
+export { TabNavigation, TabNavigationLink }

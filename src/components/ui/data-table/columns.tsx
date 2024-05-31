@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { ColumnDef, Row, createColumnHelper } from "@tanstack/react-table";
-import { Transaction } from "@/data/schema";
-import { Checkbox } from "@/components/Checkbox";
-import { DataTableRowActions } from "./data-table-row-actions";
-import { ConditionFilter } from "./data-table-filter";
-import { formatters } from "@/lib/utils";
-import { DataTableColumnHeader } from "./data-table-column-header";
+import { Checkbox } from "@/components/Checkbox"
+import { Transaction } from "@/data/schema"
+import { formatters } from "@/lib/utils"
+import { createColumnHelper } from "@tanstack/react-table"
+import { DataTableColumnHeader } from "./data-table-column-header"
+import { ConditionFilter } from "./data-table-filter"
+import { DataTableRowActions } from "./data-table-row-actions"
 
-const columnHelper = createColumnHelper<Transaction>();
+const columnHelper = createColumnHelper<Transaction>()
 export const columns = [
   columnHelper.display({
     id: "select",
@@ -94,20 +94,20 @@ export const columns = [
     },
     cell: ({ getValue }) => formatters.currency(getValue()),
     filterFn: (row, columnId, filterValue: ConditionFilter) => {
-      const value = row.getValue(columnId) as number;
-      const [min, max] = filterValue.value as [number, number];
+      const value = row.getValue(columnId) as number
+      const [min, max] = filterValue.value as [number, number]
 
       switch (filterValue.condition) {
         case "is-equal-to":
-          return value === min;
+          return value === min
         case "is-between":
-          return value >= min && value <= max;
+          return value >= min && value <= max
         case "is-greater-than":
-          return value > min;
+          return value > min
         case "is-less-than":
-          return value < min;
+          return value < min
         default:
-          return true;
+          return true
       }
     },
   }),
@@ -133,4 +133,4 @@ export const columns = [
     },
     cell: ({ row }) => <DataTableRowActions row={row} />,
   }),
-];
+]

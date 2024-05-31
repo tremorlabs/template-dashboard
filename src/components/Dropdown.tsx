@@ -1,32 +1,32 @@
 // Tremor Raw Dropdown Menu [v0.0.0]
 
-"use client";
+"use client"
 
-import * as DropdownMenuPrimitives from "@radix-ui/react-dropdown-menu";
+import * as DropdownMenuPrimitives from "@radix-ui/react-dropdown-menu"
 import {
   RiArrowRightSLine,
   RiCheckboxBlankCircleLine,
   RiCheckLine,
   RiRadioButtonFill,
-} from "@remixicon/react";
-import * as React from "react";
+} from "@remixicon/react"
+import * as React from "react"
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
-const DropdownMenu = DropdownMenuPrimitives.Root;
-DropdownMenu.displayName = "DropdownMenu";
+const DropdownMenu = DropdownMenuPrimitives.Root
+DropdownMenu.displayName = "DropdownMenu"
 
-const DropdownMenuTrigger = DropdownMenuPrimitives.Trigger;
-DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
+const DropdownMenuTrigger = DropdownMenuPrimitives.Trigger
+DropdownMenuTrigger.displayName = "DropdownMenuTrigger"
 
-const DropdownMenuGroup = DropdownMenuPrimitives.Group;
-DropdownMenuGroup.displayName = "DropdownMenuGroup";
+const DropdownMenuGroup = DropdownMenuPrimitives.Group
+DropdownMenuGroup.displayName = "DropdownMenuGroup"
 
-const DropdownMenuSubMenu = DropdownMenuPrimitives.Sub;
-DropdownMenuSubMenu.displayName = "DropdownMenuSubMenu";
+const DropdownMenuSubMenu = DropdownMenuPrimitives.Sub
+DropdownMenuSubMenu.displayName = "DropdownMenuSubMenu"
 
-const DropdownMenuRadioGroup = DropdownMenuPrimitives.RadioGroup;
-DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup";
+const DropdownMenuRadioGroup = DropdownMenuPrimitives.RadioGroup
+DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup"
 
 const DropdownMenuSubMenuTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.SubTrigger>,
@@ -42,7 +42,7 @@ const DropdownMenuSubMenuTrigger = React.forwardRef<
       // disabled
       "data-[disabled]:pointer-events-none data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
       // focus
-      "focus-visible:bg-gray-100 data-[state=open]:bg-gray-100  focus-visible:dark:bg-gray-900 data-[state=open]:dark:bg-gray-900",
+      "focus-visible:bg-gray-100 data-[state=open]:bg-gray-100 focus-visible:dark:bg-gray-900 data-[state=open]:dark:bg-gray-900",
       // hover
       "hover:bg-gray-100 hover:dark:bg-gray-900",
       //
@@ -56,8 +56,8 @@ const DropdownMenuSubMenuTrigger = React.forwardRef<
       aria-hidden="true"
     />
   </DropdownMenuPrimitives.SubTrigger>
-));
-DropdownMenuSubMenuTrigger.displayName = "DropdownMenuSubMenuTrigger";
+))
+DropdownMenuSubMenuTrigger.displayName = "DropdownMenuSubMenuTrigger"
 
 const DropdownMenuSubMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.SubContent>,
@@ -90,8 +90,8 @@ const DropdownMenuSubMenuContent = React.forwardRef<
       {...props}
     />
   </DropdownMenuPrimitives.Portal>
-));
-DropdownMenuSubMenuContent.displayName = "DropdownMenuSubMenuContent";
+))
+DropdownMenuSubMenuContent.displayName = "DropdownMenuSubMenuContent"
 
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Content>,
@@ -138,14 +138,14 @@ const DropdownMenuContent = React.forwardRef<
       />
     </DropdownMenuPrimitives.Portal>
   ),
-);
-DropdownMenuContent.displayName = "DropdownMenuContent";
+)
+DropdownMenuContent.displayName = "DropdownMenuContent"
 
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitives.Item> & {
-    shortcut?: string;
-    hint?: string;
+    shortcut?: string
+    hint?: string
   }
 >(({ className, shortcut, hint, children, ...props }, forwardedRef) => (
   <DropdownMenuPrimitives.Item
@@ -181,14 +181,14 @@ const DropdownMenuItem = React.forwardRef<
       </span>
     )}
   </DropdownMenuPrimitives.Item>
-));
-DropdownMenuItem.displayName = "DropdownMenuItem";
+))
+DropdownMenuItem.displayName = "DropdownMenuItem"
 
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitives.CheckboxItem> & {
-    shortcut?: string;
-    hint?: string;
+    shortcut?: string
+    hint?: string
   }
 >(
   (
@@ -203,7 +203,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
         // text color
         "text-gray-900 dark:text-gray-50",
         // disabled
-        "data-[disabled]:pointer-events-none  data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
         // focus
         "focus-visible:bg-gray-100 focus-visible:dark:bg-gray-900",
         // hover
@@ -242,15 +242,15 @@ const DropdownMenuCheckboxItem = React.forwardRef<
       )}
     </DropdownMenuPrimitives.CheckboxItem>
   ),
-);
-DropdownMenuCheckboxItem.displayName = "DropdownMenuCheckboxItem";
+)
+DropdownMenuCheckboxItem.displayName = "DropdownMenuCheckboxItem"
 
 const DropdownMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.RadioItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitives.RadioItem> & {
-    shortcut?: string;
-    hint?: string;
-    iconType?: "check" | "radio";
+    shortcut?: string
+    hint?: string
+    iconType?: "check" | "radio"
   }
 >(
   (
@@ -265,7 +265,7 @@ const DropdownMenuRadioItem = React.forwardRef<
         // text color
         "text-gray-900 dark:text-gray-50",
         // disabled
-        "data-[disabled]:pointer-events-none  data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-gray-400 data-[disabled]:hover:bg-none dark:data-[disabled]:text-gray-600",
         // focus
         "focus-visible:bg-gray-100 focus-visible:dark:bg-gray-900",
         // hover
@@ -289,7 +289,7 @@ const DropdownMenuRadioItem = React.forwardRef<
         <span className="absolute left-2 flex size-4 items-center justify-center">
           <RiCheckLine
             aria-hidden="true"
-            className="size-full shrink-0 group-data-[state=checked]/DropdownMenuRadioItem:flex group-data-[state=unchecked]/DropdownMenuRadioItem:hidden text-gray-800 dark:text-gray-200"
+            className="size-full shrink-0 text-gray-800 group-data-[state=checked]/DropdownMenuRadioItem:flex group-data-[state=unchecked]/DropdownMenuRadioItem:hidden dark:text-gray-200"
           />
         </span>
       ) : null}
@@ -314,8 +314,8 @@ const DropdownMenuRadioItem = React.forwardRef<
       )}
     </DropdownMenuPrimitives.RadioItem>
   ),
-);
-DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem";
+)
+DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem"
 
 const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Label>,
@@ -327,13 +327,13 @@ const DropdownMenuLabel = React.forwardRef<
       // base
       "px-2 py-2 text-xs font-medium tracking-wide",
       // text color
-      " text-gray-500 dark:text-gray-500",
+      "text-gray-500 dark:text-gray-500",
       className,
     )}
     {...props}
   />
-));
-DropdownMenuLabel.displayName = "DropdownMenuLabel";
+))
+DropdownMenuLabel.displayName = "DropdownMenuLabel"
 
 const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Separator>,
@@ -347,8 +347,8 @@ const DropdownMenuSeparator = React.forwardRef<
     )}
     {...props}
   />
-));
-DropdownMenuSeparator.displayName = "DropdownMenuSeparator";
+))
+DropdownMenuSeparator.displayName = "DropdownMenuSeparator"
 
 const DropdownMenuIconWrapper = ({
   className,
@@ -365,9 +365,9 @@ const DropdownMenuIconWrapper = ({
       )}
       {...props}
     />
-  );
-};
-DropdownMenuIconWrapper.displayName = "DropdownMenuIconWrapper";
+  )
+}
+DropdownMenuIconWrapper.displayName = "DropdownMenuIconWrapper"
 
 export {
   DropdownMenu,
@@ -384,4 +384,4 @@ export {
   DropdownMenuSubMenuContent,
   DropdownMenuSubMenuTrigger,
   DropdownMenuTrigger,
-};
+}

@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { siteConfig } from "@/app/siteConfig";
-import { TabNavigation, TabNavigationLink } from "@/components/TabNavigation";
+import { siteConfig } from "@/app/siteConfig"
+import { TabNavigation, TabNavigationLink } from "@/components/TabNavigation"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const navigationSettings = [
   { name: "General", href: siteConfig.baseLinks.general },
   { name: "Billing & Usage", href: siteConfig.baseLinks.billing },
   { name: "Users", href: siteConfig.baseLinks.users },
-];
+]
 
 export default function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const pathname = usePathname();
+  const pathname = usePathname()
   return (
     // @SEV/CHRIS: what HTML semantics here in parent?
-    <div className="p-4 sm:pt-7 sm:px-6 sm:pb-6">
+    <div className="p-4 sm:px-6 sm:pb-6 sm:pt-7">
       <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
         Settings
       </h1>
@@ -36,5 +36,5 @@ export default function Layout({
       </TabNavigation>
       <div className="mt-6">{children}</div>
     </div>
-  );
+  )
 }
