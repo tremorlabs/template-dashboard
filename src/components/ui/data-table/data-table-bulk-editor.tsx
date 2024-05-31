@@ -1,6 +1,11 @@
 import { cx } from "@/lib/utils"
+import { RowSelectionState } from "@tanstack/react-table"
 
-export function DataTableBulkEditor({ rowSelection }) {
+type DataTableBulkEditorProps = {
+    rowSelection: RowSelectionState
+}
+
+export function DataTableBulkEditor({ rowSelection }: DataTableBulkEditorProps) {
     return (
         <div
             className={cx(
