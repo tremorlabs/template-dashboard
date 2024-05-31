@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
     <>
       <div className="space-y-3">
         <Filterbar table={table} />
-        <div className="overflow-hidden overflow-x-auto">
+        <div className="relative overflow-hidden overflow-x-auto">
           <Table>
             <TableHead>
               {table.getHeaderGroups().map((headerGroup) => (
