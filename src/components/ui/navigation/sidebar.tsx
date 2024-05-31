@@ -32,14 +32,14 @@ export function Sidebar() {
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
         <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-white px-6 py-4 dark:border-gray-800 dark:bg-gray-950">
-          <div className="-mx-2">
+          <div className="">
             <WorkspacesDropdownDesktop />
           </div>
           <nav
             aria-label="core navigation links"
             className="flex flex-1 flex-col"
           >
-            <ul role="list" className="-mx-2 space-y-1.5">
+            <ul role="list" className="space-y-1.5">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
@@ -59,7 +59,7 @@ export function Sidebar() {
               ))}
             </ul>
           </nav>
-          <div className="-mx-2 mt-auto">
+          <div className="mt-auto">
             <UserProfileDesktop />
           </div>
         </aside>
