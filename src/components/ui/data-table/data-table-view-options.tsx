@@ -211,7 +211,10 @@ function ListItem({
 
   return (
     <Fragment>
-      <div ref={ref} className="relative border-b py-1">
+      <div
+        ref={ref}
+        className="relative border-b border-gray-200 py-1 dark:border-gray-800"
+      >
         <div
           className={cx(
             "relative flex items-center justify-between gap-2",

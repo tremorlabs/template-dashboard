@@ -6,9 +6,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const navigationSettings = [
-  { name: "General", href: siteConfig.baseLinks.general },
-  { name: "Billing & Usage", href: siteConfig.baseLinks.billing },
-  { name: "Users", href: siteConfig.baseLinks.users },
+  { name: "General", href: siteConfig.baseLinks.settings.general },
+  { name: "Billing & Usage", href: siteConfig.baseLinks.settings.billing },
+  { name: "Users", href: siteConfig.baseLinks.settings.users },
 ]
 
 export default function Layout({

@@ -20,6 +20,7 @@ import { roles } from "@/data/data"
 
 // save settings Button UI?
 // - Componentize
+// form? was macht tailwind?
 
 export default function General() {
   return (
@@ -82,12 +83,16 @@ export default function General() {
                     Birth year
                   </Label>
                   <Input
+                    autoComplete="off"
                     id="birthyear"
                     name="year"
                     type="number"
                     placeholder="1994"
                     enableStepper={false}
                     className="mt-2"
+                    min="1900"
+                    max={new Date().getFullYear()}
+                    step="1"
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">

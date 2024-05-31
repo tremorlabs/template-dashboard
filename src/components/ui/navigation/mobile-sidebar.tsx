@@ -24,7 +24,7 @@ const navigation = [
   { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
   {
     name: "Settings",
-    href: siteConfig.baseLinks.settings,
+    href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
   },
 ]
