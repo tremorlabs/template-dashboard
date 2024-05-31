@@ -1,9 +1,9 @@
 "use client"
 
 import {
-  RiAddCircleLine,
+  RiAddLine,
   RiArrowDownSLine,
-  RiCloseCircleLine,
+  RiCloseLine,
   RiCornerDownRightLine,
 } from "@remixicon/react"
 import { Column } from "@tanstack/react-table"
@@ -231,27 +231,27 @@ export function DataTableFilter<TData, TValue>({
               />
               {(selectedValues as ConditionFilter)?.condition ===
                 "is-between" && (
-                <>
-                  <span className="text-xs font-medium text-gray-500">and</span>
-                  <Input
-                    type="number"
-                    placeholder="$0"
-                    className="sm:[&>input]:py-1"
-                    value={(selectedValues as ConditionFilter)?.value?.[1]}
-                    onChange={(e) => {
-                      setSelectedValues((prev) => {
-                        return {
-                          condition: (prev as ConditionFilter)?.condition,
-                          value: [
-                            (prev as ConditionFilter)?.value?.[0],
-                            e.target.value,
-                          ],
-                        }
-                      })
-                    }}
-                  />
-                </>
-              )}
+                  <>
+                    <span className="text-xs font-medium text-gray-500">and</span>
+                    <Input
+                      type="number"
+                      placeholder="$0"
+                      className="sm:[&>input]:py-1"
+                      value={(selectedValues as ConditionFilter)?.value?.[1]}
+                      onChange={(e) => {
+                        setSelectedValues((prev) => {
+                          return {
+                            condition: (prev as ConditionFilter)?.condition,
+                            value: [
+                              (prev as ConditionFilter)?.value?.[0],
+                              e.target.value,
+                            ],
+                          }
+                        })
+                      }}
+                    />
+                  </>
+                )}
             </div>
           </div>
         )
@@ -274,7 +274,7 @@ export function DataTableFilter<TData, TValue>({
           )}
         >
           {!selectedValues ? (
-            <RiAddCircleLine
+            <RiAddLine
               className="-ml-px size-4 shrink-0"
               aria-hidden="true"
             />
@@ -293,7 +293,7 @@ export function DataTableFilter<TData, TValue>({
                 })
               }}
             >
-              <RiCloseCircleLine
+              <RiCloseLine
                 className="-ml-px size-4 shrink-0 transition hover:text-red-500"
                 aria-hidden="true"
               />
