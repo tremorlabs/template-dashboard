@@ -1,6 +1,6 @@
 import { cx } from "@/lib/utils"
 
-export function DataTableBulkEditor() {
+export function DataTableBulkEditor({ rowSelection }) {
     return (
         <div
             className={cx(
