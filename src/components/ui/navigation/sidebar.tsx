@@ -61,15 +61,12 @@ export function Sidebar() {
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-950">
-          <div className="">
-            <WorkspacesDropdownDesktop />
-          </div>
-          <nav className="flex flex-1 flex-col space-y-10">
-            <ul
-              aria-label="core navigation links"
-              role="list"
-              className="space-y-0.5"
-            >
+          <WorkspacesDropdownDesktop />
+          <nav
+            aria-label="core navigation links"
+            className="flex flex-1 flex-col space-y-10"
+          >
+            <ul role="list" className="space-y-0.5">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
