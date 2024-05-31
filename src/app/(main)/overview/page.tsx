@@ -179,7 +179,7 @@ export default function Example() {
         Overview
       </h1>
 
-      <div className="backdrop-blur-nav sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white/90 py-4 pb-4 lg:top-[68px] lg:mx-0 lg:px-0 lg:pt-2 dark:border-gray-800 dark:bg-gray-950/90">
+      <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 pt-2 lg:top-0 lg:mx-0 lg:px-0 lg:pt-7 dark:border-gray-800 dark:bg-gray-950">
         <Filterbar
           maxDate={maxDate}
           minDate={new Date(2024, 0, 1)}
