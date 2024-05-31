@@ -914,7 +914,7 @@ const RangeDatePicker = ({
       </Trigger>
       <CalendarPopover align={align}>
         <div className="flex">
-          <div className="flex flex-col overflow-x-scroll sm:flex-row sm:items-start">
+          <div className="flex flex-col overflow-x-auto sm:flex-row sm:items-start">
             {presets && presets.length > 0 && (
               <div
                 className={cx(
@@ -932,7 +932,7 @@ const RangeDatePicker = ({
                 </div>
               </div>
             )}
-            <div className="overflow-x-scroll">
+            <div>
               <CalendarPrimitive
                 mode="range"
                 selected={range}
@@ -945,10 +945,9 @@ const RangeDatePicker = ({
                 enableYearNavigation={enableYearNavigation}
                 locale={locale}
                 initialFocus
-                className="overflow-x-scroll"
                 classNames={{
                   months:
-                    "flex flex-row divide-x divide-gray-200 dark:divide-gray-800 overflow-x-scroll",
+                    "flex flex-row divide-x divide-gray-200 dark:divide-gray-800 overflow-x-auto",
                 }}
                 {...props}
               />
