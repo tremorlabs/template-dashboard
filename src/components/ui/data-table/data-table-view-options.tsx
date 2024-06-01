@@ -211,10 +211,7 @@ function ListItem({
 
   return (
     <Fragment>
-      <div
-        ref={ref}
-        className="relative border-b border-gray-200 py-1 dark:border-gray-800"
-      >
+      <div ref={ref} className="relative border-b border-transparent">
         <div
           className={cx(
             "relative flex items-center justify-between gap-2",
@@ -232,15 +229,15 @@ function ListItem({
           <Button
             aria-hidden={true}
             tabIndex={-1}
-            variant="secondary"
-            className="px-px py-1"
+            variant="ghost"
+            className="-mr-1 px-0 py-1"
             ref={dragHandleRef}
             aria-label={`Reorder ${item.label}`}
           >
-            <RiDraggable className="size-3.5 text-gray-400 dark:text-gray-600" />
+            <RiDraggable className="size-5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="0px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
@@ -422,17 +419,21 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         <Popover>
           <PopoverTrigger asChild>
             <Button
+              aria-hidden={true}
               variant="secondary"
               className={cx(
-                // focusInput,
-                "ml-auto hidden gap-x-2 px-2 py-1 focus:outline-none lg:flex",
+                "ml-auto hidden gap-x-2 px-2 py-1 text-xs focus:outline-none lg:flex",
               )}
             >
-              <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
-              View options
+              <RiEqualizer2Line className="size-4" aria-hidden="true" />
+              View
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-fit space-y-2">
+          <PopoverContent
+            align="end"
+            sideOffset={7}
+            className="w-fit space-y-2"
+          >
             <Label className="font-medium">Display properties</Label>
             <ListContext.Provider value={contextValue}>
               <div className="flex flex-col">

@@ -9,7 +9,7 @@ import { Searchbar } from "@/components/Searchbar"
 import { DataTableFilter } from "./data-table-filter"
 import { ViewOptions } from "./data-table-view-options"
 
-import { conditions, regions, status } from "@/data/data"
+import { conditions, regions, statuses } from "@/data/data"
 import { formatters } from "@/lib/utils"
 
 interface DataTableToolbarProps<TData> {
@@ -26,7 +26,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
           <DataTableFilter
             column={table.getColumn("status")}
             title="Status"
-            options={status}
+            options={statuses}
             type="select"
           />
         )}
@@ -73,12 +73,9 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
       <div className="flex items-center gap-2">
         <Button
           variant="secondary"
-          className="hidden gap-x-2 px-2 py-1 lg:flex"
+          className="hidden gap-x-2 px-2 py-1.5 text-xs lg:flex"
         >
-          <RiDownloadLine
-            className="-ml-px size-4 shrink-0"
-            aria-hidden="true"
-          />
+          <RiDownloadLine className="size-4 shrink-0" aria-hidden="true" />
           Export
         </Button>
         <ViewOptions table={table} />

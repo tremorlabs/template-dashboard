@@ -1,6 +1,8 @@
 "use client"
 
+import { Badge, BadgeProps } from "@/components/Badge"
 import { Checkbox } from "@/components/Checkbox"
+import { statuses } from "@/data/data"
 import { Transaction } from "@/data/schema"
 import { formatters } from "@/lib/utils"
 import { createColumnHelper } from "@tanstack/react-table"
@@ -38,7 +40,6 @@ export const columns = [
     enableSorting: false,
     enableHiding: false,
     meta: {
-      align: "text-left",
       displayName: "Select",
     },
   }),
@@ -47,8 +48,9 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Owner" />
     ),
     enableSorting: true,
+    enableHiding: false,
     meta: {
-      align: "text-left",
+      className: "text-left",
       displayName: "Owner",
     },
   }),
@@ -58,8 +60,23 @@ export const columns = [
     ),
     enableSorting: true,
     meta: {
-      align: "text-left",
+      className: "text-left",
       displayName: "Status",
+    },
+    cell: ({ row }) => {
+      const status = statuses.find(
+        (item) => item.value === row.getValue("status"),
+      )
+
+      if (!status) {
+        return null
+      }
+
+      return (
+        <Badge variant={status.variant as BadgeProps["variant"]}>
+          {status.label}
+        </Badge>
+      )
     },
   }),
   columnHelper.accessor("region", {
@@ -68,19 +85,59 @@ export const columns = [
     ),
     enableSorting: false,
     meta: {
-      align: "text-left",
+      className: "text-left",
       displayName: "Region",
     },
     filterFn: "arrIncludesSome",
   }),
-  columnHelper.accessor("capacity", {
+  columnHelper.accessor("latency", {
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Capacity" />
+      <DataTableColumnHeader column={column} title="Latency (ms)" />
     ),
     enableSorting: false,
     meta: {
-      align: "text-left",
-      displayName: "Capacity",
+      className: "text-left",
+      displayName: "Latency",
+    },
+    cell: ({ getValue }) => {
+      const value = getValue()
+
+      function Indicator({ number }: { number: number }) {
+        let category
+        if (number < 15) {
+          category = "good"
+        } else if (number >= 15 && number <= 50) {
+          category = "ok"
+        } else {
+          category = "bad"
+        }
+
+        const getBarClass = (index: number) => {
+          if (category === "good") {
+            return "bg-indigo-500"
+          } else if (category === "ok" && index < 2) {
+            return "bg-indigo-500"
+          } else if (category === "bad" && index < 1) {
+            return "bg-indigo-500"
+          }
+          return "bg-gray-300 dark:bg-gray-800"
+        }
+
+        return (
+          <div className="flex gap-0.5">
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(0)}`} />
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(1)}`} />
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(2)}`} />
+          </div>
+        )
+      }
+
+      return (
+        <div className="flex items-center gap-0.5">
+          <span className="w-6">{value}</span>
+          <Indicator number={value} />
+        </div>
+      )
     },
   }),
   columnHelper.accessor("costs", {
@@ -89,10 +146,14 @@ export const columns = [
     ),
     enableSorting: true,
     meta: {
-      align: "text-left",
+      className: "text-right",
       displayName: "Costs",
     },
-    cell: ({ getValue }) => formatters.currency(getValue()),
+    cell: ({ getValue }) => {
+      return (
+        <span className="font-medium">{formatters.currency(getValue())}</span>
+      )
+    },
     filterFn: (row, columnId, filterValue: ConditionFilter) => {
       const value = row.getValue(columnId) as number
       const [min, max] = filterValue.value as [number, number]
@@ -114,11 +175,11 @@ export const columns = [
   // @CHRIS: wording consistency
   columnHelper.accessor("lastEdited", {
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Created at" />
+      <DataTableColumnHeader column={column} title="Last edited" />
     ),
     enableSorting: false,
     meta: {
-      align: "text-right",
+      className: "tabular-nums",
       displayName: "Last edited",
     },
   }),
@@ -128,7 +189,7 @@ export const columns = [
     enableSorting: false,
     enableHiding: false,
     meta: {
-      align: "text-right",
+      className: "text-right",
       displayName: "Edit",
     },
     cell: ({ row }) => <DataTableRowActions row={row} />,

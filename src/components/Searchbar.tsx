@@ -33,8 +33,10 @@ const inputStyles = tv({
         "bg-transparent hover:bg-gray-100 focus:bg-gray-100 hover:dark:bg-gray-900 focus:dark:bg-gray-900",
       ],
       light: [
+        // base for dark mode only
+        "dark:border dark:border-gray-800",
         // background
-        "bg-gray-100 dark:bg-gray-900",
+        "bg-gray-100 dark:bg-gray-950",
       ],
     },
   },
@@ -45,7 +47,7 @@ const inputStyles = tv({
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputStyles> {
+  VariantProps<typeof inputStyles> {
   inputClassName?: string
 }
 

@@ -36,7 +36,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const pageSize = 10
+  const pageSize = 20
   const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({
     data,
@@ -79,8 +79,9 @@ export function DataTable<TData, TValue>({
                     <TableHeaderCell
                       key={header.id}
                       className={cx(
-                        header.column.columnDef.meta?.align,
-                        "whitespace-nowrap py-1.5",
+                        "whitespace-nowrap py-1 text-xs",
+                        // @SEV className
+                        header.column.columnDef.meta?.className,
                       )}
                     >
                       {flexRender(
@@ -107,9 +108,9 @@ export function DataTable<TData, TValue>({
                           row.getIsSelected()
                             ? "bg-gray-50 dark:bg-gray-900"
                             : "",
-                          cell.column.columnDef.meta?.align,
                           // @SEV/CHRIS: first:-logic
-                          "relative whitespace-nowrap py-2 text-gray-700 first:w-10 dark:text-gray-300",
+                          "relative whitespace-nowrap py-1 text-gray-600 first:w-10 dark:text-gray-400",
+                          cell.column.columnDef.meta?.className,
                         )}
                       >
                         {index === 0 && row.getIsSelected() && (
@@ -135,11 +136,9 @@ export function DataTable<TData, TValue>({
               )}
             </TableBody>
           </Table>
+          <DataTableBulkEditorNew table={table} rowSelection={rowSelection} />
         </div>
-        {/* @SEV: should we put pagination into <TableFooter>? */}
         <DataTablePagination table={table} pageSize={pageSize} />
-        {/* <DataTableBulkEditor table={table} rowSelection={rowSelection} /> */}
-        <DataTableBulkEditorNew table={table} rowSelection={rowSelection} />
       </div>
     </>
   )
