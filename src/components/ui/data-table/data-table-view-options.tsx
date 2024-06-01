@@ -240,7 +240,7 @@ function ListItem({
             <RiDraggable className="size-3.5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="0px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
@@ -392,7 +392,8 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${previousIndex + 1
+      `You've moved ${item.label} from position ${
+        previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])
@@ -424,7 +425,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
               variant="secondary"
               className={cx(
                 // focusInput,
-                "ml-auto text-xs hidden gap-x-2 px-2 py-1.5 focus:outline-none lg:flex",
+                "ml-auto hidden gap-x-2 px-2 py-1.5 text-xs focus:outline-none lg:flex",
               )}
             >
               <RiEqualizer2Line className="size-4" aria-hidden="true" />
