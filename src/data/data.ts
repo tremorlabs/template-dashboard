@@ -162,7 +162,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 3509,
     region: "US-West 1",
-    latency: 99,
+    stability: 99,
     lastEdited: "23/09/2023 13:00",
   },
   {
@@ -170,7 +170,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5720,
     region: "US-East 2",
-    latency: 80,
+    stability: 80,
     lastEdited: "22/09/2023 10:45",
   },
   {
@@ -178,7 +178,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4150,
     region: "EU-West 1",
-    latency: 12,
+    stability: 12,
     lastEdited: "17/05/2021 08:32",
   },
   {
@@ -186,7 +186,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2980,
     region: "US-West 2",
-    latency: 10,
+    stability: 10,
     lastEdited: "10/11/2022 15:24",
   },
   {
@@ -194,7 +194,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6500,
     region: "US-East 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "05/06/2023 12:16",
   },
   {
@@ -202,7 +202,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 1200,
     region: "EU-North 1",
-    latency: 20,
+    stability: 20,
     lastEdited: "23/01/2022 11:11",
   },
   {
@@ -210,7 +210,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 7800,
     region: "US-West 1",
-    latency: 18,
+    stability: 18,
     lastEdited: "14/03/2023 14:45",
   },
   {
@@ -218,7 +218,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2150,
     region: "EU-Central 1",
-    latency: 7,
+    stability: 7,
     lastEdited: "12/02/2023 09:12",
   },
   {
@@ -226,7 +226,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 8900,
     region: "US-East 1",
-    latency: 6,
+    stability: 6,
     lastEdited: "19/08/2022 16:03",
   },
   {
@@ -234,7 +234,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 340,
     region: "EU-West 1",
-    latency: 12,
+    stability: 12,
     lastEdited: "29/11/2021 17:25",
   },
   {
@@ -242,7 +242,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5600,
     region: "US-West 2",
-    latency: 9,
+    stability: 9,
     lastEdited: "07/12/2023 07:14",
   },
   {
@@ -250,7 +250,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4800,
     region: "EU-Central 1",
-    latency: 15,
+    stability: 15,
     lastEdited: "28/04/2023 10:45",
   },
   {
@@ -258,7 +258,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2300,
     region: "US-East 2",
-    latency: 25,
+    stability: 25,
     lastEdited: "03/10/2022 08:33",
   },
   {
@@ -266,7 +266,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5100,
     region: "US-West 1",
-    latency: 11,
+    stability: 11,
     lastEdited: "22/07/2022 14:16",
   },
   {
@@ -274,7 +274,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 600,
     region: "EU-North 1",
-    latency: 22,
+    stability: 22,
     lastEdited: "18/01/2022 12:45",
   },
   {
@@ -282,7 +282,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 7000,
     region: "US-East 1",
-    latency: 13,
+    stability: 13,
     lastEdited: "05/06/2021 18:33",
   },
   {
@@ -290,7 +290,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 3000,
     region: "EU-West 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "11/05/2023 11:00",
   },
   {
@@ -298,7 +298,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4300,
     region: "US-West 2",
-    latency: 10,
+    stability: 10,
     lastEdited: "19/09/2023 17:17",
   },
   {
@@ -306,7 +306,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4900,
     region: "US-East 2",
-    latency: 9,
+    stability: 9,
     lastEdited: "27/03/2023 14:28",
   },
   {
@@ -314,7 +314,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 800,
     region: "EU-Central 1",
-    latency: 12,
+    stability: 12,
     lastEdited: "23/11/2022 15:13",
   },
   {
@@ -322,7 +322,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5400,
     region: "EU-North 1",
-    latency: 16,
+    stability: 16,
     lastEdited: "08/05/2023 08:56",
   },
   {
@@ -330,7 +330,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6700,
     region: "US-West 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "29/04/2022 19:27",
   },
   {
@@ -338,7 +338,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2400,
     region: "US-West 2",
-    latency: 14,
+    stability: 14,
     lastEdited: "30/12/2023 13:01",
   },
   {
@@ -346,7 +346,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4800,
     region: "EU-West 1",
-    latency: 5,
+    stability: 5,
     lastEdited: "18/06/2021 10:49",
   },
   {
@@ -354,7 +354,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 500,
     region: "US-East 1",
-    latency: 19,
+    stability: 19,
     lastEdited: "24/02/2022 14:02",
   },
   {
@@ -362,7 +362,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6100,
     region: "EU-North 1",
-    latency: 11,
+    stability: 11,
     lastEdited: "22/07/2021 12:33",
   },
   {
@@ -370,7 +370,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 3200,
     region: "US-East 2",
-    latency: 6,
+    stability: 6,
     lastEdited: "13/09/2022 16:22",
   },
   {
@@ -378,7 +378,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 7200,
     region: "US-West 1",
-    latency: 17,
+    stability: 17,
     lastEdited: "09/10/2023 17:44",
   },
   {
@@ -386,7 +386,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5300,
     region: "EU-Central 1",
-    latency: 9,
+    stability: 9,
     lastEdited: "29/07/2022 11:56",
   },
   {
@@ -394,7 +394,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 400,
     region: "EU-West 1",
-    latency: 14,
+    stability: 14,
     lastEdited: "10/11/2021 15:08",
   },
   {
@@ -402,7 +402,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6800,
     region: "US-East 1",
-    latency: 10,
+    stability: 10,
     lastEdited: "06/08/2021 09:17",
   },
   {
@@ -410,7 +410,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2100,
     region: "EU-West 1",
-    latency: 12,
+    stability: 12,
     lastEdited: "25/05/2022 10:05",
   },
   {
@@ -418,7 +418,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 3500,
     region: "US-West 2",
-    latency: 15,
+    stability: 15,
     lastEdited: "07/01/2023 08:33",
   },
   {
@@ -426,7 +426,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4700,
     region: "EU-Central 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "21/09/2023 13:00",
   },
   {
@@ -434,7 +434,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 200,
     region: "US-East 2",
-    latency: 18,
+    stability: 18,
     lastEdited: "12/06/2021 11:45",
   },
   {
@@ -442,7 +442,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5200,
     region: "US-West 1",
-    latency: 11,
+    stability: 11,
     lastEdited: "30/03/2022 14:14",
   },
   {
@@ -450,7 +450,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 3000,
     region: "EU-North 1",
-    latency: 7,
+    stability: 7,
     lastEdited: "14/05/2023 12:36",
   },
   {
@@ -458,7 +458,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6900,
     region: "US-East 1",
-    latency: 13,
+    stability: 13,
     lastEdited: "18/10/2022 09:25",
   },
   {
@@ -466,7 +466,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 120,
     region: "EU-Central 1",
-    latency: 20,
+    stability: 20,
     lastEdited: "22/02/2022 15:55",
   },
   {
@@ -474,7 +474,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5500,
     region: "US-West 2",
-    latency: 9,
+    stability: 9,
     lastEdited: "27/08/2023 18:33",
   },
   {
@@ -482,7 +482,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6600,
     region: "EU-West 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "02/07/2021 17:14",
   },
   {
@@ -490,7 +490,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 2500,
     region: "US-East 1",
-    latency: 10,
+    stability: 10,
     lastEdited: "15/04/2023 10:45",
   },
   {
@@ -498,7 +498,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6100,
     region: "EU-North 1",
-    latency: 11,
+    stability: 11,
     lastEdited: "06/09/2023 11:23",
   },
   {
@@ -506,7 +506,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 800,
     region: "US-West 1",
-    latency: 14,
+    stability: 14,
     lastEdited: "20/10/2021 16:05",
   },
   {
@@ -514,7 +514,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4400,
     region: "US-East 2",
-    latency: 17,
+    stability: 17,
     lastEdited: "11/11/2023 08:55",
   },
   {
@@ -522,7 +522,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 3400,
     region: "EU-West 1",
-    latency: 12,
+    stability: 12,
     lastEdited: "18/08/2022 14:34",
   },
   {
@@ -530,7 +530,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 5800,
     region: "EU-Central 1",
-    latency: 9,
+    stability: 9,
     lastEdited: "22/04/2023 12:11",
   },
   {
@@ -538,7 +538,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 900,
     region: "US-West 2",
-    latency: 19,
+    stability: 19,
     lastEdited: "10/02/2021 11:45",
   },
   {
@@ -546,7 +546,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 6300,
     region: "EU-West 1",
-    latency: 8,
+    stability: 8,
     lastEdited: "23/07/2022 14:33",
   },
   {
@@ -554,7 +554,7 @@ export const transactions: Transaction[] = [
     status: "inactive",
     costs: 3100,
     region: "US-East 1",
-    latency: 7,
+    stability: 7,
     lastEdited: "07/05/2023 09:27",
   },
   {
@@ -562,7 +562,7 @@ export const transactions: Transaction[] = [
     status: "live",
     costs: 4500,
     region: "EU-Central 1",
-    latency: 11,
+    stability: 11,
     lastEdited: "16/03/2022 15:44",
   },
   {
@@ -570,7 +570,7 @@ export const transactions: Transaction[] = [
     status: "archived",
     costs: 700,
     region: "EU-North 1",
-    latency: 21,
+    stability: 21,
     lastEdited: "01/01/2022 16:18",
   },
 ]

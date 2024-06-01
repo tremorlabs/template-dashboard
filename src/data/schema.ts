@@ -3,7 +3,7 @@ export interface Transaction {
   status: string
   costs: number
   region: string
-  latency: number
+  stability: number
   lastEdited: string
 }
 

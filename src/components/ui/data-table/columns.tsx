@@ -11,6 +11,7 @@ import { ConditionFilter } from "./data-table-filter"
 import { DataTableRowActions } from "./data-table-row-actions"
 
 const columnHelper = createColumnHelper<Transaction>()
+
 export const columns = [
   columnHelper.display({
     id: "select",
@@ -90,26 +91,26 @@ export const columns = [
     },
     filterFn: "arrIncludesSome",
   }),
-  columnHelper.accessor("latency", {
+  columnHelper.accessor("stability", {
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Latency (ms)" />
+      <DataTableColumnHeader column={column} title="Stability" />
     ),
     enableSorting: false,
     meta: {
       className: "text-left",
-      displayName: "Latency",
+      displayName: "Stability",
     },
     cell: ({ getValue }) => {
       const value = getValue()
 
       function Indicator({ number }: { number: number }) {
         let category
-        if (number < 15) {
-          category = "good"
-        } else if (number >= 15 && number <= 50) {
+        if (number < 10) {
+          category = "bad"
+        } else if (number >= 10 && number <= 15) {
           category = "ok"
         } else {
-          category = "bad"
+          category = "good"
         }
 
         const getBarClass = (index: number) => {

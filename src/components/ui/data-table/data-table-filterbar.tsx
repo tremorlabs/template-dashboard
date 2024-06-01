@@ -1,16 +1,15 @@
 "use client"
 
-import { RiDownloadLine } from "@remixicon/react"
-import { Table } from "@tanstack/react-table"
-
 import { Button } from "@/components/Button"
 import { Searchbar } from "@/components/Searchbar"
-
-import { DataTableFilter } from "./data-table-filter"
-import { ViewOptions } from "./data-table-view-options"
-
 import { conditions, regions, statuses } from "@/data/data"
 import { formatters } from "@/lib/utils"
+import { RiDownloadLine } from "@remixicon/react"
+import { Table } from "@tanstack/react-table"
+import { useState } from "react"
+import { useDebouncedCallback } from "use-debounce"
+import { DataTableFilter } from "./data-table-filter"
+import { ViewOptions } from "./data-table-view-options"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
@@ -18,6 +17,17 @@ interface DataTableToolbarProps<TData> {
 
 export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
+  const [searchTerm, setSearchTerm] = useState<string>("")
+
+  const debouncedSetFilterValue = useDebouncedCallback((value) => {
+    table.getColumn("owner")?.setFilterValue(value)
+  }, 300)
+
+  const handleSearchChange = (event: any) => {
+    const value = event.target.value
+    setSearchTerm(value)
+    debouncedSetFilterValue(value)
+  }
 
   return (
     <div className="flex flex-wrap items-center justify-between sm:gap-x-6">
@@ -49,13 +59,10 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
         )}
         {table.getColumn("owner")?.getIsVisible() && (
           <Searchbar
+            type="search"
             placeholder="Search by owner..."
-            variant="light"
-            // @Maxime: how to allow more columns (e.g. status, owner or region)
-            value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("owner")?.setFilterValue(event.target.value)
-            }
+            value={searchTerm}
+            onChange={handleSearchChange}
             className="w-full sm:max-w-[250px] lg:max-w-[310px] [&>input]:h-[30px]"
           />
         )}

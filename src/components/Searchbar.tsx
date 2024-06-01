@@ -4,20 +4,26 @@ import { RiSearchLine } from "@remixicon/react"
 import * as React from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 
-import { cx, hasErrorInput } from "@/lib/utils"
+import { cx, focusInput, hasErrorInput } from "@/lib/utils"
 
 const inputStyles = tv({
   base: [
     // base
-    "peer relative block w-full appearance-none rounded-md px-2.5 py-2 text-sm outline-none transition",
+    "relative block w-full appearance-none rounded-md border px-2.5 py-1.5 outline-none transition sm:text-sm",
+    // border color
+    "border-transparent",
     // text color
     "text-gray-900 dark:text-gray-50",
     // placeholder color
-    "placeholder-gray-600 dark:placeholder-gray-400",
+    "placeholder-gray-400 dark:placeholder-gray-500",
+    // background color
+    "focus:bg-gray-100 focus:dark:bg-gray-950",
+    "hover:bg-gray-100 hover:dark:bg-gray-950",
     // disabled
-    // @CHRIS dark mode -> feedback to Sev to have placeholder also disabled styled
-    "disabled:bg-gray-100 disabled:text-gray-400 disabled:placeholder:text-gray-400",
-    "disabled:dark:bg-gray-800 disabled:dark:text-gray-500",
+    "disabled:border-gray-300 disabled:bg-gray-100 disabled:text-gray-400",
+    "disabled:dark:border-gray-700 disabled:dark:bg-gray-800 disabled:dark:text-gray-500",
+    // focus
+    focusInput,
     // invalid (optional)
     // "aria-[invalid=true]:dark:ring-red-400/20 aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-red-200 aria-[invalid=true]:border-red-500 invalid:ring-2 invalid:ring-red-200 invalid:border-red-500"
     // remove search cancel button (optional)
@@ -27,21 +33,10 @@ const inputStyles = tv({
     hasError: {
       true: hasErrorInput,
     },
-    variant: {
-      ghost: [
-        // background
-        "bg-transparent hover:bg-gray-100 focus:bg-gray-100 hover:dark:bg-gray-900 focus:dark:bg-gray-900",
-      ],
-      light: [
-        // base for dark mode only
-        "dark:border dark:border-gray-800",
-        // background
-        "bg-gray-100 dark:bg-gray-950",
-      ],
+    // number input
+    enableStepper: {
+      true: "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
     },
-  },
-  defaultVariants: {
-    variant: "ghost",
   },
 })
 
@@ -53,18 +48,24 @@ interface InputProps
 
 const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, inputClassName, hasError, variant, ...props }: InputProps,
+    {
+      className,
+      inputClassName,
+      hasError,
+      enableStepper,
+      type = "search",
+      ...props
+    }: InputProps,
     forwardedRef,
   ) => {
     return (
       <div className={cx("relative w-full", className)}>
         <input
           ref={forwardedRef}
-          type="search"
+          type={type}
           className={cx(
-            inputStyles({ hasError, variant }),
-            // to fit input text next to search icon
-            "pl-9",
+            inputStyles({ hasError, enableStepper }),
+            "pl-8",
             inputClassName,
           )}
           {...props}
@@ -74,13 +75,13 @@ const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
             // base
             "pointer-events-none absolute bottom-0 left-2 flex h-full items-center justify-center",
             // text color
-            "text-gray-600 dark:text-gray-400",
-            // disabled
-            // @CHRIS: dark mode
-            "peer-disabled:text-gray-400 peer-disabled:dark:text-gray-600",
+            "text-gray-400 dark:text-gray-600",
           )}
         >
-          <RiSearchLine className="size-4 shrink-0" aria-hidden="true" />
+          <RiSearchLine
+            className="size-[1.125rem] shrink-0"
+            aria-hidden="true"
+          />
         </div>
       </div>
     )
@@ -89,4 +90,4 @@ const Searchbar = React.forwardRef<HTMLInputElement, InputProps>(
 
 Searchbar.displayName = "Searchbar"
 
-export { Searchbar, inputStyles, type InputProps }
+export { Searchbar }

@@ -237,7 +237,7 @@ function ListItem({
             <RiDraggable className="size-5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} gap="0px" />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
@@ -422,7 +422,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
               aria-hidden={true}
               variant="secondary"
               className={cx(
-                "ml-auto hidden gap-x-2 px-2 py-1 text-xs focus:outline-none lg:flex",
+                "ml-auto hidden gap-x-2 px-2 text-xs focus:outline-none lg:flex",
               )}
             >
               <RiEqualizer2Line className="size-4" aria-hidden="true" />
