@@ -114,7 +114,7 @@ interface CommandProps
   > {
   action: () => void | Promise<void>
   label: string
-  shortcut: string
+  shortcut: { shortcut: string; label?: string }
 }
 
 const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
@@ -132,7 +132,7 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
   ) => {
     React.useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === shortcut) {
+        if (event.key === shortcut.shortcut) {
           event.preventDefault()
           event.stopPropagation()
           action()
@@ -166,7 +166,11 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
         {...props}
       >
         <span>{label}</span>
-        <span className={shortcutStyles}>{shortcut.toUpperCase()}</span>
+        <span className={shortcutStyles}>
+          {shortcut.label
+            ? shortcut.label.toUpperCase()
+            : shortcut.shortcut.toUpperCase()}
+        </span>
       </button>
     )
   },

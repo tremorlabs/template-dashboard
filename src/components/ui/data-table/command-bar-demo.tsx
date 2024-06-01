@@ -31,7 +31,7 @@ function DataTableBulkEditorNew<TData>({
           action={() => {
             console.log("Edit")
           }}
-          shortcut="e"
+          shortcut={{ shortcut: "e" }}
         />
         <CommandBarSeperator />
         <CommandBarCommand
@@ -39,7 +39,7 @@ function DataTableBulkEditorNew<TData>({
           action={() => {
             console.log("Delete")
           }}
-          shortcut="d"
+          shortcut={{ shortcut: "d" }}
         />
         <CommandBarSeperator />
         <CommandBarCommand
@@ -47,7 +47,7 @@ function DataTableBulkEditorNew<TData>({
           action={() => {
             table.resetRowSelection()
           }}
-          shortcut="Escape"
+          shortcut={{ shortcut: "Escape", label: "esc" }}
         />
       </CommandBarBar>
     </CommandBar>
