@@ -237,7 +237,7 @@ function ListItem({
             <RiDraggable className="size-5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="0px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
@@ -419,9 +419,9 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         <Popover>
           <PopoverTrigger asChild>
             <Button
+              aria-hidden={true}
               variant="secondary"
               className={cx(
-                // focusInput,
                 "ml-auto hidden gap-x-2 px-2 py-1 text-xs focus:outline-none lg:flex",
               )}
             >
