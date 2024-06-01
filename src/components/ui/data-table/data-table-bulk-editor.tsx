@@ -17,7 +17,7 @@ export function DataTableBulkEditor<TData>({
     return (
         <div
             className={cx(
-                'absolute inset-x-0 -bottom-14 mx-auto flex w-fit items-center gap-x-3 rounded-full border border-gray-600 bg-gray-900 px-4 py-2 text-sm font-medium shadow-lg',
+                'fixed inset-x-0 bottom-8 mx-auto flex w-fit items-center gap-x-3 rounded-full border border-gray-600 bg-gray-900 px-4 py-2 text-sm font-medium shadow-lg',
                 Object.keys(rowSelection).length > 0 ? '' : 'hidden',
             )}
         >
