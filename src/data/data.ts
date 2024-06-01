@@ -23,7 +23,7 @@ export const statuses = [
   {
     value: "live",
     label: "Live",
-    variant: "default",
+    variant: "success",
   },
   {
     value: "inactive",

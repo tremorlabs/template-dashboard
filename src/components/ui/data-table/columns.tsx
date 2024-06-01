@@ -112,22 +112,43 @@ export const columns = [
           category = "bad"
         }
 
+        // ---- sev version ---
+        // const getBarClass = (index: number) => {
+        //   if (category === "good") {
+        //     return "bg-emerald-500"
+        //   } else if (category === "ok" && index < 2) {
+        //     return "bg-amber-500"
+        //   } else if (category === "bad" && index < 1) {
+        //     return "bg-red-500"
+        //   }
+        //   return "bg-gray-200"
+        // }
+
+        // return (
+        //   <div className="flex gap-0.5">
+        //     <div className={`h-3 w-1 rounded-full ${getBarClass(0)}`} />
+        //     <div className={`h-3 w-1 rounded-full ${getBarClass(1)}`} />
+        //     <div className={`h-3 w-1 rounded-full ${getBarClass(2)}`} />
+        //   </div>
+        // )
+
+        // @SEV: would leave the logic so they can easily add other color variants if they want
         const getBarClass = (index: number) => {
           if (category === "good") {
-            return "bg-emerald-500"
+            return "bg-indigo-500"
           } else if (category === "ok" && index < 2) {
-            return "bg-amber-500"
+            return "bg-indigo-500"
           } else if (category === "bad" && index < 1) {
-            return "bg-red-500"
+            return "bg-indigo-500"
           }
-          return "bg-gray-200"
+          return "bg-gray-300 dark:bg-gray-800"
         }
 
         return (
           <div className="flex gap-0.5">
-            <div className={`h-3 w-1 rounded-full ${getBarClass(0)}`} />
-            <div className={`h-3 w-1 rounded-full ${getBarClass(1)}`} />
-            <div className={`h-3 w-1 rounded-full ${getBarClass(2)}`} />
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(0)}`} />
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(1)}`} />
+            <div className={`h-3.5 w-1 rounded-sm ${getBarClass(2)}`} />
           </div>
         )
       }

@@ -79,7 +79,8 @@ export function DataTable<TData, TValue>({
                     <TableHeaderCell
                       key={header.id}
                       className={cx(
-                        "whitespace-nowrap py-1.5",
+                        "whitespace-nowrap text-xs py-1",
+                        // @SEV className
                         header.column.columnDef.meta?.className,
                       )}
                     >
@@ -108,7 +109,7 @@ export function DataTable<TData, TValue>({
                             ? "bg-gray-50 dark:bg-gray-900"
                             : "",
                           // @SEV/CHRIS: first:-logic
-                          "relative whitespace-nowrap py-1 text-gray-700 first:w-10 dark:text-gray-300",
+                          "relative whitespace-nowrap py-1 text-gray-600 first:w-10 dark:text-gray-400",
                           cell.column.columnDef.meta?.className,
                         )}
                       >
