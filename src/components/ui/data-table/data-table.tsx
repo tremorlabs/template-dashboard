@@ -80,7 +80,6 @@ export function DataTable<TData, TValue>({
                       key={header.id}
                       className={cx(
                         "whitespace-nowrap py-1 text-xs",
-                        // @SEV className
                         header.column.columnDef.meta?.className,
                       )}
                     >

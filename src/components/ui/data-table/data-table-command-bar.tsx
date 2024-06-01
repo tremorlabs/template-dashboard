@@ -3,10 +3,10 @@
 import * as Popover from "@radix-ui/react-popover"
 import * as React from "react"
 
-import { cx } from "@/lib/utils"
+import { cx, focusRing } from "@/lib/utils"
 
 const shortcutStyles = cx(
-  "flex size-6 select-none items-center justify-center rounded bg-gray-800 text-sm text-gray-400 ring-1 ring-inset ring-gray-700",
+  "flex h-6 select-none items-center justify-center rounded-md bg-gray-800 px-2 text-sm text-gray-400 ring-1 ring-inset ring-gray-700",
 )
 
 interface CommandBarProps extends React.PropsWithChildren {
@@ -31,7 +31,9 @@ const CommandBar = ({
     >
       {/* <Portal.Root> */}
       <Popover.Anchor
-        className={cx("absolute bottom-8 left-1/2 h-px w-px -translate-x-1/2")}
+        className={cx(
+          "fixed inset-x-0 bottom-8 mx-auto flex w-fit items-center",
+        )}
       />
       {/* </Portal.Root> */}
       <Popover.Portal>
@@ -44,7 +46,7 @@ const CommandBar = ({
             }
           }}
           className={cx(
-            "z-50 will-change-[transform,opacity]",
+            "z-50",
             "data-[state=closed]:animate-hide",
             "data-[side=top]:animate-slideUpAndFade",
           )}
@@ -82,7 +84,7 @@ const CommandBarBar = React.forwardRef<
     <div
       ref={ref}
       className={cx(
-        "relative flex items-center overflow-hidden rounded-lg bg-gray-900 px-1 shadow-lg shadow-black/30",
+        "relative flex items-center rounded-lg bg-gray-900 px-1 shadow-lg shadow-black/30",
         className,
       )}
       {...props}
@@ -150,14 +152,17 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
       <button
         ref={ref}
         className={cx(
-          "flex items-center gap-x-2 bg-gray-900 px-3 py-2.5 text-base text-gray-50 outline-none",
-          "focus-visible:bg-ui-contrast-bg-highlight focus-visible:hover:bg-ui-contrast-bg-base-hover hover:bg-ui-contrast-bg-base-hover active:bg-ui-contrast-bg-base-pressed focus-visible:active:bg-ui-contrast-bg-base-pressed",
-          "disabled:!bg-gray-800 disabled:!text-gray-400",
-          "last-of-type:-mr-1 last-of-type:pr-4",
+          focusRing,
+          "flex items-center gap-x-2 rounded-lg bg-gray-900 px-3 py-2.5 text-base text-gray-50 outline-none transition focus:z-10",
+          "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
+          "hover:bg-gray-800",
+          "disabled:text-gray-500",
+          "last-of-type:-mr-1",
           className,
         )}
         type={type}
         onClick={action}
+        disabled={disabled}
         {...props}
       >
         <span>{label}</span>

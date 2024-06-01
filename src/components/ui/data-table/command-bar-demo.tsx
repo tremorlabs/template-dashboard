@@ -43,12 +43,11 @@ function DataTableBulkEditorNew<TData>({
         />
         <CommandBarSeperator />
         <CommandBarCommand
-          label="Delete all"
+          label="Reset selection"
           action={() => {
-            console.log("Delete")
+            table.resetRowSelection()
           }}
-          shortcut="d"
-          disabled={true}
+          shortcut="Escape"
         />
       </CommandBarBar>
     </CommandBar>
