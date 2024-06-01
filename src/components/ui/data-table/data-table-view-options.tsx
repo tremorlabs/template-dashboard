@@ -392,8 +392,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${
-        previousIndex + 1
+      `You've moved ${item.label} from position ${previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])
@@ -425,11 +424,11 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
               variant="secondary"
               className={cx(
                 // focusInput,
-                "ml-auto hidden gap-x-2 px-2 py-1 focus:outline-none lg:flex",
+                "ml-auto text-xs hidden gap-x-2 px-2 py-1.5 focus:outline-none lg:flex",
               )}
             >
-              <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
-              View options
+              <RiEqualizer2Line className="size-4" aria-hidden="true" />
+              View
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end" className="w-fit space-y-2">
