@@ -240,7 +240,7 @@ function ListItem({
             <RiDraggable className="size-3.5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(

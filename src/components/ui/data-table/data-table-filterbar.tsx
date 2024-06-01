@@ -9,7 +9,7 @@ import { Searchbar } from "@/components/Searchbar"
 import { DataTableFilter } from "./data-table-filter"
 import { ViewOptions } from "./data-table-view-options"
 
-import { conditions, regions, status } from "@/data/data"
+import { conditions, regions, statuses } from "@/data/data"
 import { formatters } from "@/lib/utils"
 
 interface DataTableToolbarProps<TData> {
@@ -26,7 +26,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
           <DataTableFilter
             column={table.getColumn("status")}
             title="Status"
-            options={status}
+            options={statuses}
             type="select"
           />
         )}
