@@ -1,6 +1,6 @@
 "use client"
 
-import { RowSelectionState } from "@tanstack/react-table"
+import { RowSelectionState, Table } from "@tanstack/react-table"
 import {
   CommandBar,
   CommandBarBar,
@@ -9,9 +9,15 @@ import {
   CommandBarValue,
 } from "./data-table-command-bar"
 
-function DataTableBulkEditorNew(rowSelection: {
+type DataTableBulkEditorProps<TData> = {
+  table: Table<TData>
   rowSelection: RowSelectionState
-}) {
+}
+
+function DataTableBulkEditorNew<TData>({
+  table,
+  rowSelection,
+}: DataTableBulkEditorProps<TData>) {
   const hasSelectedRows = Object.keys(rowSelection).length > 0
   return (
     <CommandBar open={hasSelectedRows}>
@@ -34,6 +40,15 @@ function DataTableBulkEditorNew(rowSelection: {
             console.log("Delete")
           }}
           shortcut="d"
+        />
+        <CommandBarSeperator />
+        <CommandBarCommand
+          label="Delete all"
+          action={() => {
+            console.log("Delete")
+          }}
+          shortcut="d"
+          disabled={true}
         />
       </CommandBarBar>
     </CommandBar>

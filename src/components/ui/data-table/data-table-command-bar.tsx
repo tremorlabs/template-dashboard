@@ -1,13 +1,12 @@
 "use client"
 
 import * as Popover from "@radix-ui/react-popover"
-import * as Portal from "@radix-ui/react-portal"
 import * as React from "react"
 
 import { cx } from "@/lib/utils"
 
 const shortcutStyles = cx(
-  "flex size-6 select-none items-center justify-center rounded-md bg-gray-800 text-gray-400 ring-1 ring-inset ring-gray-700",
+  "flex size-6 select-none items-center justify-center rounded bg-gray-800 text-sm text-gray-400 ring-1 ring-inset ring-gray-700",
 )
 
 interface CommandBarProps extends React.PropsWithChildren {
@@ -30,11 +29,11 @@ const CommandBar = ({
       onOpenChange={onOpenChange}
       defaultOpen={defaultOpen}
     >
-      <Portal.Root>
-        <Popover.Anchor
-          className={cx("fixed bottom-8 left-1/2 h-px w-px -translate-x-1/2")}
-        />
-      </Portal.Root>
+      {/* <Portal.Root> */}
+      <Popover.Anchor
+        className={cx("absolute bottom-8 left-1/2 h-px w-px -translate-x-1/2")}
+      />
+      {/* </Portal.Root> */}
       <Popover.Portal>
         <Popover.Content
           side="top"
@@ -45,7 +44,9 @@ const CommandBar = ({
             }
           }}
           className={cx(
-            "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50",
+            "z-50 will-change-[transform,opacity]",
+            "data-[state=closed]:animate-hide",
+            "data-[side=top]:animate-slideUpAndFade",
           )}
         >
           {children}
@@ -63,7 +64,10 @@ const CommandBarValue = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cx("px-3 py-2.5 text-sm text-gray-300", className)}
+      className={cx(
+        "px-3 py-2.5 text-sm tabular-nums text-gray-300",
+        className,
+      )}
       {...props}
     />
   )
@@ -78,8 +82,7 @@ const CommandBarBar = React.forwardRef<
     <div
       ref={ref}
       className={cx(
-        "relative flex items-center overflow-hidden rounded-full bg-gray-900 px-1",
-        "after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:shadow-lg after:content-['']",
+        "relative flex items-center overflow-hidden rounded-lg bg-gray-900 px-1 shadow-lg shadow-black/30",
         className,
       )}
       {...props}
@@ -95,7 +98,7 @@ const CommandBarSeperator = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cx("h-10 w-px bg-gray-700", className)}
+      className={cx("h-4 w-px bg-gray-700", className)}
       {...props}
     />
   )
@@ -147,8 +150,9 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
       <button
         ref={ref}
         className={cx(
-          "bg-ui-contrast-bg-base txt-compact-small-plus transition-fg text-ui-contrast-fg-primary flex items-center gap-x-2 px-3 py-2.5 outline-none",
-          "focus-visible:bg-ui-contrast-bg-highlight focus-visible:hover:bg-ui-contrast-bg-base-hover hover:bg-ui-contrast-bg-base-hover active:bg-ui-contrast-bg-base-pressed focus-visible:active:bg-ui-contrast-bg-base-pressed disabled:!bg-ui-bg-disabled disabled:!text-ui-fg-disabled",
+          "flex items-center gap-x-2 bg-gray-900 px-3 py-2.5 text-base text-gray-50 outline-none",
+          "focus-visible:bg-ui-contrast-bg-highlight focus-visible:hover:bg-ui-contrast-bg-base-hover hover:bg-ui-contrast-bg-base-hover active:bg-ui-contrast-bg-base-pressed focus-visible:active:bg-ui-contrast-bg-base-pressed",
+          "disabled:!bg-gray-800 disabled:!text-gray-400",
           "last-of-type:-mr-1 last-of-type:pr-4",
           className,
         )}

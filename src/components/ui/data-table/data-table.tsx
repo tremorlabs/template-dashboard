@@ -139,7 +139,7 @@ export function DataTable<TData, TValue>({
         {/* @SEV: should we put pagination into <TableFooter>? */}
         <DataTablePagination table={table} pageSize={pageSize} />
         {/* <DataTableBulkEditor table={table} rowSelection={rowSelection} /> */}
-        <DataTableBulkEditorNew rowSelection={rowSelection} />
+        <DataTableBulkEditorNew table={table} rowSelection={rowSelection} />
       </div>
     </>
   )
