@@ -1,7 +1,6 @@
 "use client"
 
 import * as Popover from "@radix-ui/react-popover"
-import * as Portal from "@radix-ui/react-portal"
 import * as React from "react"
 
 import { cx } from "@/lib/utils"
@@ -30,27 +29,27 @@ const CommandBar = ({
       onOpenChange={onOpenChange}
       defaultOpen={defaultOpen}
     >
-      <Portal.Root>
-        <Popover.Anchor
-          className={cx("fixed bottom-8 left-1/2 h-px w-px -translate-x-1/2")}
-        />
-      </Portal.Root>
-      <Popover.Portal>
-        <Popover.Content
-          side="top"
-          sideOffset={0}
-          onOpenAutoFocus={(e) => {
-            if (disableAutoFocus) {
-              e.preventDefault()
-            }
-          }}
-          className={cx(
-            "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50",
-          )}
-        >
-          {children}
-        </Popover.Content>
-      </Popover.Portal>
+      {/* <Portal.Root> */}
+      <Popover.Anchor
+        className={cx("fixed bottom-8 left-1/2 h-px w-px -translate-x-1/2")}
+      />
+      {/* </Portal.Root> */}
+      {/* <Popover.Portal> */}
+      <Popover.Content
+        side="top"
+        sideOffset={0}
+        onOpenAutoFocus={(e) => {
+          if (disableAutoFocus) {
+            e.preventDefault()
+          }
+        }}
+        className={cx(
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50",
+        )}
+      >
+        {children}
+      </Popover.Content>
+      {/* </Popover.Portal> */}
     </Popover.Root>
   )
 }

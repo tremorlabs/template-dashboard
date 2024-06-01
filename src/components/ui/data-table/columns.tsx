@@ -134,7 +134,7 @@ export const columns = [
 
       return (
         <div className="flex items-center gap-0.5">
-          <span className="w-6 tabular-nums">{value}</span>
+          <span className="w-6">{value}</span>
           <Indicator number={value} />
         </div>
       )

@@ -79,7 +79,7 @@ export function DataTable<TData, TValue>({
                     <TableHeaderCell
                       key={header.id}
                       className={cx(
-                        "whitespace-nowrap text-xs py-1",
+                        "whitespace-nowrap py-1 text-xs",
                         // @SEV className
                         header.column.columnDef.meta?.className,
                       )}

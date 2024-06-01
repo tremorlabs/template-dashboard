@@ -99,7 +99,7 @@ export const getYAxisDomain = (
   return [minDomain, maxDomain]
 }
 
-// Tremor Raw hasOnlyOneValueForKey [v0.0.0]
+// Tremor Raw hasOnlyOneValueForKey [v0.1.0]
 
 export function hasOnlyOneValueForKey(
   array: any[],
