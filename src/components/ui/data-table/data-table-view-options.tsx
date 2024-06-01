@@ -213,7 +213,7 @@ function ListItem({
     <Fragment>
       <div
         ref={ref}
-        className="relative border-b border-gray-200 py-1 dark:border-gray-800"
+        className="relative"
       >
         <div
           className={cx(
@@ -232,12 +232,12 @@ function ListItem({
           <Button
             aria-hidden={true}
             tabIndex={-1}
-            variant="secondary"
-            className="px-px py-1"
+            variant="ghost"
+            className="-mr-1 px-0 py-1"
             ref={dragHandleRef}
             aria-label={`Reorder ${item.label}`}
           >
-            <RiDraggable className="size-3.5 text-gray-400 dark:text-gray-600" />
+            <RiDraggable className="size-5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
         {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
@@ -431,7 +431,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
               View
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-fit space-y-2">
+          <PopoverContent align="end" sideOffset={7} className="w-fit space-y-2">
             <Label className="font-medium">Display properties</Label>
             <ListContext.Provider value={contextValue}>
               <div className="flex flex-col">
