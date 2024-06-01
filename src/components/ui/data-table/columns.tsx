@@ -101,13 +101,6 @@ export const columns = [
     },
     cell: ({ getValue }) => {
       const value = getValue()
-      // const status = statuses.find(
-      //   (item) => item.value === value,
-      // )
-
-      // if (!status) {
-      //   return null
-      // }
 
       function Indicator({ number }: { number: number }) {
         let category
