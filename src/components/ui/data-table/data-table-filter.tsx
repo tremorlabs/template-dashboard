@@ -151,7 +151,7 @@ export function DataTableFilter<TData, TValue>({
         )
       case "checkbox":
         return (
-          <div className="mt-2 max-h-36 space-y-3 overflow-y-auto">
+          <div className="mt-2 max-h-40 space-y-3 overflow-y-auto">
             {options?.map((option) => {
               return (
                 <div key={option.label} className="flex items-center gap-2">

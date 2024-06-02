@@ -34,7 +34,7 @@ export function ProgressBarCard({
     <>
       <div>
         <div className="flex items-center gap-2">
-          <dt className="text-sm font-bold text-gray-900 dark:text-gray-50">
+          <dt className="font-bold text-gray-900 sm:text-sm dark:text-gray-50">
             {title}
           </dt>
           <Badge variant="neutral">{change}</Badge>

@@ -36,7 +36,7 @@ export function CategoryBarCard({
       <div className="flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-gray-900 dark:text-gray-50">
+            <h3 className="font-bold text-gray-900 sm:text-sm dark:text-gray-50">
               {title}
             </h3>
             <Badge variant="neutral">{change}</Badge>
