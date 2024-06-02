@@ -8,6 +8,7 @@ import { Label } from "@/components/Label"
 import { ProgressBar } from "@/components/ProgressBar"
 import { ProgressCircle } from "@/components/ProgressCircle"
 import { Switch } from "@/components/Switch"
+import { cx } from "@/lib/utils"
 import { RiArrowRightUpLine } from "@remixicon/react"
 import React from "react"
 
@@ -133,7 +134,6 @@ export default function Billing() {
                   Set hard caps for on-demand charges.
                 </p>
               </div>
-              {/* @SEV/CHRIS: detail: when switch triggerd -> jumps a little bit around */}
               <div className="md:col-span-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
@@ -179,8 +179,28 @@ export default function Billing() {
                     }}
                   />
                 </div>
-                {isSpendMgmtEnabled && (
-                  <>
+                <div
+                  className={cx(
+                    "transform-gpu transition-all ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform",
+                    isSpendMgmtEnabled ? "h-32" : "h-0",
+                  )}
+                  style={{
+                    transitionDuration: "300ms",
+                    animationFillMode: "backwards",
+                  }}
+                >
+                  <div
+                    className={cx(
+                      "animate-slideDownAndFade transition",
+                      isSpendMgmtEnabled ? "" : "hidden",
+                    )}
+                    style={{
+                      animationDelay: "200ms",
+                      animationDuration: "400ms",
+                      transitionDuration: "400ms",
+                      animationFillMode: "backwards",
+                    }}
+                  >
                     <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
                       <div className="md:col-span-1">
                         <Label className="font-medium">Set amount ($)</Label>
@@ -210,8 +230,8 @@ export default function Billing() {
                         Update
                       </Button>
                     </div>
-                  </>
-                )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
