@@ -3,7 +3,6 @@
 import {
   RiAddLine,
   RiArrowDownSLine,
-  RiCloseLine,
   RiCornerDownRightLine,
 } from "@remixicon/react"
 import { Column } from "@tanstack/react-table"
@@ -270,25 +269,24 @@ export function DataTableFilter<TData, TValue>({
             focusRing,
           )}
         >
-          {!selectedValues ? (
-            <RiAddLine className="-ml-px size-4 shrink-0" aria-hidden="true" />
-          ) : (
-            <span
-              aria-hidden
-              className=""
-              onClick={(e) => {
+          <span
+            aria-hidden="true"
+            onClick={(e) => {
+              if (selectedValues) {
                 e.stopPropagation()
                 column?.setFilterValue("")
                 setSelectedValues("")
-              }}
-            >
-              <RiCloseLine
-                className="-ml-px size-4 shrink-0 transition hover:text-red-500"
-                aria-hidden="true"
-              />
-              <span className="sr-only">Reset {title} filter</span>
-            </span>
-          )}
+              }
+            }}
+          >
+            <RiAddLine
+              className={cx(
+                "-ml-px size-4 shrink-0 transition",
+                selectedValues && "rotate-45 hover:text-red-500",
+              )}
+              aria-hidden="true"
+            />
+          </span>
           {title}
           {columnFilterLabels && columnFilterLabels.length > 0 && (
             <span
