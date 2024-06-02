@@ -63,7 +63,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
             placeholder="Search by owner..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full sm:max-w-[250px] lg:max-w-[310px] [&>input]:h-[30px]"
+            className="w-full sm:max-w-[250px] [&>input]:h-[30px]"
           />
         )}
         {isFiltered && (

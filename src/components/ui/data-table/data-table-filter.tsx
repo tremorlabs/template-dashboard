@@ -18,7 +18,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/Popover"
-import { SelectNative } from "@/components/SelectNative"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/Select"
 import { cx, focusRing } from "@/lib/utils"
 import React from "react"
 
@@ -83,19 +89,8 @@ export function DataTableFilter<TData, TValue>({
 }: DataTableFilterProps<TData, TValue>) {
   const columnFilters = column?.getFilterValue() as FilterValues
 
-  // @Maxime
-  // const [selectedCondition, setSelectedCondition] = React.useState<string | undefined>(undefined);
-
   const [selectedValues, setSelectedValues] =
     React.useState<FilterValues>(columnFilters)
-
-  {
-    /* @Chris: usefull if you wan't to generate dynamically your options based on unisque values of your table */
-  }
-  // const uniqueValues = React.useMemo(() => {
-  //     const values = table.getCoreRowModel().flatRows.map(row => row.getValue(columnName)) as string[]
-  //     return Array.from(new Set(values));
-  // }, [table, columnName]);
 
   const columnFilterLabels = React.useMemo(() => {
     if (!selectedValues) return undefined
@@ -126,28 +121,26 @@ export function DataTableFilter<TData, TValue>({
   }, [selectedValues, options, formatter])
 
   const getDisplayedFilter = () => {
-    const hasEmptyOption = options?.some((option) => option.value === "")
-
-    {
-      /* @Chris: Here you can create one separate component by case if you want */
-    }
     switch (type) {
       case "select":
         return (
-          <SelectNative
+          <Select
             value={selectedValues as string}
-            onChange={(e) => {
-              setSelectedValues(e.target.value)
+            onValueChange={(value) => {
+              setSelectedValues(value)
             }}
-            className="mt-2 sm:py-1"
           >
-            {!hasEmptyOption && <option value="">All</option>}
-            {options?.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </SelectNative>
+            <SelectTrigger className="mt-2 sm:py-1">
+              <SelectValue placeholder="Select" />
+            </SelectTrigger>
+            <SelectContent>
+              {options?.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         )
       case "checkbox":
         return (
@@ -185,10 +178,9 @@ export function DataTableFilter<TData, TValue>({
           (selectedValues as ConditionFilter)?.condition === "is-between"
         return (
           <div className="space-y-2">
-            <SelectNative
+            <Select
               value={(selectedValues as ConditionFilter)?.condition}
-              onChange={(e) => {
-                const value = e.target.value
+              onValueChange={(value) => {
                 setSelectedValues((prev) => {
                   return {
                     condition: value,
@@ -199,14 +191,19 @@ export function DataTableFilter<TData, TValue>({
                   }
                 })
               }}
-              className="mt-2 sm:py-1"
             >
-              {options?.map((condition) => (
-                <option key={condition.value} value={condition.value}>
-                  {condition.label}
-                </option>
-              ))}
-            </SelectNative>
+              <SelectTrigger className="mt-2 sm:py-1">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                {options?.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
             <div className="flex items-center gap-2">
               <RiCornerDownRightLine
                 className="size-4 shrink-0 text-gray-500"
@@ -282,12 +279,7 @@ export function DataTableFilter<TData, TValue>({
               onClick={(e) => {
                 e.stopPropagation()
                 column?.setFilterValue("")
-                setSelectedValues((prev) => {
-                  if (typeof prev === "object" && "condition" in prev)
-                    return { condition: "", value: ["", ""] }
-                  if (Array.isArray(prev)) return []
-                  return ""
-                })
+                setSelectedValues("")
               }}
             >
               <RiCloseLine
@@ -311,7 +303,24 @@ export function DataTableFilter<TData, TValue>({
           />
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" sideOffset={7} className="max-w-52">
+      <PopoverContent
+        align="start"
+        sideOffset={7}
+        className="max-w-52"
+        onInteractOutside={() => {
+          if (
+            !columnFilters ||
+            (typeof columnFilters === "string" && columnFilters === "") ||
+            (Array.isArray(columnFilters) && columnFilters.length === 0) ||
+            (typeof columnFilters === "object" &&
+              "condition" in columnFilters &&
+              columnFilters.condition === "")
+          ) {
+            column?.setFilterValue("")
+            setSelectedValues("")
+          }
+        }}
+      >
         <form
           onSubmit={(e) => {
             e.preventDefault()
@@ -335,12 +344,7 @@ export function DataTableFilter<TData, TValue>({
                 type="button"
                 onClick={() => {
                   column?.setFilterValue("")
-                  setSelectedValues((prev) => {
-                    if (typeof prev === "object" && "condition" in prev)
-                      return { condition: "", value: ["", ""] }
-                    if (Array.isArray(prev)) return []
-                    return ""
-                  })
+                  setSelectedValues("")
                 }}
               >
                 Reset
