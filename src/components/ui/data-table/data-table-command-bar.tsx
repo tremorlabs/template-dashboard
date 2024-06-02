@@ -165,7 +165,7 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
       >
         <span className={cx(
           // base
-          "rounded-md px-1.5 py-1 hover:bg-gray-800 flex items-center gap-x-2",
+          "rounded-md px-1 py-1 hover:bg-gray-800 flex items-center gap-x-2",
           // foucs
           "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
         )}>
