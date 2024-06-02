@@ -43,7 +43,7 @@ function DataTableBulkEditorNew<TData>({
         />
         <CommandBarSeperator />
         <CommandBarCommand
-          label="Reset selection"
+          label="Reset"
           action={() => {
             table.resetRowSelection()
           }}
