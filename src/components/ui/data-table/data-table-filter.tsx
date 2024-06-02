@@ -106,8 +106,10 @@ export function DataTableFilter<TData, TValue>({
       const condition = options?.find(
         (option) => option.value === selectedValues.condition,
       )?.label
-      if (!condition || !selectedValues.value?.[0]) return undefined
-      if (selectedValues.value?.[1] === "")
+      if (!condition) return undefined
+      if (!selectedValues.value?.[0] && !selectedValues.value?.[1])
+        return [`${condition}`]
+      if (!selectedValues.value?.[1])
         return [`${condition} ${formatter(selectedValues.value?.[0])}`]
       return [
         `${condition} ${formatter(selectedValues.value?.[0])} and ${formatter(
@@ -143,7 +145,7 @@ export function DataTableFilter<TData, TValue>({
         )
       case "checkbox":
         return (
-          <div className="mt-2 max-h-40 space-y-3 overflow-y-auto">
+          <div className="mt-2 max-h-40 space-y-3">
             {options?.map((option) => {
               return (
                 <div key={option.label} className="flex items-center gap-2">
@@ -209,6 +211,7 @@ export function DataTableFilter<TData, TValue>({
                 aria-hidden="true"
               />
               <Input
+                disabled={!(selectedValues as ConditionFilter)?.condition}
                 type="number"
                 placeholder="$0"
                 className="sm:[&>input]:py-1"
@@ -230,6 +233,7 @@ export function DataTableFilter<TData, TValue>({
                 <>
                   <span className="text-xs font-medium text-gray-500">and</span>
                   <Input
+                    disabled={!(selectedValues as ConditionFilter)?.condition}
                     type="number"
                     placeholder="$0"
                     className="sm:[&>input]:py-1"
@@ -264,8 +268,15 @@ export function DataTableFilter<TData, TValue>({
         <button
           type="button"
           className={cx(
-            "flex items-center gap-x-1.5 whitespace-nowrap rounded-md border border-gray-300 px-2 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 hover:dark:bg-gray-900",
-            selectedValues ? "" : "border-dashed",
+            "flex w-fit items-center gap-x-1.5 whitespace-nowrap rounded-md border border-gray-300 px-2 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-50 sm:text-xs dark:border-gray-700 dark:text-gray-400 hover:dark:bg-gray-900",
+            selectedValues &&
+              ((typeof selectedValues === "object" &&
+                "condition" in selectedValues &&
+                selectedValues.condition !== "") ||
+                (typeof selectedValues === "string" && selectedValues !== "") ||
+                (Array.isArray(selectedValues) && selectedValues.length > 0))
+              ? ""
+              : "border-dashed",
             focusRing,
           )}
         >
@@ -342,7 +353,13 @@ export function DataTableFilter<TData, TValue>({
                 type="button"
                 onClick={() => {
                   column?.setFilterValue("")
-                  setSelectedValues("")
+                  setSelectedValues(
+                    type === "checkbox"
+                      ? []
+                      : type === "number"
+                        ? { condition: "", value: ["", ""] }
+                        : "",
+                  )
                 }}
               >
                 Reset
