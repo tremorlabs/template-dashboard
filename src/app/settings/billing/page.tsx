@@ -195,9 +195,9 @@ export default function Billing() {
                       isSpendMgmtEnabled ? "" : "hidden",
                     )}
                     style={{
-                      animationDelay: "200ms",
-                      animationDuration: "400ms",
-                      transitionDuration: "400ms",
+                      animationDelay: "100ms",
+                      animationDuration: "300ms",
+                      transitionDuration: "300ms",
                       animationFillMode: "backwards",
                     }}
                   >

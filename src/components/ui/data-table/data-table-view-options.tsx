@@ -227,7 +227,7 @@ function ListItem({
           </div>
 
           <Button
-            aria-hidden={true}
+            aria-hidden="true"
             tabIndex={-1}
             variant="ghost"
             className="-mr-1 px-0 py-1"
@@ -389,8 +389,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${
-        previousIndex + 1
+      `You've moved ${item.label} from position ${previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])
@@ -419,10 +418,9 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              aria-hidden={true}
               variant="secondary"
               className={cx(
-                "ml-auto hidden gap-x-2 px-2 text-xs focus:outline-none lg:flex",
+                "ml-auto hidden gap-x-2 px-2 text-xs lg:flex",
               )}
             >
               <RiEqualizer2Line className="size-4" aria-hidden="true" />
