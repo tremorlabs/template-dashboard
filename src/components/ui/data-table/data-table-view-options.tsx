@@ -1,5 +1,5 @@
-"use client";
-import React, {
+"use client"
+import {
   createContext,
   Fragment,
   useCallback,
@@ -8,130 +8,130 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
+} from "react"
 
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
-import { Column, Table } from "@tanstack/react-table";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover"
+import { Column, Table } from "@tanstack/react-table"
 
-import ReactDOM from "react-dom";
-import invariant from "tiny-invariant";
+import ReactDOM from "react-dom"
+import invariant from "tiny-invariant"
 
-import { triggerPostMoveFlash } from "@atlaskit/pragmatic-drag-and-drop-flourish/trigger-post-move-flash";
+import { Button } from "@/components/Button"
+import { Checkbox } from "@/components/Checkbox"
+import { Label } from "@/components/Label"
+import { cx } from "@/lib/utils"
+import { triggerPostMoveFlash } from "@atlaskit/pragmatic-drag-and-drop-flourish/trigger-post-move-flash"
 import {
   attachClosestEdge,
-  type Edge,
   extractClosestEdge,
-} from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge";
-import { getReorderDestinationIndex } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index";
-import * as liveRegion from "@atlaskit/pragmatic-drag-and-drop-live-region";
-import { DropIndicator } from "@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box";
-import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
+  type Edge,
+} from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge"
+import { getReorderDestinationIndex } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index"
+import * as liveRegion from "@atlaskit/pragmatic-drag-and-drop-live-region"
+import { DropIndicator } from "@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box"
+import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine"
 import {
   draggable,
   dropTargetForElements,
   monitorForElements,
-} from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { pointerOutsideOfPreview } from "@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview";
-import { setCustomNativeDragPreview } from "@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview";
-import { reorder } from "@atlaskit/pragmatic-drag-and-drop/reorder";
-import { Button } from "@/components/Button";
-import { RiDraggable, RiEqualizer2Line } from "@remixicon/react";
-import { cx } from "@/lib/utils";
-import { Label } from "@/components/Label";
-import { Checkbox } from "@/components/Checkbox";
+} from "@atlaskit/pragmatic-drag-and-drop/element/adapter"
+import { pointerOutsideOfPreview } from "@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview"
+import { setCustomNativeDragPreview } from "@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview"
+import { reorder } from "@atlaskit/pragmatic-drag-and-drop/reorder"
+import { RiDraggable, RiEqualizer2Line } from "@remixicon/react"
 
-type CleanupFn = () => void;
+type CleanupFn = () => void
 
-type ItemEntry = { itemId: string; element: HTMLElement };
+type ItemEntry = { itemId: string; element: HTMLElement }
 
 type ListContextValue = {
-  getListLength: () => number;
-  registerItem: (entry: ItemEntry) => CleanupFn;
+  getListLength: () => number
+  registerItem: (entry: ItemEntry) => CleanupFn
   reorderItem: (args: {
-    startIndex: number;
-    indexOfTarget: number;
-    closestEdgeOfTarget: Edge | null;
-  }) => void;
-  instanceId: symbol;
-};
+    startIndex: number
+    indexOfTarget: number
+    closestEdgeOfTarget: Edge | null
+  }) => void
+  instanceId: symbol
+}
 
-const ListContext = createContext<ListContextValue | null>(null);
+const ListContext = createContext<ListContextValue | null>(null)
 
 function useListContext() {
-  const listContext = useContext(ListContext);
-  invariant(listContext !== null);
-  return listContext;
+  const listContext = useContext(ListContext)
+  invariant(listContext !== null)
+  return listContext
 }
 
 type Item = {
-  id: string;
-  label: string;
-};
+  id: string
+  label: string
+}
 
-const itemKey = Symbol("item");
+const itemKey = Symbol("item")
 
 type ItemData = {
-  [itemKey]: true;
-  item: Item;
-  index: number;
-  instanceId: symbol;
-};
+  [itemKey]: true
+  item: Item
+  index: number
+  instanceId: symbol
+}
 
 function getItemData({
   item,
   index,
   instanceId,
 }: {
-  item: Item;
-  index: number;
-  instanceId: symbol;
+  item: Item
+  index: number
+  instanceId: symbol
 }): ItemData {
   return {
     [itemKey]: true,
     item,
     index,
     instanceId,
-  };
+  }
 }
 
 function isItemData(data: Record<string | symbol, unknown>): data is ItemData {
-  return data[itemKey] === true;
+  return data[itemKey] === true
 }
 
 type DraggableState =
   | { type: "idle" }
   | { type: "preview"; container: HTMLElement }
-  | { type: "dragging" };
+  | { type: "dragging" }
 
-const idleState: DraggableState = { type: "idle" };
-const draggingState: DraggableState = { type: "dragging" };
+const idleState: DraggableState = { type: "idle" }
+const draggingState: DraggableState = { type: "dragging" }
 
 function ListItem({
   item,
   index,
   column,
 }: {
-  item: Item;
-  index: number;
-  column: Column<any, unknown> | undefined;
+  item: Item
+  index: number
+  column: Column<any, unknown> | undefined
 }) {
-  const { registerItem, instanceId } = useListContext();
+  const { registerItem, instanceId } = useListContext()
 
-  const ref = useRef<HTMLDivElement>(null);
-  const [closestEdge, setClosestEdge] = useState<Edge | null>(null);
+  const ref = useRef<HTMLDivElement>(null)
+  const [closestEdge, setClosestEdge] = useState<Edge | null>(null)
 
-  const dragHandleRef = useRef<HTMLButtonElement>(null);
+  const dragHandleRef = useRef<HTMLButtonElement>(null)
 
   const [draggableState, setDraggableState] =
-    useState<DraggableState>(idleState);
+    useState<DraggableState>(idleState)
 
   useEffect(() => {
-    const element = ref.current;
-    const dragHandle = dragHandleRef.current;
-    invariant(element);
-    invariant(dragHandle);
+    const element = ref.current
+    const dragHandle = dragHandleRef.current
+    invariant(element)
+    invariant(dragHandle)
 
-    const data = getItemData({ item, index, instanceId });
+    const data = getItemData({ item, index, instanceId })
 
     return combine(
       registerItem({ itemId: item.id, element }),
@@ -146,17 +146,17 @@ function ListItem({
               y: "10px",
             }),
             render({ container }) {
-              setDraggableState({ type: "preview", container });
+              setDraggableState({ type: "preview", container })
 
-              return () => setDraggableState(draggingState);
+              return () => setDraggableState(draggingState)
             },
-          });
+          })
         },
         onDragStart() {
-          setDraggableState(draggingState);
+          setDraggableState(draggingState)
         },
         onDrop() {
-          setDraggableState(idleState);
+          setDraggableState(idleState)
         },
       }),
       dropTargetForElements({
@@ -164,54 +164,54 @@ function ListItem({
         canDrop({ source }) {
           return (
             isItemData(source.data) && source.data.instanceId === instanceId
-          );
+          )
         },
         getData({ input }) {
           return attachClosestEdge(data, {
             element,
             input,
             allowedEdges: ["top", "bottom"],
-          });
+          })
         },
         onDrag({ self, source }) {
-          const isSource = source.element === element;
+          const isSource = source.element === element
           if (isSource) {
-            setClosestEdge(null);
-            return;
+            setClosestEdge(null)
+            return
           }
 
-          const closestEdge = extractClosestEdge(self.data);
+          const closestEdge = extractClosestEdge(self.data)
 
-          const sourceIndex = source.data.index;
-          invariant(typeof sourceIndex === "number");
+          const sourceIndex = source.data.index
+          invariant(typeof sourceIndex === "number")
 
-          const isItemBeforeSource = index === sourceIndex - 1;
-          const isItemAfterSource = index === sourceIndex + 1;
+          const isItemBeforeSource = index === sourceIndex - 1
+          const isItemAfterSource = index === sourceIndex + 1
 
           const isDropIndicatorHidden =
             (isItemBeforeSource && closestEdge === "bottom") ||
-            (isItemAfterSource && closestEdge === "top");
+            (isItemAfterSource && closestEdge === "top")
 
           if (isDropIndicatorHidden) {
-            setClosestEdge(null);
-            return;
+            setClosestEdge(null)
+            return
           }
 
-          setClosestEdge(closestEdge);
+          setClosestEdge(closestEdge)
         },
         onDragLeave() {
-          setClosestEdge(null);
+          setClosestEdge(null)
         },
         onDrop() {
-          setClosestEdge(null);
+          setClosestEdge(null)
         },
       }),
-    );
-  }, [instanceId, item, index, registerItem]);
+    )
+  }, [instanceId, item, index, registerItem])
 
   return (
     <Fragment>
-      <div ref={ref} className="relative border-b py-1">
+      <div ref={ref} className="relative border-b border-transparent">
         <div
           className={cx(
             "relative flex items-center justify-between gap-2",
@@ -227,17 +227,17 @@ function ListItem({
           </div>
 
           <Button
-            aria-hidden={true}
+            aria-hidden="true"
             tabIndex={-1}
-            variant="secondary"
-            className="px-px py-1"
+            variant="ghost"
+            className="-mr-1 px-0 py-1"
             ref={dragHandleRef}
             aria-label={`Reorder ${item.label}`}
           >
-            <RiDraggable className="text-gray-400 dark:text-gray-600 size-3.5" />
+            <RiDraggable className="size-5 text-gray-400 dark:text-gray-600" />
           </Button>
         </div>
-        {closestEdge && <DropIndicator edge={closestEdge} />}
+        {closestEdge && <DropIndicator edge={closestEdge} gap="1px" />}
       </div>
       {draggableState.type === "preview" &&
         ReactDOM.createPortal(
@@ -245,59 +245,59 @@ function ListItem({
           draggableState.container,
         )}
     </Fragment>
-  );
+  )
 }
 
 function getItemRegistry() {
-  const registry = new Map<string, HTMLElement>();
+  const registry = new Map<string, HTMLElement>()
 
   function register({ itemId, element }: ItemEntry) {
-    registry.set(itemId, element);
+    registry.set(itemId, element)
 
     return function unregister() {
-      registry.delete(itemId);
-    };
+      registry.delete(itemId)
+    }
   }
 
   function getElement(itemId: string): HTMLElement | null {
-    return registry.get(itemId) ?? null;
+    return registry.get(itemId) ?? null
   }
 
-  return { register, getElement };
+  return { register, getElement }
 }
 
 type ListState = {
-  items: Item[];
+  items: Item[]
   lastCardMoved: {
-    item: Item;
-    previousIndex: number;
-    currentIndex: number;
-    numberOfItems: number;
-  } | null;
-};
+    item: Item
+    previousIndex: number
+    currentIndex: number
+    numberOfItems: number
+  } | null
+}
 
 interface DataTableViewOptionsProps<TData> {
-  table: Table<TData>;
+  table: Table<TData>
 }
 
 function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
   const tableColumns: Item[] = table.getAllColumns().map((column) => ({
     id: column.id,
     label: column.columnDef.meta?.displayName as string,
-  }));
+  }))
   const [{ items, lastCardMoved }, setListState] = useState<ListState>({
     items: tableColumns,
     lastCardMoved: null,
-  });
-  const [registry] = useState(getItemRegistry);
+  })
+  const [registry] = useState(getItemRegistry)
 
   // Isolated instances of this component from one another
-  const [instanceId] = useState(() => Symbol("instance-id"));
+  const [instanceId] = useState(() => Symbol("instance-id"))
 
   useEffect(() => {
-    table.setColumnOrder(items.map((item) => item.id));
+    table.setColumnOrder(items.map((item) => item.id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items]);
+  }, [items])
 
   const reorderItem = useCallback(
     ({
@@ -305,23 +305,23 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
       indexOfTarget,
       closestEdgeOfTarget,
     }: {
-      startIndex: number;
-      indexOfTarget: number;
-      closestEdgeOfTarget: Edge | null;
+      startIndex: number
+      indexOfTarget: number
+      closestEdgeOfTarget: Edge | null
     }) => {
       const finishIndex = getReorderDestinationIndex({
         startIndex,
         closestEdgeOfTarget,
         indexOfTarget,
         axis: "vertical",
-      });
+      })
 
       if (finishIndex === startIndex) {
-        return;
+        return
       }
 
       setListState((listState) => {
-        const item = listState.items[startIndex];
+        const item = listState.items[startIndex]
 
         return {
           items: reorder({
@@ -335,74 +335,73 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
             currentIndex: finishIndex,
             numberOfItems: listState.items.length,
           },
-        };
-      });
+        }
+      })
     },
     [],
-  );
+  )
 
   useEffect(() => {
     return monitorForElements({
       canMonitor({ source }) {
-        return isItemData(source.data) && source.data.instanceId === instanceId;
+        return isItemData(source.data) && source.data.instanceId === instanceId
       },
       onDrop({ location, source }) {
-        const target = location.current.dropTargets[0];
+        const target = location.current.dropTargets[0]
         if (!target) {
-          return;
+          return
         }
 
-        const sourceData = source.data;
-        const targetData = target.data;
+        const sourceData = source.data
+        const targetData = target.data
         if (!isItemData(sourceData) || !isItemData(targetData)) {
-          return;
+          return
         }
 
         const indexOfTarget = items.findIndex(
           (item) => item.id === targetData.item.id,
-        );
+        )
         if (indexOfTarget < 0) {
-          return;
+          return
         }
 
-        const closestEdgeOfTarget = extractClosestEdge(targetData);
+        const closestEdgeOfTarget = extractClosestEdge(targetData)
 
         reorderItem({
           startIndex: sourceData.index,
           indexOfTarget,
           closestEdgeOfTarget,
-        });
+        })
       },
-    });
-  }, [instanceId, items, reorderItem]);
+    })
+  }, [instanceId, items, reorderItem])
 
   // once a drag is finished, we have some post drop actions to take
   useEffect(() => {
     if (lastCardMoved === null) {
-      return;
+      return
     }
 
-    const { item, previousIndex, currentIndex, numberOfItems } = lastCardMoved;
-    const element = registry.getElement(item.id);
+    const { item, previousIndex, currentIndex, numberOfItems } = lastCardMoved
+    const element = registry.getElement(item.id)
     if (element) {
-      triggerPostMoveFlash(element);
+      triggerPostMoveFlash(element)
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${
-        previousIndex + 1
+      `You've moved ${item.label} from position ${previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
-    );
-  }, [lastCardMoved, registry]);
+    )
+  }, [lastCardMoved, registry])
 
   // cleanup the live region when this component is finished
   useEffect(() => {
     return function cleanup() {
-      liveRegion.cleanup();
-    };
-  }, []);
+      liveRegion.cleanup()
+    }
+  }, [])
 
-  const getListLength = useCallback(() => items.length, [items.length]);
+  const getListLength = useCallback(() => items.length, [items.length])
 
   const contextValue: ListContextValue = useMemo(() => {
     return {
@@ -410,8 +409,8 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
       reorderItem,
       instanceId,
       getListLength,
-    };
-  }, [registry.register, reorderItem, instanceId, getListLength]);
+    }
+  }, [registry.register, reorderItem, instanceId, getListLength])
 
   return (
     <div>
@@ -421,21 +420,24 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
             <Button
               variant="secondary"
               className={cx(
-                // focusInput,
-                "ml-auto hidden py-1 px-2 lg:flex gap-x-2 focus:outline-none",
+                "ml-auto hidden gap-x-2 px-2 text-xs lg:flex",
               )}
             >
-              <RiEqualizer2Line className="-ml-px size-4" aria-hidden="true" />
-              View options
+              <RiEqualizer2Line className="size-4" aria-hidden="true" />
+              View
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="space-y-2 w-fit">
+          <PopoverContent
+            align="end"
+            sideOffset={7}
+            className="w-fit space-y-2"
+          >
             <Label className="font-medium">Display properties</Label>
             <ListContext.Provider value={contextValue}>
               <div className="flex flex-col">
                 {items.map((item, index) => {
-                  const column = table.getColumn(item.id);
-                  if (!column) return null;
+                  const column = table.getColumn(item.id)
+                  if (!column) return null
                   return (
                     <div
                       key={column.id}
@@ -443,7 +445,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
                     >
                       <ListItem column={column} item={item} index={index} />
                     </div>
-                  );
+                  )
                 })}
               </div>
             </ListContext.Provider>
@@ -451,7 +453,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
         </Popover>
       </div>
     </div>
-  );
+  )
 }
 
-export { ViewOptions };
+export { ViewOptions }

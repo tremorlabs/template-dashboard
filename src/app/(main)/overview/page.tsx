@@ -1,20 +1,20 @@
-"use client";
-import { ChartCard } from "@/components/ui/overview/dashboard-chart-card";
-import { Filterbar } from "@/components/ui/overview/dashboard-filterbar";
-import React from "react";
-import { DateRange } from "react-day-picker";
-import { set, subDays, toDate } from "date-fns";
-import { overviews } from "@/data/data";
-import { cx } from "@/lib/utils";
-import { ProgressBarCard } from "@/components/ui/overview/dashboard-progress-bar-card";
-import { CategoryBarCard } from "@/components/ui/overview/dashboard-category-bar-card";
-import { OverviewData } from "@/data/schema";
+"use client"
+import { CategoryBarCard } from "@/components/ui/overview/dashboard-category-bar-card"
+import { ChartCard } from "@/components/ui/overview/dashboard-chart-card"
+import { Filterbar } from "@/components/ui/overview/dashboard-filterbar"
+import { ProgressBarCard } from "@/components/ui/overview/dashboard-progress-bar-card"
+import { overviews } from "@/data/overview-data"
+import { OverviewData } from "@/data/schema"
+import { cx } from "@/lib/utils"
+import { subDays, toDate } from "date-fns"
+import React from "react"
+import { DateRange } from "react-day-picker"
 
-export type PeriodValue = "previous-period" | "last-year" | "no-comparison";
+export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
 const categories: {
-  title: keyof OverviewData;
-  type: "currency" | "unit";
+  title: keyof OverviewData
+  type: "currency" | "unit"
 }[] = [
   {
     title: "Rows read",
@@ -28,7 +28,27 @@ const categories: {
     title: "Queries",
     type: "unit",
   },
-];
+  {
+    title: "Payments completed",
+    type: "currency",
+  },
+  {
+    title: "Sign ups",
+    type: "unit",
+  },
+  {
+    title: "Logins",
+    type: "unit",
+  },
+  {
+    title: "Sign outs",
+    type: "unit",
+  },
+  {
+    title: "Support calls",
+    type: "unit",
+  },
+]
 
 const data = [
   {
@@ -52,7 +72,7 @@ const data = [
     allowed: 20,
     unit: "GB",
   },
-];
+]
 
 const data2 = [
   {
@@ -76,7 +96,7 @@ const data2 = [
     allowed: 100,
     unit: "%",
   },
-];
+]
 
 const data3 = [
   {
@@ -97,24 +117,23 @@ const data3 = [
     value: "$31.9",
     color: "bg-gray-400 dark:bg-gray-600",
   },
-];
+]
 
-const overviewsDates = overviews.map((item) => toDate(item.date).getTime());
-const maxDate = toDate(Math.max(...overviewsDates));
-const minDate = toDate(Math.min(...overviewsDates));
+const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
+const maxDate = toDate(Math.max(...overviewsDates))
 export default function Example() {
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
   >({
-    from: subDays(maxDate, 10),
+    from: subDays(maxDate, 30),
     to: maxDate,
-  });
+  })
   const [selectedPeriod, setSelectedPeriod] =
-    React.useState<PeriodValue>("last-year");
+    React.useState<PeriodValue>("last-year")
 
   const [selectedCategories, setSelectedCategories] = React.useState<string[]>(
     categories.map((category) => category.title),
-  );
+  )
 
   return (
     <>
@@ -122,7 +141,7 @@ export default function Example() {
         Current billing cycle
       </h1>
 
-      <div className="mt-4 sm:mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-14">
+      <div className="mt-4 grid grid-cols-1 gap-14 sm:mt-6 sm:grid-cols-2 lg:mt-10 xl:grid-cols-3">
         <ProgressBarCard
           title="Usage"
           change="+0.2%"
@@ -160,11 +179,10 @@ export default function Example() {
         Overview
       </h1>
 
-      <div className="sticky lg:px-0 lg:mx-0 top-16 lg:top-[68px] z-20 bg-white/90 dark:bg-gray-950/90 backdrop-blur-nav border-b border-gray-200 dark:border-gray-800 flex items-center justify-between py-4 lg:pt-2 pb-4">
-        {/* @CHRIS: bring "Edit"-button in filterbar */}
+      <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 pt-2 lg:top-0 lg:mx-0 lg:px-0 lg:pt-7 dark:border-gray-800 dark:bg-gray-950">
         <Filterbar
           maxDate={maxDate}
-          minDate={minDate}
+          minDate={new Date(2024, 0, 1)}
           selectedDates={selectedDates}
           onDatesChange={(dates) => setSelectedDates(dates)}
           selectedPeriod={selectedPeriod}
@@ -177,7 +195,7 @@ export default function Example() {
 
       <dl
         className={cx(
-          "mt-8 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 transition",
+          "mt-8 grid grid-cols-1 gap-14 transition sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
         )}
       >
         {categories
@@ -192,9 +210,9 @@ export default function Example() {
                 selectedDates={selectedDates}
                 selectedPeriod={selectedPeriod}
               />
-            );
+            )
           })}
       </dl>
     </>
-  );
+  )
 }

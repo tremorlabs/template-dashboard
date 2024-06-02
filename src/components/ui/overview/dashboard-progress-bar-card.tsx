@@ -1,24 +1,24 @@
-import { Badge } from "@/components/Badge";
-import { ProgressBar } from "@/components/ProgressBar";
+import { Badge } from "@/components/Badge"
+import { ProgressBar } from "@/components/ProgressBar"
 
 export type Data = {
-  title: string;
-  current: number;
-  allowed: number;
-  unit: string;
-  percentage: number;
-};
+  title: string
+  current: number
+  allowed: number
+  unit: string
+  percentage: number
+}
 
 export type CardProps = {
-  title: string;
-  change: string;
-  value: string;
-  valueDescription: string;
-  ctaDescription: string;
-  ctaText: string;
-  ctaLink: string;
-  data: Data[];
-};
+  title: string
+  change: string
+  value: string
+  valueDescription: string
+  ctaDescription: string
+  ctaText: string
+  ctaLink: string
+  data: Data[]
+}
 
 export function ProgressBarCard({
   title,
@@ -48,7 +48,7 @@ export function ProgressBarCard({
         <ul role="list" className="mt-4 space-y-5">
           {data.map((item) => (
             <li key={item.title}>
-              <p className="text-sm flex justify-between">
+              <p className="flex justify-between text-sm">
                 <span className="font-medium text-gray-900 dark:text-gray-50">
                   {item.title}
                 </span>
@@ -75,5 +75,5 @@ export function ProgressBarCard({
         </p>
       </div>
     </>
-  );
+  )
 }

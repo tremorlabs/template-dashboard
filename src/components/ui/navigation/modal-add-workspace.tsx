@@ -1,4 +1,5 @@
-import { Button } from "@/components/Button";
+import { Badge } from "@/components/Badge"
+import { Button } from "@/components/Button"
 import {
   Dialog,
   DialogClose,
@@ -8,23 +9,22 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/Dialog";
+} from "@/components/Dialog"
+import { DropdownMenuItem } from "@/components/Dropdown"
+import { Input } from "@/components/Input"
+import { Label } from "@/components/Label"
+import {
+  RadioCardGroup,
+  RadioCardGroupIndicator,
+  RadioCardItem,
+} from "@/components/RadioCard"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/Select";
-import { Label } from "@/components/Label";
-import { Input } from "@/components/Input";
-import {
-  RadioCardGroup,
-  RadioCardItem,
-  RadioCardGroupIndicator,
-} from "@/components/RadioCard";
-import { Badge } from "@/components/Badge";
-import { DropdownMenuItem } from "@/components/Dropdown";
+} from "@/components/Select"
 
 const databases = [
   {
@@ -45,13 +45,13 @@ const databases = [
     description: "1/2 vCPU, 4 GB RAM",
     isRecommended: false,
   },
-];
+]
 
 export type ModalProps = {
-  itemName: string;
-  onSelect: () => void;
-  onOpenChange: (open: boolean) => void;
-};
+  itemName: string
+  onSelect: () => void
+  onOpenChange: (open: boolean) => void
+}
 
 export function ModalAddWorkspace({
   itemName,
@@ -64,8 +64,8 @@ export function ModalAddWorkspace({
         <DialogTrigger className="w-full text-left">
           <DropdownMenuItem
             onSelect={(event) => {
-              event.preventDefault();
-              onSelect && onSelect();
+              event.preventDefault()
+              onSelect && onSelect()
             }}
           >
             {itemName}
@@ -148,7 +148,7 @@ export function ModalAddWorkspace({
                 {/* @CHRIS: standardize defaultValue this way globally */}
                 <RadioCardGroup
                   defaultValue={databases[0].value}
-                  className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm"
+                  className="mt-2 grid grid-cols-1 gap-4 text-sm md:grid-cols-2"
                 >
                   {databases.map((database) => (
                     <RadioCardItem key={database.value} value={database.value}>
@@ -194,5 +194,5 @@ export function ModalAddWorkspace({
         </DialogContent>
       </Dialog>
     </>
-  );
+  )
 }

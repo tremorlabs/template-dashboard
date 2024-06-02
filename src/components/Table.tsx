@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from "react"
 
 // Tremor Raw Table [v0.0.1]
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
 const TableRoot = React.forwardRef<
   HTMLDivElement,
@@ -21,9 +21,9 @@ const TableRoot = React.forwardRef<
       {children}
     </div>
   </div>
-));
+))
 
-TableRoot.displayName = "TableRoot";
+TableRoot.displayName = "TableRoot"
 
 const Table = React.forwardRef<
   HTMLTableElement,
@@ -40,18 +40,18 @@ const Table = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-Table.displayName = "Table";
+Table.displayName = "Table"
 
 const TableHead = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, forwardedRef) => (
   <thead ref={forwardedRef} className={cx(className)} {...props} />
-));
+))
 
-TableHead.displayName = "TableHead";
+TableHead.displayName = "TableHead"
 
 const TableHeaderCell = React.forwardRef<
   HTMLTableCellElement,
@@ -63,16 +63,16 @@ const TableHeaderCell = React.forwardRef<
       // base
       "border-b px-4 py-3.5 text-left text-sm font-semibold",
       // text color
-      " text-gray-900 dark:text-gray-50",
+      "text-gray-900 dark:text-gray-50",
       // border color
       "border-gray-200 dark:border-gray-800",
       className,
     )}
     {...props}
   />
-));
+))
 
-TableHeaderCell.displayName = "TableHeaderCell";
+TableHeaderCell.displayName = "TableHeaderCell"
 
 const TableBody = React.forwardRef<
   HTMLTableSectionElement,
@@ -89,9 +89,9 @@ const TableBody = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-TableBody.displayName = "TableBody";
+TableBody.displayName = "TableBody"
 
 const TableRow = React.forwardRef<
   HTMLTableRowElement,
@@ -106,9 +106,9 @@ const TableRow = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-TableRow.displayName = "TableRow";
+TableRow.displayName = "TableRow"
 
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
@@ -125,9 +125,9 @@ const TableCell = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-TableCell.displayName = "TableCell";
+TableCell.displayName = "TableCell"
 
 const TableFoot = React.forwardRef<
   HTMLTableSectionElement,
@@ -140,17 +140,17 @@ const TableFoot = React.forwardRef<
         // base
         "border-t text-left font-medium",
         // text color
-        " text-gray-900 dark:text-gray-50",
+        "text-gray-900 dark:text-gray-50",
         // border color
         "border-gray-200 dark:border-gray-800",
         className,
       )}
       {...props}
     />
-  );
-});
+  )
+})
 
-TableFoot.displayName = "TableFoot";
+TableFoot.displayName = "TableFoot"
 
 const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
@@ -167,9 +167,9 @@ const TableCaption = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-TableCaption.displayName = "TableCaption";
+TableCaption.displayName = "TableCaption"
 
 export {
   Table,
@@ -181,4 +181,4 @@ export {
   TableHeaderCell,
   TableRoot,
   TableRow,
-};
+}

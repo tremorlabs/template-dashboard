@@ -1,15 +1,15 @@
 // Tremor Raw Calendar [v0.0.1]
 
-"use client";
+"use client"
 
-import * as React from "react";
 import {
   RiArrowLeftDoubleLine,
   RiArrowLeftSLine,
   RiArrowRightDoubleLine,
   RiArrowRightSLine,
-} from "@remixicon/react";
-import { addYears, format, isSameMonth } from "date-fns";
+} from "@remixicon/react"
+import { addYears, format, isSameMonth } from "date-fns"
+import * as React from "react"
 import {
   DayPicker,
   useDayPicker,
@@ -19,15 +19,15 @@ import {
   type DayPickerSingleProps,
   type DayProps,
   type Matcher,
-} from "react-day-picker";
+} from "react-day-picker"
 
-import { cx, focusRing } from "@/lib/utils";
+import { cx, focusRing } from "@/lib/utils"
 
 interface NavigationButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
-  icon: React.ElementType;
-  disabled?: boolean;
+  onClick: () => void
+  icon: React.ElementType
+  disabled?: boolean
 }
 
 const NavigationButton = React.forwardRef<
@@ -38,7 +38,7 @@ const NavigationButton = React.forwardRef<
     { onClick, icon, disabled, ...props }: NavigationButtonProps,
     forwardedRef,
   ) => {
-    const Icon = icon;
+    const Icon = icon
     return (
       <button
         ref={forwardedRef}
@@ -65,31 +65,31 @@ const NavigationButton = React.forwardRef<
       >
         <Icon className="size-full shrink-0" />
       </button>
-    );
+    )
   },
-);
+)
 
-NavigationButton.displayName = "NavigationButton";
+NavigationButton.displayName = "NavigationButton"
 
 type OmitKeys<T, K extends keyof T> = {
-  [P in keyof T as P extends K ? never : P]: T[P];
-};
+  [P in keyof T as P extends K ? never : P]: T[P]
+}
 
-type KeysToOmit = "showWeekNumber" | "captionLayout" | "mode";
+type KeysToOmit = "showWeekNumber" | "captionLayout" | "mode"
 
-type SingleProps = OmitKeys<DayPickerSingleProps, KeysToOmit>;
-type RangeProps = OmitKeys<DayPickerRangeProps, KeysToOmit>;
+type SingleProps = OmitKeys<DayPickerSingleProps, KeysToOmit>
+type RangeProps = OmitKeys<DayPickerRangeProps, KeysToOmit>
 
 type CalendarProps =
   | ({
-      mode: "single";
+      mode: "single"
     } & SingleProps)
   | ({
-      mode?: undefined;
+      mode?: undefined
     } & SingleProps)
   | ({
-      mode: "range";
-    } & RangeProps);
+      mode: "range"
+    } & RangeProps)
 
 const Calendar = ({
   mode = "single",
@@ -123,7 +123,7 @@ const Calendar = ({
           "text-gray-900 dark:text-gray-50",
         ),
         day: cx(
-          "size-9 rounded text-sm text-gray-900 dark:text-gray-50 focus:z-10",
+          "size-9 rounded text-sm text-gray-900 focus:z-10 dark:text-gray-50",
           "hover:bg-gray-200 hover:dark:bg-gray-700",
           focusRing,
         ),
@@ -160,37 +160,37 @@ const Calendar = ({
             previousMonth,
             currentMonth,
             displayMonths,
-          } = useNavigation();
-          const { numberOfMonths, fromDate, toDate } = useDayPicker();
+          } = useNavigation()
+          const { numberOfMonths, fromDate, toDate } = useDayPicker()
 
           const displayIndex = displayMonths.findIndex((month) =>
             isSameMonth(props.displayMonth, month),
-          );
-          const isFirst = displayIndex === 0;
-          const isLast = displayIndex === displayMonths.length - 1;
+          )
+          const isFirst = displayIndex === 0
+          const isLast = displayIndex === displayMonths.length - 1
 
-          const hideNextButton = numberOfMonths > 1 && (isFirst || !isLast);
-          const hidePreviousButton = numberOfMonths > 1 && (isLast || !isFirst);
+          const hideNextButton = numberOfMonths > 1 && (isFirst || !isLast)
+          const hidePreviousButton = numberOfMonths > 1 && (isLast || !isFirst)
 
           const goToPreviousYear = () => {
-            const targetMonth = addYears(currentMonth, -1);
+            const targetMonth = addYears(currentMonth, -1)
             if (
               previousMonth &&
               (!fromDate || targetMonth.getTime() >= fromDate.getTime())
             ) {
-              goToMonth(targetMonth);
+              goToMonth(targetMonth)
             }
-          };
+          }
 
           const goToNextYear = () => {
-            const targetMonth = addYears(currentMonth, 1);
+            const targetMonth = addYears(currentMonth, 1)
             if (
               nextMonth &&
               (!toDate || targetMonth.getTime() <= toDate.getTime())
             ) {
-              goToMonth(targetMonth);
+              goToMonth(targetMonth)
             }
-          };
+          }
 
           return (
             <div className="flex items-center justify-between">
@@ -251,17 +251,17 @@ const Calendar = ({
                 )}
               </div>
             </div>
-          );
+          )
         },
         Day: ({ date, displayMonth }: DayProps) => {
-          const buttonRef = React.useRef<HTMLButtonElement>(null);
+          const buttonRef = React.useRef<HTMLButtonElement>(null)
           const { activeModifiers, buttonProps, divProps, isButton, isHidden } =
-            useDayRender(date, displayMonth, buttonRef);
+            useDayRender(date, displayMonth, buttonRef)
 
-          const { selected, today, disabled, range_middle } = activeModifiers;
+          const { selected, today, disabled, range_middle } = activeModifiers
 
           if (isHidden) {
-            return <></>;
+            return <></>
           }
 
           if (!isButton) {
@@ -273,14 +273,14 @@ const Calendar = ({
                   divProps.className,
                 )}
               />
-            );
+            )
           }
 
           const {
             children: buttonChildren,
             className: buttonClassName,
             ...buttonPropsRest
-          } = buttonProps;
+          } = buttonProps
 
           return (
             <button
@@ -306,14 +306,14 @@ const Calendar = ({
                 />
               )}
             </button>
-          );
+          )
         },
       }}
       {...(props as SingleProps & RangeProps)}
     />
-  );
-};
+  )
+}
 
-Calendar.displayName = "Calendar";
+Calendar.displayName = "Calendar"
 
-export { Calendar, type Matcher };
+export { Calendar, type Matcher }

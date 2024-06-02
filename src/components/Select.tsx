@@ -1,30 +1,26 @@
 // Tremor Raw Select [v0.0.0]
 
-import React from "react";
-import * as SelectPrimitives from "@radix-ui/react-select";
-import {
-  RiArrowDownSLine,
-  RiArrowUpSLine,
-  RiCheckLine,
-} from "@remixicon/react";
-import { format } from "date-fns";
+import * as SelectPrimitives from "@radix-ui/react-select"
+import { RiArrowDownSLine, RiArrowUpSLine, RiCheckLine } from "@remixicon/react"
+import { format } from "date-fns"
+import React from "react"
 
-import { cx, focusInput, hasErrorInput } from "@/lib/utils";
-import { DateRange } from "react-day-picker";
+import { cx, focusInput, hasErrorInput } from "@/lib/utils"
+import { DateRange } from "react-day-picker"
 
-const Select = SelectPrimitives.Root;
-Select.displayName = "Select";
+const Select = SelectPrimitives.Root
+Select.displayName = "Select"
 
-const SelectGroup = SelectPrimitives.Group;
-SelectGroup.displayName = "SelectGroup";
+const SelectGroup = SelectPrimitives.Group
+SelectGroup.displayName = "SelectGroup"
 
-const SelectValue = SelectPrimitives.Value;
-SelectValue.displayName = "SelectValue";
+const SelectValue = SelectPrimitives.Value
+SelectValue.displayName = "SelectValue"
 
 const selectTriggerStyles = [
   cx(
     // base
-    "group/trigger flex w-full select-none items-center gap-x-2 justify-between truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition sm:text-sm",
+    "group/trigger flex w-full select-none items-center justify-between gap-x-2 truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition sm:text-sm",
     // border color
     "border-gray-300 dark:border-gray-800",
     // text color
@@ -42,12 +38,12 @@ const selectTriggerStyles = [
     // invalid (optional)
     // "aria-[invalid=true]:dark:ring-red-400/20 aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-red-200 aria-[invalid=true]:border-red-500 invalid:ring-2 invalid:ring-red-200 invalid:border-red-500"
   ),
-];
+]
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitives.Trigger> & {
-    hasError?: boolean;
+    hasError?: boolean
   }
 >(({ className, hasError, children, ...props }, forwardedRef) => {
   return (
@@ -74,10 +70,10 @@ const SelectTrigger = React.forwardRef<
         />
       </SelectPrimitives.Icon>
     </SelectPrimitives.Trigger>
-  );
-});
+  )
+})
 
-SelectTrigger.displayName = "SelectTrigger";
+SelectTrigger.displayName = "SelectTrigger"
 
 const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.ScrollUpButton>,
@@ -93,8 +89,8 @@ const SelectScrollUpButton = React.forwardRef<
   >
     <RiArrowUpSLine className="size-3 shrink-0" aria-hidden="true" />
   </SelectPrimitives.ScrollUpButton>
-));
-SelectScrollUpButton.displayName = SelectPrimitives.ScrollUpButton.displayName;
+))
+SelectScrollUpButton.displayName = SelectPrimitives.ScrollUpButton.displayName
 
 const SelectScrollDownButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.ScrollDownButton>,
@@ -110,9 +106,9 @@ const SelectScrollDownButton = React.forwardRef<
   >
     <RiArrowDownSLine className="size-3 shrink-0" aria-hidden="true" />
   </SelectPrimitives.ScrollDownButton>
-));
+))
 SelectScrollDownButton.displayName =
-  SelectPrimitives.ScrollDownButton.displayName;
+  SelectPrimitives.ScrollDownButton.displayName
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Content>,
@@ -171,9 +167,9 @@ const SelectContent = React.forwardRef<
       </SelectPrimitives.Content>
     </SelectPrimitives.Portal>
   ),
-);
+)
 
-SelectContent.displayName = "SelectContent";
+SelectContent.displayName = "SelectContent"
 
 const SelectGroupLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Label>,
@@ -185,14 +181,14 @@ const SelectGroupLabel = React.forwardRef<
       // base
       "px-3 py-2 text-xs font-medium tracking-wide",
       // text color
-      " text-gray-500 dark:text-gray-500",
+      "text-gray-500 dark:text-gray-500",
       className,
     )}
     {...props}
   />
-));
+))
 
-SelectGroupLabel.displayName = "SelectGroupLabel";
+SelectGroupLabel.displayName = "SelectGroupLabel"
 
 // @Sev: Check new prop "iconPostion"
 
@@ -228,15 +224,15 @@ const SelectItem = React.forwardRef<
         />
       </SelectPrimitives.ItemIndicator>
     </SelectPrimitives.Item>
-  );
-});
+  )
+})
 
-SelectItem.displayName = "SelectItem";
+SelectItem.displayName = "SelectItem"
 
 const SelectItemPeriod = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitives.Item> & {
-    period?: DateRange | undefined;
+    period?: DateRange | undefined
   }
 >(({ className, children, period, ...props }, forwardedRef) => {
   return (
@@ -244,7 +240,7 @@ const SelectItemPeriod = React.forwardRef<
       ref={forwardedRef}
       className={cx(
         // base
-        "relative flex items-center rounded pr-3 py-2 pl-8 cursor-pointer outline-none transition-colors data-[state=checked]:font-semibold sm:text-sm",
+        "relative flex cursor-pointer items-center rounded py-2 pl-8 pr-3 outline-none transition-colors data-[state=checked]:font-semibold sm:text-sm",
         // text color
         "text-gray-900 dark:text-gray-50",
         // disabled
@@ -265,14 +261,14 @@ const SelectItemPeriod = React.forwardRef<
           />
         </SelectPrimitives.ItemIndicator>
       </span>
-      <div className="flex items-center w-full">
+      <div className="flex w-full items-center">
         {/* adapt width accordingly if you use longer names for periods */}
         <span className="w-40 sm:w-32">
           <SelectPrimitives.ItemText>{children}</SelectPrimitives.ItemText>
         </span>
         <span>
           {period?.from && period?.to && (
-            <span className="text-gray-400 font-normal whitespace-nowrap">
+            <span className="whitespace-nowrap font-normal text-gray-400">
               {format(period.from, "MMM d, yyyy")} –{" "}
               {format(period.to, "MMM d, yyyy")}
             </span>
@@ -280,10 +276,10 @@ const SelectItemPeriod = React.forwardRef<
         </span>
       </div>
     </SelectPrimitives.Item>
-  );
-});
+  )
+})
 
-SelectItemPeriod.displayName = "SelectItemPeriod";
+SelectItemPeriod.displayName = "SelectItemPeriod"
 
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Separator>,
@@ -300,9 +296,9 @@ const SelectSeparator = React.forwardRef<
     )}
     {...props}
   />
-));
+))
 
-SelectSeparator.displayName = "SelectSeparator";
+SelectSeparator.displayName = "SelectSeparator"
 
 export {
   Select,
@@ -314,4 +310,4 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-};
+}

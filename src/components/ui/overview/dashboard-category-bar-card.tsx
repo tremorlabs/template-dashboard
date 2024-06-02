@@ -1,24 +1,24 @@
-import { cx } from "@/lib/utils";
-import { Badge } from "@/components/Badge";
+import { Badge } from "@/components/Badge"
+import { cx } from "@/lib/utils"
 
 export type Data = {
-  title: string;
-  value: string;
-  percentage: number;
-  color: string;
-};
+  title: string
+  value: string
+  percentage: number
+  color: string
+}
 
 export type CardProps = {
-  title: string;
-  change: string;
-  value: string;
-  valueDescription: string;
-  subtitle: string;
-  ctaDescription: string;
-  ctaText: string;
-  ctaLink: string;
-  data: Data[];
-};
+  title: string
+  change: string
+  value: string
+  valueDescription: string
+  subtitle: string
+  ctaDescription: string
+  ctaText: string
+  ctaLink: string
+  data: Data[]
+}
 
 export function CategoryBarCard({
   title,
@@ -55,7 +55,7 @@ export function CategoryBarCard({
               {data.map((item) => (
                 <div
                   key={item.title}
-                  className={cx(item.color, `rounded-full h-1.5`)}
+                  className={cx(item.color, `h-1.5 rounded-full`)}
                   style={{ width: `${item.percentage}%` }}
                 />
               ))}
@@ -63,7 +63,7 @@ export function CategoryBarCard({
           </div>
           <ul role="list" className="mt-5 space-y-2">
             {data.map((item) => (
-              <li key={item.title} className="text-xs flex items-center gap-2">
+              <li key={item.title} className="flex items-center gap-2 text-xs">
                 <span
                   className={cx(item.color, "size-2.5 rounded-sm")}
                   aria-hidden="true"
@@ -86,5 +86,5 @@ export function CategoryBarCard({
         </p>
       </div>
     </>
-  );
+  )
 }

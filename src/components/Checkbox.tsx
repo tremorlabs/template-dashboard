@@ -1,10 +1,10 @@
 // Tremor Raw Checkbox [v0.0.0]
-"use client";
+"use client"
 
-import React from "react";
-import * as CheckboxPrimitives from "@radix-ui/react-checkbox";
+import * as CheckboxPrimitives from "@radix-ui/react-checkbox"
+import React from "react"
 
-import { cx, focusRing } from "@/lib/utils";
+import { cx, focusRing } from "@/lib/utils"
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitives.Root>,
@@ -76,8 +76,8 @@ const Checkbox = React.forwardRef<
         )}
       </CheckboxPrimitives.Indicator>
     </CheckboxPrimitives.Root>
-  );
-});
-Checkbox.displayName = "Checkbox";
+  )
+})
+Checkbox.displayName = "Checkbox"
 
-export { Checkbox };
+export { Checkbox }

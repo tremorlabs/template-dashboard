@@ -1,12 +1,12 @@
-import { Column } from "@tanstack/react-table";
-import { RiArrowUpSLine, RiArrowDownSLine } from "@remixicon/react";
+import { RiArrowDownSLine, RiArrowUpSLine } from "@remixicon/react"
+import { Column } from "@tanstack/react-table"
 
-import { cx } from "@/lib/utils";
+import { cx } from "@/lib/utils"
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
-  column: Column<TData, TValue>;
-  title: string;
+  column: Column<TData, TValue>
+  title: string
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -15,7 +15,7 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort()) {
-    return <div className={cx(className)}>{title}</div>;
+    return <div className={cx(className)}>{title}</div>
   }
 
   return (
@@ -23,7 +23,7 @@ export function DataTableColumnHeader<TData, TValue>({
       onClick={column.getToggleSortingHandler()}
       className={cx(
         column.columnDef.enableSorting === true
-          ? "cursor-pointer select-none inline-flex items-center -mx-2 px-2 py-1 gap-2 rounded-md hover:bg-gray-50 hover:dark:bg-gray-900"
+          ? "-mx-2 inline-flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-gray-900"
           : "",
       )}
     >
@@ -32,14 +32,14 @@ export function DataTableColumnHeader<TData, TValue>({
         <div className="-space-y-2">
           <RiArrowUpSLine
             className={cx(
-              "size-4 text-gray-900 dark:text-gray-50",
+              "size-3.5 text-gray-900 dark:text-gray-50",
               column.getIsSorted() === "desc" ? "opacity-30" : "",
             )}
             aria-hidden="true"
           />
           <RiArrowDownSLine
             className={cx(
-              "size-4 text-gray-900 dark:text-gray-50",
+              "size-3.5 text-gray-900 dark:text-gray-50",
               column.getIsSorted() === "asc" ? "opacity-30" : "",
             )}
             aria-hidden="true"
@@ -47,5 +47,5 @@ export function DataTableColumnHeader<TData, TValue>({
         </div>
       ) : null}
     </div>
-  );
+  )
 }
