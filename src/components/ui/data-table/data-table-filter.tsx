@@ -342,7 +342,13 @@ export function DataTableFilter<TData, TValue>({
                 type="button"
                 onClick={() => {
                   column?.setFilterValue("")
-                  setSelectedValues("")
+                  setSelectedValues(
+                    type === "checkbox"
+                      ? ""
+                      : type === "number"
+                        ? { condition: "", value: ["", ""] }
+                        : "",
+                  )
                 }}
               >
                 Reset
