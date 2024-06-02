@@ -114,11 +114,11 @@ export const columns = [
 
         const getBarClass = (index: number) => {
           if (category === "good") {
-            return "bg-indigo-500"
+            return "bg-indigo-600 dark:bg-indigo-500"
           } else if (category === "ok" && index < 2) {
-            return "bg-indigo-500"
+            return "bg-indigo-600 dark:bg-indigo-500"
           } else if (category === "bad" && index < 1) {
-            return "bg-indigo-500"
+            return "bg-indigo-600 dark:bg-indigo-500"
           }
           return "bg-gray-300 dark:bg-gray-800"
         }

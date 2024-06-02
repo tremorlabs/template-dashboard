@@ -6,7 +6,7 @@ import * as React from "react"
 import { cx, focusRing } from "@/lib/utils"
 
 const shortcutStyles = cx(
-  "flex h-6 select-none items-center justify-center rounded-md bg-gray-800 px-2 text-sm text-gray-400 ring-1 ring-inset ring-gray-700",
+  "hidden sm:flex font-mono h-6 select-none items-center justify-center rounded-md bg-gray-800 px-2 text-sm text-gray-400 ring-1 ring-inset ring-gray-700 transition",
 )
 
 interface CommandBarProps extends React.PropsWithChildren {
@@ -153,11 +153,9 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
         ref={ref}
         className={cx(
           focusRing,
-          "flex items-center gap-x-2 rounded-lg bg-gray-900 px-3 py-2.5 text-base text-gray-50 outline-none transition focus:z-10",
-          "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
-          "hover:bg-gray-800",
+          "flex items-center gap-x-2 rounded-lg bg-gray-900 p-1 text-base text-gray-50 outline-none transition focus:z-10",
           "disabled:text-gray-500",
-          "last-of-type:-mr-1",
+          "sm:last-of-type:-mr-1",
           className,
         )}
         type={type}
@@ -165,11 +163,18 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
         disabled={disabled}
         {...props}
       >
-        <span>{label}</span>
-        <span className={shortcutStyles}>
-          {shortcut.label
-            ? shortcut.label.toUpperCase()
-            : shortcut.shortcut.toUpperCase()}
+        <span className={cx(
+          // base
+          "rounded-md px-1 py-1 hover:bg-gray-800 flex items-center gap-x-2",
+          // foucs
+          "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
+        )}>
+          <span>{label}</span>
+          <span className={shortcutStyles}>
+            {shortcut.label
+              ? shortcut.label.toUpperCase()
+              : shortcut.shortcut.toUpperCase()}
+          </span>
         </span>
       </button>
     )
@@ -182,5 +187,6 @@ export {
   CommandBarBar,
   CommandBarCommand,
   CommandBarSeperator,
-  CommandBarValue,
+  CommandBarValue
 }
+
