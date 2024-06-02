@@ -11,7 +11,6 @@ import { ConditionFilter } from "./data-table-filter"
 import { DataTableRowActions } from "./data-table-row-actions"
 
 const columnHelper = createColumnHelper<Transaction>()
-
 export const columns = [
   columnHelper.display({
     id: "select",
@@ -105,9 +104,9 @@ export const columns = [
 
       function Indicator({ number }: { number: number }) {
         let category
-        if (number < 10) {
+        if (number < 9) {
           category = "bad"
-        } else if (number >= 10 && number <= 15) {
+        } else if (number >= 9 && number <= 15) {
           category = "ok"
         } else {
           category = "good"
