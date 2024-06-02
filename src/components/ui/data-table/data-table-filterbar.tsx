@@ -31,7 +31,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
 
   return (
     <div className="flex flex-wrap items-center justify-between sm:gap-x-6">
-      <div className="flex flex-1 flex-wrap items-center gap-2">
+      <div className="flex w-fit flex-col gap-2 sm:flex-row sm:items-center">
         {table.getColumn("status")?.getIsVisible() && (
           <DataTableFilter
             column={table.getColumn("status")}
