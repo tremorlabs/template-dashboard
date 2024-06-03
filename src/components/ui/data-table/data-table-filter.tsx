@@ -3,7 +3,7 @@
 import {
   RiAddLine,
   RiArrowDownSLine,
-  RiCornerDownRightLine,
+  RiCornerDownRightLine
 } from "@remixicon/react"
 import { Column } from "@tanstack/react-table"
 
@@ -215,7 +215,7 @@ export function DataTableFilter<TData, TValue>({
               </SelectContent>
             </Select>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full">
               <RiCornerDownRightLine
                 className="size-4 shrink-0 text-gray-500"
                 aria-hidden="true"
@@ -246,6 +246,7 @@ export function DataTableFilter<TData, TValue>({
                       disabled={!(selectedValues as ConditionFilter)?.condition}
                       type="number"
                       placeholder="$0"
+                      // @CHRIS: stopped
                       className="sm:[&>input]:py-1"
                       value={(selectedValues as ConditionFilter)?.value?.[1]}
                       onChange={(e) => {
@@ -334,7 +335,7 @@ export function DataTableFilter<TData, TValue>({
       <PopoverContent
         align="start"
         sideOffset={7}
-        className="max-w-52"
+        className="min-w-[calc(var(--radix-popover-trigger-width))] max-w-[calc(var(--radix-popover-trigger-width))] sm:min-w-52"
         onInteractOutside={() => {
           if (
             !columnFilters ||
