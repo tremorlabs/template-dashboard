@@ -149,34 +149,36 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
         }, [action, shortcut, disabled])
 
         return (
-            <button
-                ref={ref}
+            <span
                 className={cx(
-                    focusRing,
                     "flex items-center gap-x-2 rounded-lg bg-gray-900 p-1 text-base sm:text-sm font-medium text-gray-50 outline-none transition focus:z-10",
                     "disabled:text-gray-500",
                     "sm:last-of-type:-mr-1",
                     className,
                 )}
-                type={type}
-                onClick={action}
-                disabled={disabled}
+                // @SEV: where to place props?
                 {...props}
             >
-                <span className={cx(
-                    // base
-                    "rounded-md px-1 py-1 hover:bg-gray-800 flex items-center gap-x-2",
-                    // foucs
-                    "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
-                )}>
+                <button
+                    ref={ref}
+                    type={type}
+                    onClick={action}
+                    disabled={disabled}
+                    className={cx(
+                        // base
+                        "rounded-md px-1 py-1 hover:bg-gray-800 flex items-center gap-x-2",
+                        // foucs
+                        "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
+                        focusRing,
+                    )}>
                     <span>{label}</span>
                     <span className={shortcutStyles}>
                         {shortcut.label
                             ? shortcut.label.toUpperCase()
                             : shortcut.shortcut.toUpperCase()}
                     </span>
-                </span>
-            </button>
+                </button>
+            </span>
         )
     },
 )
