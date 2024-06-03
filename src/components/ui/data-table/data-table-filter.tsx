@@ -3,7 +3,7 @@
 import {
   RiAddLine,
   RiArrowDownSLine,
-  RiCornerDownRightLine
+  RiCornerDownRightLine,
 } from "@remixicon/react"
 import { Column } from "@tanstack/react-table"
 
@@ -42,30 +42,25 @@ interface DataTableFilterProps<TData, TValue> {
     value: string
   }[]
   type?: FilterType
-  formatter?: (value: any) => string,
+  formatter?: (value: any) => string
 }
 
 const ColumnFiltersLabel = ({
   columnFilterLabels,
-  className
+  className,
 }: {
   columnFilterLabels: string[] | undefined
-  className?: string;
+  className?: string
 }) => {
   if (!columnFilterLabels) return null
 
   if (columnFilterLabels.length < 3) {
     return (
-      <span className={cx(
-        "truncate",
-        className
-      )}>
+      <span className={cx("truncate", className)}>
         {columnFilterLabels.map((value, index) => (
           <span
             key={value}
-            className={cx(
-              "font-semibold text-indigo-600 dark:text-indigo-400",
-            )}
+            className={cx("font-semibold text-indigo-600 dark:text-indigo-400")}
           >
             {value}
             {index < columnFilterLabels.length - 1 && ", "}
@@ -77,10 +72,12 @@ const ColumnFiltersLabel = ({
 
   return (
     <>
-      <span className={cx(
-        "font-semibold text-indigo-600 dark:text-indigo-400",
-        className
-      )}>
+      <span
+        className={cx(
+          "font-semibold text-indigo-600 dark:text-indigo-400",
+          className,
+        )}
+      >
         {columnFilterLabels[0]} and {columnFilterLabels.length - 1} more
       </span>
     </>
@@ -178,7 +175,12 @@ export function DataTableFilter<TData, TValue>({
                       })
                     }}
                   />
-                  <Label htmlFor={option.value} className="text-base sm:text-sm">{option.label}</Label>
+                  <Label
+                    htmlFor={option.value}
+                    className="text-base sm:text-sm"
+                  >
+                    {option.label}
+                  </Label>
                 </div>
               )
             })}
@@ -215,7 +217,7 @@ export function DataTableFilter<TData, TValue>({
               </SelectContent>
             </Select>
 
-            <div className="flex items-center gap-2 w-full">
+            <div className="flex w-full items-center gap-2">
               <RiCornerDownRightLine
                 className="size-4 shrink-0 text-gray-500"
                 aria-hidden="true"
@@ -240,29 +242,29 @@ export function DataTableFilter<TData, TValue>({
               />
               {(selectedValues as ConditionFilter)?.condition ===
                 "is-between" && (
-                  <>
-                    <span className="text-xs font-medium text-gray-500">and</span>
-                    <Input
-                      disabled={!(selectedValues as ConditionFilter)?.condition}
-                      type="number"
-                      placeholder="$0"
-                      // @CHRIS: stopped
-                      className="sm:[&>input]:py-1"
-                      value={(selectedValues as ConditionFilter)?.value?.[1]}
-                      onChange={(e) => {
-                        setSelectedValues((prev) => {
-                          return {
-                            condition: (prev as ConditionFilter)?.condition,
-                            value: [
-                              (prev as ConditionFilter)?.value?.[0],
-                              e.target.value,
-                            ],
-                          }
-                        })
-                      }}
-                    />
-                  </>
-                )}
+                <>
+                  <span className="text-xs font-medium text-gray-500">and</span>
+                  <Input
+                    disabled={!(selectedValues as ConditionFilter)?.condition}
+                    type="number"
+                    placeholder="$0"
+                    // @CHRIS: stopped
+                    className="sm:[&>input]:py-1"
+                    value={(selectedValues as ConditionFilter)?.value?.[1]}
+                    onChange={(e) => {
+                      setSelectedValues((prev) => {
+                        return {
+                          condition: (prev as ConditionFilter)?.condition,
+                          value: [
+                            (prev as ConditionFilter)?.value?.[0],
+                            e.target.value,
+                          ],
+                        }
+                      })
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         )
@@ -279,7 +281,7 @@ export function DataTableFilter<TData, TValue>({
         <button
           type="button"
           className={cx(
-            "flex w-full sm:w-fit items-center gap-x-1.5 whitespace-nowrap rounded-md border border-gray-300 px-2 py-1.5 font-medium text-gray-600 hover:bg-gray-50 sm:text-xs dark:border-gray-700 dark:text-gray-400 hover:dark:bg-gray-900",
+            "flex w-full items-center gap-x-1.5 whitespace-nowrap rounded-md border border-gray-300 px-2 py-1.5 font-medium text-gray-600 hover:bg-gray-50 sm:w-fit sm:text-xs dark:border-gray-700 dark:text-gray-400 hover:dark:bg-gray-900",
             selectedValues &&
               ((typeof selectedValues === "object" &&
                 "condition" in selectedValues &&
@@ -303,7 +305,7 @@ export function DataTableFilter<TData, TValue>({
           >
             <RiAddLine
               className={cx(
-                "-ml-px size-5 sm:size-4 shrink-0 transition",
+                "-ml-px size-5 shrink-0 transition sm:size-4",
                 selectedValues && "rotate-45 hover:text-red-500",
               )}
               aria-hidden="true"
@@ -311,13 +313,9 @@ export function DataTableFilter<TData, TValue>({
           </span>
           {/* differentiation below for better mobile optimization */}
           {columnFilterLabels && columnFilterLabels.length > 0 ? (
-            <span>
-              {title}
-            </span>
+            <span>{title}</span>
           ) : (
-            <span className="text-left w-full sm:w-fit">
-              {title}
-            </span>
+            <span className="w-full text-left sm:w-fit">{title}</span>
           )}
           {columnFilterLabels && columnFilterLabels.length > 0 && (
             <span
@@ -325,9 +323,12 @@ export function DataTableFilter<TData, TValue>({
               aria-hidden="true"
             />
           )}
-          <ColumnFiltersLabel columnFilterLabels={columnFilterLabels} className="text-left w-full sm:w-fit" />
+          <ColumnFiltersLabel
+            columnFilterLabels={columnFilterLabels}
+            className="w-full text-left sm:w-fit"
+          />
           <RiArrowDownSLine
-            className="size-5 sm:size-4 shrink-0 text-gray-500"
+            className="size-5 shrink-0 text-gray-500 sm:size-4"
             aria-hidden="true"
           />
         </button>
@@ -358,7 +359,9 @@ export function DataTableFilter<TData, TValue>({
         >
           <div className="space-y-2">
             <div>
-              <Label className="text-base sm:text-sm font-medium">Filter by {title}</Label>
+              <Label className="text-base font-medium sm:text-sm">
+                Filter by {title}
+              </Label>
               {getDisplayedFilter()}
             </div>
             <PopoverClose className="w-full" asChild>

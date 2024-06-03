@@ -31,7 +31,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-x-6">
-      <div className="flex w-full sm:w-fit flex-col gap-2 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col gap-2 sm:w-fit sm:flex-row sm:items-center">
         {table.getColumn("status")?.getIsVisible() && (
           <DataTableFilter
             column={table.getColumn("status")}
@@ -70,7 +70,7 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="px-2 sm:py-1 font-semibold text-indigo-600 dark:text-indigo-500 border border-gray-200 dark:border-gray-800 sm:border-none"
+            className="border border-gray-200 px-2 font-semibold text-indigo-600 sm:border-none sm:py-1 dark:border-gray-800 dark:text-indigo-500"
           >
             Clear filters
           </Button>

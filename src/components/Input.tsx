@@ -9,7 +9,7 @@ import { cx, focusInput, focusRing, hasErrorInput } from "@/lib/utils"
 const inputStyles = tv({
   base: [
     // base
-    "relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm truncate",
+    "relative block w-full appearance-none truncate rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm",
     // border color
     "border-gray-300 dark:border-gray-800",
     // text color
@@ -48,7 +48,7 @@ const inputStyles = tv({
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-  VariantProps<typeof inputStyles> {
+    VariantProps<typeof inputStyles> {
   inputClassName?: string
 }
 
