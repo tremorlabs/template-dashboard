@@ -20,7 +20,7 @@ export default function Layout({
   return (
     // @SEV/CHRIS: what HTML semantics here in parent?
     <div className="p-4 sm:px-6 sm:pb-6 sm:pt-7">
-      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-50">
         Settings
       </h1>
       <TabNavigation className="mt-4 sm:mt-6 lg:mt-10">
