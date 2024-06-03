@@ -80,10 +80,6 @@ const invitedUsers = [
   },
 ]
 
-// ----- TODOs (CHRIS) -------:
-
-// - Pending invitations? -> UI
-// - Componentize
 
 export default function Users() {
   return (
@@ -102,7 +98,6 @@ export default function Users() {
             <Button className="mt-4 w-full gap-2 sm:mt-0 sm:w-fit">
               <RiAddLine className="-ml-1 size-4 shrink-0" aria-hidden="true" />
               Add user
-              {/* @CHRIS: aria-hidden="true" consistency */}
             </Button>
           </ModalAddUser>
         </div>
@@ -113,11 +108,11 @@ export default function Users() {
           {users.map((user) => (
             <li
               key={user.name}
-              className="flex items-center justify-between gap-x-4 py-2.5"
+              className="flex items-center justify-between gap-x-6 py-2.5"
             >
-              <div className="flex items-center space-x-4 truncate">
+              <div className="flex items-center gap-x-4">
                 <span
-                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
+                  className="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                   aria-hidden="true"
                 >
                   {user.initials}
@@ -130,7 +125,6 @@ export default function Users() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                {/* @SEV/CHRIS: [Sidenote]: SelectTrigger Icon is not in <SelectNative /> shown */}
                 {user.role === "admin" ? (
                   <Tooltip
                     content="A workspace must have at least one admin"
@@ -220,11 +214,11 @@ export default function Users() {
             {invitedUsers.map((user) => (
               <li
                 key={user.initials}
-                className="flex items-center justify-between gap-x-4 py-2.5"
+                className="flex items-center justify-between gap-x-6 py-2.5"
               >
-                <div className="flex items-center space-x-4 truncate">
+                <div className="flex items-center gap-x-4">
                   <span
-                    className="flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
+                    className="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                     aria-hidden="true"
                   >
                     {user.initials}
