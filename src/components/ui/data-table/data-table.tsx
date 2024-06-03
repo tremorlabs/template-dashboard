@@ -11,6 +11,7 @@ import {
 import { cx } from "@/lib/utils"
 import * as React from "react"
 
+import { DataTableBulkEditor } from "./data-table-bulk-editor"
 import { Filterbar } from "./data-table-filterbar"
 import { DataTablePagination } from "./data-table-pagination"
 
@@ -23,7 +24,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { DataTableBulkEditorNew } from "./command-bar-demo"
 
 interface DataTableProps<TData, TValue> {
   // @CHRIS/MAXIME: take care of type mgmt later
@@ -135,7 +135,7 @@ export function DataTable<TData, TValue>({
               )}
             </TableBody>
           </Table>
-          <DataTableBulkEditorNew table={table} rowSelection={rowSelection} />
+          <DataTableBulkEditor table={table} rowSelection={rowSelection} />
         </div>
         <DataTablePagination table={table} pageSize={pageSize} />
       </div>
