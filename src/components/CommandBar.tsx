@@ -29,13 +29,11 @@ const CommandBar = ({
       onOpenChange={onOpenChange}
       defaultOpen={defaultOpen}
     >
-      {/* <Portal.Root> */}
       <Popover.Anchor
         className={cx(
           "fixed inset-x-0 bottom-8 mx-auto flex w-fit items-center",
         )}
       />
-      {/* </Portal.Root> */}
       <Popover.Portal>
         <Popover.Content
           side="top"
