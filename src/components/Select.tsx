@@ -190,8 +190,6 @@ const SelectGroupLabel = React.forwardRef<
 
 SelectGroupLabel.displayName = "SelectGroupLabel"
 
-// @Sev: Check new prop "iconPostion"
-
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitives.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitives.Item>

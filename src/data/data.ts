@@ -147,8 +147,6 @@ export const invitedUsers = [
   },
 ]
 
-// @SEV/CHRIS: type declaration really necessary here
-
 export const transactions: Transaction[] = [
   {
     owner: "John Doe",

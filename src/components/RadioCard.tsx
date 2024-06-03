@@ -43,7 +43,6 @@ const RadioCardGroupIndicator = React.forwardRef<
         className,
       )}
     >
-      {/* @SEV: "className" prop in parent makes more sense */}
       <RadioGroupPrimitives.Indicator
         ref={forwardedRef}
         className="flex items-center justify-center"

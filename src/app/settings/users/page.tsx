@@ -241,7 +241,6 @@ export default function Users() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  {/* @SEV/CHRIS: [Sidenote]: SelectTrigger Icon is not in <SelectNative /> shown */}
                   <Select defaultValue={user.role}>
                     <SelectTrigger className="h-8 w-32">
                       <SelectValue placeholder="Select" />

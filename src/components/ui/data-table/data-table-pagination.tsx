@@ -49,68 +49,53 @@ export function DataTablePagination<TData>({
     },
   ]
 
-  // Calculate the range for the last page
   const totalRows = table.getFilteredRowModel().rows.length
-  const lastPageStartIndex = Math.floor(totalRows / pageSize) * pageSize + 1
-  const lastPageEndIndex = Math.min(
-    totalRows,
-    lastPageStartIndex + pageSize - 1,
-  )
+  const currentPage = table.getState().pagination.pageIndex
+  const firstRowIndex = currentPage * pageSize + 1
+  const lastRowIndex = Math.min(totalRows, firstRowIndex + pageSize - 1)
 
   return (
-    <>
-      <div className="flex items-center justify-between">
-        <div className="text-sm tabular-nums text-gray-500">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="flex items-center gap-x-6 lg:gap-x-8">
-          <p className="hidden text-sm tabular-nums text-gray-500 sm:block">
-            Showing{" "}
-            <span className="font-medium text-gray-900 dark:text-gray-50">
-              {/* @Sev: simplify? */}
-              {table.getState().pagination.pageIndex ===
-              Math.floor(totalRows / pageSize)
-                ? lastPageStartIndex + "-" + lastPageEndIndex
-                : table.getState().pagination.pageIndex * pageSize +
-                  1 +
-                  "-" +
-                  (table.getState().pagination.pageIndex + 1) * pageSize}
-            </span>{" "}
-            of{" "}
-            <span className="font-medium text-gray-900 dark:text-gray-50">
-              {table.getFilteredRowModel().rows.length}
-            </span>
-          </p>
-          <div className="flex items-center gap-x-1.5">
-            {/* @CHRIS: idx consistency */}
-            {paginationButtons.map((button, idx) => (
-              // @SEV: make tooltip work on disabled button
-              <Tooltip
-                side="top"
-                sideOffset={5}
-                content={button.srText}
-                key={idx}
-                triggerAsChild={true}
+    <div className="flex items-center justify-between">
+      <div className="text-sm tabular-nums text-gray-500">
+        {table.getFilteredSelectedRowModel().rows.length} of {totalRows} row(s)
+        selected.
+      </div>
+      <div className="flex items-center gap-x-6 lg:gap-x-8">
+        <p className="hidden text-sm tabular-nums text-gray-500 sm:block">
+          Showing{" "}
+          <span className="font-medium text-gray-900 dark:text-gray-50">
+            {firstRowIndex}-{lastRowIndex}
+          </span>{" "}
+          of{" "}
+          <span className="font-medium text-gray-900 dark:text-gray-50">
+            {totalRows}
+          </span>
+        </p>
+        <div className="flex items-center gap-x-1.5">
+          {paginationButtons.map((button, index) => (
+            <Tooltip
+              side="top"
+              sideOffset={5}
+              content={button.srText}
+              key={index}
+              triggerAsChild={true}
+            >
+              <Button
+                variant="secondary"
+                className={cx(button.mobileView, "p-1.5")}
+                onClick={() => {
+                  button.onClick()
+                  table.resetRowSelection()
+                }}
+                disabled={button.disabled}
               >
-                <Button
-                  key={idx}
-                  variant="secondary"
-                  className={cx(button.mobileView, "p-1.5")}
-                  onClick={() => {
-                    button.onClick()
-                    table.resetRowSelection()
-                  }}
-                  disabled={button.disabled}
-                >
-                  <span className="sr-only">{button.srText}</span>
-                  <button.icon className="size-4 shrink-0" aria-hidden="true" />
-                </Button>
-              </Tooltip>
-            ))}
-          </div>
+                <span className="sr-only">{button.srText}</span>
+                <button.icon className="size-4 shrink-0" aria-hidden="true" />
+              </Button>
+            </Tooltip>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
