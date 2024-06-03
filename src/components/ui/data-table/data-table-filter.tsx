@@ -335,7 +335,7 @@ export function DataTableFilter<TData, TValue>({
       <PopoverContent
         align="start"
         sideOffset={7}
-        className="min-w-[calc(var(--radix-popover-trigger-width))] max-w-[calc(var(--radix-popover-trigger-width))] sm:min-w-52"
+        className="min-w-[calc(var(--radix-popover-trigger-width))] max-w-[calc(var(--radix-popover-trigger-width))] sm:max-w-52"
         onInteractOutside={() => {
           if (
             !columnFilters ||
