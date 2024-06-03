@@ -16,18 +16,12 @@ import { RiExternalLinkLine } from "@remixicon/react"
 
 import { roles } from "@/data/data"
 
-// ----- TODOs (CHRIS) -------:
-
-// save settings Button UI?
-// - Componentize
-// form? was macht tailwind?
-
 export default function General() {
   return (
     <>
       {/* <h2 className="font-semibold text-gray-900">General</h2> */}
       <div className="space-y-10">
-        <form className="sm:max-w-6xl">
+        <form>
           <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
@@ -125,7 +119,7 @@ export default function General() {
           </div>
         </form>
         <Divider />
-        <form className="sm:max-w-6xl">
+        <form>
           <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
@@ -205,7 +199,7 @@ export default function General() {
           </div>
         </form>
         <Divider />
-        <form className="sm:max-w-6xl">
+        <form>
           <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
               <h2 className="font-semibold text-gray-900 dark:text-gray-50">
@@ -238,7 +232,6 @@ export default function General() {
                       added to the workspace will remain.
                     </p>
                   </div>
-                  {/* @CHRIS: dark mode in button */}
                   <Button
                     variant="secondary"
                     className="text-red-600 dark:text-red-500"
@@ -258,7 +251,6 @@ export default function General() {
                       added to the workspace will remain.
                     </p>
                   </div>
-                  {/* @CHRIS: dark mode in button */}
                   <Button
                     variant="secondary"
                     disabled
