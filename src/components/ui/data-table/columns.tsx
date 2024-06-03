@@ -104,7 +104,9 @@ export const columns = [
 
       function Indicator({ number }: { number: number }) {
         let category
-        if (number < 9) {
+        if (number === 0) {
+          category = "zero"
+        } else if (number < 9) {
           category = "bad"
         } else if (number >= 9 && number <= 15) {
           category = "ok"
@@ -113,7 +115,9 @@ export const columns = [
         }
 
         const getBarClass = (index: number) => {
-          if (category === "good") {
+          if (category === "zero") {
+            return "bg-gray-300 dark:bg-gray-800"
+          } else if (category === "good") {
             return "bg-indigo-600 dark:bg-indigo-500"
           } else if (category === "ok" && index < 2) {
             return "bg-indigo-600 dark:bg-indigo-500"

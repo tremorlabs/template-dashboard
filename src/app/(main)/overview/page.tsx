@@ -136,7 +136,7 @@ export default function Example() {
   )
 
   return (
-    <div className="sm:max-w-6xl">
+    <>
       <h1 className="text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
         Current billing cycle
       </h1>

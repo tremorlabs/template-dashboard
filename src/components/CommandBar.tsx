@@ -152,12 +152,9 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
       <span
         className={cx(
           "flex items-center gap-x-2 rounded-lg bg-gray-900 p-1 text-base font-medium text-gray-50 outline-none transition focus:z-10 sm:text-sm",
-          "disabled:text-gray-500",
           "sm:last-of-type:-mr-1",
           className,
         )}
-        // @SEV: where to place props?
-        {...props}
       >
         <button
           ref={ref}
@@ -167,10 +164,12 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
           className={cx(
             // base
             "flex items-center gap-x-2 rounded-md px-1 py-1 hover:bg-gray-800",
-            // foucs
+            // focus
             "focus-visible:bg-gray-800 focus-visible:hover:bg-gray-800",
+            "disabled:text-gray-500",
             focusRing,
           )}
+          {...props}
         >
           <span>{label}</span>
           <span className={shortcutStyles}>

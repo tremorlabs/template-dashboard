@@ -152,7 +152,7 @@ export function DataTableFilter<TData, TValue>({
         )
       case "checkbox":
         return (
-          <div className="mt-2 max-h-36 space-y-2 overflow-y-auto">
+          <div className="mt-2 space-y-2 overflow-y-auto sm:max-h-36">
             {options?.map((option) => {
               return (
                 <div key={option.label} className="flex items-center gap-2">
@@ -336,7 +336,7 @@ export function DataTableFilter<TData, TValue>({
       <PopoverContent
         align="start"
         sideOffset={7}
-        className="min-w-[calc(var(--radix-popover-trigger-width))] max-w-[calc(var(--radix-popover-trigger-width))] sm:min-w-64 sm:max-w-64"
+        className="min-w-[calc(var(--radix-popover-trigger-width))] max-w-[calc(var(--radix-popover-trigger-width))] sm:min-w-56 sm:max-w-56"
         onInteractOutside={() => {
           if (
             !columnFilters ||

@@ -153,7 +153,7 @@ export const transactions: Transaction[] = [
   {
     owner: "John Doe",
     status: "live",
-    costs: 3509,
+    costs: 5422.35,
     region: "US-West 1",
     stability: 99,
     lastEdited: "23/09/2023 13:00",
@@ -161,15 +161,15 @@ export const transactions: Transaction[] = [
   {
     owner: "Jane Smith",
     status: "live",
-    costs: 5720,
+    costs: 6087.11,
     region: "US-East 2",
-    stability: 80,
+    stability: 91,
     lastEdited: "22/09/2023 10:45",
   },
   {
     owner: "Alejandro Garcia",
     status: "live",
-    costs: 4150,
+    costs: 7234.56,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "17/05/2021 08:32",
@@ -177,15 +177,15 @@ export const transactions: Transaction[] = [
   {
     owner: "Wei Zhang",
     status: "inactive",
-    costs: 2980,
+    costs: 0,
     region: "US-West 2",
-    stability: 10,
+    stability: 0,
     lastEdited: "10/11/2022 15:24",
   },
   {
     owner: "Maria Rossi",
     status: "live",
-    costs: 6500,
+    costs: 8190.77,
     region: "US-East 1",
     stability: 8,
     lastEdited: "05/06/2023 12:16",
@@ -193,7 +193,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Nina Müller",
     status: "archived",
-    costs: 1200,
+    costs: 7609.32,
     region: "EU-North 1",
     stability: 20,
     lastEdited: "23/01/2022 11:11",
@@ -201,23 +201,23 @@ export const transactions: Transaction[] = [
   {
     owner: "Liam O'Sullivan",
     status: "live",
-    costs: 7800,
+    costs: 5204.98,
     region: "US-West 1",
     stability: 18,
     lastEdited: "14/03/2023 14:45",
   },
   {
-    owner: "Amir Khan",
+    owner: "Amir Fleischlin",
     status: "inactive",
-    costs: 2150,
+    costs: 0,
     region: "EU-Central 1",
-    stability: 7,
+    stability: 0,
     lastEdited: "12/02/2023 09:12",
   },
   {
     owner: "Yuki Tanaka",
     status: "live",
-    costs: 8900,
+    costs: 9874.56,
     region: "US-East 1",
     stability: 6,
     lastEdited: "19/08/2022 16:03",
@@ -225,7 +225,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Fatima Al-Farsi",
     status: "live",
-    costs: 340,
+    costs: 5486.99,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "29/11/2021 17:25",
@@ -233,7 +233,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Olga Ivanova",
     status: "live",
-    costs: 5600,
+    costs: 6120.45,
     region: "US-West 2",
     stability: 9,
     lastEdited: "07/12/2023 07:14",
@@ -241,23 +241,23 @@ export const transactions: Transaction[] = [
   {
     owner: "Pierre Dubois",
     status: "live",
-    costs: 4800,
+    costs: 4834.11,
     region: "EU-Central 1",
     stability: 15,
     lastEdited: "28/04/2023 10:45",
   },
   {
     owner: "Sara Johansson",
-    status: "inactive",
-    costs: 2300,
+    status: "live",
+    costs: 5302.22,
     region: "US-East 2",
-    stability: 25,
+    stability: 97,
     lastEdited: "03/10/2022 08:33",
   },
   {
     owner: "Ahmed Hassan",
     status: "live",
-    costs: 5100,
+    costs: 6221.54,
     region: "US-West 1",
     stability: 11,
     lastEdited: "22/07/2022 14:16",
@@ -265,7 +265,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Emily Brown",
     status: "archived",
-    costs: 600,
+    costs: 6129.99,
     region: "EU-North 1",
     stability: 22,
     lastEdited: "18/01/2022 12:45",
@@ -273,23 +273,23 @@ export const transactions: Transaction[] = [
   {
     owner: "Carlos Sanchez",
     status: "live",
-    costs: 7000,
+    costs: 4850.33,
     region: "US-East 1",
     stability: 13,
     lastEdited: "05/06/2021 18:33",
   },
   {
     owner: "Hannah Kim",
-    status: "inactive",
-    costs: 3000,
+    status: "live",
+    costs: 7902.11,
     region: "EU-West 1",
-    stability: 8,
+    stability: 91,
     lastEdited: "11/05/2023 11:00",
   },
   {
     owner: "David Johnson",
     status: "live",
-    costs: 4300,
+    costs: 6789.77,
     region: "US-West 2",
     stability: 10,
     lastEdited: "19/09/2023 17:17",
@@ -297,7 +297,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Linda Anderson",
     status: "live",
-    costs: 4900,
+    costs: 7434.22,
     region: "US-East 2",
     stability: 9,
     lastEdited: "27/03/2023 14:28",
@@ -305,7 +305,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Michael Lee",
     status: "archived",
-    costs: 800,
+    costs: 7290.01,
     region: "EU-Central 1",
     stability: 12,
     lastEdited: "23/11/2022 15:13",
@@ -313,7 +313,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Sophia Lopez",
     status: "live",
-    costs: 5400,
+    costs: 8921.34,
     region: "EU-North 1",
     stability: 16,
     lastEdited: "08/05/2023 08:56",
@@ -321,7 +321,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Robert White",
     status: "live",
-    costs: 6700,
+    costs: 6834.23,
     region: "US-West 1",
     stability: 8,
     lastEdited: "29/04/2022 19:27",
@@ -329,7 +329,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Mia Wang",
     status: "inactive",
-    costs: 2400,
+    costs: 0,
     region: "US-West 2",
     stability: 14,
     lastEdited: "30/12/2023 13:01",
@@ -337,7 +337,7 @@ export const transactions: Transaction[] = [
   {
     owner: "James Taylor",
     status: "live",
-    costs: 4800,
+    costs: 4321.56,
     region: "EU-West 1",
     stability: 5,
     lastEdited: "18/06/2021 10:49",
@@ -345,7 +345,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Victoria Martinez",
     status: "archived",
-    costs: 500,
+    costs: 5120.33,
     region: "US-East 1",
     stability: 19,
     lastEdited: "24/02/2022 14:02",
@@ -353,7 +353,7 @@ export const transactions: Transaction[] = [
   {
     owner: "William Harris",
     status: "live",
-    costs: 6100,
+    costs: 9211.42,
     region: "EU-North 1",
     stability: 11,
     lastEdited: "22/07/2021 12:33",
@@ -361,7 +361,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Isabella Clark",
     status: "inactive",
-    costs: 3200,
+    costs: 0,
     region: "US-East 2",
     stability: 6,
     lastEdited: "13/09/2022 16:22",
@@ -369,7 +369,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Alexander Young",
     status: "live",
-    costs: 7200,
+    costs: 4534.88,
     region: "US-West 1",
     stability: 17,
     lastEdited: "09/10/2023 17:44",
@@ -377,7 +377,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Grace Patel",
     status: "live",
-    costs: 5300,
+    costs: 8245.99,
     region: "EU-Central 1",
     stability: 9,
     lastEdited: "29/07/2022 11:56",
@@ -385,7 +385,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Daniel Wilson",
     status: "archived",
-    costs: 400,
+    costs: 7890.77,
     region: "EU-West 1",
     stability: 14,
     lastEdited: "10/11/2021 15:08",
@@ -393,7 +393,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Charlotte Thompson",
     status: "live",
-    costs: 6800,
+    costs: 8911.44,
     region: "US-East 1",
     stability: 10,
     lastEdited: "06/08/2021 09:17",
@@ -401,7 +401,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Olivia Anderson",
     status: "inactive",
-    costs: 2100,
+    costs: 0,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "25/05/2022 10:05",
@@ -409,7 +409,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Henry Brown",
     status: "live",
-    costs: 3500,
+    costs: 5500.12,
     region: "US-West 2",
     stability: 15,
     lastEdited: "07/01/2023 08:33",
@@ -417,7 +417,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Ethan Davis",
     status: "live",
-    costs: 4700,
+    costs: 7200.98,
     region: "EU-Central 1",
     stability: 8,
     lastEdited: "21/09/2023 13:00",
@@ -425,7 +425,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Amelia Wilson",
     status: "live",
-    costs: 200,
+    costs: 8321.56,
     region: "US-East 2",
     stability: 18,
     lastEdited: "12/06/2021 11:45",
@@ -433,15 +433,15 @@ export const transactions: Transaction[] = [
   {
     owner: "Lucas Martin",
     status: "live",
-    costs: 5200,
+    costs: 4534.99,
     region: "US-West 1",
     stability: 11,
     lastEdited: "30/03/2022 14:14",
   },
   {
     owner: "Mason Clark",
-    status: "inactive",
-    costs: 3000,
+    status: "live",
+    costs: 6890.11,
     region: "EU-North 1",
     stability: 7,
     lastEdited: "14/05/2023 12:36",
@@ -449,7 +449,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Emma Robinson",
     status: "live",
-    costs: 6900,
+    costs: 7990.01,
     region: "US-East 1",
     stability: 13,
     lastEdited: "18/10/2022 09:25",
@@ -457,7 +457,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Benjamin Lewis",
     status: "archived",
-    costs: 120,
+    costs: 5412.23,
     region: "EU-Central 1",
     stability: 20,
     lastEdited: "22/02/2022 15:55",
@@ -465,7 +465,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Ava Walker",
     status: "live",
-    costs: 5500,
+    costs: 7123.98,
     region: "US-West 2",
     stability: 9,
     lastEdited: "27/08/2023 18:33",
@@ -473,7 +473,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Elijah Young",
     status: "live",
-    costs: 6600,
+    costs: 6445.33,
     region: "EU-West 1",
     stability: 8,
     lastEdited: "02/07/2021 17:14",
@@ -481,7 +481,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Sophia Hall",
     status: "inactive",
-    costs: 2500,
+    costs: 0,
     region: "US-East 1",
     stability: 10,
     lastEdited: "15/04/2023 10:45",
@@ -489,7 +489,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Matthew Harris",
     status: "live",
-    costs: 6100,
+    costs: 7634.67,
     region: "EU-North 1",
     stability: 11,
     lastEdited: "06/09/2023 11:23",
@@ -497,7 +497,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Aiden Thompson",
     status: "archived",
-    costs: 800,
+    costs: 4900.88,
     region: "US-West 1",
     stability: 14,
     lastEdited: "20/10/2021 16:05",
@@ -505,7 +505,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Chloe Martinez",
     status: "live",
-    costs: 4400,
+    costs: 5234.44,
     region: "US-East 2",
     stability: 17,
     lastEdited: "11/11/2023 08:55",
@@ -513,7 +513,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Oliver Davis",
     status: "inactive",
-    costs: 3400,
+    costs: 0,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "18/08/2022 14:34",
@@ -521,7 +521,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Emily Clark",
     status: "live",
-    costs: 5800,
+    costs: 7688.55,
     region: "EU-Central 1",
     stability: 9,
     lastEdited: "22/04/2023 12:11",
@@ -529,7 +529,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Jack Lewis",
     status: "archived",
-    costs: 900,
+    costs: 6344.89,
     region: "US-West 2",
     stability: 19,
     lastEdited: "10/02/2021 11:45",
@@ -537,7 +537,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Lily Walker",
     status: "live",
-    costs: 6300,
+    costs: 5003.78,
     region: "EU-West 1",
     stability: 8,
     lastEdited: "23/07/2022 14:33",
@@ -545,7 +545,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Jackson Martinez",
     status: "inactive",
-    costs: 3100,
+    costs: 0,
     region: "US-East 1",
     stability: 7,
     lastEdited: "07/05/2023 09:27",
@@ -553,7 +553,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Avery Hall",
     status: "live",
-    costs: 4500,
+    costs: 8432.45,
     region: "EU-Central 1",
     stability: 11,
     lastEdited: "16/03/2022 15:44",
@@ -561,7 +561,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Logan Harris",
     status: "archived",
-    costs: 700,
+    costs: 7120.39,
     region: "EU-North 1",
     stability: 21,
     lastEdited: "01/01/2022 16:18",
