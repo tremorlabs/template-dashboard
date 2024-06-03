@@ -1,5 +1,4 @@
 import { Button } from "@/components/Button"
-import { Tooltip } from "@/components/Tooltip"
 import { cx } from "@/lib/utils"
 import {
   RiArrowLeftDoubleLine,
@@ -73,26 +72,19 @@ export function DataTablePagination<TData>({
         </p>
         <div className="flex items-center gap-x-1.5">
           {paginationButtons.map((button, index) => (
-            <Tooltip
-              side="top"
-              sideOffset={5}
-              content={button.srText}
+            <Button
               key={index}
-              triggerAsChild={true}
+              variant="secondary"
+              className={cx(button.mobileView, "p-1.5")}
+              onClick={() => {
+                button.onClick()
+                table.resetRowSelection()
+              }}
+              disabled={button.disabled}
             >
-              <Button
-                variant="secondary"
-                className={cx(button.mobileView, "p-1.5")}
-                onClick={() => {
-                  button.onClick()
-                  table.resetRowSelection()
-                }}
-                disabled={button.disabled}
-              >
-                <span className="sr-only">{button.srText}</span>
-                <button.icon className="size-4 shrink-0" aria-hidden="true" />
-              </Button>
-            </Tooltip>
+              <span className="sr-only">{button.srText}</span>
+              <button.icon className="size-4 shrink-0" aria-hidden="true" />
+            </Button>
           ))}
         </div>
       </div>
