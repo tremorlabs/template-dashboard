@@ -26,7 +26,12 @@ import {
   SelectValue,
 } from "@/components/Select"
 
-export const databases: { label: string; value: string, description: string, isRecommended: boolean }[] = [
+export const databases: {
+  label: string
+  value: string
+  description: string
+  isRecommended: boolean
+}[] = [
   {
     label: "Base performance",
     value: "base-performance",

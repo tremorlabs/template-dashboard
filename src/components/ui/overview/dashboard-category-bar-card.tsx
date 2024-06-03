@@ -1,12 +1,7 @@
 import { Badge } from "@/components/Badge"
 import { cx } from "@/lib/utils"
 
-export type Data = {
-  title: string
-  value: string
-  percentage: number
-  color: string
-}
+import type { KpiEntryExtended } from "@/app/(main)/overview/page"
 
 export type CardProps = {
   title: string
@@ -17,7 +12,7 @@ export type CardProps = {
   ctaDescription: string
   ctaText: string
   ctaLink: string
-  data: Data[]
+  data: KpiEntryExtended[]
 }
 
 export function CategoryBarCard({

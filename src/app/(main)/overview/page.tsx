@@ -16,41 +16,41 @@ const categories: {
   title: keyof OverviewData
   type: "currency" | "unit"
 }[] = [
-    {
-      title: "Rows read",
-      type: "unit",
-    },
-    {
-      title: "Rows written",
-      type: "unit",
-    },
-    {
-      title: "Queries",
-      type: "unit",
-    },
-    {
-      title: "Payments completed",
-      type: "currency",
-    },
-    {
-      title: "Sign ups",
-      type: "unit",
-    },
-    {
-      title: "Logins",
-      type: "unit",
-    },
-    {
-      title: "Sign outs",
-      type: "unit",
-    },
-    {
-      title: "Support calls",
-      type: "unit",
-    },
-  ]
+  {
+    title: "Rows read",
+    type: "unit",
+  },
+  {
+    title: "Rows written",
+    type: "unit",
+  },
+  {
+    title: "Queries",
+    type: "unit",
+  },
+  {
+    title: "Payments completed",
+    type: "currency",
+  },
+  {
+    title: "Sign ups",
+    type: "unit",
+  },
+  {
+    title: "Logins",
+    type: "unit",
+  },
+  {
+    title: "Sign outs",
+    type: "unit",
+  },
+  {
+    title: "Support calls",
+    type: "unit",
+  },
+]
 
-export type dataKpiCards = {
+export type KpiEntry = {
   title: string
   percentage: number
   current: number
@@ -58,7 +58,7 @@ export type dataKpiCards = {
   unit?: string
 }
 
-export const data: dataKpiCards[] = [
+const data: KpiEntry[] = [
   {
     title: "Rows read",
     percentage: 48.1,
@@ -82,7 +82,7 @@ export const data: dataKpiCards[] = [
   },
 ]
 
-export const data2: dataKpiCards[] = [
+const data2: KpiEntry[] = [
   {
     title: "Weekly active users",
     percentage: 21.7,
@@ -105,7 +105,15 @@ export const data2: dataKpiCards[] = [
   },
 ]
 
-export const data3: { title: string; percentage: number, value: string, color: string }[] = [
+export type KpiEntryExtended = Omit<
+  KpiEntry,
+  "current" | "allowed" | "unit"
+> & {
+  value: string
+  color: string
+}
+
+const data3: KpiEntryExtended[] = [
   {
     title: "Base tier",
     percentage: 68.1,
@@ -128,7 +136,8 @@ export const data3: { title: string; percentage: number, value: string, color: s
 
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
 const maxDate = toDate(Math.max(...overviewsDates))
-export default function Example() {
+
+export default function Overview() {
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
   >({

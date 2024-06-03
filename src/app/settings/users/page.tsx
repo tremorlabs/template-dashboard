@@ -55,10 +55,10 @@ export default function Users() {
                 {user.initials}
               </span>
               <div className="truncate">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50 truncate">
+                <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-50">
                   {user.name}
                 </p>
-                <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                <p className="truncate text-xs text-gray-500">{user.email}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
