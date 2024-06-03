@@ -73,9 +73,9 @@ export function Sidebar() {
                     href={item.href}
                     className={cx(
                       pathname === item.href || pathname.includes(item.href)
-                        ? "font-medium text-indigo-600 dark:text-indigo-400"
+                        ? "text-indigo-600 dark:text-indigo-400"
                         : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                      "flex items-center gap-x-2.5 font-medium rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
                       focusRing,
                     )}
                   >
@@ -98,7 +98,7 @@ export function Sidebar() {
                         pathname === item.href || pathname.includes(item.href)
                           ? "text-indigo-600 dark:text-indigo-400"
                           : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                        "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                        "flex items-center gap-x-2.5 font-medium rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
                         focusRing,
                       )}
                     >

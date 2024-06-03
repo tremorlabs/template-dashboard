@@ -12,6 +12,7 @@ import {
 import { cx, focusRing } from "@/lib/utils"
 import {
   RiHome2Line,
+  RiLinkM,
   RiListCheck,
   RiMenuLine,
   RiSettings5Line,
@@ -26,6 +27,30 @@ const navigation = [
     name: "Settings",
     href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
+  },
+]
+
+const shortcuts = [
+  // @CHRIS: replace links when anchors are set
+  {
+    name: "Add new user",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Workspace usage",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Cost spend control",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Revenue by country",
+    href: "#",
+    icon: RiLinkM,
   },
 ]
 
@@ -48,30 +73,62 @@ export default function MobileSidebar() {
             <DrawerTitle>Retail Analytics</DrawerTitle>
           </DrawerHeader>
           <DrawerBody>
-            <ul role="list" className="space-y-1.5">
-              {navigation.map((item) => (
-                <li key={item.name}>
-                  <DrawerClose asChild>
-                    <Link
-                      href={item.href}
-                      className={cx(
-                        pathname === item.href || pathname.includes(item.href)
-                          ? "text-indigo-600 dark:text-indigo-400"
-                          : "text-gray-600 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                        "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-base font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
-                        focusRing,
-                      )}
-                    >
-                      <item.icon
-                        className="size-5 shrink-0"
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </Link>
-                  </DrawerClose>
-                </li>
-              ))}
-            </ul>
+            <nav
+              aria-label="core mobile navigation links"
+              className="flex flex-1 flex-col space-y-10"
+            >
+              <ul role="list" className="space-y-1.5">
+                {navigation.map((item) => (
+                  <li key={item.name}>
+                    <DrawerClose asChild>
+                      <Link
+                        href={item.href}
+                        className={cx(
+                          pathname === item.href || pathname.includes(item.href)
+                            ? "text-indigo-600 dark:text-indigo-400"
+                            : "text-gray-600 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
+                          "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-base font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
+                          focusRing,
+                        )}
+                      >
+                        <item.icon
+                          className="size-5 shrink-0"
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </Link>
+                    </DrawerClose>
+                  </li>
+                ))}
+              </ul>
+              <div>
+                <span className="text-sm sm:text-xs font-medium leading-6 text-gray-500">
+                  Shortcuts
+                </span>
+                <ul aria-label="shortcuts" role="list" className="space-y-0.5">
+                  {shortcuts.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className={cx(
+                          pathname === item.href || pathname.includes(item.href)
+                            ? "text-indigo-600 dark:text-indigo-400"
+                            : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
+                          "flex items-center gap-x-2.5 font-medium rounded-md px-2 py-1.5 sm:text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                          focusRing,
+                        )}
+                      >
+                        <item.icon
+                          className="size-4 shrink-0"
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </nav>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
