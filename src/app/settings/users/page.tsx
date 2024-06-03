@@ -192,7 +192,7 @@ export default function Users() {
                       View details
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                      className="text-rose-600 dark:text-rose-500"
+                      className="text-red-600 dark:text-red-500"
                       disabled={user.role === "admin"}
                     >
                       Delete
@@ -264,7 +264,7 @@ export default function Users() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-36">
                       <DropdownMenuItem
-                        className="text-rose-600 dark:text-rose-500"
+                        className="text-red-600 dark:text-red-500"
                         disabled={user.role === "admin"}
                       >
                         Revoke invitation

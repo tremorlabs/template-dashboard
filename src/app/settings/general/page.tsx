@@ -241,7 +241,7 @@ export default function General() {
                   {/* @CHRIS: dark mode in button */}
                   <Button
                     variant="secondary"
-                    className="text-rose-600 dark:text-rose-500"
+                    className="text-red-600 dark:text-red-500"
                   >
                     Leave
                   </Button>
@@ -262,7 +262,7 @@ export default function General() {
                   <Button
                     variant="secondary"
                     disabled
-                    className="whitespace-nowrap text-rose-600 disabled:text-rose-300 disabled:opacity-50 dark:text-rose-500 disabled:dark:text-rose-700"
+                    className="whitespace-nowrap text-red-600 disabled:text-red-300 disabled:opacity-50 dark:text-red-500 disabled:dark:text-red-700"
                   >
                     Delete workspace
                   </Button>
