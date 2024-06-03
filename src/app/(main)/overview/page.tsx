@@ -137,7 +137,7 @@ export default function Example() {
 
   return (
     <>
-      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
         Current billing cycle
       </h1>
 
@@ -175,7 +175,7 @@ export default function Example() {
         />
       </div>
 
-      <h1 className="mt-16 text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="mt-16 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
         Overview
       </h1>
 

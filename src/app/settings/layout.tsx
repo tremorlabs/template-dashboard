@@ -18,9 +18,8 @@ export default function Layout({
 }>) {
   const pathname = usePathname()
   return (
-    // @SEV/CHRIS: what HTML semantics here in parent?
     <div className="p-4 sm:px-6 sm:pb-6 sm:pt-7">
-      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
         Settings
       </h1>
       <TabNavigation className="mt-4 sm:mt-6 lg:mt-10">
@@ -34,7 +33,7 @@ export default function Layout({
           </TabNavigationLink>
         ))}
       </TabNavigation>
-      <div className="mt-6">{children}</div>
+      <div className="pt-6">{children}</div>
     </div>
   )
 }

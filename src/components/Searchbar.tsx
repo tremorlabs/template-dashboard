@@ -10,8 +10,8 @@ const inputStyles = tv({
   base: [
     // base
     "relative block w-full appearance-none rounded-md border px-2.5 py-1.5 outline-none transition sm:text-sm",
-    // border color
-    "border-transparent",
+    // border color (border only used in dark mode for better aesthetics in filterbar)
+    "border-transparent dark:border-gray-800",
     // text color
     "text-gray-900 dark:text-gray-50",
     // placeholder color

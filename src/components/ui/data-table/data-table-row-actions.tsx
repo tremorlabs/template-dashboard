@@ -35,7 +35,7 @@ export function DataTableRowActions<TData>({
       <DropdownMenuContent align="end" className="min-w-40">
         <DropdownMenuItem>Add</DropdownMenuItem>
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem className="text-rose-600 dark:text-rose-500">
+        <DropdownMenuItem className="text-red-600 dark:text-red-500">
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>

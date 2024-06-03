@@ -144,8 +144,7 @@ export function Filterbar({
             onPeriodChange(value as PeriodValue)
           }}
         >
-          {/* @CHRIS: modal mobile view */}
-          <SelectTrigger className="mt-2 w-full px-2 py-1 sm:mt-0 sm:w-fit">
+          <SelectTrigger className="mt-2 w-full px-2 sm:mt-0 sm:w-fit sm:py-1">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -166,10 +165,6 @@ export function Filterbar({
           <Button
             variant="secondary"
             className="hidden gap-2 px-2 py-1 sm:flex"
-            // @CHRIS
-            // onClick={() => {
-            //     setIsEditable((prev) => !prev)
-            // }}
           >
             <RiSettings5Line
               className="-ml-0.5 size-4 shrink-0"
@@ -206,7 +201,6 @@ export function Filterbar({
                   <div className="pointer-events-none">
                     <ChartCard
                       title={category.title}
-                      // value={category.value}
                       type={category.type}
                       selectedDates={selectedDates}
                       selectedPeriod={selectedPeriod}

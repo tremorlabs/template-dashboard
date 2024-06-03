@@ -419,13 +419,7 @@ const OverviewChartTooltip = ({
           "bg-white dark:bg-gray-950",
         )}
       >
-        <div
-          className={cx(
-            // base
-            "border-b border-inherit p-2",
-            "flex items-start justify-between",
-          )}
-        >
+        <div className="flex items-start justify-between gap-2 border-b border-inherit p-2">
           <p
             className={cx(
               // base
@@ -467,6 +461,8 @@ const OverviewChartTooltip = ({
   }
   return null
 }
+
+// Standard tooltip below without percentage change logic
 
 const ChartTooltip = ({
   active,
