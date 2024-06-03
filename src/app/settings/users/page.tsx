@@ -19,7 +19,6 @@ import { ModalAddUser } from "@/components/ui/settings/modal-add-user"
 import { invitedUsers, roles, users } from "@/data/data"
 import { RiAddLine, RiMore2Fill } from "@remixicon/react"
 
-
 export default function Users() {
   return (
     <>
