@@ -16,39 +16,39 @@ const categories: {
   title: keyof OverviewData
   type: "currency" | "unit"
 }[] = [
-  {
-    title: "Rows read",
-    type: "unit",
-  },
-  {
-    title: "Rows written",
-    type: "unit",
-  },
-  {
-    title: "Queries",
-    type: "unit",
-  },
-  {
-    title: "Payments completed",
-    type: "currency",
-  },
-  {
-    title: "Sign ups",
-    type: "unit",
-  },
-  {
-    title: "Logins",
-    type: "unit",
-  },
-  {
-    title: "Sign outs",
-    type: "unit",
-  },
-  {
-    title: "Support calls",
-    type: "unit",
-  },
-]
+    {
+      title: "Rows read",
+      type: "unit",
+    },
+    {
+      title: "Rows written",
+      type: "unit",
+    },
+    {
+      title: "Queries",
+      type: "unit",
+    },
+    {
+      title: "Payments completed",
+      type: "currency",
+    },
+    {
+      title: "Sign ups",
+      type: "unit",
+    },
+    {
+      title: "Logins",
+      type: "unit",
+    },
+    {
+      title: "Sign outs",
+      type: "unit",
+    },
+    {
+      title: "Support calls",
+      type: "unit",
+    },
+  ]
 
 const data = [
   {
@@ -137,7 +137,7 @@ export default function Example() {
 
   return (
     <>
-      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="text-lg sm:text-xl sm:text-xl font-semibold text-gray-900 dark:text-gray-50">
         Current billing cycle
       </h1>
 
@@ -175,7 +175,7 @@ export default function Example() {
         />
       </div>
 
-      <h1 className="mt-16 text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <h1 className="mt-16 text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-50">
         Overview
       </h1>
 

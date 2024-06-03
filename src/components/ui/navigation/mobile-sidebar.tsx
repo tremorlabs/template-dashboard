@@ -65,7 +65,7 @@ export default function MobileSidebar() {
             aria-label="open sidebar"
             className="group flex items-center rounded-md p-2 text-sm font-medium hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10"
           >
-            <RiMenuLine className="size-5 shrink-0" aria-hidden="true" />
+            <RiMenuLine className="size-6 sm:size-5 shrink-0" aria-hidden="true" />
           </Button>
         </DrawerTrigger>
         <DrawerContent className="sm:max-w-lg">

@@ -1,5 +1,4 @@
 "use client"
-
 import { siteConfig } from "@/app/siteConfig"
 import { cx, focusRing } from "@/lib/utils"
 import {
@@ -10,16 +9,12 @@ import {
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
+import MobileSidebar from "./mobile-sidebar"
 import {
   WorkspacesDropdownDesktop,
   WorkspacesDropdownMobile,
 } from "./sidebar-workspaces-dropdown"
-
-import MobileSidebar from "./mobile-sidebar"
-
 import { UserProfileDesktop, UserProfileMobile } from "./user-profile"
-
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
   { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
@@ -29,7 +24,6 @@ const navigation = [
     icon: RiSettings5Line,
   },
 ]
-
 const shortcuts = [
   // @CHRIS: replace links when anchors are set
   {
@@ -53,9 +47,14 @@ const shortcuts = [
     icon: RiLinkM,
   },
 ]
-
 export function Sidebar() {
   const pathname = usePathname()
+  const isActive = (itemHref: string) => {
+    if (itemHref === siteConfig.baseLinks.settings.general) {
+      return pathname.startsWith("/settings")
+    }
+    return pathname === itemHref || pathname.startsWith(itemHref)
+  }
   return (
     <>
       {/* sidebar (lg+) */}
@@ -72,10 +71,10 @@ export function Sidebar() {
                   <Link
                     href={item.href}
                     className={cx(
-                      pathname === item.href || pathname.includes(item.href)
+                      isActive(item.href)
                         ? "text-indigo-600 dark:text-indigo-400"
                         : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                      "flex items-center gap-x-2.5 font-medium rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
                       focusRing,
                     )}
                   >
@@ -95,10 +94,10 @@ export function Sidebar() {
                     <Link
                       href={item.href}
                       className={cx(
-                        pathname === item.href || pathname.includes(item.href)
+                        pathname === item.href || pathname.startsWith(item.href)
                           ? "text-indigo-600 dark:text-indigo-400"
                           : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                        "flex items-center gap-x-2.5 font-medium rounded-md px-2 py-1.5 text-sm transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                        "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
                         focusRing,
                       )}
                     >
@@ -118,11 +117,10 @@ export function Sidebar() {
           </div>
         </aside>
       </nav>
-
       {/* top navbar (xs-lg) */}
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 bg-white px-2 shadow-sm sm:gap-x-6 sm:px-4 lg:hidden dark:border-gray-800 dark:bg-gray-950">
         <WorkspacesDropdownMobile />
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <UserProfileMobile />
           <MobileSidebar />
         </div>
