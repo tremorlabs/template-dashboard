@@ -6,7 +6,7 @@ export default function Layout({
   return (
     <div className="relative">
       {/* <BodyNavbar /> */}
-      <main className="mt-10 px-4 sm:px-6 sm:pb-6 lg:mt-7">{children}</main>
+      <main className="pt-10 p-4 sm:px-6 sm:pb-6 lg:pt-7">{children}</main>
     </div>
   )
 }
