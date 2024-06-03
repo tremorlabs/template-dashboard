@@ -87,74 +87,67 @@ export const conditions = [
   },
 ]
 
-// @CHRIS: replace with better data
-export const dummyData = [
+export const users = [
   {
-    date: "00:00",
-    "Rows read": 120,
-    "Rows written": 44,
+    name: "Emma Stone",
+    initials: "ES",
+    email: "a.stone@gmail.com",
+    role: "viewer",
   },
   {
-    date: "01:00",
-    "Rows read": 201,
-    "Rows written": 99,
+    name: "Alissia McCalister",
+    initials: "AM",
+    email: "a.stone@gmail.com",
+    role: "viewer",
   },
   {
-    date: "02:00",
-    "Rows read": 194,
-    "Rows written": 89,
+    name: "Emily Bern",
+    initials: "EB",
+    email: "e.bern@gmail.com",
+    role: "member",
   },
   {
-    date: "03:00",
-    "Rows read": 121,
-    "Rows written": 79,
+    name: "Aaron Wave",
+    initials: "AW",
+    email: "a.flow@acme.com",
+    role: "contributor",
   },
   {
-    date: "04:00",
-    "Rows read": 103,
-    "Rows written": 163,
+    name: "Thomas Palstein",
+    initials: "TP",
+    email: "t.palstein@acme.com",
+    role: "viewer",
   },
   {
-    date: "05:00",
-    "Rows read": 59,
-    "Rows written": 172,
+    name: "Sarah Johnson",
+    initials: "SJ",
+    email: "s.johnson@gmail.com",
+    role: "admin",
   },
   {
-    date: "06:00",
-    "Rows read": 40,
-    "Rows written": 129,
-  },
-  {
-    date: "07:00",
-    "Rows read": 61,
-    "Rows written": 23,
-  },
-  {
-    date: "08:00",
-    "Rows read": 62,
-    "Rows written": 79,
-  },
-  {
-    date: "09:00",
-    "Rows read": 89,
-    "Rows written": 65,
-  },
-  {
-    date: "10:00",
-    "Rows read": 31,
-    "Rows written": 40,
-  },
-  {
-    date: "11:00",
-    "Rows read": 31,
-    "Rows written": 40,
-  },
-  {
-    date: "12:00",
-    "Rows read": 31,
-    "Rows written": 40,
+    name: "Megan Brown",
+    initials: "MB",
+    email: "m.brown@gmail.com",
+    role: "contributor",
   },
 ]
+
+export const invitedUsers = [
+  {
+    initials: "LP",
+    email: "lydia.posh@gmail.com",
+    role: "viewer",
+    expires: 12,
+  },
+  {
+    initials: "AW",
+    email: "awidburg@bluewin.ch",
+    role: "viewer",
+    expires: 8,
+  },
+]
+
+// @SEV/CHRIS: type declaration really necessary here
 
 export const transactions: Transaction[] = [
   {

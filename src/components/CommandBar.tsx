@@ -155,7 +155,6 @@ const CommandBarCommand = React.forwardRef<HTMLButtonElement, CommandProps>(
           "sm:last-of-type:-mr-1",
           className,
         )}
-        // @SEV: where to place props?
       >
         <button
           ref={ref}
