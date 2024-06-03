@@ -30,8 +30,8 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-between sm:gap-x-6">
-      <div className="flex w-fit flex-col gap-2 sm:flex-row sm:items-center">
+    <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-x-6">
+      <div className="flex w-full sm:w-fit flex-col gap-2 sm:flex-row sm:items-center">
         {table.getColumn("status")?.getIsVisible() && (
           <DataTableFilter
             column={table.getColumn("status")}
@@ -63,24 +63,23 @@ export function Filterbar<TData>({ table }: DataTableToolbarProps<TData>) {
             placeholder="Search by owner..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full sm:max-w-[250px] [&>input]:h-[30px]"
+            className="w-full sm:max-w-[250px] sm:[&>input]:h-[30px]"
           />
         )}
         {isFiltered && (
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="px-2 py-1 font-semibold text-indigo-600 dark:text-indigo-500"
+            className="px-2 sm:py-1 font-semibold text-indigo-600 dark:text-indigo-500 border border-gray-200 dark:border-gray-800 sm:border-none"
           >
             Clear filters
-            {/* <RiCloseLine className="ml-2 size-4" /> */}
           </Button>
         )}
       </div>
       <div className="flex items-center gap-2">
         <Button
           variant="secondary"
-          className="hidden gap-x-2 px-2 py-1.5 text-xs lg:flex"
+          className="hidden gap-x-2 px-2 py-1.5 text-sm sm:text-xs lg:flex"
         >
           <RiDownloadLine className="size-4 shrink-0" aria-hidden="true" />
           Export

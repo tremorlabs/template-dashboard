@@ -225,7 +225,6 @@ function ListItem({
             />
             <span>{item.label}</span>
           </div>
-
           <Button
             aria-hidden="true"
             tabIndex={-1}
@@ -420,7 +419,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
             <Button
               variant="secondary"
               className={cx(
-                "ml-auto hidden gap-x-2 px-2 text-xs lg:flex",
+                "ml-auto hidden gap-x-2 px-2 text-sm sm:text-xs lg:flex",
               )}
             >
               <RiEqualizer2Line className="size-4" aria-hidden="true" />

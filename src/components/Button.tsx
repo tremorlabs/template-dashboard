@@ -10,7 +10,7 @@ import { cx, focusRing } from "@/lib/utils"
 const buttonVariants = tv({
   base: [
     // base
-    "relative inline-flex items-center justify-center whitespace-nowrap rounded-md border px-3 py-1.5 text-center text-sm font-medium shadow-sm transition-all duration-100 ease-in-out",
+    "relative inline-flex items-center justify-center whitespace-nowrap rounded-md border px-3 py-1.5 text-center text-base sm:text-sm font-medium shadow-sm transition-all duration-100 ease-in-out",
     // disabled
     "disabled:pointer-events-none disabled:shadow-none",
     // focus
@@ -93,7 +93,7 @@ const buttonVariants = tv({
 
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
   isLoading?: boolean
   loadingText?: string

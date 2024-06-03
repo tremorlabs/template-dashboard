@@ -20,7 +20,7 @@ SelectValue.displayName = "SelectValue"
 const selectTriggerStyles = [
   cx(
     // base
-    "group/trigger flex w-full select-none items-center justify-between gap-x-2 truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition sm:text-sm",
+    "group/trigger flex w-full select-none items-center justify-between gap-x-2 truncate rounded-md border px-3 py-1.5 shadow-sm outline-none transition text-base sm:text-sm",
     // border color
     "border-gray-300 dark:border-gray-800",
     // text color
@@ -158,7 +158,7 @@ const SelectContent = React.forwardRef<
           className={cx(
             "p-1",
             position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[calc(var(--radix-select-trigger-width))]",
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[calc(var(--radix-select-trigger-width))]",
           )}
         >
           {children}
@@ -309,5 +309,6 @@ export {
   SelectItemPeriod,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 }
+
