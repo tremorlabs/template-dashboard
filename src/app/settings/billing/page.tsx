@@ -251,9 +251,9 @@ export default function Billing() {
                     Advanced bot protection
                   </h4>
                   <p className="mt-2 max-w-xl text-sm leading-6 text-gray-500">
-                    Safeguard your assets with our cutting-edge bot
-                    protection. Our AI solution identifies and mitigates
-                    automated traffic to protect your workspace from bad bots.
+                    Safeguard your assets with our cutting-edge bot protection.
+                    Our AI solution identifies and mitigates automated traffic
+                    to protect your workspace from bad bots.
                   </p>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-900 dark:bg-gray-900">

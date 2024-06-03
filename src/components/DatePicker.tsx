@@ -154,7 +154,7 @@ TimeInput.displayName = "TimeInput"
 const triggerStyles = tv({
   base: [
     // base
-    "peer flex w-full cursor-pointer appearance-none items-center gap-x-2 truncate rounded-md border px-2 py-1.5 sm:py-1 shadow-sm outline-none transition-all sm:text-sm",
+    "peer flex w-full cursor-pointer appearance-none items-center gap-x-2 truncate rounded-md border px-2 py-1.5 shadow-sm outline-none transition-all sm:py-1 sm:text-sm",
     // background color
     "bg-white dark:bg-gray-950",
     // border color
@@ -183,7 +183,7 @@ const triggerStyles = tv({
 
 interface TriggerProps
   extends React.ComponentProps<"button">,
-  VariantProps<typeof triggerStyles> {
+    VariantProps<typeof triggerStyles> {
   placeholder?: string
 }
 
@@ -869,9 +869,9 @@ const RangeDatePicker = ({
         ? new Time(value.from.getHours(), value.from.getMinutes())
         : defaultValue?.from
           ? new Time(
-            defaultValue.from.getHours(),
-            defaultValue.from.getMinutes(),
-          )
+              defaultValue.from.getHours(),
+              defaultValue.from.getMinutes(),
+            )
           : new Time(0, 0),
     )
     setEndTime(
@@ -888,8 +888,9 @@ const RangeDatePicker = ({
       return null
     }
 
-    return `${range.from ? formatDate(range.from, locale, showTimePicker) : ""
-      } - ${range.to ? formatDate(range.to, locale, showTimePicker) : ""}`
+    return `${
+      range.from ? formatDate(range.from, locale, showTimePicker) : ""
+    } - ${range.to ? formatDate(range.to, locale, showTimePicker) : ""}`
   }, [range, locale, showTimePicker])
 
   const onApply = () => {
@@ -1133,7 +1134,8 @@ const validatePresets = (
 
           if (presetDay && presetDay < fromDay.getDate()) {
             throw new Error(
-              `Preset ${preset.dateRange.from
+              `Preset ${
+                preset.dateRange.from
               }'s 'from' is before fromDay ${format(fromDay, "MMM dd, yyyy")}.`,
             )
           }

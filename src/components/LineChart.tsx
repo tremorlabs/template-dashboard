@@ -76,7 +76,7 @@ const LegendItem = ({
           // text color
           "text-gray-700 dark:text-gray-300",
           hasOnValueChange &&
-          "group-hover:text-gray-900 dark:group-hover:text-gray-50",
+            "group-hover:text-gray-900 dark:group-hover:text-gray-50",
           activeLegend && activeLegend !== name ? "opacity-40" : "opacity-100",
         )}
       >
@@ -419,9 +419,7 @@ const OverviewChartTooltip = ({
           "bg-white dark:bg-gray-950",
         )}
       >
-        <div
-          className="flex items-start justify-between gap-2 border-b border-inherit p-2"
-        >
+        <div className="flex items-start justify-between gap-2 border-b border-inherit p-2">
           <p
             className={cx(
               // base
@@ -463,7 +461,6 @@ const OverviewChartTooltip = ({
   }
   return null
 }
-
 
 // Standard tooltip below without percentage change logic
 
@@ -669,10 +666,10 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             onClick={
               hasOnValueChange && (activeLegend || activeDot)
                 ? () => {
-                  setActiveDot(undefined)
-                  setActiveLegend(undefined)
-                  onValueChange?.(null)
-                }
+                    setActiveDot(undefined)
+                    setActiveLegend(undefined)
+                    onValueChange?.(null)
+                  }
                 : undefined
             }
             margin={{
@@ -788,7 +785,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                     activeLegend,
                     hasOnValueChange
                       ? (clickedLegendItem: string) =>
-                        onCategoryClick(clickedLegendItem)
+                          onCategoryClick(clickedLegendItem)
                       : undefined,
                     enableLegendSlider,
                   )
@@ -904,26 +901,26 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
             {/* hidden lines to increase clickable target area */}
             {onValueChange
               ? categories.map((category) => (
-                <Line
-                  className={cx("cursor-pointer")}
-                  strokeOpacity={0}
-                  key={category}
-                  name={category}
-                  type="linear"
-                  dataKey={category}
-                  stroke="transparent"
-                  fill="transparent"
-                  legendType="none"
-                  tooltipType="none"
-                  strokeWidth={12}
-                  connectNulls={connectNulls}
-                  onClick={(props: any, event) => {
-                    event.stopPropagation()
-                    const { name } = props
-                    onCategoryClick(name)
-                  }}
-                />
-              ))
+                  <Line
+                    className={cx("cursor-pointer")}
+                    strokeOpacity={0}
+                    key={category}
+                    name={category}
+                    type="linear"
+                    dataKey={category}
+                    stroke="transparent"
+                    fill="transparent"
+                    legendType="none"
+                    tooltipType="none"
+                    strokeWidth={12}
+                    connectNulls={connectNulls}
+                    onClick={(props: any, event) => {
+                      event.stopPropagation()
+                      const { name } = props
+                      onCategoryClick(name)
+                    }}
+                  />
+                ))
               : null}
           </RechartsLineChart>
         </ResponsiveContainer>

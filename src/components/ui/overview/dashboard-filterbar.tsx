@@ -144,7 +144,7 @@ export function Filterbar({
             onPeriodChange(value as PeriodValue)
           }}
         >
-          <SelectTrigger className="mt-2 w-full px-2 sm:py-1 sm:mt-0 sm:w-fit">
+          <SelectTrigger className="mt-2 w-full px-2 sm:mt-0 sm:w-fit sm:py-1">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

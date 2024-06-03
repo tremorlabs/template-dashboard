@@ -49,7 +49,7 @@ export default function Users() {
           >
             <div className="flex items-center gap-x-4">
               <span
-                className="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
+                className="hidden size-9 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 sm:flex dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                 aria-hidden="true"
               >
                 {user.initials}
@@ -155,7 +155,7 @@ export default function Users() {
             >
               <div className="flex items-center gap-x-4">
                 <span
-                  className="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
+                  className="hidden size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-gray-300 bg-white text-xs text-gray-700 sm:flex dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
                   aria-hidden="true"
                 >
                   {user.initials}
