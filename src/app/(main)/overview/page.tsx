@@ -16,41 +16,49 @@ const categories: {
   title: keyof OverviewData
   type: "currency" | "unit"
 }[] = [
-  {
-    title: "Rows read",
-    type: "unit",
-  },
-  {
-    title: "Rows written",
-    type: "unit",
-  },
-  {
-    title: "Queries",
-    type: "unit",
-  },
-  {
-    title: "Payments completed",
-    type: "currency",
-  },
-  {
-    title: "Sign ups",
-    type: "unit",
-  },
-  {
-    title: "Logins",
-    type: "unit",
-  },
-  {
-    title: "Sign outs",
-    type: "unit",
-  },
-  {
-    title: "Support calls",
-    type: "unit",
-  },
-]
+    {
+      title: "Rows read",
+      type: "unit",
+    },
+    {
+      title: "Rows written",
+      type: "unit",
+    },
+    {
+      title: "Queries",
+      type: "unit",
+    },
+    {
+      title: "Payments completed",
+      type: "currency",
+    },
+    {
+      title: "Sign ups",
+      type: "unit",
+    },
+    {
+      title: "Logins",
+      type: "unit",
+    },
+    {
+      title: "Sign outs",
+      type: "unit",
+    },
+    {
+      title: "Support calls",
+      type: "unit",
+    },
+  ]
 
-const data = [
+export type dataKpiCards = {
+  title: string
+  percentage: number
+  current: number
+  allowed: number
+  unit?: string
+}
+
+export const data: dataKpiCards[] = [
   {
     title: "Rows read",
     percentage: 48.1,
@@ -74,7 +82,7 @@ const data = [
   },
 ]
 
-const data2 = [
+export const data2: dataKpiCards[] = [
   {
     title: "Weekly active users",
     percentage: 21.7,
@@ -87,7 +95,6 @@ const data2 = [
     percentage: 70,
     current: 28,
     allowed: 40,
-    unit: "",
   },
   {
     title: "Uptime",
@@ -98,7 +105,7 @@ const data2 = [
   },
 ]
 
-const data3 = [
+export const data3: { title: string; percentage: number, value: string, color: string }[] = [
   {
     title: "Base tier",
     percentage: 68.1,

@@ -1,6 +1,6 @@
-import { Transaction } from "./schema"
+import { Usage } from "./schema"
 
-export const roles = [
+export const roles: { value: string; label: string }[] = [
   {
     value: "admin",
     label: "Admin",
@@ -19,7 +19,7 @@ export const roles = [
   },
 ]
 
-export const statuses = [
+export const statuses: { value: string; label: string; variant: string }[] = [
   {
     value: "live",
     label: "Live",
@@ -37,7 +37,7 @@ export const statuses = [
   },
 ]
 
-export const regions = [
+export const regions: { value: string; label: string }[] = [
   {
     value: "US-West 1",
     label: "US-West 1",
@@ -68,7 +68,7 @@ export const regions = [
   },
 ]
 
-export const conditions = [
+export const conditions: { value: string; label: string }[] = [
   {
     value: "is-equal-to",
     label: "is equal to",
@@ -87,7 +87,12 @@ export const conditions = [
   },
 ]
 
-export const users = [
+export const users: {
+  name: string
+  initials: string
+  email: string
+  role: string
+}[] = [
   {
     name: "Emma Stone",
     initials: "ES",
@@ -101,9 +106,9 @@ export const users = [
     role: "viewer",
   },
   {
-    name: "Emily Bern",
+    name: "Emily Luisa Bernacle",
     initials: "EB",
-    email: "e.bern@gmail.com",
+    email: "e.luis.bernacle@gmail.com",
     role: "member",
   },
   {
@@ -125,14 +130,19 @@ export const users = [
     role: "admin",
   },
   {
-    name: "Megan Brown",
+    name: "Megan Katherina Brown",
     initials: "MB",
-    email: "m.brown@gmail.com",
+    email: "m.lovelybrown@gmail.com",
     role: "contributor",
   },
 ]
 
-export const invitedUsers = [
+export const invitedUsers: {
+  initials: string
+  email: string
+  role: string
+  expires: number
+}[] = [
   {
     initials: "LP",
     email: "lydia.posh@gmail.com",
@@ -147,7 +157,7 @@ export const invitedUsers = [
   },
 ]
 
-export const transactions: Transaction[] = [
+export const usage: Usage[] = [
   {
     owner: "John Doe",
     status: "live",
