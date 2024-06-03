@@ -184,7 +184,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Wei Zhang",
     status: "inactive",
-    costs: 2980,
+    costs: 0,
     region: "US-West 2",
     stability: 10,
     lastEdited: "10/11/2022 15:24",
@@ -216,7 +216,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Amir Khan",
     status: "inactive",
-    costs: 2150,
+    costs: 0,
     region: "EU-Central 1",
     stability: 7,
     lastEdited: "12/02/2023 09:12",
@@ -256,7 +256,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Sara Johansson",
     status: "inactive",
-    costs: 2300,
+    costs: 0,
     region: "US-East 2",
     stability: 25,
     lastEdited: "03/10/2022 08:33",
@@ -288,7 +288,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Hannah Kim",
     status: "inactive",
-    costs: 3000,
+    costs: 0,
     region: "EU-West 1",
     stability: 8,
     lastEdited: "11/05/2023 11:00",
@@ -336,7 +336,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Mia Wang",
     status: "inactive",
-    costs: 2400,
+    costs: 0,
     region: "US-West 2",
     stability: 14,
     lastEdited: "30/12/2023 13:01",
@@ -368,7 +368,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Isabella Clark",
     status: "inactive",
-    costs: 3200,
+    costs: 0,
     region: "US-East 2",
     stability: 6,
     lastEdited: "13/09/2022 16:22",
@@ -408,7 +408,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Olivia Anderson",
     status: "inactive",
-    costs: 2100,
+    costs: 0,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "25/05/2022 10:05",
@@ -448,7 +448,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Mason Clark",
     status: "inactive",
-    costs: 3000,
+    costs: 0,
     region: "EU-North 1",
     stability: 7,
     lastEdited: "14/05/2023 12:36",
@@ -488,7 +488,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Sophia Hall",
     status: "inactive",
-    costs: 2500,
+    costs: 0,
     region: "US-East 1",
     stability: 10,
     lastEdited: "15/04/2023 10:45",
@@ -520,7 +520,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Oliver Davis",
     status: "inactive",
-    costs: 3400,
+    costs: 0,
     region: "EU-West 1",
     stability: 12,
     lastEdited: "18/08/2022 14:34",
@@ -552,7 +552,7 @@ export const transactions: Transaction[] = [
   {
     owner: "Jackson Martinez",
     status: "inactive",
-    costs: 3100,
+    costs: 0,
     region: "US-East 1",
     stability: 7,
     lastEdited: "07/05/2023 09:27",
