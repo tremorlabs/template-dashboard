@@ -18,7 +18,7 @@ export default function Layout({
 }>) {
   const pathname = usePathname()
   return (
-    <div className="p-4 sm:px-10 sm:pb-10 sm:pt-7">
+    <div className="p-4 sm:px-6 sm:pt-10 lg:px-10 sm:pb-10 lg:pt-7">
       <h1 className="text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
         Settings
       </h1>
