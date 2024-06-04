@@ -25,25 +25,24 @@ const navigation = [
   },
 ]
 const shortcuts = [
-  // @CHRIS: replace links when anchors are set
   {
     name: "Add new user",
-    href: "#",
+    href: "/settings/users",
     icon: RiLinkM,
   },
   {
     name: "Workspace usage",
-    href: "#",
+    href: "/settings/billing#billing-overview",
     icon: RiLinkM,
   },
   {
     name: "Cost spend control",
-    href: "#",
+    href: "/settings/billing#cost-spend-control",
     icon: RiLinkM,
   },
   {
-    name: "Revenue by country",
-    href: "#",
+    name: "Overview – Rows written",
+    href: "/overview#usage-overview",
     icon: RiLinkM,
   },
 ] as const
