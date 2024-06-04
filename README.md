@@ -1,6 +1,6 @@
 # Tremor – Dashboard
 
-`Dashboard` is a Saas application template from [Tremor](https://tremor.so). It's built
+`Dashboard` is a SaaS application template from [Tremor](https://tremor.so). It's built
 using [`Tremor Raw`](https://raw.tremor.so/docs/getting-started/installation)
 and [Next.js](https://nextjs.org).
 
