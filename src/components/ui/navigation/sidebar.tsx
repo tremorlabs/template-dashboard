@@ -46,7 +46,8 @@ const shortcuts = [
     href: "#",
     icon: RiLinkM,
   },
-]
+] as const
+
 export function Sidebar() {
   const pathname = usePathname()
   const isActive = (itemHref: string) => {

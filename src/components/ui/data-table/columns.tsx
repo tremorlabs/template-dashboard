@@ -3,14 +3,14 @@
 import { Badge, BadgeProps } from "@/components/Badge"
 import { Checkbox } from "@/components/Checkbox"
 import { statuses } from "@/data/data"
-import { Transaction } from "@/data/schema"
+import { Usage } from "@/data/schema"
 import { formatters } from "@/lib/utils"
 import { createColumnHelper } from "@tanstack/react-table"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { ConditionFilter } from "./data-table-filter"
 import { DataTableRowActions } from "./data-table-row-actions"
 
-const columnHelper = createColumnHelper<Transaction>()
+const columnHelper = createColumnHelper<Usage>()
 export const columns = [
     columnHelper.display({
         id: "select",

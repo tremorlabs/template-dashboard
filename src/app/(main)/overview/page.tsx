@@ -50,7 +50,15 @@ const categories: {
   },
 ]
 
-const data = [
+export type KpiEntry = {
+  title: string
+  percentage: number
+  current: number
+  allowed: number
+  unit?: string
+}
+
+const data: KpiEntry[] = [
   {
     title: "Rows read",
     percentage: 48.1,
@@ -74,7 +82,7 @@ const data = [
   },
 ]
 
-const data2 = [
+const data2: KpiEntry[] = [
   {
     title: "Weekly active users",
     percentage: 21.7,
@@ -87,7 +95,6 @@ const data2 = [
     percentage: 70,
     current: 28,
     allowed: 40,
-    unit: "",
   },
   {
     title: "Uptime",
@@ -98,7 +105,15 @@ const data2 = [
   },
 ]
 
-const data3 = [
+export type KpiEntryExtended = Omit<
+  KpiEntry,
+  "current" | "allowed" | "unit"
+> & {
+  value: string
+  color: string
+}
+
+const data3: KpiEntryExtended[] = [
   {
     title: "Base tier",
     percentage: 68.1,
@@ -121,7 +136,8 @@ const data3 = [
 
 const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
 const maxDate = toDate(Math.max(...overviewsDates))
-export default function Example() {
+
+export default function Overview() {
   const [selectedDates, setSelectedDates] = React.useState<
     DateRange | undefined
   >({
