@@ -380,7 +380,8 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${previousIndex + 1
+      `You've moved ${item.label} from position ${
+        previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])

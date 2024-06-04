@@ -41,7 +41,7 @@ const progressBarVariants = tv({
 
 interface ProgressBarProps
   extends React.HTMLProps<HTMLDivElement>,
-  VariantProps<typeof progressBarVariants> {
+    VariantProps<typeof progressBarVariants> {
   value?: number
   max?: number
   showAnimation?: boolean

@@ -30,10 +30,7 @@ interface DataTableProps<TData> {
   data: TData[]
 }
 
-export function DataTable<TData>({
-  columns,
-  data,
-}: DataTableProps<TData>) {
+export function DataTable<TData>({ columns, data }: DataTableProps<TData>) {
   const pageSize = 20
   const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({

@@ -16,39 +16,39 @@ const categories: {
   title: keyof OverviewData
   type: "currency" | "unit"
 }[] = [
-    {
-      title: "Rows read",
-      type: "unit",
-    },
-    {
-      title: "Rows written",
-      type: "unit",
-    },
-    {
-      title: "Queries",
-      type: "unit",
-    },
-    {
-      title: "Payments completed",
-      type: "currency",
-    },
-    {
-      title: "Sign ups",
-      type: "unit",
-    },
-    {
-      title: "Logins",
-      type: "unit",
-    },
-    {
-      title: "Sign outs",
-      type: "unit",
-    },
-    {
-      title: "Support calls",
-      type: "unit",
-    },
-  ]
+  {
+    title: "Rows read",
+    type: "unit",
+  },
+  {
+    title: "Rows written",
+    type: "unit",
+  },
+  {
+    title: "Queries",
+    type: "unit",
+  },
+  {
+    title: "Payments completed",
+    type: "currency",
+  },
+  {
+    title: "Sign ups",
+    type: "unit",
+  },
+  {
+    title: "Logins",
+    type: "unit",
+  },
+  {
+    title: "Sign outs",
+    type: "unit",
+  },
+  {
+    title: "Support calls",
+    type: "unit",
+  },
+]
 
 export type KpiEntry = {
   title: string
