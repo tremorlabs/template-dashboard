@@ -1,14 +1,6 @@
 "use client"
-import {
-  createContext,
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react"
+
+import React from "react"
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover"
 import { Column, Table } from "@tanstack/react-table"
@@ -55,10 +47,10 @@ type ListContextValue = {
   instanceId: symbol
 }
 
-const ListContext = createContext<ListContextValue | null>(null)
+const ListContext = React.createContext<ListContextValue | null>(null)
 
 function useListContext() {
-  const listContext = useContext(ListContext)
+  const listContext = React.useContext(ListContext)
   invariant(listContext !== null)
   return listContext
 }
@@ -117,15 +109,15 @@ function ListItem({
 }) {
   const { registerItem, instanceId } = useListContext()
 
-  const ref = useRef<HTMLDivElement>(null)
-  const [closestEdge, setClosestEdge] = useState<Edge | null>(null)
+  const ref = React.useRef<HTMLDivElement>(null)
+  const [closestEdge, setClosestEdge] = React.useState<Edge | null>(null)
 
-  const dragHandleRef = useRef<HTMLButtonElement>(null)
+  const dragHandleRef = React.useRef<HTMLButtonElement>(null)
 
   const [draggableState, setDraggableState] =
-    useState<DraggableState>(idleState)
+    React.useState<DraggableState>(idleState)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const element = ref.current
     const dragHandle = dragHandleRef.current
     invariant(element)
@@ -210,7 +202,7 @@ function ListItem({
   }, [instanceId, item, index, registerItem])
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div ref={ref} className="relative border-b border-transparent">
         <div
           className={cx(
@@ -243,7 +235,7 @@ function ListItem({
           <div>{item.label}</div>,
           draggableState.container,
         )}
-    </Fragment>
+    </React.Fragment>
   )
 }
 
@@ -284,21 +276,21 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     id: column.id,
     label: column.columnDef.meta?.displayName as string,
   }))
-  const [{ items, lastCardMoved }, setListState] = useState<ListState>({
+  const [{ items, lastCardMoved }, setListState] = React.useState<ListState>({
     items: tableColumns,
     lastCardMoved: null,
   })
-  const [registry] = useState(getItemRegistry)
+  const [registry] = React.useState(getItemRegistry)
 
   // Isolated instances of this component from one another
-  const [instanceId] = useState(() => Symbol("instance-id"))
+  const [instanceId] = React.useState(() => Symbol("instance-id"))
 
-  useEffect(() => {
+  React.useEffect(() => {
     table.setColumnOrder(items.map((item) => item.id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items])
 
-  const reorderItem = useCallback(
+  const reorderItem = React.useCallback(
     ({
       startIndex,
       indexOfTarget,
@@ -340,7 +332,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     [],
   )
 
-  useEffect(() => {
+  React.useEffect(() => {
     return monitorForElements({
       canMonitor({ source }) {
         return isItemData(source.data) && source.data.instanceId === instanceId
@@ -376,7 +368,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
   }, [instanceId, items, reorderItem])
 
   // once a drag is finished, we have some post drop actions to take
-  useEffect(() => {
+  React.useEffect(() => {
     if (lastCardMoved === null) {
       return
     }
@@ -388,22 +380,21 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${
-        previousIndex + 1
+      `You've moved ${item.label} from position ${previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])
 
   // cleanup the live region when this component is finished
-  useEffect(() => {
+  React.useEffect(() => {
     return function cleanup() {
       liveRegion.cleanup()
     }
   }, [])
 
-  const getListLength = useCallback(() => items.length, [items.length])
+  const getListLength = React.useCallback(() => items.length, [items.length])
 
-  const contextValue: ListContextValue = useMemo(() => {
+  const contextValue: ListContextValue = React.useMemo(() => {
     return {
       registerItem: registry.register,
       reorderItem,

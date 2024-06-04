@@ -108,7 +108,6 @@ const DrawerHeader = React.forwardRef<
       <div className={cx("mt-1 flex flex-col gap-y-1", className)}>
         {children}
       </div>
-      {/* @CHRIS: aria-label support */}
       <DrawerPrimitives.Close asChild>
         <Button
           variant="ghost"
@@ -191,5 +190,6 @@ export {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
+  DrawerTrigger
 }
+

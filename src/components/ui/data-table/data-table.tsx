@@ -25,17 +25,15 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
-interface DataTableProps<TData, TValue> {
-  // @CHRIS/MAXIME: take care of type mgmt later
-  columns: ColumnDef<TData, any>[]
-  // columns: ColumnDef<TData, TValue>[]
+interface DataTableProps<TData> {
+  columns: ColumnDef<TData>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const pageSize = 20
   const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({
@@ -43,13 +41,8 @@ export function DataTable<TData, TValue>({
     columns,
     state: {
       rowSelection,
-      // columnVisibility,
     },
     initialState: {
-      columnVisibility: {
-        // @CHRIS: define column that should be hidden by default
-        // owner: false,
-      },
       pagination: {
         pageIndex: 0,
         pageSize: pageSize,

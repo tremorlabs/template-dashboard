@@ -31,7 +31,6 @@ export const columns = [
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        // disabled={!row.getCanSelect()}
         onCheckedChange={() => row.toggleSelected()}
         className="translate-y-0.5"
         aria-label="Select row"
@@ -176,7 +175,7 @@ export const columns = [
       }
     },
   }),
-  // @CHRIS: wording consistency
+
   columnHelper.accessor("lastEdited", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Last edited" />
