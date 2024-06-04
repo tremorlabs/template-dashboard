@@ -37,6 +37,19 @@ export const metadata: Metadata = {
   },
 }
 
+function Banner() {
+  return (
+    <div className="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 transition hover:-translate-y-px">
+      <a
+        href="https://blocks.tremor.so/templates"
+        className="rounded-full bg-gray-950 px-6 py-3 shadow-lg shadow-black/20 ring-1 ring-white/10 hover:bg-gray-900"
+      >
+        <span className="font-medium text-white">Get this template</span>
+      </a>
+    </div>
+  )
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -52,6 +65,7 @@ export default function RootLayout({
           <ThemeProvider defaultTheme="system" attribute="class">
             <Sidebar />
             <main className="lg:pl-72">{children}</main>
+            <Banner />
           </ThemeProvider>
         </div>
       </body>
