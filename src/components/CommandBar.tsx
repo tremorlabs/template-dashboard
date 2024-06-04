@@ -82,7 +82,7 @@ const CommandBarBar = React.forwardRef<
     <div
       ref={ref}
       className={cx(
-        "relative flex items-center rounded-lg bg-gray-900 px-1 shadow-lg shadow-black/30",
+        "relative flex items-center rounded-lg bg-gray-900 px-1 shadow-lg shadow-black/30 dark:ring-1 dark:ring-white/10",
         className,
       )}
       {...props}

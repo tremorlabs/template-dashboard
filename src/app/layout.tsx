@@ -1,4 +1,3 @@
-import { Sidebar } from "@/components/ui/navigation/Sidebar"
 import type { Metadata } from "next"
 import { ThemeProvider } from "next-themes"
 import { Inter } from "next/font/google"
@@ -10,6 +9,7 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
+import { Sidebar } from "@/components/ui/navigation/sidebar"
 import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
@@ -44,8 +44,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body //@sev maybe add back min-h-screen
-        className={`${inter.className} scroll-auto overflow-y-scroll antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}
+      <body
+        className={`${inter.className} overflow-y-scroll scroll-auto antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}
         suppressHydrationWarning
       >
         <div className="mx-auto max-w-screen-2xl">
