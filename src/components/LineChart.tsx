@@ -29,7 +29,7 @@ import {
 import { useOnWindowResize } from "@/lib/useOnWindowResize"
 import { cx, percentageFormatter } from "@/lib/utils"
 import { Badge } from "./Badge"
-import { getBadgeType } from "./ui/overview/dashboard-chart-card"
+import { getBadgeType } from "./ui/overview/DashboardChartCard"
 
 //#region Legend
 

@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/Select"
 import { Tooltip } from "@/components/Tooltip"
-import { ModalAddUser } from "@/components/ui/settings/modal-add-user"
+import { ModalAddUser } from "@/components/ui/settings/ModalAddUser"
 import { invitedUsers, roles, users } from "@/data/data"
 import { RiAddLine, RiMore2Fill } from "@remixicon/react"
 

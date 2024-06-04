@@ -6,9 +6,9 @@ import { statuses } from "@/data/data"
 import { Usage } from "@/data/schema"
 import { formatters } from "@/lib/utils"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
-import { DataTableColumnHeader } from "./data-table-column-header"
-import { ConditionFilter } from "./data-table-filter"
-import { DataTableRowActions } from "./data-table-row-actions"
+import { DataTableColumnHeader } from "./DataTableColumnHeader"
+import { ConditionFilter } from "./DataTableFilter"
+import { DataTableRowActions } from "./DataTableRowActions"
 
 const columnHelper = createColumnHelper<Usage>()
 export const columns = [

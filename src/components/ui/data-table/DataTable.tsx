@@ -11,9 +11,9 @@ import {
 import { cx } from "@/lib/utils"
 import * as React from "react"
 
-import { DataTableBulkEditor } from "./data-table-bulk-editor"
-import { Filterbar } from "./data-table-filterbar"
-import { DataTablePagination } from "./data-table-pagination"
+import { DataTableBulkEditor } from "./DataTableBulkEditor"
+import { Filterbar } from "./DataTableFilterbar"
+import { DataTablePagination } from "./DataTablePagination"
 
 import {
   ColumnDef,

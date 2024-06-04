@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/ui/navigation/sidebar"
+import { Sidebar } from "@/components/ui/navigation/Sidebar"
 import type { Metadata } from "next"
 import { ThemeProvider } from "next-themes"
 import { Inter } from "next/font/google"

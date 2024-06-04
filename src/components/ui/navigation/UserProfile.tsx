@@ -4,7 +4,7 @@ import { Button } from "@/components/Button"
 import { cx, focusRing } from "@/lib/utils"
 import { RiMore2Fill } from "@remixicon/react"
 
-import { DropdownUserProfile } from "./dropdown-user-profile"
+import { DropdownUserProfile } from "./DropdownUserProfile"
 
 export const UserProfileDesktop = () => {
   return (

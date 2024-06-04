@@ -8,8 +8,8 @@ import { RiDownloadLine } from "@remixicon/react"
 import { Table } from "@tanstack/react-table"
 import { useState } from "react"
 import { useDebouncedCallback } from "use-debounce"
-import { DataTableFilter } from "./data-table-filter"
-import { ViewOptions } from "./data-table-view-options"
+import { DataTableFilter } from "./DataTableFilter"
+import { ViewOptions } from "./DataTableViewOptions"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>

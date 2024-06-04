@@ -30,7 +30,7 @@ import { RiSettings5Line } from "@remixicon/react"
 import { eachDayOfInterval, interval, subDays, subYears } from "date-fns"
 import React from "react"
 import { DateRange } from "react-day-picker"
-import { ChartCard } from "./dashboard-chart-card"
+import { ChartCard } from "./DashboardChartCard"
 
 type Period = {
   value: PeriodValue

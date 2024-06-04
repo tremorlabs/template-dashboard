@@ -12,7 +12,7 @@ import {
 import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
-import { ModalAddWorkspace } from "./modal-add-workspace"
+import { ModalAddWorkspace } from "./ModalAddWorkspace"
 
 const workspaces = [
   {

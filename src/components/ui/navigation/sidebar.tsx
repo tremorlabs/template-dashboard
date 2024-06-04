@@ -9,12 +9,12 @@ import {
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import MobileSidebar from "./mobile-sidebar"
+import MobileSidebar from "./MobileSidebar"
 import {
   WorkspacesDropdownDesktop,
   WorkspacesDropdownMobile,
-} from "./sidebar-workspaces-dropdown"
-import { UserProfileDesktop, UserProfileMobile } from "./user-profile"
+} from "./SidebarWorkspacesDropdown"
+import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },

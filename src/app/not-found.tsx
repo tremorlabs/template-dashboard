@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button"
-import { ArrowAnimated } from "@/components/ui/arrow-animated"
+import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import Link from "next/link"
 import { DatabaseLogo } from "../../public/DatabaseLogo"
 import { siteConfig } from "./siteConfig"
