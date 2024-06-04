@@ -11,9 +11,9 @@ import {
 import { cx } from "@/lib/utils"
 import * as React from "react"
 
-import { DataTableBulkEditor } from "./data-table-bulk-editor"
-import { Filterbar } from "./data-table-filterbar"
-import { DataTablePagination } from "./data-table-pagination"
+import { DataTableBulkEditor } from "./DataTableBulkEditor"
+import { Filterbar } from "./DataTableFilterbar"
+import { DataTablePagination } from "./DataTablePagination"
 
 import {
   ColumnDef,
@@ -25,17 +25,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
-interface DataTableProps<TData, TValue> {
-  // @CHRIS/MAXIME: take care of type mgmt later
-  columns: ColumnDef<TData, any>[]
-  // columns: ColumnDef<TData, TValue>[]
+interface DataTableProps<TData> {
+  columns: ColumnDef<TData>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
+export function DataTable<TData>({ columns, data }: DataTableProps<TData>) {
   const pageSize = 20
   const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({
@@ -43,13 +38,8 @@ export function DataTable<TData, TValue>({
     columns,
     state: {
       rowSelection,
-      // columnVisibility,
     },
     initialState: {
-      columnVisibility: {
-        // @CHRIS: define column that should be hidden by default
-        // owner: false,
-      },
       pagination: {
         pageIndex: 0,
         pageSize: pageSize,
@@ -107,7 +97,7 @@ export function DataTable<TData, TValue>({
                           row.getIsSelected()
                             ? "bg-gray-50 dark:bg-gray-900"
                             : "",
-                          // @SEV/CHRIS: first:-logic
+                          // @SEV: first: w-10 is hard value, but somehow you can really modify width of the checkbox value (e.g. w-6 does not make it smaller) -> what's the best formatting option here to make it a lean column?
                           "relative whitespace-nowrap py-1 text-gray-600 first:w-10 dark:text-gray-400",
                           cell.column.columnDef.meta?.className,
                         )}

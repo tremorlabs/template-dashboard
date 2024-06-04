@@ -29,8 +29,7 @@ const buttonVariants = tv({
         "hover:bg-indigo-500 dark:hover:bg-indigo-600",
         // disabled
         "disabled:bg-indigo-100 disabled:text-gray-400",
-        // @CHRIS: change dark mode
-        "disabled:dark:bg-gray-800 disabled:dark:text-gray-600",
+        "disabled:dark:bg-indigo-800 disabled:dark:text-indigo-400",
       ],
       secondary: [
         // border

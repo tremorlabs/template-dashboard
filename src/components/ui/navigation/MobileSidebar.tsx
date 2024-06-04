@@ -28,34 +28,39 @@ const navigation = [
     href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
   },
-]
+] as const
 
 const shortcuts = [
-  // @CHRIS: replace links when anchors are set
   {
     name: "Add new user",
-    href: "#",
+    href: "/settings/users",
     icon: RiLinkM,
   },
   {
     name: "Workspace usage",
-    href: "#",
+    href: "/settings/billing#billing-overview",
     icon: RiLinkM,
   },
   {
     name: "Cost spend control",
-    href: "#",
+    href: "/settings/billing#cost-spend-control",
     icon: RiLinkM,
   },
   {
-    name: "Revenue by country",
-    href: "#",
+    name: "Overview – Rows written",
+    href: "/overview#usage-overview",
     icon: RiLinkM,
   },
-]
+] as const
 
 export default function MobileSidebar() {
   const pathname = usePathname()
+  const isActive = (itemHref: string) => {
+    if (itemHref === siteConfig.baseLinks.settings.general) {
+      return pathname.startsWith("/settings")
+    }
+    return pathname === itemHref || pathname.startsWith(itemHref)
+  }
   return (
     <>
       <Drawer>
@@ -87,7 +92,7 @@ export default function MobileSidebar() {
                       <Link
                         href={item.href}
                         className={cx(
-                          pathname === item.href || pathname.includes(item.href)
+                          isActive(item.href)
                             ? "text-indigo-600 dark:text-indigo-400"
                             : "text-gray-600 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
                           "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-base font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",

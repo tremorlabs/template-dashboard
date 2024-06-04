@@ -11,9 +11,7 @@ import {
   isWithinInterval,
 } from "date-fns"
 import { DateRange } from "react-day-picker"
-import { getPeriod } from "./dashboard-filterbar"
-
-// @Maxime/Chris: dummy data -> remover afterwards
+import { getPeriod } from "./DashboardFilterbar"
 
 export type CardProps = {
   title: keyof OverviewData

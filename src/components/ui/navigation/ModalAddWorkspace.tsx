@@ -150,7 +150,6 @@ export function ModalAddWorkspace({
                 <Label htmlFor="database" className="font-medium">
                   Database configuration
                 </Label>
-                {/* @CHRIS: standardize defaultValue this way globally */}
                 <RadioCardGroup
                   defaultValue={databases[0].value}
                   className="mt-2 grid grid-cols-1 gap-4 text-sm md:grid-cols-2"

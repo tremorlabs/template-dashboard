@@ -77,8 +77,7 @@ const TabNavigationLink = React.forwardRef<
             "group-hover:border-gray-300 group-hover:dark:border-gray-400",
             // selected
             "group-data-[active]:border-indigo-600 group-data-[active]:text-indigo-600",
-            //@CHRIS: dark mode
-            "group-data-[active]:dark:border-gray-50 group-data-[active]:dark:text-gray-50",
+            "group-data-[active]:dark:border-indigo-500 group-data-[active]:dark:text-indigo-500",
             // disabled
             disabled
               ? "pointer-events-none text-gray-300 dark:text-gray-700"

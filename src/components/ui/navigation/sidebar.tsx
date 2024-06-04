@@ -9,12 +9,13 @@ import {
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import MobileSidebar from "./mobile-sidebar"
+import MobileSidebar from "./MobileSidebar"
 import {
   WorkspacesDropdownDesktop,
   WorkspacesDropdownMobile,
-} from "./sidebar-workspaces-dropdown"
-import { UserProfileDesktop, UserProfileMobile } from "./user-profile"
+} from "./SidebarWorkspacesDropdown"
+import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
+
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
   { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
@@ -23,27 +24,27 @@ const navigation = [
     href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
   },
-]
+] as const
+
 const shortcuts = [
-  // @CHRIS: replace links when anchors are set
   {
     name: "Add new user",
-    href: "#",
+    href: "/settings/users",
     icon: RiLinkM,
   },
   {
     name: "Workspace usage",
-    href: "#",
+    href: "/settings/billing#billing-overview",
     icon: RiLinkM,
   },
   {
     name: "Cost spend control",
-    href: "#",
+    href: "/settings/billing#cost-spend-control",
     icon: RiLinkM,
   },
   {
-    name: "Revenue by country",
-    href: "#",
+    name: "Overview – Rows written",
+    href: "/overview#usage-overview",
     icon: RiLinkM,
   },
 ] as const

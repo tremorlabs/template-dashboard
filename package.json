@@ -10,12 +10,12 @@
     "generate": "node src/data/generateData.js"
   },
   "dependencies": {
-    "@atlaskit/pragmatic-drag-and-drop": "^1.1.9",
+    "@atlaskit/pragmatic-drag-and-drop": "^1.1.10",
     "@atlaskit/pragmatic-drag-and-drop-flourish": "^1.1.0",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@atlaskit/pragmatic-drag-and-drop-live-region": "^1.0.6",
     "@atlaskit/pragmatic-drag-and-drop-react-drop-indicator": "^1.1.1",
-    "@internationalized/date": "^3.5.3",
+    "@internationalized/date": "^3.5.4",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -27,8 +27,8 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@react-aria/datepicker": "^3.10.0",
-    "@react-stately/datepicker": "^3.9.3",
+    "@react-aria/datepicker": "^3.10.1",
+    "@react-stately/datepicker": "^3.9.4",
     "@remixicon/react": "^4.2.0",
     "@tanstack/react-table": "^8.17.3",
     "clsx": "^2.1.1",
@@ -46,15 +46,15 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
-    "@types/node": "^20",
+    "@types/node": "^20.14.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
-    "eslint": "^8",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
-    "postcss": "^8",
+    "postcss": "^8.4.38",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   }
 }
