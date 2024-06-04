@@ -44,8 +44,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body //sev maybe add back min-h-screen
-        className={`${inter.className} scroll-aut overflow-y-scroll antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}
+      <body //@sev maybe add back min-h-screen
+        className={`${inter.className} scroll-auto overflow-y-scroll antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}
         suppressHydrationWarning
       >
         <div className="mx-auto max-w-screen-2xl">
