@@ -16,39 +16,39 @@ const categories: {
   title: keyof OverviewData
   type: "currency" | "unit"
 }[] = [
-    {
-      title: "Rows read",
-      type: "unit",
-    },
-    {
-      title: "Rows written",
-      type: "unit",
-    },
-    {
-      title: "Queries",
-      type: "unit",
-    },
-    {
-      title: "Payments completed",
-      type: "currency",
-    },
-    {
-      title: "Sign ups",
-      type: "unit",
-    },
-    {
-      title: "Logins",
-      type: "unit",
-    },
-    {
-      title: "Sign outs",
-      type: "unit",
-    },
-    {
-      title: "Support calls",
-      type: "unit",
-    },
-  ]
+  {
+    title: "Rows read",
+    type: "unit",
+  },
+  {
+    title: "Rows written",
+    type: "unit",
+  },
+  {
+    title: "Queries",
+    type: "unit",
+  },
+  {
+    title: "Payments completed",
+    type: "currency",
+  },
+  {
+    title: "Sign ups",
+    type: "unit",
+  },
+  {
+    title: "Logins",
+    type: "unit",
+  },
+  {
+    title: "Sign outs",
+    type: "unit",
+  },
+  {
+    title: "Support calls",
+    type: "unit",
+  },
+]
 
 export type KpiEntry = {
   title: string
@@ -153,10 +153,11 @@ export default function Overview() {
 
   return (
     <>
-      <section
-        aria-labelledby="current-billing-cycle"
-      >
-        <h1 id="current-billing-cycle" className="scroll-mt-10 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
+      <section aria-labelledby="current-billing-cycle">
+        <h1
+          id="current-billing-cycle"
+          className="scroll-mt-10 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50"
+        >
           Current billing cycle
         </h1>
         <div className="mt-4 grid grid-cols-1 gap-14 sm:mt-8 sm:grid-cols-2 lg:mt-10 xl:grid-cols-3">
@@ -193,13 +194,14 @@ export default function Overview() {
           />
         </div>
       </section>
-      <section
-        aria-labelledby="usage-overview"
-      >
-        <h1 id="usage-overview" className="scroll-mt-8 mt-16 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50">
+      <section aria-labelledby="usage-overview">
+        <h1
+          id="usage-overview"
+          className="mt-16 scroll-mt-8 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50"
+        >
           Overview
         </h1>
-        <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 lg:top-0 lg:mx-0 lg:px-0 pt-4 sm:pt-6 lg:pt-8 dark:border-gray-800 dark:bg-gray-950">
+        <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 pt-4 sm:pt-6 lg:top-0 lg:mx-0 lg:px-0 lg:pt-8 dark:border-gray-800 dark:bg-gray-950">
           <Filterbar
             maxDate={maxDate}
             minDate={new Date(2024, 0, 1)}

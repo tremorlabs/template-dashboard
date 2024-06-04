@@ -25,7 +25,10 @@ export default function Users() {
       <section aria-labelledby="existing-users">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div>
-            <h3 id="existing-users" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+            <h3
+              id="existing-users"
+              className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+            >
               Users
             </h3>
             <p className="text-sm leading-6 text-gray-500">
@@ -143,7 +146,10 @@ export default function Users() {
         </ul>
       </section>
       <section className="mt-12" aria-labelledby="pending-invitations">
-        <h2 id="pending-invitations" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+        <h2
+          id="pending-invitations"
+          className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+        >
           Pending invitations
         </h2>
         <ul

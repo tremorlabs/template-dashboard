@@ -19,38 +19,38 @@ const data: {
   capacity?: string
   percentageValue?: number
 }[] = [
-    {
-      name: "Starter plan",
-      description: "Discounted plan for start-ups and growing companies",
-      value: "$90",
-    },
-    {
-      name: "Storage",
-      description: "Used 10.1 GB",
-      value: "$40",
-      capacity: "100 GB included",
-      percentageValue: 10.1,
-    },
-    {
-      name: "Bandwith",
-      description: "Used 2.9 GB",
-      value: "$10",
-      capacity: "5 GB included",
-      percentageValue: 58,
-    },
-    {
-      name: "Users",
-      description: "Used 9",
-      value: "$20",
-      capacity: "50 users included",
-      percentageValue: 18,
-    },
-    {
-      name: "Query super caching (EU-Central 1)",
-      description: "4 GB query cache, $120/mo",
-      value: "$120.00",
-    },
-  ]
+  {
+    name: "Starter plan",
+    description: "Discounted plan for start-ups and growing companies",
+    value: "$90",
+  },
+  {
+    name: "Storage",
+    description: "Used 10.1 GB",
+    value: "$40",
+    capacity: "100 GB included",
+    percentageValue: 10.1,
+  },
+  {
+    name: "Bandwith",
+    description: "Used 2.9 GB",
+    value: "$10",
+    capacity: "5 GB included",
+    percentageValue: 58,
+  },
+  {
+    name: "Users",
+    description: "Used 9",
+    value: "$20",
+    capacity: "50 users included",
+    percentageValue: 18,
+  },
+  {
+    name: "Query super caching (EU-Central 1)",
+    description: "4 GB query cache, $120/mo",
+    value: "$120.00",
+  },
+]
 
 export default function Billing() {
   const [isSpendMgmtEnabled, setIsSpendMgmtEnabled] = React.useState(true)
@@ -79,7 +79,10 @@ export default function Billing() {
         <section aria-labelledby="billing-overview">
           <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
             <div>
-              <h2 id="billing-overview" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+              <h2
+                id="billing-overview"
+                className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+              >
                 Billing
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -133,7 +136,10 @@ export default function Billing() {
           <form>
             <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
-                <h2 id="cost-spend-control" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+                <h2
+                  id="cost-spend-control"
+                  className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+                >
                   Cost spend control
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -247,7 +253,10 @@ export default function Billing() {
           <form>
             <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
-                <h2 id="add-ons" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+                <h2
+                  id="add-ons"
+                  className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+                >
                   Add-Ons
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -262,9 +271,9 @@ export default function Billing() {
                       Advanced bot protection
                     </h4>
                     <p className="mt-2 max-w-xl text-sm leading-6 text-gray-500">
-                      Safeguard your assets with our cutting-edge bot protection.
-                      Our AI solution identifies and mitigates automated traffic
-                      to protect your workspace from bad bots.
+                      Safeguard your assets with our cutting-edge bot
+                      protection. Our AI solution identifies and mitigates
+                      automated traffic to protect your workspace from bad bots.
                     </p>
                   </div>
                   <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-900 dark:bg-gray-900">

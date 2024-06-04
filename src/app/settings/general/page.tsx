@@ -24,7 +24,10 @@ export default function General() {
           <form>
             <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
-                <h2 id="personal-information" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+                <h2
+                  id="personal-information"
+                  className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+                >
                   Personal information
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -124,7 +127,10 @@ export default function General() {
           <form>
             <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
-                <h2 id="notification-settings" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+                <h2
+                  id="notification-settings"
+                  className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+                >
                   Notification settings
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -189,7 +195,9 @@ export default function General() {
                         name="query-caching"
                         defaultChecked
                       />
-                      <Label htmlFor="query-caching">Payment transactions</Label>
+                      <Label htmlFor="query-caching">
+                        Payment transactions
+                      </Label>
                     </li>
                     <li className="flex items-center gap-x-3 py-3">
                       <Checkbox id="storage" name="storage" defaultChecked />
@@ -206,7 +214,10 @@ export default function General() {
           <form>
             <div className="grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-3">
               <div>
-                <h2 id="danger-zone" className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50">
+                <h2
+                  id="danger-zone"
+                  className="scroll-mt-10 font-semibold text-gray-900 dark:text-gray-50"
+                >
                   Danger zone
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -274,7 +285,7 @@ export default function General() {
             </div>
           </form>
         </section>
-      </div >
+      </div>
     </>
   )
 }
