@@ -12,7 +12,13 @@ import { cx } from "@/lib/utils"
 import { RiArrowRightUpLine } from "@remixicon/react"
 import React from "react"
 
-const data = [
+const data: {
+  name: string
+  description: string
+  value: string
+  capacity?: string
+  percentageValue?: number
+}[] = [
   {
     name: "Starter plan",
     description: "Discounted plan for start-ups and growing companies",
