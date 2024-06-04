@@ -47,4 +47,4 @@ the resources listed below:
 - [Next.js](https://nextjs.org/docs) - Next.js documentation
 - [Radix UI](https://www.radix-ui.com) - Radix UI Website
 - [Recharts](https://recharts.org) - Recharts documentation and website
-- [Tanstack](https://tanstack.com/table/latest)) - TanStack table documentation
+- [Tanstack](https://tanstack.com/table/latest) - TanStack table documentation
