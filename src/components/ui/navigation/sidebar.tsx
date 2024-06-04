@@ -45,6 +45,16 @@ const shortcuts = [
     href: "/overview#usage-overview",
     icon: RiLinkM,
   },
+  {
+    name: "[TEMP]",
+    href: "/settings/general#personal-information",
+    icon: RiLinkM,
+  },
+  {
+    name: "[TEMP]",
+    href: "/overview#current-billing-cycle",
+    icon: RiLinkM,
+  },
 ] as const
 
 export function Sidebar() {
