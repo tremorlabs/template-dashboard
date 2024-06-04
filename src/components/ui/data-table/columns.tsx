@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/Checkbox"
 import { statuses } from "@/data/data"
 import { Usage } from "@/data/schema"
 import { formatters } from "@/lib/utils"
-import { createColumnHelper } from "@tanstack/react-table"
+import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { ConditionFilter } from "./data-table-filter"
 import { DataTableRowActions } from "./data-table-row-actions"
@@ -175,7 +175,6 @@ export const columns = [
       }
     },
   }),
-
   columnHelper.accessor("lastEdited", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Last edited" />
@@ -197,4 +196,4 @@ export const columns = [
     },
     cell: ({ row }) => <DataTableRowActions row={row} />,
   }),
-]
+] as ColumnDef<Usage>[]

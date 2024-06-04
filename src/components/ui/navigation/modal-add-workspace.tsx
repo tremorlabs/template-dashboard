@@ -32,25 +32,25 @@ export const databases: {
   description: string
   isRecommended: boolean
 }[] = [
-  {
-    label: "Base performance",
-    value: "base-performance",
-    description: "1/8 vCPU, 1 GB RAM",
-    isRecommended: true,
-  },
-  {
-    label: "Advanced performance",
-    value: "advanced-performance",
-    description: "1/4 vCPU, 2 GB RAM",
-    isRecommended: false,
-  },
-  {
-    label: "Turbo performance",
-    value: "turbo-performance",
-    description: "1/2 vCPU, 4 GB RAM",
-    isRecommended: false,
-  },
-]
+    {
+      label: "Base performance",
+      value: "base-performance",
+      description: "1/8 vCPU, 1 GB RAM",
+      isRecommended: true,
+    },
+    {
+      label: "Advanced performance",
+      value: "advanced-performance",
+      description: "1/4 vCPU, 2 GB RAM",
+      isRecommended: false,
+    },
+    {
+      label: "Turbo performance",
+      value: "turbo-performance",
+      description: "1/2 vCPU, 4 GB RAM",
+      isRecommended: false,
+    },
+  ]
 
 export type ModalProps = {
   itemName: string
@@ -150,7 +150,6 @@ export function ModalAddWorkspace({
                 <Label htmlFor="database" className="font-medium">
                   Database configuration
                 </Label>
-                {/* @CHRIS: standardize defaultValue this way globally */}
                 <RadioCardGroup
                   defaultValue={databases[0].value}
                   className="mt-2 grid grid-cols-1 gap-4 text-sm md:grid-cols-2"

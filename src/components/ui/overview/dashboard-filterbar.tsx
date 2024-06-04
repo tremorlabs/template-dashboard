@@ -43,7 +43,6 @@ const periods: Period[] = [
     label: "Previous period",
   },
   {
-    // @Maxime: means same period last year (e.g. if seven days are selected, the same 7 days 1 year ago :)
     value: "last-year",
     label: "Last year",
   },

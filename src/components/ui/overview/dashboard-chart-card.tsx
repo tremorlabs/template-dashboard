@@ -13,8 +13,6 @@ import {
 import { DateRange } from "react-day-picker"
 import { getPeriod } from "./dashboard-filterbar"
 
-// @Maxime/Chris: dummy data -> remover afterwards
-
 export type CardProps = {
   title: keyof OverviewData
   type: "currency" | "unit"

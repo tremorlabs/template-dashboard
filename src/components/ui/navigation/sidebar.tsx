@@ -15,6 +15,7 @@ import {
   WorkspacesDropdownMobile,
 } from "./sidebar-workspaces-dropdown"
 import { UserProfileDesktop, UserProfileMobile } from "./user-profile"
+
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
   { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
@@ -23,7 +24,8 @@ const navigation = [
     href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
   },
-]
+] as const
+
 const shortcuts = [
   {
     name: "Add new user",
