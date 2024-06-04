@@ -216,7 +216,7 @@ export default function Overview() {
         </div>
         <dl
           className={cx(
-            "mt-10 grid grid-cols-1 gap-14 transition sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
+            "mt-10 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
           )}
         >
           {categories
@@ -226,7 +226,6 @@ export default function Overview() {
                 <ChartCard
                   key={category.title}
                   title={category.title}
-                  // value={category.value}
                   type={category.type}
                   selectedDates={selectedDates}
                   selectedPeriod={selectedPeriod}

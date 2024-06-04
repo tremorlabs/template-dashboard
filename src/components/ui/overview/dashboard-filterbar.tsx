@@ -182,7 +182,7 @@ export function Filterbar({
           </DialogHeader>
           <div
             className={cx(
-              "mt-8 grid max-h-[70vh] grid-cols-1 gap-4 overflow-y-scroll transition sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
+              "mt-8 grid max-h-[70vh] grid-cols-1 gap-4 overflow-y-scroll sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
             )}
           >
             {categories.map((category) => {
@@ -190,7 +190,7 @@ export function Filterbar({
                 <Label
                   htmlFor={category.title}
                   key={category.title}
-                  className="relative rounded-md border p-4 shadow-sm"
+                  className="relative cursor-pointer rounded-md border p-4 shadow-sm"
                 >
                   <Checkbox
                     id={category.title}
