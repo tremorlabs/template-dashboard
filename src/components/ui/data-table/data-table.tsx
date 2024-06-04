@@ -98,7 +98,7 @@ export function DataTable<TData>({ columns, data }: DataTableProps<TData>) {
                             ? "bg-gray-50 dark:bg-gray-900"
                             : "",
                           // @SEV: first: w-10 is hard value, but somehow you can really modify width of the checkbox value (e.g. w-6 does not make it smaller) -> what's the best formatting option here to make it a lean column?
-                          "relative whitespace-nowrap py-1 text-gray-600 first:w-10 first:border dark:text-gray-400",
+                          "relative whitespace-nowrap py-1 text-gray-600 first:w-10 dark:text-gray-400",
                           cell.column.columnDef.meta?.className,
                         )}
                       >
