@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 function Banner() {
   return (
-    <div className="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 transition">
+    <div className="hidden fixed bottom-10 left-1/2 z-50 -translate-x-1/2 transition">
       <div className="flex items-center gap-x-1 rounded-full bg-gray-950 p-1 text-sm shadow-xl shadow-black/20 ring-1 ring-white/10">
         <a
           className="flex items-center gap-x-2 rounded-l-[20px] rounded-r-md bg-gray-900 py-2 pl-4 pr-2 font-semibold text-gray-50 ring-1 ring-inset ring-white/20 hover:bg-gray-800/90 hover:text-white"
