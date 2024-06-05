@@ -10,7 +10,7 @@
     "generate": "node src/data/generateData.js"
   },
   "dependencies": {
-    "@atlaskit/pragmatic-drag-and-drop": "^1.1.10",
+    "@atlaskit/pragmatic-drag-and-drop": "^1.1.11",
     "@atlaskit/pragmatic-drag-and-drop-flourish": "^1.1.0",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@atlaskit/pragmatic-drag-and-drop-live-region": "^1.0.6",
@@ -46,13 +46,13 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.38",
-    "prettier": "^3.3.0",
+    "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
