@@ -53,7 +53,7 @@ function Banner() {
           Get OSS version
         </a>
         <a
-          className="font-semibold py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full ring-1 ring-inset ring-indigo-400/30"
+          className="font-semibold py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full ring-1 ring-inset ring-indigo-400/30 transition"
           href="https://blocks.tremor.so/templates#template-dashboard"
           target="_blank"
 
