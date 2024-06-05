@@ -2,15 +2,15 @@ import type { Metadata } from "next"
 import { ThemeProvider } from "next-themes"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { siteConfig } from "./siteConfig"
+
+import { Sidebar } from "@/components/ui/navigation/Sidebar"
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
 })
-
-import { Sidebar } from "@/components/ui/navigation/Sidebar"
-import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yoururl.com"),
