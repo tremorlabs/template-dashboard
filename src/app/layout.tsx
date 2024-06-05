@@ -11,7 +11,7 @@ const inter = Inter({
 })
 
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
-import { Sidebar } from "@/components/ui/navigation/Sidebar"
+import { Sidebar } from "@/components/ui/navigation/sidebar"
 import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
