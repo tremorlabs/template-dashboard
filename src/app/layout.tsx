@@ -10,6 +10,7 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
+import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import { Sidebar } from "@/components/ui/navigation/Sidebar"
 import { siteConfig } from "./siteConfig"
 
@@ -40,12 +41,10 @@ export const metadata: Metadata = {
 
 function Banner() {
   return (
-    <div className="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 transition hover:-translate-y-px">
-      <div
-        className="text-sm rounded-full flex items-center gap-x-1 bg-gray-950 p-1 py-1 shadow-xl shadow-black/20 ring-1 ring-white/10"
-      >
+    <div className="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 transition">
+      <div className="flex items-center gap-x-1 rounded-full bg-gray-950 p-1 text-sm shadow-xl shadow-black/20 ring-1 ring-white/10">
         <a
-          className="font-semibold text-gray-50 hover:text-white py-2 pr-2 pl-4 rounded-l-full flex items-center gap-x-2"
+          className="flex items-center gap-x-2 rounded-l-[20px] rounded-r-md bg-gray-900 py-2 pl-4 pr-2 font-semibold text-gray-50 ring-1 ring-inset ring-white/20 hover:bg-gray-800/90 hover:text-white"
           href="[GITHUB_REPO_LINK]"
           target="_blank"
         >
@@ -53,12 +52,12 @@ function Banner() {
           Get OSS version
         </a>
         <a
-          className="font-semibold py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full ring-1 ring-inset ring-indigo-400/30 transition"
+          className="group flex items-center gap-0.5 rounded-l-md rounded-r-[20px] bg-gradient-to-b from-white to-gray-200 px-4 py-2 font-semibold text-gray-900 ring-1 ring-inset ring-indigo-400/30 transition"
           href="https://blocks.tremor.so/templates#template-dashboard"
           target="_blank"
-
         >
           Get full code
+          <ArrowAnimated />
         </a>
       </div>
     </div>
