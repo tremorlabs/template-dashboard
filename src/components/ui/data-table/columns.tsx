@@ -11,6 +11,7 @@ import { ConditionFilter } from "./DataTableFilter"
 import { DataTableRowActions } from "./DataTableRowActions"
 
 const columnHelper = createColumnHelper<Usage>()
+
 export const columns = [
   columnHelper.display({
     id: "select",
