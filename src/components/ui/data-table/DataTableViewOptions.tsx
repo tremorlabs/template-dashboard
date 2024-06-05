@@ -422,7 +422,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
           <PopoverContent
             align="end"
             sideOffset={7}
-            className="w-fit space-y-2"
+            className="z-50 w-fit space-y-2"
           >
             <Label className="font-medium">Display properties</Label>
             <ListContext.Provider value={contextValue}>
