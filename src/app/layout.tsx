@@ -3,16 +3,16 @@ import type { Metadata } from "next"
 import { ThemeProvider } from "next-themes"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { siteConfig } from "./siteConfig"
+
+import { Sidebar } from "@/components/ui/navigation/Sidebar"
+import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
 })
-
-import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
-import { Sidebar } from "@/components/ui/navigation/Sidebar"
-import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yoururl.com"),
