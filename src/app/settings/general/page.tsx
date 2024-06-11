@@ -117,7 +117,7 @@ export default function General() {
                       Roles can only be changed by system admin.
                     </p>
                   </div>
-                  <div className="mt-6 flex justify-end col-span-full">
+                  <div className="col-span-full mt-6 flex justify-end">
                     <Button type="submit">Save settings</Button>
                   </div>
                 </div>
@@ -208,7 +208,7 @@ export default function General() {
                     </li>
                   </ul>
                 </fieldset>
-                <div className="mt-6 flex justify-end col-span-full">
+                <div className="col-span-full mt-6 flex justify-end">
                   <Button type="submit">Save settings</Button>
                 </div>
               </div>
