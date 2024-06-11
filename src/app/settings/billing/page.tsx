@@ -238,9 +238,7 @@ export default function Billing() {
                       </div>
                     </div>
                     <div className="mt-6 flex justify-end">
-                      <Button type="submit" variant="secondary">
-                        Update
-                      </Button>
+                      <Button type="submit">Update</Button>
                     </div>
                   </div>
                 </div>
