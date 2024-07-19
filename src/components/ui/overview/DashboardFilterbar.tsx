@@ -189,7 +189,7 @@ export function Filterbar({
                 <Label
                   htmlFor={category.title}
                   key={category.title}
-                  className="relative cursor-pointer rounded-md border p-4 shadow-sm"
+                  className="relative cursor-pointer rounded-md border border-gray-200 p-4 shadow-sm dark:border-gray-800"
                 >
                   <Checkbox
                     id={category.title}
