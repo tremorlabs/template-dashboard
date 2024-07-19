@@ -30,7 +30,7 @@
     "@react-aria/datepicker": "^3.10.1",
     "@react-stately/datepicker": "^3.9.4",
     "@remixicon/react": "^4.2.0",
-    "@tanstack/react-table": "^8.19.2",
+    "@tanstack/react-table": "^8.19.3",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "next": "14.2.3",
@@ -46,15 +46,15 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.39",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
   }
 }
