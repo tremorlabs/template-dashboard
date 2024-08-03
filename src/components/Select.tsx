@@ -1,4 +1,4 @@
-// Tremor Raw Select [v0.0.0]
+// Custom Select [v0.0.0]
 
 import * as SelectPrimitives from "@radix-ui/react-select"
 import { RiArrowDownSLine, RiArrowUpSLine, RiCheckLine } from "@remixicon/react"
@@ -20,13 +20,13 @@ SelectValue.displayName = "SelectValue"
 const selectTriggerStyles = [
   cx(
     // base
-    "group/trigger flex w-full select-none items-center justify-between gap-x-2 truncate rounded-md border px-3 py-1.5 text-base shadow-sm outline-none transition sm:text-sm",
+    "group/trigger flex w-full select-none items-center justify-between gap-2 truncate rounded-md border px-3 py-2 shadow-sm outline-none transition sm:text-sm",
     // border color
     "border-gray-300 dark:border-gray-800",
     // text color
     "text-gray-900 dark:text-gray-50",
     // placeholder
-    "data-[placeholder]:text-gray-400 data-[placeholder]:dark:text-gray-500",
+    "data-[placeholder]:text-gray-500 data-[placeholder]:dark:text-gray-500",
     // background color
     "bg-white dark:bg-gray-950",
     // hover

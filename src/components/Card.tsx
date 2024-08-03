@@ -1,7 +1,7 @@
-// Tremor Raw Card [v0.0.0]
+// Tremor Raw Card [v0.0.1]
 
 import { Slot } from "@radix-ui/react-slot"
-import * as React from "react"
+import React from "react"
 
 import { cx } from "@/lib/utils"
 
