@@ -1,7 +1,9 @@
-// Tremor Raw Tooltip [v0.0.0]
+// Tremor Raw Tooltip [v0.0.1]
+
+"use client"
 
 import * as TooltipPrimitives from "@radix-ui/react-tooltip"
-import * as React from "react"
+import React from "react"
 
 import { cx } from "@/lib/utils"
 
