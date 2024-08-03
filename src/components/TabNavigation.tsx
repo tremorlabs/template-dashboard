@@ -1,7 +1,7 @@
-// Tremor Raw TabNavigation [v0.0.0]
+// Tremor Raw TabNavigation [v0.0.1]
 
 import * as NavigationMenuPrimitives from "@radix-ui/react-navigation-menu"
-import * as React from "react"
+import React from "react"
 
 import { cx, focusRing } from "@/lib/utils"
 
@@ -33,7 +33,7 @@ const TabNavigation = React.forwardRef<
     <NavigationMenuPrimitives.List
       className={cx(
         // base
-        "flex items-center justify-start gap-4 whitespace-nowrap border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "flex items-center justify-start whitespace-nowrap border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         // border color
         "border-gray-200 dark:border-gray-800",
         className,
@@ -43,6 +43,7 @@ const TabNavigation = React.forwardRef<
     </NavigationMenuPrimitives.List>
   </NavigationMenuPrimitives.Root>
 ))
+
 TabNavigation.displayName = "TabNavigation"
 
 const TabNavigationLink = React.forwardRef<
@@ -52,7 +53,7 @@ const TabNavigationLink = React.forwardRef<
     "onSelect"
   > & { disabled?: boolean }
 >(({ asChild, disabled, className, children, ...props }, forwardedRef) => (
-  <NavigationMenuPrimitives.Item className="flex">
+  <NavigationMenuPrimitives.Item className="flex" aria-disabled={disabled}>
     <NavigationMenuPrimitives.Link
       aria-disabled={disabled}
       className={cx(

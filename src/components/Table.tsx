@@ -1,6 +1,6 @@
-import * as React from "react"
+// Tremor Raw Table [v0.0.2]
 
-// Tremor Raw Table [v0.0.1]
+import React from "react"
 
 import { cx } from "@/lib/utils"
 
@@ -10,7 +10,7 @@ const TableRoot = React.forwardRef<
 >(({ className, children, ...props }, forwardedRef) => (
   <div
     ref={forwardedRef}
-    // Activate if table is used in a float enironment
+    // Activate if table is used in a float environment
     // className="flow-root"
   >
     <div
