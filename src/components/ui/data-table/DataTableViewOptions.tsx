@@ -380,8 +380,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
     }
 
     liveRegion.announce(
-      `You've moved ${item.label} from position ${
-        previousIndex + 1
+      `You've moved ${item.label} from position ${previousIndex + 1
       } to position ${currentIndex + 1} of ${numberOfItems}.`,
     )
   }, [lastCardMoved, registry])
@@ -412,7 +411,7 @@ function ViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
             <Button
               variant="secondary"
               className={cx(
-                "ml-auto hidden gap-x-2 px-2 text-sm sm:text-xs lg:flex",
+                "ml-auto hidden gap-x-2 px-2 py-1.5 text-sm sm:text-xs lg:flex",
               )}
             >
               <RiEqualizer2Line className="size-4" aria-hidden="true" />
